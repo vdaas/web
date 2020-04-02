@@ -4,7 +4,7 @@ html {
 }
 
 .top {
-  background-color: #0F7684;
+  background-color: #49C4BE;
   position: relative;
   height: calc(100vh - 64px);
   overflow: hidden;
@@ -16,7 +16,7 @@ html {
   position: absolute;
   width: 400px;
   height: 400px;
-  background-color: #49C4BE;
+  background-color: #0F7684;
   z-index: 1;
   overflow: hidden;
 }
@@ -30,7 +30,7 @@ html {
   height: 800px;
   -webkit-transform: translate(50%, 50%);
   transform: translate(50%, 50%);
-  background-color: #49C4BE;
+  background-color: #0F7684;
   z-index: 1;
 }
 
@@ -148,8 +148,7 @@ html {
   width: 100%;
   background-color: #ffffff;
   padding: 80px 0;
-  background-color: #333333;
-  color: #ffffff;
+  color: #333333;
 }
 
 .concept__container {
@@ -284,7 +283,7 @@ html {
 
 .about {
   width: 100%;
-  background-color: #333333;
+  background-color: #ffffff;
   padding: 80px 0;
 }
 
