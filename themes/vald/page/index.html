@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  
+
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-164223416-1"></script>
@@ -34,8 +34,9 @@
   <link rel="canonical" href="https://github.com/vdaas/vald">
 
   <link rel="stylesheet" type="text/css" href="common/style.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
-
+  <link rel="stylesheet" type="text/css" href="common/header.css">
+  <link rel="stylesheet" type="text/css" href="common/footer.css">
+  <link rel="stylesheet" type="text/css" href="main.css">
 
   <!-- before IE8 -->
   <!--[if lt IE 9]>
@@ -49,7 +50,7 @@
   <header class="header">
   <div class="header__content">
     <nav class="header__nav cf">
-      <a href="https://vald.vdaas.org" class="header-nav__link" target="_blank"><img src="assets/img/static/vald_color_1.svg" alt="" class="header-nav__image"></a>
+      <a href="https://vald.vdaas.org" class="header-nav__link"><img src="assets/img/static/vald_color_1.svg" alt="" class="header-nav__image"></a>
       <a href="" class="header-nav__icon"><span class="header-nav__button"></span></a>
       <ul class="header__list">
         <li class="header__item">
@@ -102,39 +103,93 @@
       <h2 class="features__heading">Vald's Main Features</h2>
       <ul class="features__list">
         <li class="features__item">
-          <h3 class="features__index asynchronize">Asynchronize Auto Indexing</h3>
+          <div class="features__title">
+            <picture class="card-image">
+              <source type="image/webp" srcset="assets/img/static/features_icon_asynchronize.png.webp" />
+              <img class="features__icon" src="assets/img/static/features_icon_asynchronize.png" alt="" width="48px" height="48px">
+            </picture>
+            <h3 class="features__index asynchronize">Asynchronize Auto Indexing</h3>
+          </div>
           <p class="features__text">Usually the graph requires locking during indexing, which cause stop-the-world. But Vald uses distributed index graph so it continues to work during indexing.</p>
         </li>
         <li class="features__item">
-          <h3 class="features__index filtering">Customizable Ingress/Egress Filtering</h3>
+          <div class="features__title">
+            <picture class="card-image">
+              <source type="image/webp" srcset="assets/img/static/features_icon_filtering.png.webp" />
+              <img src="assets/img/static/features_icon_filtering.png" alt="" width="48px" height="48px">
+            </picture>
+            <h3 class="features__index filtering">Customizable Ingress/Egress Filtering</h3>
+          </div>
           <p class="features__text">Vald implements it's own highly customizable Ingress/Egress filter. Which can be configured to fit the gRPC interface.</p>
         </li>
         <li class="features__item">
-          <h3 class="features__index cloud-native">Cloud-native based vector searching engine</h3>
+          <div class="features__title">
+            <picture class="card-image">
+              <source type="image/webp" srcset="assets/img/static/features_icon_cloud-native.png.webp" />
+              <img src="assets/img/static/features_icon_cloud-native.png" alt="" width="48px" height="48px">
+            </picture>
+            <h3 class="features__index cloud-native">Cloud-native based vector searching engine</h3>
+          </div>
           <p class="features__text">Horizontal scalable on memory and cpu for your demand.</p>
         </li>
         <li class="features__item">
-          <h3 class="features__index auto-indexing">Auto Indexing Backup</h3>
+          <div class="features__title">
+            <picture class="card-image">
+              <source type="image/webp" srcset="assets/img/static/features_icon_auto-indexing.png.webp" />
+              <img src="assets/img/static/features_icon_auto-indexing.png" alt="" width="48px" height="48px">
+            </picture>
+            <h3 class="features__index auto-indexing">Auto Indexing Backup</h3>
+          </div>
           <p class="features__text">Vald has auto index backup feature using MySQL + Redis or Cassandra which enables disaster recovery.</p>
         </li>
         <li class="features__item">
-          <h3 class="features__index distributed">Distributed Indexing</h3>
+          <div class="features__title">
+            <picture class="card-image">
+              <source type="image/webp" srcset="assets/img/static/features_icon_distributed.png.webp" />
+              <img src="assets/img/static/features_icon_distributed.png" alt="" width="48px" height="48px">
+            </picture>
+            <h3 class="features__index distributed">Distributed Indexing</h3>
+          </div>
           <p class="features__text">Vald distribute vector index to multiple agent, each agent stores different index.</p>
         </li>
         <li class="features__item">
-          <h3 class="features__index replication">Index Replication</h3>
+          <div class="features__title">
+            <picture class="card-image">
+              <source type="image/webp" srcset="assets/img/static/features_icon_replication.png.webp" />
+              <img src="assets/img/static/features_icon_replication.png" alt="" width="48px" height="48px">
+            </picture>
+            <h3 class="features__index replication">Index Replication</h3>
+          </div>
           <p class="features__text">Vald stores each index in multiple agents which enables index replicas. Automatically rebalance the replica when some Vald agent goes down.</p>
         </li>
         <li class="features__item">
-          <h3 class="features__index easy">Easy to use</h3>
+          <div class="features__title">
+            <picture class="card-image">
+              <source type="image/webp" srcset="assets/img/static/features_icon_easy.png.webp" />
+              <img src="assets/img/static/features_icon_easy.png" alt="" width="48px" height="48px">
+            </picture>
+            <h3 class="features__index easy">Easy to use</h3>
+          </div>
           <p class="features__text">Vald can be easily installed in a few steps.</p>
         </li>
         <li class="features__item">
-          <h3 class="features__index customizable">Highly customizable</h3>
+          <div class="features__title">
+            <picture class="card-image">
+              <source type="image/webp" srcset="assets/img/static/features_icon_customizable.png.webp" />
+              <img src="assets/img/static/features_icon_customizable.png" alt="" width="48px" height="48px">
+            </picture>
+            <h3 class="features__index customizable">Highly customizable</h3>
+          </div>
           <p class="features__text">You can configure the number of vector dimension, the number of replica and etc.</p>
         </li>
         <li class="features__item">
-          <h3 class="features__index multi-language">Multi language supported</h3>
+          <div class="features__title">
+            <picture class="card-image">
+              <source type="image/webp" srcset="assets/img/static/features_icon_multi-language.png.webp" />
+              <img src="assets/img/static/features_icon_multi-language.png" alt="" width="48px" height="48px">
+            </picture>
+            <h3 class="features__index multi-language">Multi language supported</h3>
+          </div>
           <p class="features__text">Golang, Java, Nodejs and python is supported.</p>
         </li>
       </ul>
@@ -149,28 +204,28 @@
     <div class="about__content">
       <h2 class="about__title">Base Technologies</h2>
       <ul class="about__list">
-        <li class="about__item"><a href="https://golang.org/" target="_blank"><img class="about__logo golang" src="assets/img/tech/golang.svg" alt="tech__golang"></a></li>
-        <li class="about__item"><a href="https://www.docker.com/" target="_blank"><img class="about__logo docker" src="assets/img/tech/docker.svg" alt="tech__docker"></a></li>
-        <li class="about__item"><a href="https://kubernetes.io/" target="_blank"><img class="about__logo k8s" src="assets/img/tech/k8s.svg" alt="tech__k8s"></a></li>
-        <li class="about__item"><a href="https://github.com/yahoojapan/NGT" target="_blank"><img class="about__logo ngt" src="assets/img/tech/ngt_color.svg" alt="tech__ngt"></a></li>
+        <li class="about__item"><a href="https://golang.org/" target="_blank"><img class="about__logo" src="assets/img/tech/golang.svg" alt="tech__golang" width="140"></a></li>
+        <li class="about__item"><a href="https://www.docker.com/" target="_blank"><img class="about__logo" src="assets/img/tech/docker.svg" alt="tech__docker" width="90"></a></li>
+        <li class="about__item"><a href="https://kubernetes.io/" target="_blank"><img class="about__logo" src="assets/img/tech/k8s.svg" alt="tech__k8s" width="90"></a></li>
+        <li class="about__item"><a href="https://github.com/yahoojapan/NGT" target="_blank"><img class="about__logo" src="assets/img/tech/ngt_color.svg" alt="tech__ngt" width="80"></a></li>
       </ul>
     </div>
 
     <div class="about__content">
       <h2 class="about__title">SDKs</h2>
       <ul class="about__list">
-        <li class="about__item"><a href="https://github.com/vdaas/vald-client-go" target="_blank"><img class="about__logo golang" src="assets/img/tech/golang.svg" alt="logo__golang"></a></li>
-        <li class="about__item"><a href="https://github.com/vdaas/vald-client-java" target="_blank"><img class="about__logo java" src="assets/img/tech/java.svg" alt="logo__java"></a></li>
-        <li class="about__item"><a href="https://github.com/vdaas/vald-client-python" target="_blank"><img class="about__logo python" src="assets/img/tech/python.svg" alt="logo__python"></a></li>
-        <li class="about__item"><a href="https://github.com/vdaas/vald-client-node" target="_blank"><img class="about__logo nodejs" src="assets/img/tech/nodejs.svg" alt="logo__nodejs"></a></li>
-        <li class="about__item"><a href="https://github.com/vdaas/vald-client-clj" target="_blank"><img class="about__logo clojure" src="assets/img/tech/clojure.svg" alt="logo__clojure"></a></li>
+        <li class="about__item"><a href="https://github.com/vdaas/vald-client-go" target="_blank"><img class="about__logo" src="assets/img/tech/golang.svg" alt="logo__golang" width="140"></a></li>
+        <li class="about__item"><a href="https://github.com/vdaas/vald-client-java" target="_blank"><img class="about__logo" src="assets/img/tech/java.svg" alt="logo__java" width="54"></a></li>
+        <li class="about__item"><a href="https://github.com/vdaas/vald-client-python" target="_blank"><img class="about__logo" src="assets/img/tech/python.svg" alt="logo__python" width="84"></a></li>
+        <li class="about__item"><a href="https://github.com/vdaas/vald-client-node" target="_blank"><img class="about__logo" src="assets/img/tech/nodejs.svg" alt="logo__nodejs" width="150"></a></li>
+        <li class="about__item"><a href="https://github.com/vdaas/vald-client-clj" target="_blank"><img class="about__logo" src="assets/img/tech/clojure.svg" alt="logo__clojure" width="80"></a></li>
       </ul>
     </div>
     <div class="about__content">
       <div class="about__block">
         <h2 class="about__title">Vald Users</h2>
         <ul class="about__list about__list--center">
-          <li class="about__item about__item--single"><a href="https://yahoo.co.jp/" target="_blank"><img class="about__logo yahoo" src="assets/img/community/yahoojapan.svg" alt="yahoojapan"></a></li>
+          <li class="about__item about__item--single"><a href="https://yahoo.co.jp/" target="_blank"><img class="about__logo" src="assets/img/community/yahoojapan.svg" alt="yahoojapan"></a></li>
         </ul>
       </div>
     </div>
@@ -181,33 +236,42 @@
     <div class="learn__content">
       <h2 class="learn__title">Learn About Vald</h2>
       <ul class="learn__cardlist">
-      <li class="mdl-card">
-        <a href="https://github.com/vdaas/vald/blob/master/README.md" class="mdl-link">
-          <dl class="mdl-card__content cf">
-            <dd class="mdl-card__image"><img class="card-image" src="assets/img/static/learn_img_01.png" alt=""></dd>
-            <dt class="mdl-card__title">Overview</dt>
-            <p class="mdl-card__caption">Overview & Architecture</p>
-          </dl>
-        </a>
-      </li>
-      <li class="mdl-card">
-        <a href="https://github.com/vdaas/vald/blob/master/docs/user/get-started.md" class="mdl-link">
-          <dl class="mdl-card__content cf">
-            <dd class="mdl-card__image"><img class="card-image" src="assets/img/static/learn_img_02.png" alt=""></dd>
-            <dt class="mdl-card__title">Installation</dt>
-            <p class="mdl-card__caption">Getting Stared with your kubernetes cluseter</p>
-          </dl>
-        </a>
-      </li>
-      <li class="mdl-card">
-        <a href="" class="mdl-link">
-          <dl class="mdl-card__content cf">
-            <dd class="mdl-card__image"><img class="card-image" src="assets/img/static/learn_img_03.png" alt=""></dd>
-            <dt class="mdl-card__title">Manual Guides</dt>
-            <p class="mdl-card__caption">Start Vald, Configuration & Operation, and Trouble Shooting</p>
-          </dl>
-        </a>
-      </li>
+        <li class="mdl-card">
+          <a href="https://github.com/vdaas/vald/blob/master/README.md" class="mdl-link">
+            <dl class="mdl-card__content">
+              <picture class="card-image">
+                <source type="image/webp" srcset="assets/img/static/learn_img_01.png.webp" />
+                <img class="mdl-card__image" src="assets/img/static/learn_img_01.png" alt="Overview">
+              </picture>
+              <dt class="mdl-card__title">Overview</dt>
+              <dd class="mdl-card__caption">Overview & Architecture</dd>
+            </dl>
+          </a>
+        </li>
+        <li class="mdl-card">
+          <a href="https://github.com/vdaas/vald/blob/master/docs/user/get-started.md" class="mdl-link">
+            <dl class="mdl-card__content">
+              <picture class="card-image">
+                <source type="image/webp" srcset="assets/img/static/learn_img_02.png.webp" />
+                <img class="mdl-card__image" src="assets/img/static/learn_img_02.png" alt="Installation">
+              </picture>
+              <dt class="mdl-card__title">Installation</dt>
+              <dd class="mdl-card__caption">Getting Stared with your kubernetes cluseter</dd>
+            </dl>
+          </a>
+        </li>
+        <li class="mdl-card">
+          <a href="" class="mdl-link">
+            <dl class="mdl-card__content">
+              <picture class="card-image">
+                <source type="image/webp" srcset="assets/img/static/learn_img_03.png.webp" />
+                <img class="mdl-card__image" src="assets/img/static/learn_img_03.png" alt="Manual Guides">
+              </picture>
+              <dt class="mdl-card__title">Manual Guides</dt>
+              <dd class="mdl-card__caption">Start Vald, Configuration & Operation, and Trouble Shooting</dd>
+            </dl>
+          </a>
+        </li>
       </ul>
     </div>
   </div>
