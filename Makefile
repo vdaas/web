@@ -29,7 +29,7 @@ version:
 content/v$(NEW_VERSION):
 	$(call get-latest)
 	$(call copy-doc)
-	$(call capy-image)
+	$(call copy-image)
 	$(call clean)
 	@echo -e "\e[1;32mUpdate document finished with success!!!\e[0m"
 
@@ -65,6 +65,10 @@ define copy-image
 		mkdir -p content/v$(LATEST_VERSION)/assets && mkdir -p content/v$(LATEST_VERSION)/assets/img ; \
 		cd tmp/vald-$(LATEST_VERSION)/assets/docs && find . -type f -name "*.svg" -exec {} ../../../../content/v$(LATEST_VERSION)/assets/img ; \
 	fi
+endef
+
+define fix-path
+	@echo -e "\e[5;32mfix path in document\e[0m"
 endef
 
 define clean
