@@ -1,29 +1,30 @@
-(function () {
+(function() {
 
   //hamburger menu
-    const $wrapper = document.getElementById('menu');
-    const $navBtn = document.getElementById('nav-btn');
-    const $ancorLink = document.querySelectorAll('a[href^="#"]');
-    $ancorLink.forEach(function (button) {
-      button.addEventListener('click', navClose);
+  const $wrapper = document.getElementById('menu');
+  const $navBtn = document.getElementById('nav-btn');
+  const $ancorLink = document.querySelectorAll('a[href^="#"]');
+  $ancorLink.forEach(function(button) {
+    button.addEventListener('click', navClose);
   });
 
-    $navBtn.addEventListener('click', navToggle);
+  $navBtn.addEventListener('click', navToggle);
 
-    function navToggle() {
-      if ($wrapper.classList.contains('header__list--open')) {
-        navClose();
-      } else {
-        navOpen();
-      }
+  function navToggle() {
+    if ($wrapper.classList.contains('header__list--open')) {
+      navClose();
+    } else {
+      navOpen();
     }
+  }
 
-    function navOpen() {
-      $wrapper.classList.add('header__list--open');
-    }
-    function navClose() {
-      $wrapper.classList.remove('header__list--open');
-    }
+  function navOpen() {
+    $wrapper.classList.add('header__list--open');
+  }
+
+  function navClose() {
+    $wrapper.classList.remove('header__list--open');
+  }
 
 
   //smooth scroll
@@ -39,7 +40,7 @@
     const targetRect = target.getBoundingClientRect();
     const targetY = targetRect.top + nowY - offset;
 
-    (function () {
+    (function() {
       let thisFunc = arguments.callee;
       toY = nowY + Math.round((targetY - nowY) / divisor);
       window.scrollTo(0, toY);
@@ -61,7 +62,7 @@
   const smoothOffset = headerHight;
   const links = document.querySelectorAll('a[href*="#"]');
   for (let i = 0; i < links.length; i++) {
-    links[i].addEventListener('click', function (e) {
+    links[i].addEventListener('click', function(e) {
 
       const href = e.currentTarget.getAttribute('href');
       const splitHref = href.split('#');
