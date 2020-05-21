@@ -38,23 +38,19 @@
   <link rel="stylesheet" type="text/css" href="common/footer.css">
   <link rel="stylesheet" type="text/css" href="main.css">
 
-  <!-- before IE8 -->
-  <!--[if lt IE 9]>
-  <script src="/js/html5shiv.js"></script>
-  <![endif]-->
 </head>
 
 <body>
-  <header class="header">
+  <header class="header" id="header">
   <div class="header__content">
     <nav class="header__nav cf">
-      <a href="https://vald.vdaas.org" class="header-nav__link" target="_blank">
+      <a href="https://vald.vdaas.org" class="header-nav__link">
           <img src="assets/img/static/vald_color_1.svg" alt="" class="header-nav__image">
       </a>
-      <a href="" class="header-nav__icon"><span class="header-nav__button"></span></a>
-      <ul class="header__list">
+      <a class="header-nav__icon" id="nav-btn"><span class="header-nav__button"></span></a>
+      <ul class="header__list" id="menu">
         <li class="header__item">
-          <a href="#concept" class="header__link anchor">About</a>
+          <a href="#concept" class="header__link">About</a>
         </li>
         <li class="header__item">
           <a href="https://github.com/vdaas/vald/blob/master/docs/user/get-started.md" class="header__link">Getstarted</a>
@@ -300,9 +296,7 @@
 
   <p class="footer__copylight">©2019-2020 vald.vdaas.org Vald team</p>
 </footer>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script type="text/javascript" src="common/script.js"></script>
+<script type="text/javascript" src="common/script.js"></script>
 </body>
 
 </html>
