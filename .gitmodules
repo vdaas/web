@@ -2,3 +2,7 @@
 	path = public
 	url = https://github.com/vdaas/vald
 	branch = gh-pages
+[submodule "preview"]
+	path = preview
+	url = https://github.com/vdaas/web
+	branch = gh-pages
