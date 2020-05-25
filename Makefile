@@ -20,7 +20,7 @@ version:
 	@$(eval rowNumber := $(shell grep "LATEST_VERSION" -n Makefile | head -n 1 | cut -d ":" -f 1))
 	@if [ ${LATEST_VERSION} != ${NEW_VERSION} ]; then \
 		echo -e "\e[5;32mUpdating to latest version $(NEW_VERSION)\e[0m" ; \
-		sed -i '${rowNumber}c\LATEST_VERSION = ${NEW_VERSION}' Makefile ; \
+		sed i '${rowNumber}c\LATEST_VERSION = ${NEW_VERSION}' Makefile ; \
 	else \
 	    echo -e "\e[1;31mNothing to update.\e[0m" ; \
 	fi
