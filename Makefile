@@ -10,9 +10,18 @@ all: deploy
 run:
 	hugo server
 
-deploy:
-	hugo
-	cd public && git add . && git commit -m "rebuilding site `date`" && git push origin master
+deploy/staging:
+	@hugo --environment=staging
+	@cd tmp_pre && cp -r * ../preview/
+	@cd preview && git add -A;git commit -m ":arrow_up: v${LATEST_VERSION} `date`" && git push origin gh-pages
+	@cp Makefile preview/Makefile
+	@rm -rf tmp_pre
+
+deploy/production:
+	@hugo --environment=production
+	@cd tmp_pre && mv . ../public/
+	@cd public && git add -A;git commit -m ":arrow_up: v${LATEST_VERSION} `date`" && git push origin gh-pages
+	@rm -rf tmp_pre
 
 version:
 	@echo -e "\e[1;32mChecking Vald latest version...\e[0m"
