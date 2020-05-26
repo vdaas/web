@@ -1,11 +1,48 @@
 <!DOCTYPE html>
 <html>
-    {{- partial "head.html" . -}}
-    <body>
-        {{- partial "header.html" . -}}
-        <div id="content">
-        {{- block "main" . }}{{- end }}
-        </div>
-        {{- partial "footer.html" . -}}
-    </body>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-164223416-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-164223416-1');
+    </script>
+    <!-- /Global site tag (gtag.js) - Google Analytics -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="robots" content="index, follow">
+    <title>Vald</title>
+    <meta name="description" content="Vald is high scalable distributed high-speed approximate nearest neighbor search engine">
+    <meta name="keywords" content="vald,vdass">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- OGP -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Vald">
+    <meta property="og:description" content="Vald is high scalable distributed high-speed approximate nearest neighbor search engine">
+    <meta property="og:url" content="https://vald.vdaas.org">
+    <meta property="og:image" content="{{ .Site.BaseURL }}/images/ogp_vald.png">
+    <meta property="og:site_name" content="vald">
+    <meta property="og:locale" content="en_US">
+    <meta property="fb:app_id" content="615732422350002">
+    <meta name="twitter:site" content="@vdaas_vald">
+    <!-- <meta name="twitter:card" content="summary_large_image"> -->
+    <meta name="twitter:card" content="app">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="canonical" href="https://github.com/vdaas/vald">
+    <link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}/css/header.css">
+    <link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}/css/main.css">
+  </head>
+
+  <body>
+    {{ partial "header.html" . -}}
+    <main role="main">
+      {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "footer.html" . -}}
+  </body>
 </html>

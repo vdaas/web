@@ -1,0 +1,6 @@
+baseURL = "https://vald.vdaas.org"
+languageCode = "en-us"
+title = "Vald"
+theme = "vald"
+publishDir = "tmp_pre"
+disableKinds = "RSS"
