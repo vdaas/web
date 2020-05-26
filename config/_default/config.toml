@@ -1,5 +1,6 @@
-baseURL = "http://vald.vdaas.org/"
+baseURL = "http://localhost:1313"
 languageCode = "en-us"
 title = "Vald"
 theme = "vald"
 publishDir = "tmp_pre"
+disableKinds = "RSS"
