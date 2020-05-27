@@ -10,14 +10,19 @@ all: deploy
 run:
 	hugo server
 
-deploy/staging:
+subup:
+	git submodule foreach git pull origin gh-pages
+
+deploy/staging: subup \
+	latest
 	@hugo --environment=staging
 	@cd tmp_pre && cp -r * ../preview/
-	@cd preview && git add -A;git commit -m ":arrow_up: v${LATEST_VERSION} `date`" && git push origin gh-pages
 	@cp Makefile preview/Makefile
+	@cd preview && git add -A;git commit -m ":arrow_up: v${LATEST_VERSION} `date`" && git push origin gh-pages
 	@rm -rf tmp_pre
 
-deploy/production:
+deploy/production: subup \
+	latest
 	@hugo --environment=production
 	@cd tmp_pre && mv . ../public/
 	@cd public && git add -A;git commit -m ":arrow_up: v${LATEST_VERSION} `date`" && git push origin gh-pages
