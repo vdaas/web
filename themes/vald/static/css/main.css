@@ -367,8 +367,14 @@ button{
   top:0;
   right: -1px;
   border: 1px solid #006076;
-  padding: 10px 8px 10px 10px;
+  padding: 14px 12px 14px 14px;
   background-color: #ffffff;
+  z-index: 0;
+}
+
+.current.scrolled{
+  position: fixed;
+  top:160px
 }
 
 .current.open{
@@ -445,11 +451,17 @@ background-color: #006076;
   padding: 24px;
   margin-bottom: 32px;
   font-weight: bold;
+  z-index: 1;
 }
 
 .page li {
   padding: 8px 0;
   margin-left: 20px;
+  display: none;
+}
+
+.page.open li{
+  display: block;
 }
 
 .page li.active{
@@ -464,17 +476,12 @@ background-color: #006076;
 }
 
 .page p.index {
-  padding-bottom: 24px;
   position: relative;
 }
 
 .page.open p.index {
-  padding-bottom:0;
+  padding-bottom:12px;
   position: relative;
-}
-
-.page.open li {
-  display: none;
 }
 
 .page p.index::after {
@@ -487,14 +494,15 @@ background-color: #006076;
   height: 12px;
   border-top: 2px solid #006076;
   border-right: 2px solid #006076;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+
 
 }
 
 .page.open p.index::after {
-  -webkit-transform: rotate(135deg);
-  transform: rotate(135deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 /*content*/
@@ -576,10 +584,6 @@ background-color: #006076;
     clear: both;
   }
 
-  .page {
-    width: 100%;
-  }
-
   .markdown {
     width: 70%;
   }
@@ -621,6 +625,10 @@ background-color: #006076;
     margin-bottom: 0;
   }
 
+  .page.open li{
+    display: block;
+  }
+
   .content{
     display: flex;
   }
@@ -631,12 +639,18 @@ background-color: #006076;
   }
 
   .current {
+
     display: inline-block;
-    width: 30%;
+    width: 25%;
     border: none;
   }
 
-  .page.open li {
+  .current.scrolled{
+    position: fixed;
+    top:84px;
+  }
+
+  .page li {
     display: block;
   }
 
