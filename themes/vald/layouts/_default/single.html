@@ -1,5 +1,42 @@
 {{ define "main" }}
-<div>
-  {{ .Content }}
+<div class="single">
+  <ul class="page">
+    <p class="index">Pages</p>
+    <li class="active">Get Started</li>
+    <li>Authentication</li>
+    <li>Kittens</li>
+    <li>Errors</li>
+  </ul>
+  <div class="content">
+    <div class="markdown">
+      {{ .Content }}
+    </div>
+    <ol class="current">
+      <button class="menu">
+        <span class="dot"></span>
+      </button>
+      <li class="active">Requirements</li>
+      <li>Deploy and Run Vald on k8s cluster</li>
+      <ol>
+        <li>Deploy</li>
+        <li>Run</li>
+      </ol>
+      <li>Advanced</li>
+      <ol>
+        <li>Customize Vald</li>
+        <li>Another way to deploy Vald</li>
+      </ol>
+    </ol>
+  </div>
 </div>
 {{ end }}
+
+
+
+
+
+　　
+　　
+
+　　
+　　
