@@ -360,30 +360,35 @@ button{
   position: relative;
 }
 
+.current.scrolled{
+  position: fixed;
+  top:160px;
+}
+
 /*current*/
 
 .current {
   position: absolute;
   top:0;
-  right: -1px;
+  right: -2px;
   border: 1px solid #006076;
   padding: 14px 12px 14px 14px;
   background-color: #ffffff;
   z-index: 0;
 }
 
-.current.scrolled{
-  position: fixed;
-  top:160px
+.current .current-body{
+  padding: 18px;
 }
 
-.current.open{
-  padding: 24px;
-}
-
-.current li{
+.current .current-body li{
   display: none;
 }
+
+.current .current-body.open li{
+  display: block;
+}
+
 
 .current .menu{
   display: inline-block;
@@ -428,20 +433,18 @@ background-color: #006076;
 }
 
 
-.current li {
+.current .current-body li {
   border-left: 2px solid #ccc;
-  padding: 4px 0 4px 16px;
+  padding: 4px 0 0 32px;
 }
 
-.current ol li{
-  padding: 4px 0 4px 32px;
-}
-
-.current li.active {
+.current .current-body li.active {
   border-left: 2px solid #006076;
 }
 
-
+.current .current-body ul li{
+  border-left: none;
+}
 
 /*page*/
 
@@ -455,54 +458,63 @@ background-color: #006076;
 }
 
 .page li {
-  padding: 8px 0;
-  margin-left: 20px;
+  margin:8px 0 0 20px;
   display: none;
 }
 
-.page.open li{
+.page .open li{
   display: block;
 }
 
-.page li.active{
+.page li.view{
     margin-left:0;
+    padding-left: 20px;
+    background-color:rgba(0,96,118,0.4);
 }
 
-.page li.active::before {
-  content: "・";
-  display: inline-block;
-  color:#006076;
-  padding-right: 5px;
-}
-
-.page p.index {
+.page button.index {
   position: relative;
+  display: block;
+  width: 100%;
+  text-align: left;
 }
 
-.page.open p.index {
-  padding-bottom:12px;
-  position: relative;
-}
-
-.page p.index::after {
-  position: absolute;
-  top:3px;
-  right: 9px;
+.page button.index::before {
   display: inline-block;
   content: "";
-  width: 12px;
-  height: 12px;
+  width: 7px;
+  height: 7px;
+  margin-right: 9px;
+  margin-bottom: 1px;
   border-top: 2px solid #006076;
   border-right: 2px solid #006076;
-  -webkit-transform: rotate(135deg);
-  transform: rotate(135deg);
-
-
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
-.page.open p.index::after {
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+.page .open button.index::before {
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+  margin-bottom: 2px;
+}
+
+.page li.withchild::before {
+  display: inline-block;
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-right: 9px;
+  margin-bottom: 1px;
+  border-top: 2px solid #006076;
+  border-right: 2px solid #006076;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.page li.withchild.open::before {
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+  margin-bottom: 2px;
 }
 
 /*content*/
@@ -608,7 +620,7 @@ background-color: #006076;
     margin-bottom: 0;
   }
 
-  .current li{
+  .current .current-body li{
     display: block;
   }
 
@@ -621,8 +633,9 @@ background-color: #006076;
   }
 
   .page {
-    width: auto;
+    width: 22%;
     margin-bottom: 0;
+    margin-right: 2%;
   }
 
   .page.open li{
@@ -631,24 +644,33 @@ background-color: #006076;
 
   .content{
     display: flex;
+    width: 76%;
   }
 
   .markdown {
-    width: 62%;
-    margin: 0 2% 64px 6%;
+    width: 63%;
+    margin-right: 3%;
+    margin-bottom: 64px;
   }
 
   .current {
-
     display: inline-block;
-    width: 25%;
     border: none;
+    width: 30%;
+    margin-right: 2%;
   }
+
+  .current .current-body {
+    padding: 0;
+}
 
   .current.scrolled{
     position: fixed;
     top:84px;
+    width: auto;
   }
+  }
+
 
   .page li {
     display: block;
