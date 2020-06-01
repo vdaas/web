@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://vald.netlify.app/guides/configurations/</loc>
+    <lastmod>2020-05-29T16:17:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/v0.0.37/guides/configurations/</loc>
+    <lastmod>2020-05-29T16:17:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/developer/</loc>
+    <lastmod>2020-05-29T16:17:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/user/get-started/</loc>
+    <lastmod>2020-05-29T16:17:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/v0.0.37/user/get-started/</loc>
+    <lastmod>2020-05-29T16:17:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/guides/</loc>
+    <lastmod>2020-05-29T16:17:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/developer/style/</loc>
+    <lastmod>2020-05-29T16:17:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/v0.0.37/developer/style/</loc>
+    <lastmod>2020-05-29T16:17:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/user/</loc>
+    <lastmod>2020-05-29T16:17:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/v0.0.37/</loc>
+    <lastmod>2020-05-29T16:17:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/</loc>
+    <lastmod>2020-05-29T16:17:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/tags/</loc>
+  </url>
+  
+</urlset>
