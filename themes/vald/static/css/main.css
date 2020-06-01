@@ -1,6 +1,6 @@
 .top {
   background-color: #006076;
-  background: url("../images/graphic.png");
+  background: url("/images/graphic.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -38,7 +38,7 @@
   display: block;
   position: relative;
   width: 100%;
-  background-image: url("../images/concept_bg.png");
+  background-image: url("/images/concept_bg.png");
   background-size: 33.3%;
   background-repeat: repeat-x;
 }

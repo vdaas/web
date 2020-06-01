@@ -1,59 +1,9 @@
 {{ define "main" }}
-<div class="single">
-  <aside class="page">
-    <button class="index" id="list-button">Pages</button>
-
-    <nav class="open">
-      <ul>
-        <li class="view">item</li>
-        <li class="withchild open">parent
-          <ul>
-            <li>child</li>
-            <li>child</li>
-          </ul>
-        </li>
-        <li class="withchild open">parent
-          <ul>
-            <li class="withchild open">child
-              <ul>
-                <li>gd-child</li>
-                <li>gd-child</li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li>item</li>
-        <li>item</li>
-      </ul>
-    </nav>
-  </aside>
-
-  <div class="content">
-    <div class="markdown">
-      {{ .Content }}
-    </div>
-
-    <aside class="current">
-      <button class="menu"><span class="dot"></span></button>
-      
-      <nav>
-        <ul class="open">
-          <li class="active">Requirements</li>
-          <li>Deploy and Run Vald on k8s cluster
-            <ul>
-              <li>Deploy</li>
-              <li>Run</li>
-            </ul>
-          </li>
-          <li>Advanced
-            <ul>
-              <li>Customize Vald</li>
-              <li>Another way to deploy Vald</li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-    </aside>
+{{ partial "sidebar.html" . -}}
+<div class="content">
+  <div class="markdown">
+    {{ .Content }}
   </div>
+  {{ partial "toc.html" . -}}
 </div>
 {{ end }}
