@@ -1,10 +1,10 @@
 {{ define "main" }}
 <div class="single">
   <aside class="page">
-    <nav id="list-wrap" class="open">
-      <button class="index" id="list-button">Pages</button>
-      <ul id="list-body">
-        <li class="index"></li>
+    <button class="index" id="list-button">Pages</button>
+
+    <nav class="open">
+      <ul>
         <li class="view">item</li>
         <li class="withchild open">parent
           <ul>
@@ -34,11 +34,10 @@
     </div>
 
     <aside class="current">
+      <button class="menu"><span class="dot"></span></button>
+      
       <nav>
-        <button class="menu">
-          <span class="dot"></span>
-        </button>
-        <ul class="current-body open">
+        <ul class="open">
           <li class="active">Requirements</li>
           <li>Deploy and Run Vald on k8s cluster
             <ul>

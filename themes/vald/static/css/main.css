@@ -377,15 +377,15 @@ button{
   z-index: 0;
 }
 
-.current .current-body{
+.current ul{
   padding: 18px;
 }
 
-.current .current-body li{
+.current ul li{
   display: none;
 }
 
-.current .current-body.open li{
+.current ul.open li{
   display: block;
 }
 
@@ -433,16 +433,16 @@ background-color: #006076;
 }
 
 
-.current .current-body li {
+.current ul li {
   border-left: 2px solid #ccc;
   padding: 4px 0 0 32px;
 }
 
-.current .current-body li.active {
+.current ul li.active {
   border-left: 2px solid #006076;
 }
 
-.current .current-body ul li{
+.current ul ul li{
   border-left: none;
 }
 
@@ -497,6 +497,7 @@ background-color: #006076;
   transform: rotate(135deg);
   margin-bottom: 2px;
 }
+
 
 .page li.withchild::before {
   display: inline-block;
@@ -620,7 +621,7 @@ background-color: #006076;
     margin-bottom: 0;
   }
 
-  .current .current-body li{
+  .current ul li{
     display: block;
   }
 
@@ -660,7 +661,7 @@ background-color: #006076;
     margin-right: 2%;
   }
 
-  .current .current-body {
+  .current ul {
     padding: 0;
 }
 
