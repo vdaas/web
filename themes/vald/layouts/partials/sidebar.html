@@ -1,0 +1,26 @@
+<!-- sidebar start -->
+<aside class="page">
+  {{ $current := .Page.Permalink }}
+  <!-- TODO: attach class "open" to nav-->
+  <nav>
+  <button class="index" id="list-button">Pages</button>
+    {{ $invalidURL := strings.TrimSuffix "/" .Site.BaseURL }}
+    {{ $invalidURL = print $invalidURL "/v" }}
+  <ul>
+    <!-- TODO: child style withchild, view -->
+    {{ range .Site.Pages }}
+      {{ if not ( in .Permalink $invalidURL) }}
+      {{ if eq $current .Permalink }}
+          <li class="view">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </li>
+        {{ else }}
+          <li>
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </li>
+        {{ end }}
+      {{ end }}
+    {{end}}
+  </ul>
+  </nav>
+</aside>
