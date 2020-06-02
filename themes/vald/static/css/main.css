@@ -602,6 +602,47 @@ background-color: #006076;
   margin: 0 0 12px 0;
 }
 
+.error{
+  text-align: center;
+}
+
+.error .error__image{
+  display: inline-block;
+  padding: 64px 48px 32px 48px;
+}
+
+.error .error__title{
+  font-size: 2rem;
+  color: #006076;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.error .error__link{
+  color:#309BE9;
+}
+
+
+.coming{
+  text-align: center;
+}
+
+.coming .coming__image{
+  display: inline-block;
+  padding: 64px 48px 32px 48px;
+}
+
+.coming .coming__title{
+  font-size: 2rem;
+  color: #006076;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.coming .coming__link{
+  color:#309BE9;
+}
+
 
 
 @media screen and (min-width: 768px) {
