@@ -321,6 +321,8 @@
     height: 72px;
   }
 }
+
+
 pre {
 padding: 24px;
 overflow: auto;
@@ -330,6 +332,7 @@ background-color: #f6f8fa;
 border-radius: 3px;
 margin-bottom: 8px;
 }
+
 
 code {
   display: inline-block;
@@ -349,6 +352,7 @@ button{
   margin-top: 64px;
   position: relative;
   line-height: 1.5;
+  font-size: 1.6rem;
 }
 
 
@@ -373,14 +377,21 @@ button{
   z-index: 0;
 }
 
-.current ul{
-  padding: 18px;
+.current a{
+  display: inline-block;
+  line-height: 1.2;
+  color: #333333;
 }
+
+
 
 .current ul li{
   display: none;
 }
 
+.current ul.open{
+  padding: 18px;
+}
 .current ul.open li{
   display: block;
 }
@@ -431,7 +442,7 @@ background-color: #006076;
 
 .current ul li {
   border-left: 2px solid #ccc;
-  padding: 4px 0 0 32px;
+  padding: 8px 0 0 22px;
 }
 
 .current ul li.active {
@@ -451,6 +462,10 @@ background-color: #006076;
   margin-bottom: 32px;
   font-weight: bold;
   z-index: 1;
+}
+
+.page a{
+  color: #333333;
 }
 
 .page li {
@@ -518,6 +533,14 @@ background-color: #006076;
 
 .markdown {
   margin: 0 24px 64px 24px;
+}
+
+.markdown a{
+  color:#309BE9;
+}
+
+.markdown a:visited{
+  color:#309BE9;
 }
 
 .markdown p code {
@@ -630,7 +653,7 @@ background-color: #006076;
   }
 
   .page {
-    width: 22%;
+    width: 20%;
     margin-bottom: 0;
     margin-right: 2%;
   }
