@@ -348,6 +348,10 @@ button{
         appearance: none;
 }
 
+main {
+  width: 100%;
+}
+
 .single {
   margin-top: 64px;
   position: relative;
@@ -604,8 +608,9 @@ background-color: #006076;
 }
 
 .error{
+  width: 100%;
   text-align: center;
-  padding-bottom: 32px;
+  padding-bottom: 64px;
 }
 
 .error .error__image{
@@ -626,8 +631,9 @@ background-color: #006076;
 
 
 .coming{
+  width: 100%;
   text-align: center;
-  padding: 64px 32px;
+  padding-bottom: 64px;
 }
 
 .coming .coming__image{
