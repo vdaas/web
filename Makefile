@@ -5,7 +5,7 @@ ARCIVE_URL = https://github.com/vdaas/vald/archive/v$(LATEST_VERSION).zip
 NEW_VERSION := ${LATEST_VERSION}
 
 DOC_FILES = $(eval DOC_FILES:=$(shell find tmp/vald-$(LATEST_VERSION)/docs -type f -name "*.md" ))$(DOC_FILES)
-NEW_DOC_FILES = $(DOC_FILES:tmp/vald-$(LATEST_VERSION)/docs/%.md=content/v$(LATEST_VERSION)/%.md)
+NEW_DOC_FILES = $(DOC_FILES:tmp/vald-$(LATEST_VERSION)/docs/%.md=content/docs/v$(LATEST_VERSION)/%.md)
 
 all: deploy
 	git add -A;git commit -m fix;git push
@@ -18,7 +18,7 @@ subup:
 
 deploy/staging: subup \
 	latest
-	@hugo --environment=staging -D
+	@hugo --environment=staging
 	@cd tmp_pre && cp -r * ../preview/
 	@cp Makefile preview/Makefile
 	@cd preview && git add -A;git commit -m ":arrow_up: v${LATEST_VERSION} `date`" && git push origin gh-pages
@@ -66,10 +66,11 @@ endef
 
 define copy-doc
 	@echo -e "\e[5;33mcopying document files...\e[0m"
-	@cd content && mkdir -p v$(LATEST_VERSION)
-	@cd tmp/vald-$(LATEST_VERSION)/docs && cp -r . ../../../content/v$(LATEST_VERSION)
-	@cp tmp/vald-$(LATEST_VERSION)/CONTRIBUTING.md content/v$(LATEST_VERSION)/contributing.md
-	@cp tmp/vald-$(LATEST_VERSION)/CHANGELOG.md content/v$(LATEST_VERSION)/release-note.md
+	@mkdir -p content/docs
+	@cd content/docs && mkdir -p v$(LATEST_VERSION)
+	@cd tmp/vald-$(LATEST_VERSION)/docs && cp -r . ../../../content/docs/v$(LATEST_VERSION)
+	@cp tmp/vald-$(LATEST_VERSION)/CONTRIBUTING.md content/docs/v$(LATEST_VERSION)/contributing.md
+	@cp tmp/vald-$(LATEST_VERSION)/CHANGELOG.md content/docs/v$(LATEST_VERSION)/release-note.md
 endef
 
 .PHONY: $(NEW_DOC_FILES)
@@ -81,16 +82,11 @@ $(NEW_DOC_FILES): \
 		rm $@ ; \
 	fi
 	@hugo new $@
-	@cat $(patsubst content/v$(LATEST_VERSION)/%.md,tmp/vald-$(LATEST_VERSION)/docs/%.md,$@) >> $@
-	@cp -r content/v$(LATEST_VERSION)/. content/.
+	@cat $(patsubst content/docs/v$(LATEST_VERSION)/%.md,tmp/vald-$(LATEST_VERSION)/docs/%.md,$@) >> $@
+	@cp -r content/docs/v$(LATEST_VERSION)/. content/docs/.
 
 .PHONY: test
 test: $(NEW_DOC_FILES)
-
-define add-prefix-doc
-	@$(eval text := $(shell cat archetypes/default.md))
-	find content/v$(LATEST_VERSION) -type f
-endef
 
 define copy-image
 	@echo -e "\e[5;33mcheck image files...\e[0m"
