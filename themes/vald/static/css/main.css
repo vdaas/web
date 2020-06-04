@@ -348,6 +348,10 @@ button{
         appearance: none;
 }
 
+main {
+  width: 100%;
+}
+
 .single {
   margin-top: 64px;
   position: relative;
@@ -550,6 +554,7 @@ background-color: #006076;
   font-size: 85%;
   background-color: rgba(27, 31, 35, .05);
   border-radius: 3px;
+  overflow-wrap: break-word;
 }
 
 .markdown h1 {
@@ -603,7 +608,9 @@ background-color: #006076;
 }
 
 .error{
+  width: 100%;
   text-align: center;
+  padding-bottom: 64px;
 }
 
 .error .error__image{
@@ -624,12 +631,14 @@ background-color: #006076;
 
 
 .coming{
+  width: 100%;
   text-align: center;
+  padding-bottom: 64px;
 }
 
 .coming .coming__image{
   display: inline-block;
-  padding: 64px 48px 32px 48px;
+  padding-bottom: 32px;
 }
 
 .coming .coming__title{
@@ -690,6 +699,8 @@ background-color: #006076;
 @media screen and (min-width: 1000px) {
   .single {
     margin-top: 64px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
 
@@ -704,6 +715,8 @@ background-color: #006076;
   }
 
   .content{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 76%;
   }
