@@ -1,26 +1,19 @@
 <!-- sidebar start -->
+<!-- TODO: attach class "open" nav -->
 <aside class="page">
   {{ $current := .Page.Permalink }}
-  <!-- TODO: attach class "open" to nav-->
+  <nav class="open">
+    <button class="index" id="list-button">Pages</button>
+    <ul id="list-body">
+      {{ partial "menu.html" (dict "menu" .Site.Menus.overview "current" $current) -}}
+      {{ partial "menu.html" (dict "menu" .Site.Menus.tutorial "current" $current) -}}
+      {{ partial "menu.html" (dict "menu" .Site.Menus.userguides "current" $current) -}}
+      {{ partial "menu.html" (dict "menu" .Site.Menus.usecase "current" $current) -}}
+      {{ partial "menu.html" (dict "menu" .Site.Menus.performance "current" $current) -}}
+      {{ partial "menu.html" (dict "menu" .Site.Menus.contributing "current" $current) -}}
+      {{ partial "menu.html" (dict "menu" .Site.Menus.support "current" $current) -}}
+      {{ partial "menu.html" (dict "menu" .Site.Menus.release "current" $current) -}}
+    </ul>
   <nav>
-  <button class="index" id="list-button">Pages</button>
-    {{ $invalidURL := strings.TrimSuffix "/" .Site.BaseURL }}
-    {{ $invalidURL = print $invalidURL "/v" }}
-  <ul>
-    <!-- TODO: child style withchild, view -->
-    {{ range .Site.Pages }}
-      {{ if not ( in .Permalink $invalidURL) }}
-      {{ if eq $current .Permalink }}
-          <li class="view">
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-          </li>
-        {{ else }}
-          <li>
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-          </li>
-        {{ end }}
-      {{ end }}
-    {{end}}
-  </ul>
-  </nav>
 </aside>
+<!-- sidebar end -->
