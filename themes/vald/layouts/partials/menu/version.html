@@ -6,7 +6,7 @@
    {{ if in .URL $path }}
    <ul>
      <li class="{{ if eq $current $permalink }}view{{ else }}index{{ end }}">
-       <a href="{{ .URL }}">{{ .File.Path }}</a>
+       <a href="{{ .URL }}">{{ index (split .Name "_") 0 }}</a>
      </li>
   </ul>
   {{ end }}
