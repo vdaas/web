@@ -1,9 +1,9 @@
 {{ define "main" }}
-{{ partial "sidebar.html" . -}}
+{{ partial "sidebar.html" . }}
 <div class="content">
   <div class="markdown">
     {{ .Content }}
   </div>
-  {{ partial "toc.html" . -}}
+  {{ partial "toc.html" . }}
 </div>
 {{ end }}
