@@ -51,3 +51,14 @@
     margin-right: 24px;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .footer{
+    background-color: #333333;
+    color: #00BAB1;
+    border-top: 2px solid #393939;
+  }
+  .footer__link{
+    color: #00BAB1;
+  }
+}
