@@ -30,7 +30,7 @@
     <meta name="twitter:site" content="@vdaas_vald">
     
     <meta name="twitter:card" content="app">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="https://vald.netlify.app/favicon.ico">
     <link rel="canonical" href="https://github.com/vdaas/vald">
     <link rel="stylesheet" type="text/css" href="https://vald.netlify.app/css/style.css">
     <link rel="stylesheet" type="text/css" href="https://vald.netlify.app/css/header.css">
@@ -44,12 +44,15 @@
   <div class="header__content">
     <nav class="header__nav cf">
       <a href="https://vald.vdaas.org" class="header-nav__link">
+        <picture>
+          <source srcset="https://vald.netlify.app/images/vald_white.svg" media="(prefers-color-scheme: dark)" class="header-nav__image">
           <img src="https://vald.netlify.app/images/vald_color_1.svg" alt="" class="header-nav__image">
+        </picture>
       </a>
       <a class="header-nav__icon" id="nav-btn"><span class="header-nav__button"></span></a>
       <ul class="header__list" id="menu">
         <li class="header__item">
-          <a href="https://vald.netlify.app/overview/about-vald" class="header__link">About</a>
+          <a href="https://vald.netlify.app/docs/overview/about-vald" class="header__link">About</a>
         </li>
         <li class="header__item">
           <a href="https://vald.netlify.app/docs/tutorial/get-started" class="header__link">Get Started</a>
@@ -81,10 +84,8 @@
     <ul id="list-body">
       
 
-
-
-  <li class="withchild">Tutorial
-      
+  
+    <li class="withchild">Overview
         
 
 
@@ -92,14 +93,29 @@
    
    
 
+   
+   
 
-    
-  </li>
+   
+   
+
+   
+   
+
+   
+   
+
+   
+   
+
+
+    </li>
+  
 
 
 
-  <li class="withchild">Userguides
-      
+  
+    <li class="withchild">Tutorial
         
 
 
@@ -107,18 +123,17 @@
    
    
 
-
-    
-  </li>
-
+   
+   
 
 
+    </li>
+  
 
 
 
-
-  <li class="withchild">Contributing
-      
+  
+    <li class="withchild">User Guides
         
 
 
@@ -126,13 +141,82 @@
    
    
 
-
-    
-  </li>
-
+   
+   
 
 
+    </li>
+  
 
+
+
+
+
+
+
+  
+    <li class="withchild">Contributing
+        
+
+
+
+   
+   
+
+   
+   
+
+   
+   
+
+   
+   
+
+   
+   
+
+
+    </li>
+  
+
+
+
+  
+    <li class="withchild">Support
+        
+
+
+
+   
+   
+
+   
+   
+
+
+    </li>
+  
+
+
+
+  
+    <li class="withchild">Release
+        
+
+
+
+   
+   
+
+   
+   
+
+   
+   
+
+
+    </li>
+  
 
 </ul>
   <nav>
@@ -393,31 +477,31 @@ We defined the following logging levels.</p>
 <tbody>
 <tr>
 <td>DEBUG</td>
-<td>Fine-grained information for debugging and diagnostic the application.<!-- raw HTML omitted -->Enable this logging level in production environment may cause performance issue.</td>
-<td>An entry that will insert into the database with details.<!-- raw HTML omitted -->An HTTP request and response that will send and receive from the server with details.</td>
-<td>User 1 will insert into the database, name: Mary, Age: 19.<!-- raw HTML omitted -->An HTTP request will send to <a href="http://example.com">http://example.com</a>, with the body:<!-- raw HTML omitted -->key1:value1, key2:value2.<!-- raw HTML omitted -->The response of the HTTP request: body: HTTPResponseBody</td>
+<td>Fine-grained information for debugging and diagnostic the application.<br>Enable this logging level in production environment may cause performance issue.</td>
+<td>An entry that will insert into the database with details.<br>An HTTP request and response that will send and receive from the server with details.</td>
+<td>User 1 will insert into the database, name: Mary, Age: 19.<br>An HTTP request will send to <a href="http://example.com">http://example.com</a>, with the body:<br>key1:value1, key2:value2.<br>The response of the HTTP request: body: HTTPResponseBody</td>
 </tr>
 <tr>
 <td>INFO</td>
 <td>Normal application behavior, to trace what is happening inside the application.</td>
-<td>Inserted entry into the database without details. <!-- raw HTML omitted -->HTTP requests sent to the server without details. <!-- raw HTML omitted -->The server is started or stopped.</td>
-<td>User 1 is inserted into the database.<!-- raw HTML omitted -->The HTTP request is sent to XXX server successfully.</td>
+<td>Inserted entry into the database without details. <br>HTTP requests sent to the server without details. <br>The server is started or stopped.</td>
+<td>User 1 is inserted into the database.<br>The HTTP request is sent to XXX server successfully.</td>
 </tr>
 <tr>
 <td>WARN</td>
-<td>The message that indicates the application may having the issue or occurring unusual situation,<!-- raw HTML omitted -->but does not affect the application behavior.<!-- raw HTML omitted -->Someone should investigate the warning later.</td>
-<td>Failed to insert entry into the the database, but success with the retry.<!-- raw HTML omitted -->Failed to update the cache, and the cache is not important.</td>
-<td>User 1 is successfully inserted into the database with retry,<!-- raw HTML omitted -->retry count: 1, error: ErrMsg1, retry count: 2, error: ErrMsg2</td>
+<td>The message that indicates the application may having the issue or occurring unusual situation,<br>but does not affect the application behavior.<br>Someone should investigate the warning later.</td>
+<td>Failed to insert entry into the the database, but success with the retry.<br>Failed to update the cache, and the cache is not important.</td>
+<td>User 1 is successfully inserted into the database with retry,<br>retry count: 1, error: ErrMsg1, retry count: 2, error: ErrMsg2</td>
 </tr>
 <tr>
 <td>ERROR</td>
-<td>The message that indicates the application is having a serious issue or,<!-- raw HTML omitted -->represent the failure of some important going on in the application.<!-- raw HTML omitted -->It does not cause the application to go down.<!-- raw HTML omitted -->Someone must investigate the error later.</td>
-<td>Failed to insert an entry into the database, with retry count exceeded.<!-- raw HTML omitted -->Failed to update the cache, and the cache is not important.</td>
-<td>User 1 is failed to insert in the database, errors:<!-- raw HTML omitted -->retry count: 1, error: ErrMsg1, retry count: 2, error: ErrMsg2, &hellip;.</td>
+<td>The message that indicates the application is having a serious issue or,<br>represent the failure of some important going on in the application.<br>It does not cause the application to go down.<br>Someone must investigate the error later.</td>
+<td>Failed to insert an entry into the database, with retry count exceeded.<br>Failed to update the cache, and the cache is not important.</td>
+<td>User 1 is failed to insert in the database, errors:<br>retry count: 1, error: ErrMsg1, retry count: 2, error: ErrMsg2, &hellip;.</td>
 </tr>
 <tr>
 <td>FATAL</td>
-<td>Message that indicate the application is corrupting or having serious issue.<!-- raw HTML omitted -->The application will go down after logging the fatal error. <!-- raw HTML omitted -->Someone must investigate and resolve the fatal as soon as possible.</td>
+<td>Message that indicate the application is corrupting or having serious issue.<br>The application will go down after logging the fatal error. <br>Someone must investigate and resolve the fatal as soon as possible.</td>
 <td>Failed to init the required cache during the application start.</td>
 <td></td>
 </tr>
@@ -448,7 +532,11 @@ Please refer to <a href="https://godoc.org/github.com/vdaas/vald/internal">godoc
 </ol>
 <h3 id="table-driven-test">Table-Driven-Test</h3>
 <p>Use table-driven tests with subtests to avoid duplicating code.</p>
-<!-- raw HTML omitted -->
+<table>
+<thead><tr><th>Bad</th><th>Good</th></tr></thead>
+<tbody>
+<tr>
+<td>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#960050;background-color:#1e0010">##</span> <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">1</span>
 <span style="color:#a6e22e">host</span>, <span style="color:#a6e22e">port</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">SplitHostPort</span>(<span style="color:#e6db74">&#34;192.0.2.0:8000&#34;</span>)
 <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
@@ -476,7 +564,8 @@ Please refer to <a href="https://godoc.org/github.com/vdaas/vald/internal">godoc
 <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">want</span>, <span style="color:#a6e22e">got</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;http&#34;</span>, <span style="color:#a6e22e">port</span>; <span style="color:#a6e22e">want</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">got</span> {
     <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;port is not equals. want: %s, but got: %s&#34;</span>, <span style="color:#a6e22e">want</span>: <span style="color:#f92672">%</span><span style="color:#a6e22e">s</span>, <span style="color:#a6e22e">got</span>)
 }
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div></td>
+<td>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">tests</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">struct</span> {
     <span style="color:#a6e22e">str</span> <span style="color:#66d9ef">string</span>
     <span style="color:#a6e22e">wantHost</span> <span style="color:#66d9ef">string</span>
@@ -510,7 +599,10 @@ Please refer to <a href="https://godoc.org/github.com/vdaas/vald/internal">godoc
         }
     })
 }
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div></td>
+</tr>
+</tbody>
+</table>
 <p>Table-Driven-Test makes it easy to add a new test case.</p>
 <p>We define the test case table as <code>map[string]func(*testing.T)test</code>, which is referred to the test case name and the test case implementation <code>tt</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">tests</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) <span style="color:#a6e22e">test</span> {

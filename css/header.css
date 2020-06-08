@@ -200,3 +200,33 @@
 .header .header-nav__image {
   width: 80px;
 }
+
+@media (prefers-color-scheme: dark) {
+  .header {
+    color: #00BAB1;
+    border-bottom: 2px solid #393939;
+  }
+
+  .header__content {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .header__link {
+    color: #00BAB1;
+  }
+  .header__list--open {
+    background-color: rgba(0, 0,0, 0.95);
+  }
+  .header__link::after {
+    background-color: #00BAB1;
+  }
+  .header .header-nav__button {
+    background-color: #00BAB1;
+  }
+  .header .header-nav__button::before {
+    background-color: #00BAB1;
+  }
+  .header .header-nav__button::after {
+    background-color: #00BAB1;
+  }
+}

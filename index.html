@@ -31,7 +31,7 @@
     <meta name="twitter:site" content="@vdaas_vald">
     
     <meta name="twitter:card" content="app">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="https://vald.netlify.app/favicon.ico">
     <link rel="canonical" href="https://github.com/vdaas/vald">
     <link rel="stylesheet" type="text/css" href="https://vald.netlify.app/css/style.css">
     <link rel="stylesheet" type="text/css" href="https://vald.netlify.app/css/header.css">
@@ -45,12 +45,15 @@
   <div class="header__content">
     <nav class="header__nav cf">
       <a href="https://vald.vdaas.org" class="header-nav__link">
+        <picture>
+          <source srcset="https://vald.netlify.app/images/vald_white.svg" media="(prefers-color-scheme: dark)" class="header-nav__image">
           <img src="https://vald.netlify.app/images/vald_color_1.svg" alt="" class="header-nav__image">
+        </picture>
       </a>
       <a class="header-nav__icon" id="nav-btn"><span class="header-nav__button"></span></a>
       <ul class="header__list" id="menu">
         <li class="header__item">
-          <a href="https://vald.netlify.app/overview/about-vald" class="header__link">About</a>
+          <a href="https://vald.netlify.app/docs/overview/about-vald" class="header__link">About</a>
         </li>
         <li class="header__item">
           <a href="https://vald.netlify.app/docs/tutorial/get-started" class="header__link">Get Started</a>
@@ -77,11 +80,18 @@
       <p class="top__title">Vald</p>
       <p class="top__lead">A Highly Scalable Distributed Vector Search Engine</p>
     </div>
+    <picture class="top__bg">
+        <source class="bg__img" type="image/webp" srcset="https://vald.netlify.app/images/graphic.png.webp" />
+        <img class="bg__img" src="https://vald.netlify.app/images/graphic.png" alt="">
+    </picture>
   </div>
 
   <div class="concept" id="concept">
     <div class="concept__content">
-      <img src="https://vald.netlify.app/images/vald_color_1.svg" alt="" class="concept__keyimage">
+      <picture class="concept__keyimage">
+        <source srcset="https://vald.netlify.app/images/vald_white.svg" media="(prefers-color-scheme: dark)">
+        <img src="https://vald.netlify.app/images/vald_color_1.svg" alt="">
+      </picture>
       <div class="concept__block cf">
         <h2 class="concept__heading">What is Vald</h2>
         <p class="concept__subheading">Vald is a highly scalable distributed fast approximate nearest neighbor dense vector search engine.</p>
@@ -92,6 +102,26 @@
           Vald is easy to use, feature-rich and highly customizable as you needed.
         </p>
       </div>
+    </div>
+    <div class="concept__bg">
+      <picture class="bg__wrap">
+        <source class="bg__image" srcset="https://vald.netlify.app/images/concept_bg_dark.png.webp" media="(prefers-color-scheme: dark)">
+        <source class="bg__image" srcset="https://vald.netlify.app/images/concept_bg_dark.png" media="(prefers-color-scheme: dark)">
+        <source class="bg__image" type="image/webp" srcset="https://vald.netlify.app/images/concept_bg.png.webp" />
+        <img class="bg__image" src="https://vald.netlify.app/images/concept_bg.png" alt="" >
+      </picture>
+      <picture class="bg__wrap">
+        <source class="bg__image" srcset="https://vald.netlify.app/images/concept_bg_dark.png.webp" media="(prefers-color-scheme: dark)">
+        <source class="bg__image" srcset="https://vald.netlify.app/images/concept_bg_dark.png" media="(prefers-color-scheme: dark)">
+        <source class="bg__image" type="image/webp" srcset="https://vald.netlify.app/images/concept_bg.png.webp" />
+        <img class="bg__image" src="https://vald.netlify.app/images/concept_bg.png" alt="" >
+      </picture>
+      <picture class="bg__wrap">
+        <source class="bg__image" srcset="https://vald.netlify.app/images/concept_bg_dark.png.webp" media="(prefers-color-scheme: dark)">
+        <source class="bg__image" srcset="https://vald.netlify.app/images/concept_bg_dark.png" media="(prefers-color-scheme: dark)">
+        <source class="bg__image" type="image/webp" srcset="https://vald.netlify.app/images/concept_bg.png.webp" />
+        <img class="bg__image" src="https://vald.netlify.app/images/concept_bg.png" alt="" >
+      </picture>
     </div>
   </div>
 
@@ -201,6 +231,7 @@
         <li class="about__item"><a href="https://www.docker.com/" target="_blank"><img class="about__logo" src="https://vald.netlify.app/images/docker.svg" alt="tech__docker" width="90"></a></li>
         <li class="about__item"><a href="https://kubernetes.io/" target="_blank"><img class="about__logo" src="https://vald.netlify.app/images/k8s.svg" alt="tech__k8s" width="140"></a></li>
         <li class="about__item"><a href="https://github.com/yahoojapan/NGT" target="_blank"><img class="about__logo" src="https://vald.netlify.app/images/ngt_color.svg" alt="tech__ngt" width="80"></a></li>
+        <li class="about__item"><a href="https://grpc.io/" target="_blank"><img class="about__logo" src="https://vald.netlify.app/images/grcp.svg" alt="tech__grcp" width="120"></a></li>
       </ul>
     </div>
 
@@ -210,7 +241,13 @@
         <li class="about__item"><a href="https://github.com/vdaas/vald-client-go" target="_blank"><img class="about__logo" src="https://vald.netlify.app/images/golang.svg" alt="logo__golang" width="140"></a></li>
         <li class="about__item"><a href="https://github.com/vdaas/vald-client-java" target="_blank"><img class="about__logo" src="https://vald.netlify.app/images/java.svg" alt="logo__java" width="54"></a></li>
         <li class="about__item"><a href="https://github.com/vdaas/vald-client-python" target="_blank"><img class="about__logo" src="https://vald.netlify.app/images/python.svg" alt="logo__python" width="140"></a></li>
-        <li class="about__item"><a href="https://github.com/vdaas/vald-client-node" target="_blank"><img class="about__logo" src="https://vald.netlify.app/images/nodejs.svg" alt="logo__nodejs" width="150"></a></li>
+        <li class="about__item"><a href="https://github.com/vdaas/vald-client-node" target="_blank">
+          <picture>
+            <source srcset="https://vald.netlify.app/images/nodejs_white.svg" media="(prefers-color-scheme: dark)">
+            <img class="about__logo" src="https://vald.netlify.app/images/nodejs.svg" alt="logo__nodejs" width="150">
+          </picture>
+          </a>
+        </li>
         <li class="about__item"><a href="https://github.com/vdaas/vald-client-clj" target="_blank"><img class="about__logo" src="https://vald.netlify.app/images/clojure.svg" alt="logo__clojure" width="120"></a></li>
       </ul>
     </div>

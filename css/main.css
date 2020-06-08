@@ -1,11 +1,7 @@
 .top {
-  background-color: #006076;
-  background: url("/images/graphic.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  background-color: #54b9b2;
   position: relative;
-  height: 70vh;
+  height: 600px;
   overflow: hidden;
   margin-top: 64px;
   display: -webkit-box;
@@ -15,10 +11,13 @@
   -ms-flex-align: center;
   align-items: center;
   color: #ffffff;
+  position: relative;
 }
 
 .top__content {
   padding: 0 24px;
+  position: relative;
+  z-index: 10;
 }
 
 .top__title {
@@ -31,21 +30,39 @@
   font-size: 3.2rem;
 }
 
+.top__bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+
+.top__bg .bg__img {
+  position: absolute;
+  min-width: 1440px;
+  width: 100%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
 .concept {
   width: 100%;
   padding-bottom: 80px;
   background-color: #ffffff;
   display: block;
   position: relative;
-  width: 100%;
-  background-image: url("/images/concept_bg.png");
-  background-size: 33.3%;
-  background-repeat: repeat-x;
+  overflow: hidden;
 }
 
 .concept__content {
   width: 100%;
   padding: 0 24px;
+  position: relative;
+  z-index: 10;
 }
 
 .concept__block {
@@ -74,6 +91,21 @@
 .concept__text {
   text-align: justify;
   line-height: 1.5em;
+}
+
+.concept__bg {
+  width: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+}
+
+.concept__bg .bg__wrap {
+  width: 33.3%;
+}
+
+.concept__bg .bg__wrap .bg__image {
+  min-width: 100%;
 }
 
 .features {
@@ -126,7 +158,11 @@
 .features__index {
   position: relative;
   font-weight: bold;
-  margin-left: 8px;
+}
+
+.card-image {
+  min-width: 48px;
+  margin-right: 12px;
 }
 
 .about {
@@ -240,6 +276,7 @@
   padding: 0 24px 24px;
 }
 
+
 @media screen and (min-width: 768px) {
   .top__content {
     margin: 0 auto;
@@ -254,6 +291,8 @@
   .top__lead {
     font-size: 4.0rem;
   }
+
+
 
   .concept__content {
     margin: 0 auto;
@@ -271,11 +310,12 @@
   }
 
   .concept__keyimage {
-    width: 45%;
+    width: 40%;
   }
 
   .concept__block {
     margin: 65px 0;
+    width: 60%;
   }
 
   .features__heading {
@@ -322,30 +362,36 @@
   }
 }
 
-
 pre {
-padding: 24px;
-overflow: auto;
-font-size: 85%;
-line-height: 1.45;
-background-color: #f6f8fa;
-border-radius: 3px;
-margin-bottom: 8px;
+  padding: 24px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  margin-bottom: 8px;
 }
-
 
 code {
   display: inline-block;
   width: 100%;
 }
 
-button{
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        outline: none;
-        padding: 0;
-        appearance: none;
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
+main {
+  width: 100%;
+}
+
+main {
+  width: 100%;
 }
 
 .single {
@@ -355,21 +401,19 @@ button{
   font-size: 1.6rem;
 }
 
-
-.content{
+.content {
   position: relative;
 }
 
-.current.scrolled{
+.current.scrolled {
   position: fixed;
-  top:160px;
+  top: 160px;
 }
 
 /*current*/
-
 .current {
   position: absolute;
-  top:0;
+  top: 0;
   right: -2px;
   border: 1px solid #006076;
   padding: 14px 12px 14px 14px;
@@ -377,38 +421,36 @@ button{
   z-index: 0;
 }
 
-.current a{
+.current a {
   display: inline-block;
   line-height: 1.2;
   color: #333333;
 }
 
-
-
-.current ul li{
+.current ul li {
   display: none;
 }
 
-.current ul.open{
+.current ul.open {
   padding: 18px;
 }
-.current ul.open li{
+
+.current ul.open li {
   display: block;
 }
 
-
-.current .menu{
+.current .menu {
   display: inline-block;
   text-align: right;
   width: 100%;
   margin-bottom: 12px;
 }
 
-.current .menu{
-  margin-bottom:0;
+.current .menu {
+  margin-bottom: 0;
 }
 
-.current .dot{
+.current .dot {
   position: relative;
   display: inline-block;
   width: 4px;
@@ -417,28 +459,27 @@ button{
   background-color: #006076;
 }
 
-.current .dot::before{
+.current .dot::before {
   content: "";
-display: inline-block;
-position: absolute;
-top:-8px;
-right: 0;
-width: 4px;
-height: 4px;
-background-color: #006076;
+  display: inline-block;
+  position: absolute;
+  top: -8px;
+  right: 0;
+  width: 4px;
+  height: 4px;
+  background-color: #006076;
 }
 
-.current .dot::after{
+.current .dot::after {
   content: "";
-display: inline-block;
-position: absolute;
-top:8px;
-right: 0;
-width: 4px;
-height: 4px;
-background-color: #006076;
+  display: inline-block;
+  position: absolute;
+  top: 8px;
+  right: 0;
+  width: 4px;
+  height: 4px;
+  background-color: #006076;
 }
-
 
 .current ul li {
   border-left: 2px solid #ccc;
@@ -449,12 +490,11 @@ background-color: #006076;
   border-left: 2px solid #006076;
 }
 
-.current ul ul li{
+.current ul ul li {
   border-left: none;
 }
 
 /*page*/
-
 .page {
   position: relative;
   background-color: #f8f8f8;
@@ -464,23 +504,23 @@ background-color: #006076;
   z-index: 1;
 }
 
-.page a{
+.page a {
   color: #333333;
 }
 
 .page li {
-  margin:8px 0 0 20px;
+  margin: 8px 0 0 20px;
   display: none;
 }
 
-.page .open li{
+.page .open li {
   display: block;
 }
 
-.page li.view{
-    margin-left:0;
-    padding-left: 20px;
-    background-color:rgba(0,96,118,0.4);
+.page li.view {
+  margin-left: 0;
+  padding-left: 20px;
+  background-color: rgba(0, 96, 118, 0.4);
 }
 
 .page button.index {
@@ -509,7 +549,6 @@ background-color: #006076;
   margin-bottom: 2px;
 }
 
-
 .page li.withchild::before {
   display: inline-block;
   content: "";
@@ -530,17 +569,16 @@ background-color: #006076;
 }
 
 /*content*/
-
 .markdown {
   margin: 0 24px 64px 24px;
 }
 
-.markdown a{
-  color:#309BE9;
+.markdown a {
+  color: #309BE9;
 }
 
-.markdown a:visited{
-  color:#309BE9;
+.markdown a:visited {
+  color: #309BE9;
 }
 
 .markdown p code {
@@ -550,6 +588,7 @@ background-color: #006076;
   font-size: 85%;
   background-color: rgba(27, 31, 35, .05);
   border-radius: 3px;
+  overflow-wrap: break-word;
 }
 
 .markdown h1 {
@@ -566,10 +605,9 @@ background-color: #006076;
 
 .markdown h3 {
   font-size: 18px;
-
 }
 
-.markdown h1,.markdown h2,.markdown h3,.markdown h4,.markdown h5,.markdown h6{
+.markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6 {
   margin-top: 24px;
   margin-bottom: 16px;
   font-weight: 600;
@@ -577,7 +615,7 @@ background-color: #006076;
   color: #006076;
 }
 
-.markdown p,.markdown ul,.markdown ol{
+.markdown p, .markdown ul, .markdown ol {
   margin-bottom: 16px;
 }
 
@@ -585,65 +623,66 @@ background-color: #006076;
   padding-left: 2em;
 }
 
-.markdown ol{
+.markdown ol {
   list-style-type: decimal;
 }
 
-.markdown ul{
+.markdown ul {
   list-style-type: disc;
 }
 
-.markdown ol ul{
+.markdown ol ul {
   list-style-type: circle;
 }
-
 
 .markdown li p {
   margin: 0 0 12px 0;
 }
 
-.error{
+.error {
+  width: 100%;
   text-align: center;
+  padding-bottom: 64px;
 }
 
-.error .error__image{
+.error .error__image {
   display: inline-block;
   padding: 64px 48px 32px 48px;
 }
 
-.error .error__title{
+.error .error__title {
   font-size: 2rem;
   color: #006076;
   font-weight: bold;
   margin-bottom: 16px;
 }
 
-.error .error__link{
-  color:#309BE9;
+.error .error__link {
+  color: #309BE9;
 }
 
 
-.coming{
+.coming {
+  width: 100%;
   text-align: center;
+  padding-bottom: 64px;
 }
 
-.coming .coming__image{
+.coming .coming__image {
   display: inline-block;
-  padding: 64px 48px 32px 48px;
+  padding-bottom: 32px;
 }
 
-.coming .coming__title{
+.coming .coming__title {
   font-size: 2rem;
   color: #006076;
   font-weight: bold;
   margin-bottom: 16px;
 }
 
-.coming .coming__link{
-  color:#309BE9;
+.coming .coming__link {
+  color: #309BE9;
 }
-
-
 
 @media screen and (min-width: 768px) {
   .markdown h1 {
@@ -660,11 +699,12 @@ background-color: #006076;
   .markdown {
     width: 70%;
   }
-  .current.open li{
+
+  .current.open li {
     display: block;
   }
 
-  .current .dot{
+  .current .dot {
     display: none;
   }
 
@@ -677,19 +717,22 @@ background-color: #006076;
   .current {
     padding-top: 0;
   }
-  .current .menu{
+
+  .current .menu {
     margin-bottom: 0;
   }
 
-  .current ul li{
+  .current ul li {
     display: block;
   }
-
 }
 
 @media screen and (min-width: 1000px) {
+
   .single {
     margin-top: 64px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
 
@@ -699,11 +742,13 @@ background-color: #006076;
     margin-right: 2%;
   }
 
-  .page.open li{
+  .page.open li {
     display: block;
   }
 
-  .content{
+  .content {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 76%;
   }
@@ -723,15 +768,13 @@ background-color: #006076;
 
   .current ul {
     padding: 0;
-}
+  }
 
-  .current.scrolled{
+  .current.scrolled {
     position: fixed;
-    top:84px;
+    top: 84px;
     width: auto;
   }
-  }
-
 
   .page li {
     display: block;
@@ -740,6 +783,69 @@ background-color: #006076;
   .page p.index {
     display: none;
   }
+}
 
+@media screen and (min-width: 1440px) {
+  .concept__bg {
+    position: absolute;
+    top: -25%;
+  }
+}
 
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #ffffff;
+  }
+
+  .concept, .features, .about__list, .learn {
+    background-color: #333333;
+  }
+
+  .concept__heading, .features__heading, .about__title, .learn__title {
+    color: #00BAB1;
+  }
+
+  .about, .features__item, .mdl-card__content {
+    background-color: #393939;
+  }
+
+  .mdl-card__title, .mdl-card__caption {
+    color: #ffffff;
+  }
+
+  .single, .current {
+    background-color: #393939;
+  }
+
+  .current .dot, .current .dot::before, .current .dot::after {
+    background-color: #00BAB1;
+  }
+
+  .current {
+    background-color: #393939;
+    border: 1px solid #00BAB1;
+  }
+
+  .page {
+    background-color: #333333;
+  }
+
+  .page a, .page button.index, .current a {
+    color: #ffffff;
+  }
+
+  .markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6 {
+    color: #00BAB1;
+  }
+
+  .page button.index::before, .page button.index::after {
+    border-top: 2px solid #00BAB1;
+    border-right: 2px solid #00BAB1;
+  }
+
+  @media screen and (min-width: 768px) {
+    .current {
+      border: none;
+    }
+  }
 }

@@ -30,7 +30,7 @@
     <meta name="twitter:site" content="@vdaas_vald">
     
     <meta name="twitter:card" content="app">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="https://vald.netlify.app/favicon.ico">
     <link rel="canonical" href="https://github.com/vdaas/vald">
     <link rel="stylesheet" type="text/css" href="https://vald.netlify.app/css/style.css">
     <link rel="stylesheet" type="text/css" href="https://vald.netlify.app/css/header.css">
@@ -44,12 +44,15 @@
   <div class="header__content">
     <nav class="header__nav cf">
       <a href="https://vald.vdaas.org" class="header-nav__link">
+        <picture>
+          <source srcset="https://vald.netlify.app/images/vald_white.svg" media="(prefers-color-scheme: dark)" class="header-nav__image">
           <img src="https://vald.netlify.app/images/vald_color_1.svg" alt="" class="header-nav__image">
+        </picture>
       </a>
       <a class="header-nav__icon" id="nav-btn"><span class="header-nav__button"></span></a>
       <ul class="header__list" id="menu">
         <li class="header__item">
-          <a href="https://vald.netlify.app/overview/about-vald" class="header__link">About</a>
+          <a href="https://vald.netlify.app/docs/overview/about-vald" class="header__link">About</a>
         </li>
         <li class="header__item">
           <a href="https://vald.netlify.app/docs/tutorial/get-started" class="header__link">Get Started</a>
@@ -81,10 +84,8 @@
     <ul id="list-body">
       
 
-
-
-  <li class="withchild">Tutorial
-      
+  
+    <li class="withchild">Overview
         
 
 
@@ -92,14 +93,29 @@
    
    
 
+   
+   
 
-    
-  </li>
+   
+   
+
+   
+   
+
+   
+   
+
+   
+   
+
+
+    </li>
+  
 
 
 
-  <li class="withchild">Userguides
-      
+  
+    <li class="withchild">Tutorial
         
 
 
@@ -107,18 +123,17 @@
    
    
 
-
-    
-  </li>
-
+   
+   
 
 
+    </li>
+  
 
 
 
-
-  <li class="withchild">Contributing
-      
+  
+    <li class="withchild">User Guides
         
 
 
@@ -126,13 +141,82 @@
    
    
 
-
-    
-  </li>
-
+   
+   
 
 
+    </li>
+  
 
+
+
+
+
+
+
+  
+    <li class="withchild">Contributing
+        
+
+
+
+   
+   
+
+   
+   
+
+   
+   
+
+   
+   
+
+   
+   
+
+
+    </li>
+  
+
+
+
+  
+    <li class="withchild">Support
+        
+
+
+
+   
+   
+
+   
+   
+
+
+    </li>
+  
+
+
+
+  
+    <li class="withchild">Release
+        
+
+
+
+   
+   
+
+   
+   
+
+   
+   
+
+
+    </li>
+  
 
 </ul>
   <nav>
@@ -168,10 +252,10 @@ Fashion-mnist is used as an example of a dataset.</p>
 <li>libhdf5 (<em>only required for this tutorial.</em>)</li>
 </ul>
 <p>Helm and hdf5 is required for this tutorial. If helm or hdf5 is not installed, please install <a href="https://helm.sh/docs/intro/install">helm</a> and <a href="https://www.hdfgroup.org/">hdf5</a>.</p>
-<!-- raw HTML omitted -->
+<details><summary>[Optional] Install helm</summary><br>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
-</code></pre></div><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+</code></pre></div></details>
+<details><summary>[Optional] Install hdf5</summary><br>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># yum</span>
 yum install -y hdf5-devel
 
@@ -180,7 +264,7 @@ apt-get install libhdf5-serial-dev
 
 <span style="color:#75715e"># homebrew</span>
 brew install hdf5
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div></details>
 <h2 id="deploy-and-run-vald-on-k8s-cluster">Deploy and Run Vald on K8s cluster</h2>
 <h3 id="deploy">Deploy</h3>
 <p>This section shows how to deploy Vald with Scylla using Helm.
@@ -207,7 +291,8 @@ helm install vald vald/vald --values example/helm/values-scylla.yaml
 <li>
 <p>Verify</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl get pods
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div> <details><summary>Example output</summary><br>
+ If the deployment is successful, all Vald components should be running.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NAME                                       READY   STATUS    RESTARTS   AGE
 scylla-0                                   1/1     Running   <span style="color:#ae81ff">0</span>          13m
 scylla-1                                   1/1     Running   <span style="color:#ae81ff">0</span>          12m
@@ -233,7 +318,7 @@ vald-manager-compressor-6c95bdbfb5-zp8hb   1/1     Running   <span style="color:
 vald-manager-index-59676f54bb-nzfwt        1/1     Running   <span style="color:#ae81ff">0</span>          5m49s
 vald-meta-559744db-bcrdw                   1/1     Running   <span style="color:#ae81ff">0</span>          5m49s
 vald-meta-559744db-hz7gd                   1/1     Running   <span style="color:#ae81ff">0</span>          5m49s
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div> </details>
 </li>
 </ol>
 <h3 id="run-using-example-code">Run using example code</h3>
@@ -254,7 +339,7 @@ wget http://ann-benchmarks.com/fashion-mnist-784-euclidean.hdf5
 </code></pre></div></li>
 <li>
 <p>Running example</p>
-<p>Vald provides multiple langurages client library such as golang, Java, Node.js, Python and so on.<!-- raw HTML omitted -->
+<p>Vald provides multiple langurages client library such as golang, Java, Node.js, Python and so on.<br>
 In this example, the fashion-mnist dataset will insert into the vald cluster and perform a search using <a href="https://github.com/vdaas/vald-client-go">vald-client-go</a>.</p>
 <p>We use <a href="../../example/client/main.go"><code>example/client/main.go</code></a> to run the example.
 This will execute 4 steps.</p>
@@ -264,7 +349,7 @@ This will execute 4 steps.</p>
 <ul>
 <li>
 <p>Import packages</p>
-<!-- raw HTML omitted -->
+  <details><summary>example code</summary><br>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
 <span style="color:#f92672">import</span> (
@@ -281,42 +366,42 @@ This will execute 4 steps.</p>
     <span style="color:#e6db74">&#34;gonum.org/v1/hdf5&#34;</span>
     <span style="color:#e6db74">&#34;google.golang.org/grpc&#34;</span>
 )
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div>  </details>
 </li>
 <li>
 <p>Set variables</p>
 <ul>
 <li>
 <p>The constant number of training datasets and test datasets.</p>
-<!-- raw HTML omitted -->
+  <details><summary>example code</summary><br>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">const</span> (
     <span style="color:#a6e22e">insertCount</span> = <span style="color:#ae81ff">400</span>
     <span style="color:#a6e22e">testCount</span> = <span style="color:#ae81ff">20</span>
 )
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div>  </details>
 </li>
 <li>
 <p>The variables for configuration.</p>
-<!-- raw HTML omitted -->
+  <details><summary>example code</summary><br>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">const</span> (
     <span style="color:#a6e22e">datasetPath</span>         <span style="color:#66d9ef">string</span>
     <span style="color:#a6e22e">grpcServerAddr</span>      <span style="color:#66d9ef">string</span>
     <span style="color:#a6e22e">indexingWaitSeconds</span> <span style="color:#66d9ef">uint</span>
 )
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div>  </details>
 </li>
 </ul>
 </li>
 <li>
 <p>Recognition parameters.</p>
-<!-- raw HTML omitted -->
+  <details><summary>example code</summary><br>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">init</span>() {
     <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">StringVar</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">datasetPath</span>, <span style="color:#e6db74">&#34;path&#34;</span>, <span style="color:#e6db74">&#34;fashion-mnist-784-euclidean.hdf5&#34;</span>, <span style="color:#e6db74">&#34;set dataset path&#34;</span>)
     <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">StringVar</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">grpcServerAddr</span>, <span style="color:#e6db74">&#34;addr&#34;</span>, <span style="color:#e6db74">&#34;127.0.0.1:8081&#34;</span>, <span style="color:#e6db74">&#34;set gRPC server address&#34;</span>)
     <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">UintVar</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">indexingWaitSeconds</span>, <span style="color:#e6db74">&#34;wait&#34;</span>, <span style="color:#ae81ff">60</span>, <span style="color:#e6db74">&#34;set indexing wait seconds&#34;</span>)
     <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">Parse</span>()
 }
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div>  </details>
 </li>
 </ul>
 <ol start="2">
@@ -325,18 +410,18 @@ This will execute 4 steps.</p>
 <ul>
 <li>
 <p>Loading from fashion-mnist dataset and set id for each vector that is loaded. This step will return the training dataset, test dataset, and ids list of ids when loading is completed with success.</p>
-<!-- raw HTML omitted -->
+  <details><summary>example code</summary><br>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">ids</span>, <span style="color:#a6e22e">train</span>, <span style="color:#a6e22e">test</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">load</span>(<span style="color:#a6e22e">datasetPath</span>)
 <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
     <span style="color:#a6e22e">glg</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">err</span>)
 }
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div>  </details>
 </li>
 </ul>
 <ol start="3">
 <li>
 <p>Create the gRPC connection and Vald client with gRPC connection.</p>
-<!-- raw HTML omitted -->
+ <details><summary>example code</summary><br>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">ctx</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>()
 
 <span style="color:#a6e22e">conn</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">grpc</span>.<span style="color:#a6e22e">DialContext</span>(<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">grpcServerAddr</span>, <span style="color:#a6e22e">grpc</span>.<span style="color:#a6e22e">WithInsecure</span>())
@@ -345,7 +430,7 @@ This will execute 4 steps.</p>
 }
 
 <span style="color:#a6e22e">client</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">vald</span>.<span style="color:#a6e22e">NewValdClient</span>(<span style="color:#a6e22e">conn</span>)
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div> </details>
 </li>
 <li>
 <p>Insert and Index</p>
@@ -354,7 +439,7 @@ This will execute 4 steps.</p>
 <ul>
 <li>
 <p>Insert and Indexing 400 training datasets to the Vald agent.</p>
-<!-- raw HTML omitted -->
+  <details><summary>example code</summary><br>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">ids</span> [:<span style="color:#a6e22e">insertCount</span>] {
     <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">%</span><span style="color:#ae81ff">10</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
         <span style="color:#a6e22e">glg</span>.<span style="color:#a6e22e">Infof</span>(<span style="color:#e6db74">&#34;Inserted %d&#34;</span>, <span style="color:#a6e22e">i</span>)
@@ -367,14 +452,14 @@ This will execute 4 steps.</p>
         <span style="color:#a6e22e">glg</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">err</span>)
     }
 }
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div>  </details>
 </li>
 <li>
 <p>Wait until indexing finish.</p>
-<!-- raw HTML omitted -->
+  <details><summary>example code</summary><br>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">glg</span>.<span style="color:#a6e22e">Info</span>(<span style="color:#e6db74">&#34;Wait for indexing to finish&#34;</span>)
 <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Duration</span>(<span style="color:#a6e22e">indexingWaitSeconds</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div>  </details>
 </li>
 </ul>
 <ol start="5">
@@ -386,7 +471,7 @@ This will execute 4 steps.</p>
 </li>
 <li>
 <p>When getting approximate vectors, the Vald client sends search config and vector to the server via gRPC.</p>
-<!-- raw HTML omitted -->
+  <details><summary>example code</summary><br>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">glg</span>.<span style="color:#a6e22e">Infof</span>(<span style="color:#e6db74">&#34;Start search %d times&#34;</span>, <span style="color:#a6e22e">testCount</span>)
 <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">vec</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">test</span>[:<span style="color:#a6e22e">testCount</span>] {
     <span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Seach</span>(<span style="color:#a6e22e">ctx</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">payload</span>.<span style="color:#a6e22e">Search_Request</span>){
@@ -405,7 +490,7 @@ This will execute 4 steps.</p>
     <span style="color:#a6e22e">glg</span>.<span style="color:#a6e22e">Infof</span>(<span style="color:#e6db74">&#34;%d - Results : %s\n\n&#34;</span>, <span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, string(<span style="color:#a6e22e">b</span>))
     <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
 }
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div>  </details>
 </li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># run example</span>
@@ -416,7 +501,7 @@ go run main.go
 <h3 id="customize-vald">Customize Vald</h3>
 <p>Vald is highly customizable.
 For example you can configure the number of vector dimension, the number of replica and etc.
-You can customize Vald by creating/editing <a href="../../charts/vald/values.yaml"><code>values.yaml</code></a>.<!-- raw HTML omitted -->
+You can customize Vald by creating/editing <a href="../../charts/vald/values.yaml"><code>values.yaml</code></a>.<br>
 If you&rsquo;d like to configure your Vald&rsquo;s parameters, please refer to <a href="../../charts/vald/README.md">Vald&rsquo;s helm charts document</a></p>
 <h3 id="another-way-to-deploy-vald">Another way to deploy Vald</h3>
 <p>In the <code>Get Started</code> section, you learnt how to deploy Vald with Scylla DB using Helm.

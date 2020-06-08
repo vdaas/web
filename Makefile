@@ -1,36 +1,38 @@
-.PHONY: run deploy
+.PHONY: all run deploy/staging deploy/production subup
 
-LATEST_VERSION = 0.0.37
-ARCIVE_URL = https://github.com/vdaas/vald/archive/v$(LATEST_VERSION).zip
+LATEST_VERSION = 0.0.39
 NEW_VERSION := ${LATEST_VERSION}
+ARCIVE_URL = https://github.com/vdaas/vald/archive/v$(LATEST_VERSION).zip
 
-DOC_FILES = $(eval DOC_FILES:=$(shell find tmp/vald-$(LATEST_VERSION)/docs -type f -name "*.md" ))$(DOC_FILES)
-NEW_DOC_FILES = $(DOC_FILES:tmp/vald-$(LATEST_VERSION)/docs/%.md=content/docs/v$(LATEST_VERSION)/%.md)
+ORIGINAL_DOCS = $(eval ORIGINAL_DOCS:=$(shell find tmp/vald-$(LATEST_VERSION)/docs -type f -name "*.md" 2>/dev/null ))$(ORIGINAL_DOCS)
+# contents document each version
+V_DOC_FILES = $(ORIGINAL_DOCS:tmp/vald-$(LATEST_VERSION)/docs/%.md=content/docs/v$(LATEST_VERSION)/%.md)
+# content document at root path
+ROOT_DOC_FILES = $(ORIGINAL_DOCS:tmp/vald-$(LATEST_VERSION)/docs/%.md=content/docs/%.md)
 
 all: deploy
 	git add -A;git commit -m fix;git push
 
 run:
-	hugo server
+	hugo server -D
 
 subup:
 	git submodule foreach git pull origin gh-pages
 
-deploy/staging: subup \
-	latest
-	@hugo --environment=staging
+deploy/staging: subup
+	@hugo --environment=staging -D
 	@cd tmp_pre && cp -r * ../preview/
 	@cp Makefile preview/Makefile
 	@cd preview && git add -A;git commit -m ":arrow_up: v${LATEST_VERSION} `date`" && git push origin gh-pages
 	@rm -rf tmp_pre
 
 deploy/production: subup \
-	latest
 	@hugo --environment=production
 	@cd tmp_pre && mv . ../public/
 	@cd public && git add -A;git commit -m ":arrow_up: v${LATEST_VERSION} `date`" && git push origin gh-pages
 	@rm -rf tmp_pre
 
+.PHONY: version
 version:
 	@echo -e "\e[1;32mChecking Vald latest version...\e[0m"
 	@$(eval NEW_VERSION = $(shell curl --silent https://github.com/vdaas/vald/releases/latest | sed 's#.*tag/\(.*\)\".*#\1#' | sed 's/v//g'))
@@ -43,17 +45,63 @@ version:
 	fi
 	$(eval LATEST_VERSION = $(NEW_VERSION))
 
-content/v$(NEW_VERSION):
+.PHONY: sync
+sync:
 	$(call get-latest)
-	$(call copy-doc)
-	$(call copy-image)
-	@echo -e "\e[1;32mUpdate document finished with success!!!\e[0m"
-
-sync: content/v$(NEW_VERSION)
+	$(call pre-create-doc)
+	@echo -e "\e[5;32mfinish download latest document\e[0m"
 
 latest: \
 	version \
 	sync
+	@echo -e "\e[5;32mstart createing contents\e[0m"
+
+.PHONY: $(V_DOC_FILES)
+$(V_DOC_FILES): \
+	$(ORIGINAL_DOCS) \
+	archetypes/default.md
+	@echo -e "\e[5;33mcreate/update $@\e[0m"
+	@mkdir -p $(dir $@)
+	@if [ -e $@ ]; then \
+		rm $@ ; \
+	fi
+	@hugo new $@ >/dev/null
+	@cat $(patsubst content/docs/v$(LATEST_VERSION)/%.md,tmp/vald-$(LATEST_VERSION)/docs/%.md,$@) >> $@
+
+.PHONY: $(ROOT_DOC_FILES)
+$(ROOT_DOC_FILES): \
+	$(ORIGINAL_DOCS) \
+	archetypes/default.md
+	@echo -e "\e[5;33mcreate/update $@\e[0m"
+	@mkdir -p $(dir $@)
+	@if [ -e $@ ]; then \
+		rm $@ ; \
+	fi
+	@hugo new $@ >/dev/null
+	@cat $(patsubst content/docs/%.md,tmp/vald-$(LATEST_VERSION)/docs/%.md,$@) >> $@
+
+
+.PHONY: update-version-content
+update-version-content: $(V_DOC_FILES)
+
+.PHONY: update-root-content
+update-root-content: $(ROOT_DOC_FILES)
+
+.PHONY: update/images
+update/images:
+	$(call sync-image)
+	$(call fix-image-path)
+
+.PHONY: update/contents
+update/contents: \
+	update-version-content \
+	update-root-content
+	@echo -e "\e[5;32mfinish createing contens\e[0m"
+
+.PHONY: clean
+clean:
+	$(call clean)
+	@echo -e "\e[1;32mUpdate document finished with success\e[0m"
 
 define get-latest
 	@echo -e "\e[5;32mstart sync latest document\e[0m"
@@ -64,43 +112,34 @@ define get-latest
 	@cd tmp && unzip v$(LATEST_VERSION).zip 1>/dev/null
 endef
 
-define copy-doc
-	@echo -e "\e[5;33mcopying document files...\e[0m"
-	@mkdir -p content/docs
-	@cd content/docs && mkdir -p v$(LATEST_VERSION)
-	@cd tmp/vald-$(LATEST_VERSION)/docs && cp -r . ../../../content/docs/v$(LATEST_VERSION)
-	@cp tmp/vald-$(LATEST_VERSION)/CONTRIBUTING.md content/docs/v$(LATEST_VERSION)/contributing.md
-	@cp tmp/vald-$(LATEST_VERSION)/CHANGELOG.md content/docs/v$(LATEST_VERSION)/release-note.md
+define pre-create-doc
+	@echo -e "\e[5;33mprepare create document files...\e[0m"
+	@if [ -z $(find content/docs -type d -maxdepth 1 | egrep -v "^v{1}\d+") ]; then \
+		cd content/docs && ls | egrep -v "^v{1}\d+" | xargs rm -rf ; \
+	fi
+	@mkdir -p tmp/vald-$(LATEST_VERSION)/docs/contributing
+	@cp tmp/vald-$(LATEST_VERSION)/CONTRIBUTING.md tmp/vald-$(LATEST_VERSION)/docs/contributing/contribute-guide.md
+	@mkdir -p tmp/vald-$(LATEST_VERSION)/docs/release
+	@cp tmp/vald-$(LATEST_VERSION)/CHANGELOG.md tmp/vald-$(LATEST_VERSION)/docs/release/CHANGELOG.md
 endef
 
-.PHONY: $(NEW_DOC_FILES)
-$(NEW_DOC_FILES): \
-	$(DOC_FILES) \
-	archetypes/default.md
-	@mkdir -p $(dir $@)
-	@if [ -e $@ ]; then \
-		rm $@ ; \
-	fi
-	@hugo new $@
-	@cat $(patsubst content/docs/v$(LATEST_VERSION)/%.md,tmp/vald-$(LATEST_VERSION)/docs/%.md,$@) >> $@
-	@cp -r content/docs/v$(LATEST_VERSION)/. content/docs/.
-
-.PHONY: test
-test: $(NEW_DOC_FILES)
-
-define copy-image
+define sync-image
 	@echo -e "\e[5;33mcheck image files...\e[0m"
-	@if [ -z $(find tmp/vald-$(LATEST_VERSION)/assets/docs -type f -name "*.svg" 2>/dev/null) ]; then \
+	@if [ ! -z $(find tmp/vald-$(LATEST_VERSION)/assets/docs -type f -name "*.svg" 2>/dev/null) ]; then \
 		echo -e "\e[5;31mNo image file has been synced.\e[0m" ; \
 	else \
-		echo -e "\e[5;33mSyncing image files\e[0m]" ; \
-		mkdir -p content/v$(LATEST_VERSION)/assets && mkdir -p content/v$(LATEST_VERSION)/assets/img ; \
-		cd tmp/vald-$(LATEST_VERSION)/assets/docs && find . -type f -name "*.svg" -exec {} ../../../../content/v$(LATEST_VERSION)/assets/img ; \
+		echo -e "\e[5;32msyncing image files\e[0m" ; \
+		mkdir -p static && mkdir -p static/images ; \
+		mkdir -p static/images/v$(LATEST_VERSION) ; \
+		cd tmp/vald-$(LATEST_VERSION)/assets/docs && find . -type f -name "*.svg" -exec cp {} ../../../../static/images/ \; && cd ../../../../ ; \
+		cd tmp/vald-$(LATEST_VERSION)/assets/docs && find . -type f -name "*.svg" -exec cp {} ../../../../static/images/v$(LATEST_VERSION) \; && cd ../../../../ ; \
 	fi
 endef
 
-define fix-path
-	@echo -e "\e[5;32mfix path in document\e[0m"
+define fix-image-path
+	@echo -e "\e[5;32mstart fix image path\e[0m"
+	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/..\/..\/assets\/docs/\/images\/v$(LATEST_VERSION)/g"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/..\/..\/assets\/docs/\/images/g"
 endef
 
 define clean
