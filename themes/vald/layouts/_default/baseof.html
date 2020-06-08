@@ -40,10 +40,9 @@
   </head>
 
   <body>
-    {{ partial "header.html" . -}}
+    {{ partial "header.html" . }}
     <main role="main">
-      {{ $isHome := .Page.IsHome }}
-      {{ if not $isHome }}
+      {{ if not .IsHome }}
         <div class="single">
           {{ block "main" . }}{{ end }}
         </div>
@@ -51,6 +50,6 @@
         {{ block "main" . }}{{ end }}
       {{ end }}
     </main>
-    {{ partial "footer.html" . -}}
+    {{ partial "footer.html" . }}
   </body>
 </html>
