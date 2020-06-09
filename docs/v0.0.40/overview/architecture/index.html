@@ -87,24 +87,30 @@
   
     <li class="withchild">Overview
         
+
+
 <ul>
 
-  
-    
+   
+   
+
+   
+   
+  <ul>
     <li class="index">
-      <a href="/docs/overview/about-vald/">About Vald</a>
+      <a href="/docs/v0.0.40/overview/about-vald/">About Vald</a>
     </li>
   
 
-  
+   
+   
 
-  
-    
+   
+   
+  <ul>
     <li class="view">
-      <a href="/docs/overview/architecture/">Architecture</a>
+      <a href="/docs/v0.0.40/overview/architecture/">Architecture</a>
     </li>
-  
-
   
 
 </ul>
@@ -117,15 +123,19 @@
   
     <li class="withchild">Tutorial
         
+
+
 <ul>
 
-  
-    
-    <li class="index">
-      <a href="/docs/tutorial/get-started/">Get Started</a>
-    </li>
-  
+   
+   
 
+   
+   
+  <ul>
+    <li class="index">
+      <a href="/docs/v0.0.40/tutorial/get-started/">Get Started</a>
+    </li>
   
 
 </ul>
@@ -138,15 +148,19 @@
   
     <li class="withchild">User Guides
         
+
+
 <ul>
 
-  
-    
-    <li class="index">
-      <a href="/docs/user-guides/configuration/">Configuration</a>
-    </li>
-  
+   
+   
 
+   
+   
+  <ul>
+    <li class="index">
+      <a href="/docs/v0.0.40/user-guides/configuration/">Configuration</a>
+    </li>
   
 
 </ul>
@@ -163,24 +177,30 @@
   
     <li class="withchild">Contributing
         
+
+
 <ul>
 
-  
-    
+   
+   
+
+   
+   
+  <ul>
     <li class="index">
-      <a href="/docs/contributing/coding-style/">Coding Style</a>
+      <a href="/docs/v0.0.40/contributing/coding-style/">Coding Style</a>
     </li>
   
 
-  
+   
+   
 
-  
-    
+   
+   
+  <ul>
     <li class="index">
-      <a href="/docs/contributing/contribute-guide/">Contribute Guide</a>
+      <a href="/docs/v0.0.40/contributing/contribute-guide/">Contribute Guide</a>
     </li>
-  
-
   
 
 </ul>
@@ -193,15 +213,19 @@
   
     <li class="withchild">Support
         
+
+
 <ul>
 
-  
-    
-    <li class="index">
-      <a href="/docs/support/contacts/">Contacts</a>
-    </li>
-  
+   
+   
 
+   
+   
+  <ul>
+    <li class="index">
+      <a href="/docs/v0.0.40/support/contacts/">Contacts</a>
+    </li>
   
 
 </ul>
@@ -214,15 +238,19 @@
   
     <li class="withchild">Release
         
+
+
 <ul>
 
-  
-    
-    <li class="index">
-      <a href="/docs/release/changelog/">CHANGELOG</a>
-    </li>
-  
+   
+   
 
+   
+   
+  <ul>
+    <li class="index">
+      <a href="/docs/v0.0.40/release/changelog/">CHANGELOG</a>
+    </li>
   
 
 </ul>
@@ -293,10 +321,10 @@ Before reading this document, you need to have some understanding of the basic i
 <p>This section describes the data flow inside Vald and how Vald&rsquo;s vector indexes are stored.
 This is the most important part for the users to understand Vald.</p>
 <p>The below image is the overview of Vald&rsquo;s architecture.</p>
-<p><img src="/images/vald_architecture_overview.png" /></p>
+<p><img src="/images/v0.0.40/vald_architecture_overview.png" /></p>
 <p>We will explain this image in the following sections.</p>
 <h3 id="insert">Insert</h3>
-<p><img src="/images/insert_flow.png" /></p>
+<p><img src="/images/v0.0.40/insert_flow.png" /></p>
 <p>When the user inserts data into Vald:</p>
 <ol>
 <li>Vald Ingress receives the request from the user. The request includes the vector and the vector ID.</li>
@@ -319,7 +347,7 @@ This is the most important part for the users to understand Vald.</p>
 <li>Vald Filter Gateway will return success to the Vald Ingress.</li>
 </ol>
 <h3 id="search">Search</h3>
-<p><img src="/images/search_flow.png" /></p>
+<p><img src="/images/v0.0.40/search_flow.png" /></p>
 <p>When the user searches a vector from Vald:</p>
 <ol>
 <li>Vald Ingress receives a search request from the user. Vald provides 2 searching interfaces to the user, the user can search by vector or search by the vector ID.</li>

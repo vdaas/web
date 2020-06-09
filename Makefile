@@ -1,6 +1,6 @@
 .PHONY: all run deploy/staging deploy/production subup
 
-LATEST_VERSION = 0.0.39
+LATEST_VERSION = 0.0.40
 NEW_VERSION := ${LATEST_VERSION}
 ARCIVE_URL = https://github.com/vdaas/vald/archive/v$(LATEST_VERSION).zip
 
@@ -131,13 +131,15 @@ define sync-image
 		echo -e "\e[5;32msyncing image files\e[0m" ; \
 		mkdir -p static && mkdir -p static/images ; \
 		mkdir -p static/images/v$(LATEST_VERSION) ; \
-		cd tmp/vald-$(LATEST_VERSION)/assets/docs && find . -type f -name "*.svg" -exec cp {} ../../../../static/images/ \; && cd ../../../../ ; \
-		cd tmp/vald-$(LATEST_VERSION)/assets/docs && find . -type f -name "*.svg" -exec cp {} ../../../../static/images/v$(LATEST_VERSION) \; && cd ../../../../ ; \
+		cd tmp/vald-$(LATEST_VERSION)/assets/docs && find . -type f -name "*.png" -exec cp {} ../../../../static/images/ \; && cd ../../../../ ; \
+		cd tmp/vald-$(LATEST_VERSION)/assets/docs && find . -type f -name "*.png" -exec cp {} ../../../../static/images/v$(LATEST_VERSION) \; && cd ../../../../ ; \
 	fi
 endef
 
 define fix-image-path
 	@echo -e "\e[5;32mstart fix image path\e[0m"
+	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/..\/..\/design/\/images\/v$(LATEST_VERSION)/g"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/..\/..\/design/\/images/g"
 	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/..\/..\/assets\/docs/\/images\/v$(LATEST_VERSION)/g"
 	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/..\/..\/assets\/docs/\/images/g"
 endef

@@ -87,24 +87,30 @@
   
     <li class="withchild">Overview
         
+
+
 <ul>
 
-  
-    
+   
+   
+
+   
+   
+  <ul>
     <li class="index">
-      <a href="/docs/overview/about-vald/">About Vald</a>
+      <a href="/docs/v0.0.40/overview/about-vald/">About Vald</a>
     </li>
   
 
-  
+   
+   
 
-  
-    
+   
+   
+  <ul>
     <li class="index">
-      <a href="/docs/overview/architecture/">Architecture</a>
+      <a href="/docs/v0.0.40/overview/architecture/">Architecture</a>
     </li>
-  
-
   
 
 </ul>
@@ -117,15 +123,19 @@
   
     <li class="withchild">Tutorial
         
+
+
 <ul>
 
-  
-    
-    <li class="index">
-      <a href="/docs/tutorial/get-started/">Get Started</a>
-    </li>
-  
+   
+   
 
+   
+   
+  <ul>
+    <li class="index">
+      <a href="/docs/v0.0.40/tutorial/get-started/">Get Started</a>
+    </li>
   
 
 </ul>
@@ -138,15 +148,19 @@
   
     <li class="withchild">User Guides
         
+
+
 <ul>
 
-  
-    
-    <li class="index">
-      <a href="/docs/user-guides/configuration/">Configuration</a>
-    </li>
-  
+   
+   
 
+   
+   
+  <ul>
+    <li class="index">
+      <a href="/docs/v0.0.40/user-guides/configuration/">Configuration</a>
+    </li>
   
 
 </ul>
@@ -163,24 +177,30 @@
   
     <li class="withchild">Contributing
         
+
+
 <ul>
 
-  
-    
+   
+   
+
+   
+   
+  <ul>
     <li class="index">
-      <a href="/docs/contributing/coding-style/">Coding Style</a>
+      <a href="/docs/v0.0.40/contributing/coding-style/">Coding Style</a>
     </li>
   
 
-  
+   
+   
 
-  
-    
+   
+   
+  <ul>
     <li class="index">
-      <a href="/docs/contributing/contribute-guide/">Contribute Guide</a>
+      <a href="/docs/v0.0.40/contributing/contribute-guide/">Contribute Guide</a>
     </li>
-  
-
   
 
 </ul>
@@ -193,15 +213,19 @@
   
     <li class="withchild">Support
         
+
+
 <ul>
 
-  
-    
-    <li class="index">
-      <a href="/docs/support/contacts/">Contacts</a>
-    </li>
-  
+   
+   
 
+   
+   
+  <ul>
+    <li class="index">
+      <a href="/docs/v0.0.40/support/contacts/">Contacts</a>
+    </li>
   
 
 </ul>
@@ -214,15 +238,19 @@
   
     <li class="withchild">Release
         
+
+
 <ul>
 
-  
-    
-    <li class="index">
-      <a href="/docs/release/changelog/">CHANGELOG</a>
-    </li>
-  
+   
+   
 
+   
+   
+  <ul>
+    <li class="index">
+      <a href="/docs/v0.0.40/release/changelog/">CHANGELOG</a>
+    </li>
   
 
 </ul>
@@ -342,7 +370,7 @@ Vald can load balance the request base on node resources.</p>
 Agent-NGT uses <a href="https://github.com/yahoojapan/NGT">yahoojapan/NGT</a> as a core library.</p>
 <p>Each Vald Agent pod has its own vector data space because only several Vald Agents are selected to be inserted/updated in a single insert/update request.</p>
 <p>When searching a vector in Vald, each Vald Agent return different results of <em>k</em>-nearest neighbors depending on their index, and you&rsquo;ll get the merged result of them.</p>
-<p><img src="..//images/vector_data_space_explain.svg" /></p>
+<p><img src="..//images/v0.0.40/vector_data_space_explain.svg" /></p>
 <h3 id="vald-agent-scheduler">Vald Agent Scheduler</h3>
 <p>Vald Agent Scheduler is the scheduler of the Vald Agent.
 It implements it&rsquo;s own custom scheduling logic to increase the scalability of the Vald Agent.</p>
