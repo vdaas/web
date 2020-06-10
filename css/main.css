@@ -36,7 +36,6 @@
   height: 100%;
 }
 
-
 .top__bg .bg__img {
   position: absolute;
   min-width: 1440px;
@@ -370,6 +369,8 @@ pre {
   background-color: #f6f8fa;
   border-radius: 3px;
   margin-bottom: 8px;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  letter-spacing: 0;
 }
 
 code {
@@ -384,10 +385,6 @@ button {
   outline: none;
   padding: 0;
   appearance: none;
-}
-
-main {
-  width: 100%;
 }
 
 main {
@@ -591,6 +588,35 @@ main {
   overflow-wrap: break-word;
 }
 
+.markdown table{
+  display: block;
+  overflow: auto;
+  white-space: nowrap;
+  background: #f8f8f8;
+  margin-top: 32px;
+  border-spacing: 0 30px 0 0;
+}
+
+.markdown tbody {
+  border-collapse: collapse;
+}
+.markdown tr:hover {
+  background: #eee;
+}
+.markdown tr:not(:first-child) {
+  th, td {
+    border-top: solid 1px #ddd;
+  }
+}
+
+.markdown th, .markdown td {
+  text-align: left;
+  padding: 10px 45px 10px 10px;
+}
+.markdown thead th {
+  border-bottom: solid 1px #ccc;
+}
+
 .markdown h1 {
   font-size: 32px;
   font-weight: bold;
@@ -660,7 +686,6 @@ main {
 .error .error__link {
   color: #309BE9;
 }
-
 
 .coming {
   width: 100%;
@@ -807,6 +832,7 @@ main {
 
   .about, .features__item, .mdl-card__content {
     background-color: #393939;
+    border: 1px solid #00BAB1;
   }
 
   .mdl-card__title, .mdl-card__caption {
@@ -841,6 +867,13 @@ main {
   .page button.index::before, .page button.index::after {
     border-top: 2px solid #00BAB1;
     border-right: 2px solid #00BAB1;
+  }
+
+  .markdown table{
+    background: #333333;
+  }
+  .markdown tr:hover {
+    background: #222222;
   }
 
   @media screen and (min-width: 768px) {
