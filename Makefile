@@ -1,6 +1,6 @@
 .PHONY: all run deploy/staging deploy/production subup
 
-LATEST_VERSION = 0.0.38
+LATEST_VERSION = 0.0.40
 NEW_VERSION := ${LATEST_VERSION}
 ARCIVE_URL = https://github.com/vdaas/vald/archive/v$(LATEST_VERSION).zip
 
@@ -19,7 +19,7 @@ run:
 subup:
 	git submodule foreach git pull origin gh-pages
 
-deploy/staging: subup \
+deploy/staging: subup
 	@hugo --environment=staging -D
 	@cd tmp_pre && cp -r * ../preview/
 	@cp Makefile preview/Makefile
@@ -96,6 +96,7 @@ update/images:
 update/contents: \
 	update-version-content \
 	update-root-content
+	$(call fix-document-path)
 	@echo -e "\e[5;32mfinish createing contens\e[0m"
 
 .PHONY: clean
@@ -125,21 +126,32 @@ endef
 
 define sync-image
 	@echo -e "\e[5;33mcheck image files...\e[0m"
+	@cd tmp/vald-$(LATEST_VERSION)/design && find . -type f -name ".png" -exec cp {} ../assets/docs/ \; && cd ../../../
 	@if [ ! -z $(find tmp/vald-$(LATEST_VERSION)/assets/docs -type f -name "*.svg" 2>/dev/null) ]; then \
 		echo -e "\e[5;31mNo image file has been synced.\e[0m" ; \
 	else \
 		echo -e "\e[5;32msyncing image files\e[0m" ; \
-		mkdir -p static $$ mkdir -p static/images ; \
+		mkdir -p static && mkdir -p static/images ; \
 		mkdir -p static/images/v$(LATEST_VERSION) ; \
-		cd tmp/vald-$(LATEST_VERSION)/assets/docs && find . -type f -name "*.svg" -exec cp {} ../../../../static/images/ \; && cd ../../../../ ; \
-		cd tmp/vald-$(LATEST_VERSION)/assets/docs && find . -type f -name "*.svg" -exec cp {} ../../../../static/images/v$(LATEST_VERSION) \; && cd ../../../../ ; \
+		cd tmp/vald-$(LATEST_VERSION)/assets/docs && find . -type f -name "*.png" -exec cp {} ../../../../static/images/ \; && cd ../../../../ ; \
+		cd tmp/vald-$(LATEST_VERSION)/assets/docs && find . -type f -name "*.png" -exec cp {} ../../../../static/images/v$(LATEST_VERSION) \; && cd ../../../../ ; \
 	fi
 endef
 
 define fix-image-path
 	@echo -e "\e[5;32mstart fix image path\e[0m"
-	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/..\/..\/assets\/docs/\/images\/v$(LATEST_VERSION)/g"
-	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/..\/..\/assets\/docs/\/images/g"
+	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/\.\.\/\.\.\/design/\/images\/v$(LATEST_VERSION)/g"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\.\.\/\.\.\/design/\/images/g"
+	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/\.\.\/\.\.\/assets\/docs/\/images\/v$(LATEST_VERSION)/g"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\.\.\/\.\.\/assets\/docs/\/images/g"
+endef
+
+define fix-document-path
+	@echo -e "\e[5;32mstart fix document path\e[0m"
+	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/.md//g"
+	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\/v$(LATEST_VERSION)\//g"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/.md//g"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\//g"
 endef
 
 define clean

@@ -1,13 +1,14 @@
 {{ $current := .current }}
 {{ $validPath := split ($current | relLangURL) "/" }}
 {{ $path := index $validPath 2 }}
+<ul>
 {{ range .children }}
    {{ $permalink := absURL .URL }}
    {{ if in .URL $path }}
-   <ul>
-     <li class="{{ if eq $current $permalink }}view{{ else }}index{{ end }}">
-       <a href="{{ .URL }}">{{ index (split .Name "_") 0 }}</a>
-     </li>
-  </ul>
+  <ul>
+    <li class="{{ if eq $current $permalink }}view{{ else }}index{{ end }}">
+      <a href="{{ .URL }}">{{ index (split .Name "_") 0 }}</a>
+    </li>
   {{ end }}
 {{ end }}
+</ul>

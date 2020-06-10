@@ -1,7 +1,7 @@
 <header class="header" id="header">
   <div class="header__content">
     <nav class="header__nav cf">
-      <a href="https://vald.vdaas.org" class="header-nav__link">
+      <a href="{{ .Site.BaseURL }}" class="header-nav__link">
         <picture>
           <source srcset="{{ .Site.BaseURL }}/images/vald_white.svg" media="(prefers-color-scheme: dark)" class="header-nav__image">
           <img src="{{ .Site.BaseURL }}/images/vald_color_1.svg" alt="" class="header-nav__image">
@@ -19,7 +19,7 @@
           <a href="" class="header__link">Docs</a>
         </li>
         <li class="header__item">
-          <a href="" class="header__link">Blog</a>
+          <a href="https://medium.com/@vdaas_vald" target="_blank" class="header__link">Blog<br/></a>
         </li>
         <li class="header__item">
           <a href="https://github.com/vdaas/vald" target="_blank" class="header__link header__link--button">Github</a>
