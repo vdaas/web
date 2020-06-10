@@ -3,103 +3,103 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://vald.netlify.app/docs/overview/component/</loc>
-    <lastmod>2020-06-09T19:01:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vald.netlify.app/docs/</loc>
-    <lastmod>2020-06-09T19:01:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vald.netlify.app/</loc>
-    <lastmod>2020-06-09T19:01:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vald.netlify.app/docs/overview/about-vald/</loc>
-    <lastmod>2020-06-09T19:01:13+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vald.netlify.app/docs/overview/architecture/</loc>
-    <lastmod>2020-06-09T19:01:13+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vald.netlify.app/docs/user-guides/configuration/</loc>
-    <lastmod>2020-06-09T19:01:13+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vald.netlify.app/docs/support/contacts/</loc>
-    <lastmod>2020-06-09T19:01:13+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vald.netlify.app/docs/release/changelog/</loc>
-    <lastmod>2020-06-09T19:01:12+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vald.netlify.app/docs/contributing/coding-style/</loc>
-    <lastmod>2020-06-09T19:01:12+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://vald.netlify.app/docs/contributing/contribute-guide/</loc>
-    <lastmod>2020-06-09T19:01:12+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vald.netlify.app/docs/tutorial/get-started/</loc>
-    <lastmod>2020-06-09T19:01:12+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vald.netlify.app/docs/v0.0.40/overview/about-vald/</loc>
-    <lastmod>2020-06-09T19:01:11+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vald.netlify.app/docs/v0.0.40/overview/architecture/</loc>
-    <lastmod>2020-06-09T19:01:11+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vald.netlify.app/docs/v0.0.40/overview/component/</loc>
-    <lastmod>2020-06-09T19:01:11+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vald.netlify.app/docs/v0.0.40/release/changelog/</loc>
-    <lastmod>2020-06-09T19:01:10+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vald.netlify.app/docs/v0.0.40/user-guides/configuration/</loc>
-    <lastmod>2020-06-09T19:01:10+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vald.netlify.app/docs/v0.0.40/support/contacts/</loc>
-    <lastmod>2020-06-09T19:01:10+09:00</lastmod>
+    <lastmod>2020-06-10T14:34:55+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://vald.netlify.app/docs/v0.0.40/contributing/contribute-guide/</loc>
-    <lastmod>2020-06-09T19:01:10+09:00</lastmod>
+    <lastmod>2020-06-10T14:34:52+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/docs/overview/about-vald/</loc>
+    <lastmod>2020-06-10T14:34:56+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/docs/overview/architecture/</loc>
+    <lastmod>2020-06-10T14:34:56+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/docs/overview/component/</loc>
+    <lastmod>2020-06-10T14:34:56+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/docs/</loc>
+    <lastmod>2020-06-10T14:34:56+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/</loc>
+    <lastmod>2020-06-10T14:34:56+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/docs/release/changelog/</loc>
+    <lastmod>2020-06-10T14:34:55+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/docs/user-guides/configuration/</loc>
+    <lastmod>2020-06-10T14:34:55+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/docs/support/contacts/</loc>
+    <lastmod>2020-06-10T14:34:55+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/docs/contributing/coding-style/</loc>
+    <lastmod>2020-06-10T14:34:54+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/docs/v0.0.40/overview/component/</loc>
+    <lastmod>2020-06-10T14:34:54+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/docs/tutorial/get-started/</loc>
+    <lastmod>2020-06-10T14:34:54+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/docs/v0.0.40/overview/about-vald/</loc>
+    <lastmod>2020-06-10T14:34:53+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/docs/v0.0.40/overview/architecture/</loc>
+    <lastmod>2020-06-10T14:34:53+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/docs/v0.0.40/user-guides/configuration/</loc>
+    <lastmod>2020-06-10T14:34:53+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/docs/v0.0.40/support/contacts/</loc>
+    <lastmod>2020-06-10T14:34:53+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vald.netlify.app/docs/v0.0.40/release/changelog/</loc>
+    <lastmod>2020-06-10T14:34:52+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://vald.netlify.app/docs/v0.0.40/contributing/coding-style/</loc>
-    <lastmod>2020-06-09T19:01:09+09:00</lastmod>
+    <lastmod>2020-06-10T14:34:52+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://vald.netlify.app/docs/v0.0.40/tutorial/get-started/</loc>
-    <lastmod>2020-06-09T19:01:09+09:00</lastmod>
+    <lastmod>2020-06-10T14:34:52+09:00</lastmod>
   </url>
   
   <url>

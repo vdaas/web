@@ -187,8 +187,8 @@
    
    
   <ul>
-    <li class="view">
-      <a href="/docs/v0.0.40/contributing/coding-style/">Coding Style</a>
+    <li class="index">
+      <a href="/docs/v0.0.40/contributing/contribute-guide/">Contribute Guide</a>
     </li>
   
 
@@ -198,8 +198,8 @@
    
    
   <ul>
-    <li class="index">
-      <a href="/docs/v0.0.40/contributing/contribute-guide/">Contribute Guide</a>
+    <li class="view">
+      <a href="/docs/v0.0.40/contributing/coding-style/">Coding Style</a>
     </li>
   
 
@@ -267,10 +267,10 @@
   <div class="markdown">
     <h1 id="go-style-guide-in-vald">Go Style Guide in Vald</h1>
 <h2 id="introduction">Introduction</h2>
-<p>This guideline includes the coding style for all Vald contributors and reviewers. Everyone should follow this guideline to keep the style consistent so everyone can understand and contribute to Vald easier once they learn this guideline. You should have the basic knowledge of how to write Go before contributing to Vald. If you found any bug please create <a href="https://github.com/vdaas/vald/issues/new?assignees=&amp;labels=type%2Fbug%2C+priority%2Fmedium%2C+team%2Fcore&amp;template=bug_report.md&amp;title=">a GitHub issue</a> and we will work on it.</p>
-<p>Please also read the <a href="../contributing/contributing-guide.md">Contribution guideline</a> before you start contributing to Vald.</p>
+<p>This guideline includes the coding style for all Vald contributors and reviewers. Everyone should follow this guideline to keep the style consistent so everyone can understand and contribute to Vald easier once they learn this guideline. You should have the basic knowledge of how to write Go before contributing to Vald. If you found any bug please create <a href="https://github.com/vdaas/vald/issues/new?assignees=&amp;labels=type%2Fbug%2C+priority%2Fmedium%2C+team%2Fcore&amp;template=bug_report&amp;title=">a GitHub issue</a> and we will work on it.</p>
+<p>Please also read the <a href="/docs/v0.0.40/contributing/contributing-guide">Contribution guideline</a> before you start contributing to Vald.</p>
 <h2 id="code-formatting-and-naming-convension">Code Formatting and Naming Convension</h2>
-<p>Code formatting and naming conventions affect coding readability and maintainability. Every developer has a different coding style, luckily Go provides tools to format source code and checking for the potential issue in the source code. We recommend using <a href="https://github.com/golang/tools/tree/master/cmd/goimports">goimports</a> to format the source code in Vald, and <a href="https://github.com/golangci/golangci-lint">golangci-lint</a> with <code>--enable-all</code> option. We suggest everyone install the plugin for your editor to format the code once you edit the code automatically, and  we suggest using <code>make update/goimports</code> command if you want to format the source code manually.</p>
+<p>Code formatting and naming conventions affect coding readability and maintainability. Every developer has a different coding style, luckily Go provides tools to format source code and checking for the potential issue in the source code. We recommend using <a href="https://github.com/golang/tools/tree/master//goimports">goimports</a> to format the source code in Vald, and <a href="https://github.com/golangci/golangci-lint">golangci-lint</a> with <code>--enable-all</code> option. We suggest everyone install the plugin for your editor to format the code once you edit the code automatically, and  we suggest using <code>make update/goimports</code> command if you want to format the source code manually.</p>
 <p>But having tools to format source code doesn&rsquo;t mean you do not need to care the formatting of the code, for example:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// bad
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">badStr</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;apiVersion: v1\n&#34;</span> <span style="color:#f92672">+</span>
@@ -400,7 +400,7 @@ To initialize struct, it is suggested to use <code>new(T)</code> instead of <cod
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Something</span>{
     <span style="color:#a6e22e">name</span>: <span style="color:#e6db74">&#34;Mary&#34;</span>,
 }
-</code></pre></div><p>To initialize complex structs, we can use <a href="https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis">functional option pattern</a>. Please read <a href="../../../internal/servers/servers.go">server.go</a> and <a href="../../../internal/servers/option.go">option.go</a> for the reference implementation.
+</code></pre></div><p>To initialize complex structs, we can use <a href="https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis">functional option pattern</a>. Please read <a href="/docs/v0.0.40/internal/servers/servers.go">server.go</a> and <a href="/docs/v0.0.40/internal/servers/option.go">option.go</a> for the reference implementation.
 The options implementation should be separated as another file called <code>option.go</code> to improve the readability of the source code, and the method name should start with <code>With</code> word to differentiate with other methods.</p>
 <h3 id="variables-and-constant">Variables and Constant</h3>
 <p>The variable and the constant should be named as:</p>
@@ -466,10 +466,10 @@ The options implementation should be separated as another file called <code>opti
     <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">signedTok</span> = <span style="color:#a6e22e">st</span>
 }
 </code></pre></div><h3 id="error-handling">Error handling</h3>
-<p>All errors should define in <a href="../../internal/errors">internal/errors package</a>. All errors should be start with <code>Err</code> prefix, and all errors should be handle if possible.</p>
-<p>Please use <a href="../../internal/errgroup">internal/errgroup</a> for synchronized error handling on multi-goroutine processing.</p>
+<p>All errors should define in <a href="/docs/v0.0.40/internal/errors">internal/errors package</a>. All errors should be start with <code>Err</code> prefix, and all errors should be handle if possible.</p>
+<p>Please use <a href="/docs/v0.0.40/internal/errgroup">internal/errgroup</a> for synchronized error handling on multi-goroutine processing.</p>
 <h3 id="logging">Logging</h3>
-<p>We define our own logging interface in <a href="../../internal/log">internal/log package</a>. By default we use <a href="https://github.com/kpango/glg">glg</a> to do the logging internally.
+<p>We define our own logging interface in <a href="/docs/v0.0.40/internal/log">internal/log package</a>. By default we use <a href="https://github.com/kpango/glg">glg</a> to do the logging internally.
 We defined the following logging levels.</p>
 <table>
 <thead>

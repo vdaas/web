@@ -96,6 +96,7 @@ update/images:
 update/contents: \
 	update-version-content \
 	update-root-content
+	$(call fix-document-path)
 	@echo -e "\e[5;32mfinish createing contens\e[0m"
 
 .PHONY: clean
@@ -125,6 +126,7 @@ endef
 
 define sync-image
 	@echo -e "\e[5;33mcheck image files...\e[0m"
+	@cd tmp/vald-$(LATEST_VERSION)/design && find . -type f -name ".png" -exec cp {} ../assets/docs/ \; && cd ../../../
 	@if [ ! -z $(find tmp/vald-$(LATEST_VERSION)/assets/docs -type f -name "*.svg" 2>/dev/null) ]; then \
 		echo -e "\e[5;31mNo image file has been synced.\e[0m" ; \
 	else \
@@ -138,10 +140,18 @@ endef
 
 define fix-image-path
 	@echo -e "\e[5;32mstart fix image path\e[0m"
-	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/..\/..\/design/\/images\/v$(LATEST_VERSION)/g"
-	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/..\/..\/design/\/images/g"
-	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/..\/..\/assets\/docs/\/images\/v$(LATEST_VERSION)/g"
-	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/..\/..\/assets\/docs/\/images/g"
+	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/\.\.\/\.\.\/design/\/images\/v$(LATEST_VERSION)/g"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\.\.\/\.\.\/design/\/images/g"
+	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/\.\.\/\.\.\/assets\/docs/\/images\/v$(LATEST_VERSION)/g"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\.\.\/\.\.\/assets\/docs/\/images/g"
+endef
+
+define fix-document-path
+	@echo -e "\e[5;32mstart fix document path\e[0m"
+	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/.md//g"
+	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\/v$(LATEST_VERSION)\//g"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/.md//g"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\//g"
 endef
 
 define clean
