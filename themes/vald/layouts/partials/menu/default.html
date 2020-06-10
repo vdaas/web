@@ -4,7 +4,7 @@
     {{ $permalink := absURL .URL }}
     <ul>
       <li class="{{ if eq $current $permalink }}view{{ else }}index{{ end }}">
-        <a href="{{ .URL }}">{{ .Name }}</a>
+        <a href="{{ .URL }}">{{ index (split .Name "_") 0 }}</a>
       </li>
    </ul>
   {{ end }}

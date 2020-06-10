@@ -1,11 +1,10 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
+title: "{{ replace (print .Name "_" ($path := strings.TrimPrefix "docs/" (strings.TrimSuffix "/" .File.Dir))) "-" " " | title }}"
 date: {{ .Date }}
 draft: true
 weight: 0
-{{ $path := path.Base (strings.TrimSuffix "/" .File.Dir) }}
 menu:
-  {{ replace $path "-" "" }}:
-    parent: {{ replace $path "-" " " | title }}
+  {{ replace ($menu := path.Base $path) "-" "" }}:
+    parent: {{ replace $menu "-" " " | title }}
 ---
 

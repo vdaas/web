@@ -832,6 +832,7 @@ main {
 
   .about, .features__item, .mdl-card__content {
     background-color: #393939;
+    border: 1px solid #00BAB1;
   }
 
   .mdl-card__title, .mdl-card__caption {
