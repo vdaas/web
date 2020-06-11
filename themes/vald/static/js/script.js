@@ -26,10 +26,29 @@
     $wrapper.classList.remove('header__list--open');
   }
 
+  //toc toggle
+  const tocWrap = document.getElementById('current');
+  tocWrap.addEventListener('click', currentToggle);
+
+  function currentToggle() {
+    if (tocWrap.classList.contains('open')) {
+      tocClose();
+    } else {
+      tocOpen();
+    }
+  }
+
+  function tocOpen() {
+    tocWrap.classList.add('open');
+  }
+
+  function tocClose() {
+    tocWrap.classList.remove('open');
+  }
+
 
   //smooth scroll
   let headerHight = document.getElementById('header').offsetHeight;
-  document.body.style.marginTop = headerHight + "px";
 
   let smoothScroll = (target, offset) => {
     let toY;

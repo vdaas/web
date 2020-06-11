@@ -395,27 +395,27 @@ main {
   margin-top: 64px;
   position: relative;
   line-height: 1.5;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
 }
 
 .content {
   position: relative;
 }
 
-.current.scrolled {
-  position: fixed;
-  top: 160px;
-}
-
 /*current*/
 .current {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 90px;
   right: -2px;
   border: 1px solid #006076;
-  padding: 14px 12px 14px 14px;
+  padding: 16px 12px 14px 14px;
   background-color: #ffffff;
-  z-index: 0;
+  z-index: 10;
+  font-size: 1.4rem;
+}
+
+.current.open{
+  width: 60%;
 }
 
 .current a {
@@ -424,15 +424,11 @@ main {
   color: #333333;
 }
 
-.current ul li {
+.current ul{
   display: none;
 }
 
-.current ul.open {
-  padding: 18px;
-}
-
-.current ul.open li {
+.current.open ul {
   display: block;
 }
 
@@ -440,11 +436,6 @@ main {
   display: inline-block;
   text-align: right;
   width: 100%;
-  margin-bottom: 12px;
-}
-
-.current .menu {
-  margin-bottom: 0;
 }
 
 .current .dot {
@@ -478,18 +469,21 @@ main {
   background-color: #006076;
 }
 
-.current ul li {
+.current ul li a{
   border-left: 2px solid #ccc;
-  padding: 8px 0 0 22px;
+  padding: 5px 0 5px 20px;
+  margin-top: -2px;
 }
 
-.current ul li.active {
+.current ul li a.view{
   border-left: 2px solid #006076;
 }
 
-.current ul ul li {
-  border-left: none;
+.current ul li ul li a{
+  padding-left: 40px;
 }
+
+
 
 /*page*/
 .page {
@@ -725,10 +719,6 @@ main {
     width: 70%;
   }
 
-  .current.open li {
-    display: block;
-  }
-
   .current .dot {
     display: none;
   }
@@ -739,15 +729,15 @@ main {
     background-color: none;
   }
 
+  .current.open{
+    width: 25%;
+  }
+
   .current {
     padding-top: 0;
   }
 
-  .current .menu {
-    margin-bottom: 0;
-  }
-
-  .current ul li {
+  .current ul{
     display: block;
   }
 }
@@ -779,7 +769,7 @@ main {
   }
 
   .markdown {
-    width: 63%;
+    width: 65%;
     margin-right: 3%;
     margin-bottom: 64px;
   }
@@ -787,19 +777,14 @@ main {
   .current {
     display: inline-block;
     border: none;
-    width: 30%;
+    width: 23%;
     margin-right: 2%;
   }
 
-  .current ul {
-    padding: 0;
+  .current.open {
+    width: 23%;
   }
 
-  .current.scrolled {
-    position: fixed;
-    top: 84px;
-    width: auto;
-  }
 
   .page li {
     display: block;
@@ -865,6 +850,11 @@ main {
   }
 
   .page button.index::before, .page button.index::after {
+    border-top: 2px solid #00BAB1;
+    border-right: 2px solid #00BAB1;
+  }
+
+  .page li.withchild::before {
     border-top: 2px solid #00BAB1;
     border-right: 2px solid #00BAB1;
   }
