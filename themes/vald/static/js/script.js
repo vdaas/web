@@ -48,7 +48,7 @@
 
 
   //smooth scroll
-  let headerHight = document.getElementById('header').offsetHeight;
+  const headerHight = document.getElementById('header').offsetHeight;
 
   let smoothScroll = (target, offset) => {
     let toY;
