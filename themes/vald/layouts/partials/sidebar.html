@@ -2,7 +2,7 @@
 <!-- TODO: attach class "open" nav -->
 <aside class="page">
   {{ $current := .Page.Permalink }}
-  <nav class="open">
+  <nav>
     <button class="index" id="list-button">Pages</button>
     <ul id="list-body">
       {{ partial "menu.html" (dict "menu" .Site.Menus.overview "current" $current) -}}
