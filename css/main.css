@@ -32,6 +32,8 @@
 
 .top__bg {
   position: absolute;
+  top:0;
+  left:0;
   width: 100%;
   height: 100%;
 }
@@ -97,6 +99,11 @@
   display: flex;
   position: absolute;
   top: 0;
+}
+
+
+.bg__wrap .bg__wrap--dark{
+  display: none;
 }
 
 .concept__bg .bg__wrap {
@@ -395,27 +402,27 @@ main {
   margin-top: 64px;
   position: relative;
   line-height: 1.5;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
 }
 
 .content {
   position: relative;
 }
 
-.current.scrolled {
-  position: fixed;
-  top: 160px;
-}
-
 /*current*/
 .current {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 90px;
   right: -2px;
   border: 1px solid #006076;
-  padding: 14px 12px 14px 14px;
+  padding: 16px 12px 14px 14px;
   background-color: #ffffff;
-  z-index: 0;
+  z-index: 10;
+  font-size: 1.4rem;
+}
+
+.current.open{
+  width: 60%;
 }
 
 .current a {
@@ -424,15 +431,11 @@ main {
   color: #333333;
 }
 
-.current ul li {
+.current ul{
   display: none;
 }
 
-.current ul.open {
-  padding: 18px;
-}
-
-.current ul.open li {
+.current.open ul {
   display: block;
 }
 
@@ -440,11 +443,6 @@ main {
   display: inline-block;
   text-align: right;
   width: 100%;
-  margin-bottom: 12px;
-}
-
-.current .menu {
-  margin-bottom: 0;
 }
 
 .current .dot {
@@ -478,18 +476,21 @@ main {
   background-color: #006076;
 }
 
-.current ul li {
+.current ul li a{
   border-left: 2px solid #ccc;
-  padding: 8px 0 0 22px;
+  padding: 5px 0 5px 20px;
+  margin-top: -2px;
 }
 
-.current ul li.active {
+.current ul li a.view{
   border-left: 2px solid #006076;
 }
 
-.current ul ul li {
-  border-left: none;
+.current ul li ul li a{
+  padding-left: 40px;
 }
+
+
 
 /*page*/
 .page {
@@ -505,12 +506,15 @@ main {
   color: #333333;
 }
 
-.page li {
+.page ul li{
   margin: 8px 0 0 20px;
+}
+
+.page ul li.withchild ul {
   display: none;
 }
 
-.page .open li {
+.page ul li.withchild.open ul {
   display: block;
 }
 
@@ -533,14 +537,8 @@ main {
   width: 7px;
   height: 7px;
   margin-right: 9px;
-  margin-bottom: 1px;
   border-top: 2px solid #006076;
   border-right: 2px solid #006076;
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.page .open button.index::before {
   -webkit-transform: rotate(135deg);
   transform: rotate(135deg);
   margin-bottom: 2px;
@@ -725,10 +723,6 @@ main {
     width: 70%;
   }
 
-  .current.open li {
-    display: block;
-  }
-
   .current .dot {
     display: none;
   }
@@ -739,15 +733,15 @@ main {
     background-color: none;
   }
 
+  .current.open{
+    width: 25%;
+  }
+
   .current {
     padding-top: 0;
   }
 
-  .current .menu {
-    margin-bottom: 0;
-  }
-
-  .current ul li {
+  .current ul{
     display: block;
   }
 }
@@ -755,7 +749,6 @@ main {
 @media screen and (min-width: 1000px) {
 
   .single {
-    margin-top: 64px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -767,10 +760,6 @@ main {
     margin-right: 2%;
   }
 
-  .page.open li {
-    display: block;
-  }
-
   .content {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -779,7 +768,7 @@ main {
   }
 
   .markdown {
-    width: 63%;
+    width: 65%;
     margin-right: 3%;
     margin-bottom: 64px;
   }
@@ -787,19 +776,14 @@ main {
   .current {
     display: inline-block;
     border: none;
-    width: 30%;
+    width: 23%;
     margin-right: 2%;
   }
 
-  .current ul {
-    padding: 0;
+  .current.open {
+    width: 23%;
   }
 
-  .current.scrolled {
-    position: fixed;
-    top: 84px;
-    width: auto;
-  }
 
   .page li {
     display: block;
@@ -818,8 +802,14 @@ main {
 }
 
 @media (prefers-color-scheme: dark) {
+
+ html{
+   background: #333333;
+ }
+
   body {
     color: #ffffff;
+    background: #393939;
   }
 
   .concept, .features, .about__list, .learn {
@@ -828,6 +818,14 @@ main {
 
   .concept__heading, .features__heading, .about__title, .learn__title {
     color: #00BAB1;
+  }
+
+.bg__wrap .bg__wrap--light{
+    display: none;
+  }
+
+.bg__wrap .bg__wrap--dark{
+    display: block;
   }
 
   .about, .features__item, .mdl-card__content {
@@ -865,6 +863,11 @@ main {
   }
 
   .page button.index::before, .page button.index::after {
+    border-top: 2px solid #00BAB1;
+    border-right: 2px solid #00BAB1;
+  }
+
+  .page li.withchild::before {
     border-top: 2px solid #00BAB1;
     border-right: 2px solid #00BAB1;
   }
