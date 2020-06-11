@@ -756,16 +756,6 @@ main {
     margin-right: 2%;
   }
 
-  .page ul li.withchild ul {
-    display: block;
-  }
-
-  .page li.withchild::before {
-    -webkit-transform: rotate(135deg);
-    transform: rotate(135deg);
-    margin-bottom: 2px;
-  }
-
   .content {
     display: -webkit-box;
     display: -ms-flexbox;
