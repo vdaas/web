@@ -499,12 +499,15 @@ main {
   color: #333333;
 }
 
-.page li {
+.page ul li{
   margin: 8px 0 0 20px;
+}
+
+.page ul li.withchild ul {
   display: none;
 }
 
-.page .open li {
+.page ul li.withchild.open ul {
   display: block;
 }
 
@@ -527,14 +530,8 @@ main {
   width: 7px;
   height: 7px;
   margin-right: 9px;
-  margin-bottom: 1px;
   border-top: 2px solid #006076;
   border-right: 2px solid #006076;
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.page .open button.index::before {
   -webkit-transform: rotate(135deg);
   transform: rotate(135deg);
   margin-bottom: 2px;
@@ -757,8 +754,14 @@ main {
     margin-right: 2%;
   }
 
-  .page.open li {
+  .page ul li.withchild ul {
     display: block;
+  }
+
+  .page li.withchild::before {
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+    margin-bottom: 2px;
   }
 
   .content {
