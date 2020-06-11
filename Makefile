@@ -104,6 +104,19 @@ clean:
 	$(call clean)
 	@echo -e "\e[1;32mUpdate document finished with success\e[0m"
 
+.PHONY: publish-root
+publish/root:
+	$(call publish-root)
+
+.PHONY: publish-version
+publish/version:
+	$(call publish-version)
+
+.PHONY: publish/all
+publish/all:
+	$(call publish-root)
+	$(call publish-version)
+
 define get-latest
 	@echo -e "\e[5;32mstart sync latest document\e[0m"
 	@mkdir -p tmp 1>/dev/null
@@ -152,6 +165,16 @@ define fix-document-path
 	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\/v$(LATEST_VERSION)\//g"
 	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/.md//g"
 	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\//g"
+endef
+
+define publish-root
+	@echo -e "\e[5;32mpublish root document\e[0m"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "4 s/true/false/g"
+endef
+
+define publish-version
+	@echo -e "\e[5;32mpublish version document\e[0m"
+	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "4 s/true/false/g"
 endef
 
 define clean

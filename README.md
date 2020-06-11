@@ -65,7 +65,19 @@ Before deploy to a staging environment, please check that there are some content
 **NOTE**:
 
 Before publishing to official WebSite, YOU MUST CHECK the `Draft` value of each content file.<br>
-The content whose draft value is `false` WILL NOT BE PUBLISHED.
+The content whose draft value is `true` WILL NOT BE PUBLISHED.<br>
+You can change draft variable by below commands (You can choose the most suit command).
+
+```bash
+# the draft value of all content in the root directory and the latest version directory will be `false`
+$ make publish/all
+
+# the draft value of all content in the root directory will be `false`
+$ make publish/root
+
+# the draft value of all content in the latest version directory will be `false`
+$ make publish/version
+```
 
 
 - When you'd like to publish the latest Vald WebSite, you can apply by below command.
