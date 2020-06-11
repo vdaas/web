@@ -99,6 +99,11 @@
   top: 0;
 }
 
+
+.bg__wrap .bg__wrap--dark{
+  display: none;
+}
+
 .concept__bg .bg__wrap {
   width: 33.3%;
 }
@@ -755,7 +760,6 @@ main {
 @media screen and (min-width: 1000px) {
 
   .single {
-    margin-top: 64px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -818,8 +822,14 @@ main {
 }
 
 @media (prefers-color-scheme: dark) {
+
+ html{
+   background: #333333;
+ }
+
   body {
     color: #ffffff;
+    background: #393939;
   }
 
   .concept, .features, .about__list, .learn {
@@ -828,6 +838,14 @@ main {
 
   .concept__heading, .features__heading, .about__title, .learn__title {
     color: #00BAB1;
+  }
+
+.bg__wrap .bg__wrap--light{
+    display: none;
+  }
+
+.bg__wrap .bg__wrap--dark{
+    display: block;
   }
 
   .about, .features__item, .mdl-card__content {
