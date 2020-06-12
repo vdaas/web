@@ -1,7 +1,7 @@
 ---
 title: "Get Started_content/Docs/Tutorial"
 date: 2020-06-10T14:34:54+09:00
-draft: true
+draft: false
 weight: 0
 menu:
   tutorial:

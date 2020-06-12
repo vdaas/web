@@ -1,7 +1,7 @@
 ---
 title: "Coding Style_content/Docs/Contributing"
 date: 2020-06-10T14:34:54+09:00
-draft: true
+draft: false
 weight: 0
 menu:
   contributing:
@@ -184,7 +184,7 @@ c := &Something{
 }
 ```
 
-To initialize complex structs, we can use [functional option pattern](https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis). Please read [server.go](/docs/internal/servers/servers.go) and [option.go](/docs/internal/servers/option.go) for the reference implementation.
+To initialize complex structs, we can use [functional option pattern](https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis). Please read [server.go](https://github.com/vdaas/vald/blob/master/internal/servers/servers.go) and [option.go](https://github.com/vdaas/vald/blob/master/internal/servers/option.go) for the reference implementation.
 The options implementation should be separated as another file called `option.go` to improve the readability of the source code, and the method name should start with `With` word to differentiate with other methods.
 
 ### Variables and Constant
@@ -276,13 +276,13 @@ func (s *something) SetSignedTok(st string) {
 
 ### Error handling
 
-All errors should define in [internal/errors package](/docs/internal/errors). All errors should be start with `Err` prefix, and all errors should be handle if possible.
+All errors should define in [internal/errors package](https://github.com/vdaas/vald/blob/master/internal/errors). All errors should be start with `Err` prefix, and all errors should be handle if possible.
 
-Please use [internal/errgroup](/docs/internal/errgroup) for synchronized error handling on multi-goroutine processing.
+Please use [internal/errgroup](https://github.com/vdaas/vald/blob/master/internal/errgroup) for synchronized error handling on multi-goroutine processing.
 
 ### Logging
 
-We define our own logging interface in [internal/log package](/docs/internal/log). By default we use [glg](https://github.com/kpango/glg) to do the logging internally.
+We define our own logging interface in [internal/log package](https://github.com/vdaas/vald/blob/master/internal/log). By default we use [glg](https://github.com/kpango/glg) to do the logging internally.
 We defined the following logging levels.
 
 | Log level | Description                                                                                                                                                                                                                                    | Example situation                                                                                                                                  | Example message                                                                                                                                                                                                        |

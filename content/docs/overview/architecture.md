@@ -1,7 +1,7 @@
 ---
 title: "Architecture_content/Docs/Overview"
 date: 2020-06-10T14:34:56+09:00
-draft: true
+draft: false
 weight: 0
 menu:
   overview:

@@ -1,7 +1,7 @@
 {{ $current := .current }}
 {{ range .menu }}
   {{ if .HasChildren }}
-    <li class="withchild">
+    <li class="withchild open">
       {{- .Name -}}
       {{ if not (in $current "docs/v") }}
         {{ partial "menu/default.html" (dict "children" .Children "current" $current) . -}}
