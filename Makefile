@@ -26,9 +26,9 @@ deploy/staging: subup
 	@cd preview && git add -A;git commit -m ":arrow_up: v${LATEST_VERSION} `date`" && git push origin gh-pages
 	@rm -rf tmp_pre
 
-deploy/production: subup \
+deploy/production: subup
 	@hugo --environment=production
-	@cd tmp_pre && mv . ../public/
+	@cd tmp_pre && cp -r * ../public/
 	@cd public && git add -A;git commit -m ":arrow_up: v${LATEST_VERSION} `date`" && git push origin gh-pages
 	@rm -rf tmp_pre
 
