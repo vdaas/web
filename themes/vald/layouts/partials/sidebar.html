@@ -3,7 +3,7 @@
 <aside class="page">
   {{ $current := .Page.Permalink }}
   <nav>
-    <button class="index" id="list-button">Pages</button>
+    <button class="index" id="list-button" onclick="toggleAll()">Pages</button>
     <ul id="list-body">
       {{ partial "menu.html" (dict "menu" .Site.Menus.overview "current" $current) -}}
       {{ partial "menu.html" (dict "menu" .Site.Menus.tutorial "current" $current) -}}
