@@ -16,12 +16,23 @@ Vald WebSite repository based on HUGO.
 | └ production/config.toml 
 ├ content
 | └ docs                     // public document content
-├ preview                    // buil pages for staging (submodule of vdaas/web/gh-pages)
-├ public                     // buil pages for production (submodule of vdaas/vald/gh-pages)
+|   ├ index.html             // index.html 
+|   ├ overview               // overview document directory (latest version) 
+|   ├ tutorial               // tutorial document directory (latest version)
+|   ├ ...                    // another document directory (latest version) 
+|   └ v{major.minor}         // document directory for each release version
+├ preview                    // build pages for staging (submodule of vdaas/web/gh-pages)
+├ public                     // build pages for production (submodule of vdaas/vald/gh-pages)
 ├ static                     // static files (img, css, js) for content
-| ├ images
+| └ images
+|   ├ *.(png/svg)            // image files (latest version) 
+|   └ v{major.minor}         // image files directory for each release version
 └ themes                     // hugo themes
 ```
+
+## Requirements
+
+- Hugo: v0.0.69~
 
 ## How to develop
 
