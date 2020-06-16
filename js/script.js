@@ -14,13 +14,20 @@ window.onclick = (event) => {
       toggleSideAll();
     } else if (elem.id.startsWith('menu_')) {
       toggleSidebar(elem);
+    } else if (elem.href) {
+      let id = elem.href.split('/').slice(-1)[0];
+      if (id.startsWith('#')) {
+        setTimeout(() => {
+          scrollTocNav(id.replace('#', ''));
+        }, 200);
+      }
     }
     toggleTocNav(true);
   }
 }
 
 // scroll event
-window.onscroll = (event) => {
+window.onscroll = () => {
   const heads = document.querySelectorAll('.markdown h2, .markdown h3');
   const headerY = 64;
   let preId = '';
