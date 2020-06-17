@@ -1,7 +1,7 @@
 {{ $current := .current }}
 {{ range .menu }}
   {{ if .HasChildren }}
-    <li class="withchild" id="menu_{{ .Name }}" onclick="toggleSidebar('menu_{{ .Name }}')">
+    <li class="withchild" id="menu_{{ .Name }}">
       {{- .Name -}}
       {{ if not (in $current "docs/v") }}
         {{ partial "menu/default.html" (dict "children" .Children "current" $current) . -}}
