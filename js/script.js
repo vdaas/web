@@ -2,6 +2,11 @@
 window.onload = () => {
   initSidebar();
   window.scroll(0, 0)
+  if (location.hash.length > 0) {
+    setTimeout(() => {
+      scrollTocNav(location.hash.replace('#', ''));
+    }, 100)
+  }
 }
 
 // click event
