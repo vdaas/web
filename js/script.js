@@ -167,11 +167,14 @@ const initSidebar = () => {
 // toggle all by click
 const toggleSideAll = () => {
   let sidebar = document.getElementById('list-body');
+  let rootBar = document.getElementById('list-button');
   if (sidebar) {
     if (sidebar.style.display.length > 0) {
       sidebar.style.display = '';
+      rootBar.className = 'index open';
     } else if (sidebar.style.length === 0) {
       sidebar.style.display = 'none';
+      rootBar.className = 'index';
     }
   }
 }
