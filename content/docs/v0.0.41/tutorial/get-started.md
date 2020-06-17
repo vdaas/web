@@ -1,6 +1,6 @@
 ---
 title: "Get Started_content/Docs/V0.0.41/Tutorial"
-date: 2020-06-15T18:36:04+09:00
+date: 2020-06-17T12:29:44+09:00
 draft: true
 weight: 0
 menu:

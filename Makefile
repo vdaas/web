@@ -132,9 +132,9 @@ define pre-create-doc
 		cd content/docs && ls | egrep -v "^v{1}\d+" | xargs rm -rf ; \
 	fi
 	@mkdir -p tmp/vald-$(LATEST_VERSION)/docs/contributing
-	@cp tmp/vald-$(LATEST_VERSION)/CONTRIBUTING.md tmp/vald-$(LATEST_VERSION)/docs/contributing/contribute-guide.md
+	@cp tmp/vald-$(LATEST_VERSION)/CONTRIBUTING.md tmp/vald-$(LATEST_VERSION)/docs/contributing/contributing-guide.md
 	@mkdir -p tmp/vald-$(LATEST_VERSION)/docs/release
-	@cp tmp/vald-$(LATEST_VERSION)/CHANGELOG.md tmp/vald-$(LATEST_VERSION)/docs/release/CHANGELOG.md
+	@cp tmp/vald-$(LATEST_VERSION)/CHANGELOG.md tmp/vald-$(LATEST_VERSION)/docs/release/changelog.md
 endef
 
 define sync-image
