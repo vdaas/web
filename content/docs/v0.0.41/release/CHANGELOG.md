@@ -1,7 +1,7 @@
 ---
-title: "CHANGELOG_content/Docs/Release"
-date: 2020-06-15T18:36:11+09:00
-draft: false
+title: "CHANGELOG_content/Docs/V0.0.41/Release"
+date: 2020-06-15T18:36:06+09:00
+draft: true
 weight: 0
 menu:
   release:

@@ -4,5 +4,6 @@ title = "Vald"
 theme = "vald"
 publishDir = "tmp_pre"
 disableKinds = "RSS"
+googleAnalytics = "UA-164223416-1"
 [markup.goldmark.renderer]
     unsafe= true
