@@ -1,55 +1,6 @@
 // initial sidebar
 window.onload = () => {
   initSidebar();
-  window.scroll(0, 0)
-}
-
-// click event
-window.onclick = (event) => {
-  let elem = getElemByEvent(event);
-  if (elem.id === 'current') {
-    toggleTocNav();
-  } else {
-    if (elem.id === 'list-button') {
-      toggleSideAll();
-    } else if (elem.id.startsWith('menu_')) {
-      toggleSidebar(elem);
-    } else if (elem.href) {
-      let id = elem.href.split('/').slice(-1)[0];
-      if (id.startsWith('#')) {
-        setTimeout(() => {
-          scrollTocNav(id.replace('#', ''));
-        }, 200);
-      }
-    }
-    toggleTocNav(true);
-  }
-}
-
-// scroll event
-window.onscroll = () => {
-  const heads = document.querySelectorAll('.markdown h2, .markdown h3');
-  const headerY = 64;
-  let preId = '';
-  let preDiff = 100000;
-  let nextId = '';
-  let nextDiff = 100000;
-  for (let head of heads) {
-    const pos = head.getBoundingClientRect().top - headerY;
-    if (pos < 0 && Math.abs(0 - pos) < preDiff) {
-      preDiff = Math.abs(0 - pos);
-      preId = head.id;
-    } else if (pos > 0 && Math.abs(0 - pos) < nextDiff) {
-      nextDiff = Math.abs(0 - pos);
-      nextId = head.id;
-    }
-  }
-
-  if (!preId) {
-    scrollTocNav(nextId);
-  } else {
-    (preDiff < nextDiff) ? scrollTocNav(preId) : scrollTocNav(nextId);
-  }
 }
 
 (function() {
@@ -160,7 +111,7 @@ const initSidebar = () => {
 }
 
 // toggle all by click
-const toggleSideAll = () => {
+const toggleAll = () => {
   let sidebar = document.getElementById('list-body');
   if (sidebar) {
     if (sidebar.style.display.length > 0) {
@@ -172,50 +123,12 @@ const toggleSideAll = () => {
 }
 
 // toggle each category by click
-const toggleSidebar = (elem) => {
-  if (elem.className.includes('open')) {
-    elem.className = 'withchild';
+const toggleSidebar = (id) => {
+  let elem = document.getElementById(id);
+  const className = elem.className;
+  if (className.includes('open')) {
+    elem.className = className.split(' ')[0];
   } else {
-    elem.className = 'withchild open';
+    elem.className += ' open';
   }
-}
-
-// toggle toc nav
-const toggleTocNav = (close = false) => {
-  let elem = document.getElementById('current');
-  if (!elem) return;
-  if (close) {
-    elem.className = 'current';
-  } else {
-    if (elem.className.includes('open')) {
-      elem.className = 'current'
-    } else {
-      elem.className = 'current open';
-    }
-  }
-}
-
-// scroll toc nav
-const scrollTocNav = (id) => {
-  let toc = document.querySelectorAll('.current a');
-  id = '#' + id;
-  for (const link of toc) {
-    link.className = (link.hash === id) ? 'view' : '';
-  }
-}
-
-const getElemByEvent = (event) => {
-  let elem = event.target;
-  // for TOC
-  if (!elem.id && (elem.className === 'dot' || elem.className === 'menu')) {
-    elem = getParentByElem(elem);
-    if (!elem.id && elem.className === 'menu') {
-      elem = getParentByElem(elem)
-    }
-  }
-  return elem;
-}
-
-const getParentByElem = (elem) => {
-  return elem.parentNode;
 }
