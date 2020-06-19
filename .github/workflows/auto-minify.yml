@@ -81,8 +81,6 @@ jobs:
       - name: Check Changes
         uses: technote-space/get-diff-action@v1
         id: git_diff_preview
-        with:
-          PREFIX_FILTER: preview
       - name: push
         if: steps.git_diff_preview.outputs.diff
         run: |
