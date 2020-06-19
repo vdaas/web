@@ -74,19 +74,32 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
       - name: Stage Build
         run: |
-          make deploy/stage
+          make build/stage
+      - name: Check Changes preview 
+        uses: technote-space/get-diff-action@v1
+        id: git_diff_preview
+        with:
+          PREFIX_FILTER: preview/
+      - name: Stage Deploy
+        if: steps.git_diff_preview.outputs.diff
+        run: |
+          cd preview
+          git checkout gh-pages
+          git add .
+          git commit --signoff -m ":arrow_up: v${LATEST_VERSION} `date`"
+          git push origin gh-pages
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
       - name: Check Changes
         uses: technote-space/get-diff-action@v1
-        id: git_diff_preview
+        id: git_diff_root
       - name: push
-        if: steps.git_diff_preview.outputs.diff
+        if: steps.git_diff_root.outputs.diff
         run: |
           git add preview
           git commit --signoff -m ":robot: auto update stage :arrow_up:"
-          git push origin test
+          git push origin ${{ github.head_ref }} 
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
