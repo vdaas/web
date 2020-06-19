@@ -4,18 +4,18 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     {{ partial "googleanalytics.html" . }}
     <!-- /Global site tag (gtag.js) - Google Analytics -->
+    <link rel="canonical" href="https://vald.vdaas.org">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="robots" content="index, follow">
-    <title>Vald</title>
-    <meta name="description" content="Vald is high scalable distributed high-speed approximate nearest neighbor search engine">
-    <meta name="keywords" content="vald,vdass">
+    <meta name="robots" content='{{ if eq .Hugo.Environment "development" }}index, follow{{ else }}noindex{{ end }}'>
+    <title>{{ .Site.Title }}{{ if not .IsHome}} | {{ index (split .Name "_") 0 }}{{ end }}</title>
+    <meta name="description" content="{{ .Site.Params.description }}"}>
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- OGP -->
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Vald">
-    <meta property="og:description" content="Vald is high scalable distributed high-speed approximate nearest neighbor search engine">
+    <meta property="og:title" content="{{ .Site.Title }}{{ if not .IsHome }} | {{ index (split .Name "_") 0 }}{{ end }}">
+    <meta property="og:description" content="{{ .Site.Params.description }}">
     <meta property="og:url" content="https://vald.vdaas.org">
     <meta property="og:image" content="{{ .Site.BaseURL }}/images/ogp_vald.png">
     <meta property="og:site_name" content="vald">
@@ -25,7 +25,6 @@
     <!-- <meta name="twitter:card" content="summary_large_image"> -->
     <meta name="twitter:card" content="app">
     <link rel="shortcut icon" href="{{ .Site.BaseURL }}/favicon.ico">
-    <link rel="canonical" href="https://github.com/vdaas/vald">
     <!-- load css files and js files -->
     {{ partial "style.html" . }}
   </head>

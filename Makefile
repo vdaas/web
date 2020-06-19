@@ -19,16 +19,24 @@ run:
 subup:
 	git submodule foreach git pull origin gh-pages
 
-deploy/staging: subup
+build/stage:
 	@hugo --environment=staging -D --minify
 	@cd tmp_pre && cp -r * ../preview/
 	@cp Makefile preview/Makefile
+
+deploy/stage: subup \
+	build/stage
 	@cd preview && git add -A;git commit -m ":arrow_up: v${LATEST_VERSION} `date`" && git push origin gh-pages
 	@rm -rf tmp_pre
 
-deploy/production: subup
+build/production:
 	@hugo --environment=production --minify
 	@cd tmp_pre && cp -r * ../public/
+	@cd public && git add -A;git commit -m ":arrow_up: v${LATEST_VERSION} `date`" && git push origin gh-pages
+	@rm -rf tmp_pre
+
+deploy/production: subup \
+	build/production
 	@cd public && git add -A;git commit -m ":arrow_up: v${LATEST_VERSION} `date`" && git push origin gh-pages
 	@rm -rf tmp_pre
 

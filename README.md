@@ -66,7 +66,7 @@ Before deploy to a staging environment, please check that there are some content
 - When you'd like to create the Pull Request or check update, we recommend you deploy to a staging environment.
 
   ```bash
-  $ make deploy/staging
+  $ make deploy/stage
   ```
 
   We can check at [Vald Netlify](https://vald.netlify.app)

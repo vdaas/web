@@ -6,3 +6,5 @@ publishDir = "tmp_pre"
 disableKinds = "RSS"
 [markup.goldmark.renderer]
     unsafe= true
+[params]
+    description = "Vald is high scalable distributed high-speed approximate nearest neighbor search engine"
