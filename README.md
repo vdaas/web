@@ -66,7 +66,7 @@ Before deploy to a staging environment, please check that there are some content
 - When you'd like to create the Pull Request or check update, we recommend you deploy to a staging environment.
 
   ```bash
-  $ make deploy/staging
+  $ make stage/all 
   ```
 
   We can check at [Vald Netlify](https://vald.netlify.app)
@@ -94,7 +94,7 @@ $ make publish/version
 - When you'd like to publish the latest Vald WebSite, you can apply by below command.
 
   ```bash
-  $ make deploy/production
+  $ make production/all
   ```
 
   We can check at [Vald Official WebSite](https://vald.vdaas.org)
