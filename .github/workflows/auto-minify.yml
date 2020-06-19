@@ -94,7 +94,7 @@ jobs:
       - name: Check Changes
         uses: technote-space/get-diff-action@v1
         id: git_diff_root
-      - name: push
+      - name: Commit Stage Changes
         if: steps.git_diff_root.outputs.diff
         run: |
           git add preview
