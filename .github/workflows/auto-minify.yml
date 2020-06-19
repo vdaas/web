@@ -26,7 +26,7 @@ jobs:
         uses: technote-space/get-diff-action@v1
         id: git_diff_static
         with:
-          - PREFIX_FILTER: themes/vald/static/
+          PREFIX_FILTER: themes/vald/static/
       - name: Commit Minified Files
         if: steps.git_diff_static.outputs.diff
         run: |
@@ -44,7 +44,7 @@ jobs:
   deploy-stage:
     name: Deploy to Stage Env
     runs-on: ubuntu-latest
-    need:
+    needs:
       - minify-css-and-js
     steps:
       - name: Checkout Actions
@@ -82,7 +82,7 @@ jobs:
         uses: technote-space/get-diff-action@v1
         id: git_diff_preview
         with:
-          - PREFIX_FILTER: preview
+          PREFIX_FILTER: preview
       - name: push
         if: steps.git_diff_preview.outputs.diff
         run: |
