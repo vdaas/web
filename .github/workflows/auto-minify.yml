@@ -1,0 +1,94 @@
+name: 'Minify Assets Files(css/js) and Deploy to Stage'
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  minify-css-and-js:
+    name: Minify CSS and JS files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Actions
+        uses: actions/checkout@v1
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Auco Minify JS
+        uses: nizarmah/auto-minify@master
+        with:
+          directory: "themes/vald/static/js"
+      - name: Auco Minify CSS
+        uses: nizarmah/auto-minify@master
+        with:
+          directory: "themes/vald/static/css"
+      - name: Check Changes
+        uses: technote-space/get-diff-action@v1
+        id: git_diff_static
+        with:
+          - PREFIX_FILTER: themes/vald/static/
+      - name: Commit Minified Files
+        if: steps.git_diff_static.outputs.diff
+        run: |
+          git config --global user.name "vdaas-ci"
+          git config --global user.email "ci@vdaas.org"
+
+          git add themes/vald/static
+          git commit --signoff -m ":robot: auto update minified files :recycle:"
+
+          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin ${{ github.head_ref }}
+        env:
+          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+  deploy-stage:
+    name: Deploy to Stage Env
+    runs-on: ubuntu-latest
+    need:
+      - minify-css-and-js
+    steps:
+      - name: Checkout Actions
+        uses: actions/checkout@v1
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: latest
+      - name: Setup for Build
+        run: |
+          git config --global user.name "vdaas-ci"
+          git config --global user.email "ci@vdaas.org"
+
+          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git pull origin ${{ github.head_ref }}
+
+          git submodule update --init --recursive
+
+          cd preview
+          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git checkout gh-pages
+          git pull origin gh-pages
+        env:
+          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+      - name: Stage Build
+        run: |
+          make deploy/stage
+        env:
+          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+      - name: Check Changes
+        uses: technote-space/get-diff-action@v1
+        id: git_diff_preview
+        with:
+          - PREFIX_FILTER: preview
+      - name: push
+        if: steps.git_diff_preview.outputs.diff
+        run: |
+          git add preview
+          git commit --signoff -m ":robot: auto update stage :arrow_up:"
+          git push origin test
+        env:
+          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
