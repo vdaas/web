@@ -91,11 +91,8 @@ jobs:
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-      - name: Check Changes
-        uses: technote-space/get-diff-action@v1
-        id: git_diff_root
       - name: Commit Stage Changes
-        if: steps.git_diff_root.outputs.diff
+        if: steps.git_diff_preview.outputs.diff
         run: |
           git add preview
           git commit --signoff -m ":robot: auto update stage :arrow_up:"
