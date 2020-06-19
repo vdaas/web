@@ -13,7 +13,9 @@ jobs:
       - name: Checkout Actions
         uses: actions/checkout@v1
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{GITHUB_BRANCH}}
+        env:
+          GITHUB_BRANCH: ${{ (github.head_ref == "" ) && "master" || github.head_ref}}
       - name: Auco Minify JS
         uses: nizarmah/auto-minify@master
         with:
@@ -37,10 +39,11 @@ jobs:
           git commit --signoff -m ":robot: auto update minified files :recycle:"
 
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push origin ${{ github.head_ref }}
+          git push origin ${{GITHUB_BRANCH}}
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+          GITHUB_BRANCH: ${{ (github.head_ref == "" ) && "master" || github.head_ref}}
   deploy-stage:
     name: Deploy to Stage Env
     runs-on: ubuntu-latest
@@ -50,7 +53,7 @@ jobs:
       - name: Checkout Actions
         uses: actions/checkout@v1
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.ref }}
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -61,7 +64,7 @@ jobs:
           git config --global user.email "ci@vdaas.org"
 
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git pull origin ${{ github.head_ref }}
+          git pull origin ${{GITHUB_BRANCH}}
 
           git submodule update --init --recursive
 
@@ -72,6 +75,7 @@ jobs:
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+          GITHUB_BRANCH: ${{ (github.head_ref == "" ) && "master" || github.head_ref}}
       - name: Stage Build
         run: |
           make build/stage
@@ -96,7 +100,8 @@ jobs:
         run: |
           git add preview
           git commit --signoff -m ":robot: auto update stage :arrow_up:"
-          git push origin ${{ github.head_ref }} 
+          git push origin ${{GITHUB_BRANCH}}
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+          GITHUB_BRANCH: ${{ (github.head_ref == "" ) && "master" || github.head_ref}}
