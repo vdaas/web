@@ -42,7 +42,7 @@ jobs:
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-          GITHUB_BRANCH: ${{ (github.head_ref == "" ) && "master" || github.head_ref}}
+          GITHUB_BRANCH: ${{ (github.event == "pull_request" ) && github.head_ref || "master"}}
   deploy-stage:
     name: Deploy to Stage Env
     runs-on: ubuntu-latest
@@ -75,7 +75,7 @@ jobs:
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-          GITHUB_BRANCH: ${{ (github.head_ref == "" ) && "master" || github.head_ref}}
+          GITHUB_BRANCH: ${{ (github.event == "pull_request" ) && github.head_ref || "master"}}
       - name: Stage Build
         run: |
           make build/stage
@@ -104,4 +104,4 @@ jobs:
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-          GITHUB_BRANCH: ${{ (github.head_ref == "" ) && "master" || github.head_ref}}
+          GITHUB_BRANCH: ${{ (github.event == "pull_request" ) && github.head_ref || "master"}}
