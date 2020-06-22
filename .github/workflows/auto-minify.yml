@@ -13,9 +13,7 @@ jobs:
       - name: Checkout Actions
         uses: actions/checkout@v1
         with:
-          ref: ${{GITHUB_BRANCH}}
-        env:
-          GITHUB_BRANCH: ${{ (github.head_ref == "" ) && "master" || github.head_ref}}
+          ref: ${{github.head_ref}}
       - name: Auco Minify JS
         uses: nizarmah/auto-minify@master
         with:
@@ -34,6 +32,7 @@ jobs:
         run: |
           git config --global user.name "vdaas-ci"
           git config --global user.email "ci@vdaas.org"
+          git checkout ${{GITHUB_BRANCH}}
 
           git add themes/vald/static
           git commit --signoff -m ":robot: auto update minified files :recycle:"
@@ -53,7 +52,7 @@ jobs:
       - name: Checkout Actions
         uses: actions/checkout@v1
         with:
-          ref: ${{ github.ref }}
+          ref: ${{ github.head_ref }}
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -62,6 +61,7 @@ jobs:
         run: |
           git config --global user.name "vdaas-ci"
           git config --global user.email "ci@vdaas.org"
+          git checkout ${{GITHUB_BRANCH}}
 
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git pull origin ${{GITHUB_BRANCH}}
