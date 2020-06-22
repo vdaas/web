@@ -32,17 +32,17 @@ jobs:
         run: |
           git config --global user.name "vdaas-ci"
           git config --global user.email "ci@vdaas.org"
-          git checkout ${{GITHUB_BRANCH}}
+          git checkout ${{BRANCH}}
 
           git add themes/vald/static
           git commit --signoff -m ":robot: auto update minified files :recycle:"
 
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push origin ${{GITHUB_BRANCH}}
+          git push origin ${{BRANCH}}
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-          GITHUB_BRANCH: ${{ (github.event_name == "pull_request" ) && github.head_ref || "master"}}
+          BRANCH: ${{ (github.event_name == "pull_request" ) && github.head_ref || "master"}}
   deploy-stage:
     name: Deploy to Stage Env
     runs-on: ubuntu-latest
@@ -61,10 +61,10 @@ jobs:
         run: |
           git config --global user.name "vdaas-ci"
           git config --global user.email "ci@vdaas.org"
-          git checkout ${{GITHUB_BRANCH}}
+          git checkout ${{BRANCH}}
 
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git pull origin ${{GITHUB_BRANCH}}
+          git pull origin ${{BRANCH}}
 
           git submodule update --init --recursive
 
@@ -75,7 +75,7 @@ jobs:
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-          GITHUB_BRANCH: ${{ (github.event_name == "pull_request" ) && github.head_ref || "master"}}
+          BRANCH: ${{ (github.event_name == "pull_request" ) && github.head_ref || "master"}}
       - name: Stage Build
         run: |
           make build/stage
@@ -100,8 +100,8 @@ jobs:
         run: |
           git add preview
           git commit --signoff -m ":robot: auto update stage :arrow_up:"
-          git push origin ${{GITHUB_BRANCH}}
+          git push origin ${{BRANCH}}
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-          GITHUB_BRANCH: ${{ (github.event_name == "pull_request" ) && github.head_ref || "master"}}
+          BRANCH: ${{ (github.event_name == "pull_request" ) && github.head_ref || "master"}}
