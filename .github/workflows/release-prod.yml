@@ -1,0 +1,75 @@
+name: 'Production Release'
+on:
+  push:
+    branches: master
+
+jobs:
+  deploy-prod:
+    name: Check Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Release
+        id: check_release
+        run: |
+          git checkout master
+          git pull origin master
+          LAST_COMMIT_MESSAGE=`git log --pretty=format:%s -1`
+          PR_NUM=`echo "$LAST_COMMIT_MESSAGE" | grep -o "#[[:digit:]]\+" | sed -e 's/#//' | head -1`
+          if [ ! -z "${PR_NUM}" ] ; then \
+            TITLE=`echo ${LAST_COMMIT_MESSAGE} | grep -o "\[release\]"`
+            if [ ! -z "${TITLE}" ] ; then \
+              echo "::set-output name=release::true"
+            fi
+          fi
+      - name: Setup Hugo
+        if: steps.check_release.outputs.release == 'true'
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: latest
+      - name: Setup for Build
+        if: steps.check_release.outputs.release == 'true'
+        run: |
+          git config --global user.name "vdaas-ci"
+          git config --global user.email "ci@vdaas.org"
+
+          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git pull origin master
+
+          git submodule update --init --recursive
+
+          cd public
+          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git checkout gh-pages
+          git pull origin gh-pages
+        env:
+          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+      - name: Stage Build
+        if: steps.check_release.outputs.release == 'true'
+        run: |
+          make build/production
+      - name: Check Changes preview 
+        uses: technote-space/get-diff-action@v1
+        id: git_diff_preview
+        with:
+          PREFIX_FILTER: public/
+      - name: Production Deploy
+        if: steps.git_diff_preview.outputs.diff
+        run: |
+          cd public
+          git checkout gh-pages
+          git add .
+          git commit --signoff -m ":arrow_up: v${LATEST_VERSION} `date`"
+          git push origin gh-pages
+        env:
+          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+      - name: Commit Production Changes
+        if: steps.git_diff_preview.outputs.diff
+        run: |
+          git add public
+          git commit --signoff -m ":robot: auto update stage :arrow_up:"
+          git push origin master
+        env:
+          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
