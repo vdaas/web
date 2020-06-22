@@ -11,9 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Actions
+        if: github.event_name == 'pull_request'
         uses: actions/checkout@v1
         with:
           ref: ${{github.head_ref}}
+      - name: Checkout Actions (master)
+        if: github.ref == 'refs/heads/master'
+        run: |
+          git checkout master
       - name: Auco Minify JS
         uses: nizarmah/auto-minify@master
         with:
@@ -27,22 +32,34 @@ jobs:
         id: git_diff_static
         with:
           PREFIX_FILTER: themes/vald/static/
-      - name: Commit Minified Files
-        if: steps.git_diff_static.outputs.diff
+      - name: Commit Minified Files (pull_request)
+        if: steps.git_diff_static.outputs.diff && github.event_name== 'pull_request'
         run: |
           git config --global user.name "vdaas-ci"
           git config --global user.email "ci@vdaas.org"
-          git checkout ${{BRANCH}}
 
           git add themes/vald/static
           git commit --signoff -m ":robot: auto update minified files :recycle:"
 
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push origin ${{BRANCH}}
+          git push origin ${{ github.head_ref }}
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-          BRANCH: ${{ (github.event_name == "pull_request" ) && github.head_ref || "master"}}
+      - name: Commit Minified Files (master)
+        if: steps.git_diff_static.outputs.diff && github.ref == 'refs/heads/master'
+        run: |
+          git config --global user.name "vdaas-ci"
+          git config --global user.email "ci@vdaas.org"
+
+          git add themes/vald/static
+          git commit --signoff -m ":robot: auto update minified files :recycle:"
+
+          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin master
+        env:
+          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
   deploy-stage:
     name: Deploy to Stage Env
     runs-on: ubuntu-latest
@@ -50,21 +67,26 @@ jobs:
       - minify-css-and-js
     steps:
       - name: Checkout Actions
+        if: github.event_name == 'pull_request'
         uses: actions/checkout@v1
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{github.head_ref}}
+      - name: Checkout Actions (master)
+        if: github.ref == 'refs/heads/master'
+        run: |
+          git checkout master
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: latest
       - name: Setup for Build
+        if: github.event_name == 'pull_request'
         run: |
           git config --global user.name "vdaas-ci"
           git config --global user.email "ci@vdaas.org"
-          git checkout ${{BRANCH}}
 
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git pull origin ${{BRANCH}}
+          git pull origin ${{ github.head_ref }}
 
           git submodule update --init --recursive
 
@@ -75,7 +97,24 @@ jobs:
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-          BRANCH: ${{ (github.event_name == "pull_request" ) && github.head_ref || "master"}}
+      - name: Setup for Build (master)
+        if: github.event_name == 'pull_request'
+        run: |
+          git config --global user.name "vdaas-ci"
+          git config --global user.email "ci@vdaas.org"
+
+          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git pull origin master
+
+          git submodule update --init --recursive
+
+          cd preview
+          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git checkout gh-pages
+          git pull origin gh-pages
+        env:
+          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
       - name: Stage Build
         run: |
           make build/stage
@@ -96,12 +135,20 @@ jobs:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
       - name: Commit Stage Changes
-        if: steps.git_diff_preview.outputs.diff
+        if: steps.git_diff_preview.outputs.diff && github.event_name == 'pull_request'
         run: |
           git add preview
           git commit --signoff -m ":robot: auto update stage :arrow_up:"
-          git push origin ${{BRANCH}}
+          git push origin ${{ github.head_ref }}
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-          BRANCH: ${{ (github.event_name == "pull_request" ) && github.head_ref || "master"}}
+      - name: Commit Stage Changes (master)
+        if: steps.git_diff_preview.outputs.diff && github.ref == 'refs/heads/master'
+        run: |
+          git add preview
+          git commit --signoff -m ":robot: auto update stage :arrow_up:"
+          git push origin master
+        env:
+          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
