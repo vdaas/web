@@ -17,8 +17,9 @@ jobs:
           ref: ${{github.head_ref}}
       - name: Checkout Actions (master)
         if: github.ref == 'refs/heads/master'
-        run: |
-          git checkout master
+        uses: actions/checkout@v1
+        with:
+          ref: ${{github.ref}}
       - name: Auco Minify JS
         uses: nizarmah/auto-minify@master
         with:
@@ -51,6 +52,7 @@ jobs:
         run: |
           git config --global user.name "vdaas-ci"
           git config --global user.email "ci@vdaas.org"
+          git checkout master
 
           git add themes/vald/static
           git commit --signoff -m ":robot: auto update minified files :recycle:"
