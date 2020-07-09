@@ -16,7 +16,6 @@ jobs:
       - name: Check Release
         id: check_release
         run: |
-          git checkout master
           git pull origin master
           LAST_COMMIT_MESSAGE=`git log --pretty=format:%s -1`
           PR_NUM=`echo "$LAST_COMMIT_MESSAGE" | grep -o "#[[:digit:]]\+" | sed -e 's/#//' | head -1`
