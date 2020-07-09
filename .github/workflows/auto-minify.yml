@@ -75,8 +75,9 @@ jobs:
           ref: ${{github.head_ref}}
       - name: Checkout Actions (master)
         if: github.ref == 'refs/heads/master'
-        run: |
-          git checkout master
+        uses: actions/checkout@v1
+        with:
+          ref: ${{github.ref}}
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -100,7 +101,7 @@ jobs:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
       - name: Setup for Build (master)
-        if: github.event_name == 'pull_request'
+        if: github.ref == 'refs/heads/master'
         run: |
           git config --global user.name "vdaas-ci"
           git config --global user.email "ci@vdaas.org"
