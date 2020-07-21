@@ -1,6 +1,6 @@
 ---
-title: "Architecture_content/Docs/Overview"
-date: 2020-07-21T18:17:31+09:00
+title: "Architecture_content/Docs/V0.0.46/Overview"
+date: 2020-07-21T18:17:28+09:00
 draft: true
 weight: 0
 menu:
@@ -69,13 +69,13 @@ This is the most important part for the users to understand Vald.
 
 The below image is the overview of Vald's architecture.
 
-<img src="/images/vald_architecture_overview.png" />
+<img src="/images/v0.0.46/vald_architecture_overview.png" />
 
 We will explain this image in the following sections.
 
 ### Insert
 
-<img src="/images/insert_flow.png" />
+<img src="/images/v0.0.46/insert_flow.png" />
 
 When the user inserts data into Vald:
 
@@ -100,7 +100,7 @@ When the user inserts data into Vald:
 
 ### Search
 
-<img src="/images/search_flow.png" />
+<img src="/images/v0.0.46/search_flow.png" />
 
 When the user searches a vector from Vald:
 
