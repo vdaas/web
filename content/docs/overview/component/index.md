@@ -1,7 +1,7 @@
 ---
 title: "Component_content/Docs/Overview/Component"
 date: 2020-07-21T18:17:32+09:00
-draft: true
+draft: false
 weight: 0
 menu:
   component:
