@@ -1,6 +1,6 @@
 ---
-title: "Get Started_content/Docs/Tutorial"
-date: 2020-08-07T17:22:22+09:00
+title: "Get Started_content/Docs/V0.0.50/Tutorial"
+date: 2020-08-07T17:22:19+09:00
 draft: true
 weight: 0
 menu:
