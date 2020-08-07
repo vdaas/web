@@ -18,8 +18,10 @@ jobs:
         run: |
           LAST_COMMIT_MESSAGE=`git log --pretty=format:%s -1`
           PR_NUM=`echo "$LAST_COMMIT_MESSAGE" | grep -o "#[[:digit:]]+" | sed -e 's/#//' | head -1`
+          echo "${PR_NUM}"
           if [ ! -z "${PR_NUM}" ] ; then \
             TITLE=`echo ${LAST_COMMIT_MESSAGE} | grep -o "release"`
+            echo "${TITLE}"
             if [ ! -z "${TITLE}" ] ; then \
               echo "::set-output name=release::true"
             fi
