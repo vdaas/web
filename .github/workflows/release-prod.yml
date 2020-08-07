@@ -32,46 +32,47 @@ jobs:
       - name: Setup for Build
         if: steps.check_release.outputs.release == 'true'
         run: |
-          git config --global user.name "vdaas-ci"
-          git config --global user.email "ci@vdaas.org"
-
-          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-
-          git submodule update --init --recursive
-
-          cd public
-          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git checkout gh-pages
-          git pull origin gh-pages
-        env:
-          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
-          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-      - name: Production Build
-        if: steps.check_release.outputs.release == 'true'
-        run: |
-          make build/production
-      - name: Check Changes preview 
-        uses: technote-space/get-diff-action@v1
-        id: git_diff_preview
-        with:
-          PREFIX_FILTER: public/
-      - name: Production Deploy
-        if: steps.git_diff_preview.outputs.diff
-        run: |
-          cd public
-          git checkout gh-pages
-          git add .
-          git commit --signoff -m ":arrow_up: v${LATEST_VERSION} `date`"
-          git push origin gh-pages
-        env:
-          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
-          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-      - name: Commit Production Changes
-        if: steps.git_diff_preview.outputs.diff
-        run: |
-          git add public
-          git commit --signoff -m ":robot: auto update production :arrow_up:"
-          git push origin master
-        env:
-          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
-          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+          echo "hoge"
+      #     git config --global user.name "vdaas-ci"
+      #     git config --global user.email "ci@vdaas.org"
+      # 
+      #     git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+      # 
+      #     git submodule update --init --recursive
+      # 
+      #     cd public
+      #     git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+      #     git checkout gh-pages
+      #     git pull origin gh-pages
+      #   env:
+      #     GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+      #     GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+      # - name: Production Build
+      #   if: steps.check_release.outputs.release == 'true'
+      #   run: |
+      #     make build/production
+      # - name: Check Changes preview 
+      #   uses: technote-space/get-diff-action@v1
+      #   id: git_diff_preview
+      #   with:
+      #     PREFIX_FILTER: public/
+      # - name: Production Deploy
+      #   if: steps.git_diff_preview.outputs.diff
+      #   run: |
+      #     cd public
+      #     git checkout gh-pages
+      #     git add .
+      #     git commit --signoff -m ":arrow_up: v${LATEST_VERSION} `date`"
+      #     git push origin gh-pages
+      #   env:
+      #     GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+      #     GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+      # - name: Commit Production Changes
+      #   if: steps.git_diff_preview.outputs.diff
+      #   run: |
+      #     git add public
+      #     git commit --signoff -m ":robot: auto update production :arrow_up:"
+      #     git push origin master
+      #   env:
+      #     GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+      #     GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
