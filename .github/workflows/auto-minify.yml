@@ -33,6 +33,31 @@ jobs:
         id: git_diff_static
         with:
           PREFIX_FILTER: themes/vald/static/
+      # - name: Commit Minified Files (pull_request)	
+      #   if: steps.git_diff_static.outputs.diff && github.event_name== 'pull_request'	
+      #   run: |	
+      #     git config --global user.name "vdaas-ci"	
+      #     git config --global user.email "ci@vdaas.org"	
+      #     git add themes/vald/static	
+      #     git commit --signoff -m ":robot: auto update minified files :recycle:"	
+      #     git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"	
+      #     git push origin ${{ github.head_ref }}	
+      #   env:	
+      #     GITHUB_USER: ${{ secrets.DISPATCH_USER }}	
+      #     GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}	
+      # - name: Commit Minified Files (master)	
+      #   if: steps.git_diff_static.outputs.diff && github.ref == 'refs/heads/master'	
+      #   run: |	
+      #     git config --global user.name "vdaas-ci"	
+      #     git config --global user.email "ci@vdaas.org"	
+      #     git checkout master	
+      #     git add themes/vald/static	
+      #     git commit --signoff -m ":robot: auto update minified files :recycle:"	
+      #     git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"	
+      #     git push origin master	
+      #   env:	
+      #     GITHUB_USER: ${{ secrets.DISPATCH_USER }}	
+      #     GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}	
   deploy-stage:
     name: Deploy to Stage Env
     runs-on: ubuntu-latest
