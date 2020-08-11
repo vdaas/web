@@ -1,7 +1,7 @@
 ---
 title: "Coding Style_content/Docs/Contributing"
 date: 2020-08-07T17:22:23+09:00
-draft: true
+draft: false
 weight: 200
 menu:
   contributing:
