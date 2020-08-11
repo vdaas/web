@@ -125,6 +125,7 @@ jobs:
         id: git_diff_preview
         run: |
           diff=`git diff preview/`
+          git diff preview
           if [ ! -z "${diff}"] ; then \
             echo "::set-output name=diff::true"
           fi
