@@ -126,7 +126,7 @@ jobs:
         run: |
           diff=`git diff preview/`
           echo $diff
-          if [ ! -z $diff ] ; then \
+          if [ ! -z "$diff" ] ; then \
             echo "::set-output name=diff::true"
           fi
       - name: Stage Deploy
