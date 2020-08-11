@@ -1,8 +1,8 @@
 ---
-title: "Coding Style_content/Docs/Contributing"
-date: 2020-08-07T17:22:23+09:00
+title: "Coding Style_content/Docs/V0.0.50/Contributing"
+date: 2020-08-07T17:22:20+09:00
 draft: true
-weight: 200
+weight: 0
 menu:
   contributing:
     parent: Contributing
@@ -14,7 +14,7 @@ menu:
 
 This guideline includes the coding style for all Vald contributors and reviewers. Everyone should follow this guideline to keep the style consistent so everyone can understand and contribute to Vald easier once they learn this guideline. You should have the basic knowledge of how to write Go before contributing to Vald. If you found any bug please create [a GitHub issue](https://github.com/vdaas/vald/issues/new?assignees=&labels=type%2Fbug%2C+priority%2Fmedium%2C+team%2Fcore&template=bug_report&title=) and we will work on it.
 
-Please also read the [Contribution guideline](/docs/contributing/contributing-guide) before you start contributing to Vald.
+Please also read the [Contribution guideline](/docs/v0.0.50/contributing/contributing-guide) before you start contributing to Vald.
 
 ## Code Formatting and Naming Convension
 

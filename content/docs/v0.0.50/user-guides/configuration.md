@@ -1,6 +1,6 @@
 ---
-title: "Configuration_content/Docs/User Guides"
-date: 2020-08-07T17:22:24+09:00
+title: "Configuration_content/Docs/V0.0.50/User Guides"
+date: 2020-08-07T17:22:21+09:00
 draft: true
 weight: 0
 menu:

@@ -121,13 +121,16 @@ jobs:
       - name: Stage Build
         run: |
           make build/stage
-      - name: Check Changes preview 
-        uses: technote-space/get-diff-action@v1
+      - name: Check Changes preview
         id: git_diff_preview
-        with:
-          PREFIX_FILTER: preview/
+        run: |
+          diff=`git diff preview/`
+          echo $diff
+          if [ ! -z "$diff" ] ; then \
+            echo "::set-output name=diff::true"
+          fi
       - name: Stage Deploy
-        if: steps.git_diff_preview.outputs.diff
+        if: steps.git_diff_preview.outputs.diff == 'true'
         run: |
           cd preview
           git checkout gh-pages
@@ -138,7 +141,7 @@ jobs:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
       - name: Commit Stage Changes
-        if: steps.git_diff_preview.outputs.diff && github.event_name == 'pull_request'
+        if: steps.git_diff_preview.outputs.diff == 'true' && github.event_name == 'pull_request'
         run: |
           git add preview
           git commit --signoff -m ":robot: auto update stage :arrow_up:"
@@ -147,7 +150,7 @@ jobs:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
       - name: Commit Stage Changes (master)
-        if: steps.git_diff_preview.outputs.diff && github.ref == 'refs/heads/master'
+        if: steps.git_diff_preview.outputs.diff == 'true' && github.ref == 'refs/heads/master'
         run: |
           git add preview
           git commit --signoff -m ":robot: auto update stage :arrow_up:"
