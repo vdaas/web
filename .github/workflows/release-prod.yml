@@ -17,7 +17,7 @@ jobs:
         id: check_release
         run: |
           LAST_COMMIT_MESSAGE=`git log --pretty=format:%s -1`
-          PR_NUM=`echo "$LAST_COMMIT_MESSAGE" | grep -o "#[[:digit:]]+" | sed -e 's/#//' | head -1`
+          PR_NUM=`echo "$LAST_COMMIT_MESSAGE" | grep -o "#[[:digit:]]." | sed -e 's/#//' | head -1`
           if [ ! -z "$PR_NUM" ] ; then \
             TITLE=`echo "$LAST_COMMIT_MESSAGE" | grep -o "release"`
             if [ ! -z "$TITLE" ] ; then \
@@ -50,11 +50,13 @@ jobs:
         if: steps.check_release.outputs.release == 'true'
         run: |
           make build/production
-      - name: Check Changes preview 
-        uses: technote-space/get-diff-action@v1
+      - name: Check Changes public 
         id: git_diff_preview
-        with:
-          PREFIX_FILTER: public/
+        run: |
+          diff=`git diff public/`
+          if [ ! -z "$diff" ] ; then \
+            echo "::set-output name=diff::true"
+          fi
       - name: Production Deploy
         if: steps.git_diff_preview.outputs.diff
         run: |
