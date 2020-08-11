@@ -1,6 +1,6 @@
 ---
 title: "Changelog_content/Docs/Release"
-date: 2020-08-07T16:59:52+09:00
+date: 2020-08-07T17:22:23+09:00
 draft: true
 weight: 0
 menu:
