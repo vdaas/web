@@ -36,6 +36,7 @@ jobs:
           git config --global user.email "ci@vdaas.org"
 
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git pull origin ${{ github.head_ref }}
 
           git submodule update --init --recursive
 
