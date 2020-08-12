@@ -64,8 +64,14 @@ Before deploy to a staging environment, please check that there are some content
 
 
 - When you'd like to create the Pull Request or check update, we recommend you deploy to a staging environment.
+  The deployment for stage env will be done when you craete the PR.
+  If the deployment via Github Actions ends with failed, please deploy from local as below command.
 
   ```bash
+  // build files using Vald for stage env
+  $ make build/stage
+
+  // deploy to stage env
   $ make deploy/stage
   ```
 
@@ -91,9 +97,14 @@ $ make publish/version
 ```
 
 
-- When you'd like to publish the latest Vald WebSite, you can apply by below command.
+- When you'd like to publish the latest Vald WebSite, please craete the PR and merge it whose message is contains "release".
+  If the deploy is failed, please deploy by below command.
 
   ```bash
+  // build files using Vald for production env
+  $ make build/production
+
+  // deploy to production env
   $ make deploy/production
   ```
 
