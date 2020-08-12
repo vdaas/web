@@ -40,7 +40,7 @@ jobs:
           git submodule update --init --recursive
 
           cd public
-          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/vdaas/vald.git"
           git checkout gh-pages
           git pull origin gh-pages
         env:
