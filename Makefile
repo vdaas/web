@@ -32,8 +32,6 @@ deploy/stage: subup \
 build/production:
 	@hugo --environment=production --minify
 	@cd tmp_pre && cp -r * ../public/
-	@cd public && git add -A;git commit -m ":arrow_up: v${LATEST_VERSION} `date`" && git push origin gh-pages
-	@rm -rf tmp_pre
 
 deploy/production: subup \
 	build/production
