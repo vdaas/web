@@ -31,6 +31,7 @@ deploy/stage: subup \
 
 build/production:
 	@hugo --environment=production --minify
+	@cp tmp_pre/404.html tmp_pre/ipfs-404.html
 	@cd tmp_pre && cp -r * ../public/
 
 deploy/production: subup \
