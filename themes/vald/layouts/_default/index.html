@@ -192,6 +192,12 @@
         <h2 class="about__title">Vald Users</h2>
         <ul class="about__list about__list--center">
           <li class="about__item about__item--single"><a href="https://yahoo.co.jp/" target="_blank"><img class="about__logo" src="{{ .Site.BaseURL }}/images/yahoojapan.svg" alt="yahoojapan"></a></li>
+          <li class="about__item about__item--single"><a href="https://jpsearch.go.jp/" target="_blank">
+            <picture>
+              <source srcset="{{ .Site.BaseURL }}/images/japansearch_dark.png.webp" media="(prefers-color-scheme: dark)">
+              <img class="about__logo" src="{{ .Site.BaseURL }}/images/japansearch_color.png.webp" alt="jpsearch">
+            </picture>
+          </a></li>
         </ul>
       </div>
     </div>
