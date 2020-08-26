@@ -1,0 +1,10 @@
+{{ $current := .current }}
+{{ range .menu }}
+  {{ if .HasChildren }}
+      {{ if not (in $current "docs/v") }}
+        {{ partial "menu/default.html" (dict "children" .Children "current" $current) . -}}
+      {{ else }}
+        {{ partial "menu/version.html" (dict "children" .Children "current" $current) . -}}
+      {{ end }}
+  {{ end }}
+{{ end }}
