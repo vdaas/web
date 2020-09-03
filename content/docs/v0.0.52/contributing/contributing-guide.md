@@ -1,8 +1,8 @@
 ---
-title: "Contributing Guide_content/Docs/Contributing"
-date: 2020-09-03T10:27:11+09:00
-draft: false
-weight: 100
+title: "Contributing Guide_content/Docs/V0.0.52/Contributing"
+date: 2020-09-03T10:27:07+09:00
+draft: true
+weight: 0
 menu:
   contributing:
     parent: Contributing
@@ -100,10 +100,8 @@ Follow these steps to make a contribution to any of our open source repositories
 1. Ensure that you have completed our [CLA Agreement](https://cla-assistant.io/vdaas/vald)
 2. Set your name and email (these should match the information on your submitted CLA)
 
-    ```bash
-    git config --global user.name "Firstname Lastname"
-    git config --global user.email "your_email@example.com"
-    ```
+        git config --global user.name "Firstname Lastname"
+        git config --global user.email "your_email@example.com"
 
 
 ### How to contributing source code
