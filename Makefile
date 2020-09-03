@@ -148,13 +148,14 @@ define sync-image
 	@echo -e "\e[1;33mcheck image files...\e[0m"
 	@cd tmp/vald-$(LATEST_VERSION)/design && find . -type f -name ".png" -exec cp {} ../assets/docs/ \; && cd ../../../
 	@if [ ! -z $(find tmp/vald-$(LATEST_VERSION)/assets/docs -type f -name "*.svg" 2>/dev/null) ]; then \
-		echo -e "\e[1;31mNo image file has been synced.\e[0m" ; \
+	echo -e "\e[1;31mNo image file has been synced.\e[0m" ; \
 	else \
 		echo -e "\e[1;32msyncing image files\e[0m" ; \
 		mkdir -p static && mkdir -p static/images ; \
 		mkdir -p static/images/v$(LATEST_VERSION) ; \
-		cd tmp/vald-$(LATEST_VERSION)/assets/docs && find . -type f -name "*.png" -exec cp {} ../../../../static/images/ \; && cd ../../../../ ; \
-		cd tmp/vald-$(LATEST_VERSION)/assets/docs && find . -type f -name "*.png" -exec cp {} ../../../../static/images/v$(LATEST_VERSION) \; && cd ../../../../ ; \
+		cd tmp/vald-$(LATEST_VERSION)/assets/docs && cp -R ./ ../../../../static/images/ && cd ../../../../ ; \
+		cd tmp/vald-$(LATEST_VERSION)/assets/docs && cp -R . ../../../../static/images/v$(LATEST_VERSION) && cd ../../../../ ; \
+		find static/images -type f -not -name "*svg" -not -name "*.png" | xargs rm -rf ; \
 	fi
 endef
 
