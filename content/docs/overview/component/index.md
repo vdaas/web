@@ -2,7 +2,7 @@
 title: "Component_content/Docs/Overview/Component"
 date: 2020-09-03T10:27:13+09:00
 draft: false
-weight: 0
+weight: 100
 menu:
   component:
     parent: Component
