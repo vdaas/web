@@ -1,8 +1,8 @@
 ---
-title: "Contributing Guide_content/Docs/Contributing"
-date: 2020-09-03T10:27:11+09:00
-draft: false
-weight: 100
+title: "Contributing Guide_content/Docs/V0.0.52/Contributing"
+date: 2020-09-03T10:27:07+09:00
+draft: true
+weight: 0
 menu:
   contributing:
     parent: Contributing

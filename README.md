@@ -47,12 +47,11 @@ Vald WebSite repository based on HUGO.
   ```
 
   The details of progress `init.sh`:
-  1. check latest version
-  1. get the latest Vald package from [vdaas/vald](https://github.com/vdaas/vald) and unpackaging
-  1. make sure directory for create contents and static files
-  1. create contents at content root dir (/content/docs) and latest version dir (/content/docs/{version})
-  1. create contents at content root dir (/content/docs) and latest version dir (/content/docs/{version})
-  1. create static files at static root dir (/static/{type}) and latest version dir (/static/{type}/{version})
+  1. check latest version.
+  1. get the latest Vald package from [vdaas/vald](https://github.com/vdaas/vald) and unpackaging.
+  1. make sure directory for create contents and static files.
+  1. create contents at content root directory (/content/docs) and latest version directory (/content/docs/{version}).
+  1. create static files at static root dir (/static/{type}) and latest version dir (/static/{type}/{version}).
   1. correct internal content link and static files' path in each content files (markdown files).
 
 
