@@ -1,6 +1,6 @@
 ---
-title: "Changelog_content/Docs/Release"
-date: 2020-09-11T18:23:23+09:00
+title: "Changelog_content/Docs/V0.0.55/Release"
+date: 2020-09-11T18:23:19+09:00
 draft: true
 weight: 0
 menu:

@@ -1,8 +1,8 @@
 ---
-title: "Architecture_content/Docs/Overview"
-date: 2020-09-11T18:23:24+09:00
-draft: false
-weight: 200
+title: "Architecture_content/Docs/V0.0.55/Overview"
+date: 2020-09-11T18:23:21+09:00
+draft: true
+weight: 0
 menu:
   overview:
     parent: Overview
@@ -69,13 +69,13 @@ This is the most important part for the users to understand Vald.
 
 The below image is the overview of Vald's architecture.
 
-<img src="/images/vald_architecture_overview.png" />
+<img src="/images/v0.0.55/vald_architecture_overview.png" />
 
 We will explain this image in the following sections.
 
 ### Insert
 
-<img src="/images/insert_flow.png" />
+<img src="/images/v0.0.55/insert_flow.png" />
 
 When the user inserts data into Vald:
 
@@ -100,7 +100,7 @@ When the user inserts data into Vald:
 
 ### Search
 
-<img src="/images/search_flow.png" />
+<img src="/images/v0.0.55/search_flow.png" />
 
 When the user searches a vector from Vald:
 
@@ -123,7 +123,7 @@ When the user searches a vector from Vald:
 
 ### Update
 
-<img src="/images/update_flow.png" />
+<img src="/images/v0.0.55/update_flow.png" />
 
 When the user updates a vector from Vald:
 
@@ -155,7 +155,7 @@ When the user updates a vector from Vald:
 
 ### Upsert
 
-<img src="/images/upsert_flow.png" />
+<img src="/images/v0.0.55/upsert_flow.png" />
 
 Upsert request updates the existing vector if the same vector ID exists, or inserts the vector into Vald.
 When the user upsert a vector to Vald:
@@ -171,7 +171,7 @@ When the user upsert a vector to Vald:
 
 ### Delete
 
-<img src="/images/delete_flow.png" />
+<img src="/images/v0.0.55/delete_flow.png" />
 
 When the user deletes a vector which is indexed in Vald Agent:
 
