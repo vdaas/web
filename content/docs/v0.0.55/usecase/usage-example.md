@@ -1,7 +1,7 @@
 ---
-title: "Usage Example_content/Docs/Usecase"
-date: 2020-09-11T18:23:25+09:00
-draft: false
+title: "Usage Example_content/Docs/V0.0.55/Usecase"
+date: 2020-09-11T18:23:21+09:00
+draft: true
 weight: 0
 menu:
   usecase:
@@ -21,7 +21,7 @@ menu:
 
 ## Image and video processing
 
-  <img src="/images/usecase_image.png" />
+  <img src="/images/v0.0.55/usecase_image.png" />
 
   You can use Vald as the image/video processing engine to search the similar image/video or analyze the image/video for your use case.
 
@@ -37,7 +37,7 @@ menu:
 
 ## Audio processing
 
-  <img src="/images/usecase_audio.png" />
+  <img src="/images/v0.0.55/usecase_audio.png" />
 
   Audio processing is important for personal assistant implementation.
 
@@ -51,7 +51,7 @@ menu:
 
 ## Text processing
 
-  <img src="/images/usecase_text.png" />
+  <img src="/images/v0.0.55/usecase_text.png" />
 
   Using a text vectorizing model like BERT, you can process your text data in Vald.
 
@@ -64,7 +64,7 @@ menu:
 
 ## Data analysis
 
-  <img src="/images/usecase_data.png" />
+  <img src="/images/v0.0.55/usecase_data.png" />
 
   Vald can process the vector data, you can analyze every data you can vectorize.
 
