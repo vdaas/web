@@ -87,12 +87,23 @@ $(ROOT_DOC_FILES): \
 	@hugo new $@ >/dev/null
 	@cat $(patsubst content/docs/%.md,tmp/vald-$(LATEST_VERSION)/docs/%.md,$@) >> $@
 
-
 .PHONY: update-version-content
 update-version-content: $(V_DOC_FILES)
 
 .PHONY: update-root-content
 update-root-content: $(ROOT_DOC_FILES)
+
+.PHONY: update-dir-root-index
+update-dir-root-index:
+	@$(eval DIR := $(shell find content/docs -type d -maxdepth 1 | egrep -v "v{1}\d+" | egrep "content/docs/"))
+	$(foreach dir,$(DIR),$(call create-index-file,$(dir)))
+
+define create-index-file
+	@if [ -e $(1)/index.md ]; then \
+		rm $(1)/index.md ; \
+	fi
+
+endef
 
 .PHONY: update/images
 update/images:
@@ -103,6 +114,7 @@ update/images:
 update/contents: \
 	update-version-content \
 	update-root-content
+	$(call update-dir-root-index)
 	$(call fix-document-path)
 	@echo -e "\e[1;32mfinish createing contens\e[0m"
 
