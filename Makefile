@@ -102,6 +102,7 @@ define create-index-file
 	@if [ -e $(1)/index.md ]; then \
 		rm $(1)/index.md ; \
 	fi
+	@hugo new --kind directory-top $(1) >/dev/null
 
 endef
 
@@ -113,8 +114,8 @@ update/images:
 .PHONY: update/contents
 update/contents: \
 	update-version-content \
-	update-root-content
-	$(call update-dir-root-index)
+	update-root-content \
+	update-dir-root-index
 	$(call fix-document-path)
 	@echo -e "\e[1;32mfinish createing contens\e[0m"
 
