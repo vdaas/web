@@ -1,8 +1,8 @@
 ---
-title: "Agent on Docker_content/Docs/Tutorial"
-date: 2020-09-18T17:08:39+09:00
-draft: false
-weight: 200
+title: "Agent on Docker_content/Docs/V0.0.56/Tutorial"
+date: 2020-09-18T17:08:35+09:00
+draft: true
+weight: 0
 menu:
   tutorial:
     parent: Tutorial
@@ -14,7 +14,7 @@ Vald is designed and implemented based on Cloud-Native architecture.
 However, there may be cases that want to use only Vald Agent without Kubernetes.
 
 This article will show you how to deploy and run the Vald Agent on Docker.
-Fashion-mnist is used as an example dataset, same as [Get Started](/docs/tutorial/get-started).
+Fashion-mnist is used as an example dataset, same as [Get Started](/docs/v0.0.56/tutorial/get-started).
 
 ## Requirements
 
@@ -154,7 +154,7 @@ This chapter will use NGT for the core engine of Vald Agent.
     
     We use [`example/client/agent/main.go`](https://github.com/vdaas/vald/blob/master/example/client/agent/main.go) to run the example.
     The example code is the same as running an example only Vald agent on Kubernetes.
-    If you want to learn the detail of running an example, please refer to the tutorial of [standalone Vald Agent on kubernetes](/docs/tutorial/get-started/#run-using-example-code-1).
+    If you want to learn the detail of running an example, please refer to the tutorial of [standalone Vald Agent on kubernetes](/docs/v0.0.56/tutorial/get-started/#run-using-example-code-1).
 
     ```bash
     # run example
