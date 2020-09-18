@@ -1,8 +1,8 @@
 ---
-title: "Get Started_content/Docs/Tutorial"
-date: 2020-09-18T17:08:39+09:00
-draft: false
-weight: 100
+title: "Get Started_content/Docs/V0.0.56/Tutorial"
+date: 2020-09-18T17:08:35+09:00
+draft: true
+weight: 0
 menu:
   tutorial:
     parent: Tutorial
