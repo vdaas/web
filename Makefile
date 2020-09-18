@@ -99,10 +99,11 @@ update-dir-root-index:
 	$(foreach dir,$(DIR),$(call create-index-file,$(dir)))
 
 define create-index-file
-	@if [ -e $(1)/index.md ]; then \
-		rm $(1)/index.md ; \
+	@if [ -e $(1)/_index.md ]; then \
+		rm $(1)/_index.md ; \
 	fi
 	@hugo new --kind directory-top $(1) >/dev/null
+	@mv $(1)/index.md $(1)/_index.md
 
 endef
 
