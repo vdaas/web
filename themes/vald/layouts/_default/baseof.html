@@ -16,7 +16,7 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ .Site.Title }}{{ if not .IsHome }} | {{ index (split .Name "_") 0 }}{{ end }}">
     <meta property="og:description" content="{{ .Site.Params.description }}">
-    <meta property="og:url" content="https://vald.vdaas.org">
+    <meta property="og:url" content="{{ .Permalink }}">
     <meta property="og:image" content="{{ .Site.BaseURL }}/images/ogp_vald.png">
     <meta property="og:site_name" content="vald">
     <meta property="og:locale" content="en_US">

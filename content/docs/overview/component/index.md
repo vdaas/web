@@ -1,7 +1,7 @@
 ---
 title: "Component_content/Docs/Overview/Component"
-date: 2020-08-07T17:22:25+09:00
-draft: true
+date: 2020-09-18T17:08:39+09:00
+draft: false
 weight: 0
 menu:
   component:
@@ -116,7 +116,7 @@ Vald LB Gateway loads balance the user request base on the node resources result
 
 ### Agent Discoverer
 
-Agent Discoverer discovers active Vald pods and the corresponding node's resources usage via [kube-apiserver](https://github.com/kubernetes/kubernetes/tree/master//kube-apiserver).
+Agent Discoverer discovers active Vald pods and the corresponding node's resources usage via [kube-apiserver](https://github.com/kubernetes/kubernetes/tree/master/cmd/kube-apiserver).
 
 ## Vald Core Engine
 

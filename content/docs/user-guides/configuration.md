@@ -1,8 +1,8 @@
 ---
 title: "Configuration_content/Docs/User Guides"
-date: 2020-08-07T17:22:24+09:00
+date: 2020-09-18T17:08:38+09:00
 draft: false
-weight: 0
+weight: 100
 menu:
   userguides:
     parent: User Guides
@@ -10,7 +10,8 @@ menu:
 
 # Configurations
 
-This page introduces best practices to set up values for Vald Helm Chart.
+This page introduces best practices for setting up values for Vald Helm Chart.
+
 
 ## Vald Helm Chart Overview
 
@@ -407,7 +408,7 @@ The definitions can be found in `_helpers.tpl` in Chart's templates directory.
 TBW
 
 
-### References
+## References
 
 For further details, there are references of Helm values in GitHub Vald repository.
 

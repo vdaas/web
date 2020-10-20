@@ -1,6 +1,6 @@
 .PHONY: all run deploy/staging deploy/production subup
 
-LATEST_VERSION = 0.0.50
+LATEST_VERSION = 0.0.56
 NEW_VERSION := ${LATEST_VERSION}
 ARCIVE_URL = https://github.com/vdaas/vald/archive/v$(LATEST_VERSION).zip
 
@@ -31,6 +31,7 @@ deploy/stage: subup \
 
 build/production:
 	@hugo --environment=production --minify
+	@cp tmp_pre/404.html tmp_pre/ipfs-404.html
 	@cd tmp_pre && cp -r * ../public/
 
 deploy/production: subup \
@@ -86,12 +87,25 @@ $(ROOT_DOC_FILES): \
 	@hugo new $@ >/dev/null
 	@cat $(patsubst content/docs/%.md,tmp/vald-$(LATEST_VERSION)/docs/%.md,$@) >> $@
 
-
 .PHONY: update-version-content
 update-version-content: $(V_DOC_FILES)
 
 .PHONY: update-root-content
 update-root-content: $(ROOT_DOC_FILES)
+
+.PHONY: update-dir-root-index
+update-dir-root-index:
+	@$(eval DIR := $(shell find content/docs -type d -maxdepth 1 | egrep -v "v{1}\d+" | egrep "content/docs/"))
+	$(foreach dir,$(DIR),$(call create-index-file,$(dir)))
+
+define create-index-file
+	@if [ -e $(1)/_index.md ]; then \
+		rm $(1)/_index.md ; \
+	fi
+	@hugo new --kind directory-top $(1) >/dev/null
+	@mv $(1)/index.md $(1)/_index.md
+
+endef
 
 .PHONY: update/images
 update/images:
@@ -101,7 +115,8 @@ update/images:
 .PHONY: update/contents
 update/contents: \
 	update-version-content \
-	update-root-content
+	update-root-content \
+	update-dir-root-index
 	$(call fix-document-path)
 	@echo -e "\e[1;32mfinish createing contens\e[0m"
 
@@ -152,8 +167,9 @@ define sync-image
 		echo -e "\e[1;32msyncing image files\e[0m" ; \
 		mkdir -p static && mkdir -p static/images ; \
 		mkdir -p static/images/v$(LATEST_VERSION) ; \
-		cd tmp/vald-$(LATEST_VERSION)/assets/docs && find . -type f -name "*.png" -exec cp {} ../../../../static/images/ \; && cd ../../../../ ; \
-		cd tmp/vald-$(LATEST_VERSION)/assets/docs && find . -type f -name "*.png" -exec cp {} ../../../../static/images/v$(LATEST_VERSION) \; && cd ../../../../ ; \
+		cd tmp/vald-$(LATEST_VERSION)/assets/docs && cp -R ./ ../../../../static/images/ && cd ../../../../ ; \
+		cd tmp/vald-$(LATEST_VERSION)/assets/docs && cp -R . ../../../../static/images/v$(LATEST_VERSION) && cd ../../../../ ; \
+		find static/images -type f -not -name "*svg" -not -name "*.png" | xargs rm -rf ; \
 	fi
 endef
 

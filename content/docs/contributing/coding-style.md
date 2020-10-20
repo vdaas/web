@@ -1,6 +1,6 @@
 ---
 title: "Coding Style_content/Docs/Contributing"
-date: 2020-08-07T17:22:23+09:00
+date: 2020-09-18T17:08:40+09:00
 draft: false
 weight: 200
 menu:
@@ -18,12 +18,15 @@ Please also read the [Contribution guideline](/docs/contributing/contributing-gu
 
 ## Code Formatting and Naming Convension
 
-Code formatting and naming conventions affect coding readability and maintainability. Every developer has a different coding style, luckily Go provides tools to format source code and checking for the potential issue in the source code. We recommend using [goimports](https://github.com/golang/tools/tree/master//goimports) to format the source code in Vald, and [golangci-lint](https://github.com/golangci/golangci-lint) with `--enable-all` option. We suggest everyone install the plugin for your editor to format the code once you edit the code automatically, and  we suggest using `make update/goimports` command if you want to format the source code manually.
+Code formatting and naming conventions affect coding readability and maintainability. Every developer has a different coding style, luckily Go provides tools to format source code and checking for the potential issue in the source code. We recommend using [goimports](https://github.com/golang/tools/tree/master/cmd/goimports) to format the source code in Vald, and [golangci-lint](https://github.com/golangci/golangci-lint) with `--enable-all` option. We suggest everyone install the plugin for your editor to format the code once you edit the code automatically, and  we suggest using `make update/goimports` command if you want to format the source code manually.
 
 But having tools to format source code doesn't mean you do not need to care the formatting of the code, for example:
 
+<table>
+<thead><tr><th>Bad</th><th>Good</th></tr></thead>
+<tbody><tr><td>
+
 ```go
-// bad
 badStr := "apiVersion: v1\n" +
    "kind: Service\n" +
    "metadata:\n" +
@@ -34,8 +37,11 @@ badStr := "apiVersion: v1\n" +
    "      port: 3000\n" +
    "      targetPort: 3000\n" +
    "      protocol: TCP\n"
+```
 
-// good
+</td><td>
+
+```go
 goodStr := `apiVersion: v1
 kind: Service
 metadata:
@@ -48,6 +54,8 @@ spec:
       protocol: TCP
 `
 ```
+
+</td></tr></tbody></table>
 
 ### Project Layout
 
@@ -100,9 +108,79 @@ All packages should contain `doc.go` file under the package to describe what is 
 package cache
 ````
 
+### General style
+
+This section describes the general guideline for the Vald programming style, every Vald contributor should keep these general guidelines in mind while working on the implementation of Vald.
+
+#### Order of declaration
+
+Put the higher priority or frequently used declaration on the top of other declaration.
+It makes Vald easier to read and search the target source code in Vald.
+
+For example, the interface declaration should have higher priority than struct or function declaration, hence it should be put above other declaration.
+
+<table>
+<thead><tr><th>Bad</th><th>Good</th></tr></thead>
+<tbody><tr><td>
+
+```go
+type S struct {}
+
+func (s *S) fn() {}
+
+type I interface {}
+```
+
+</td><td>
+
+```go
+type I interface {}
+
+type S struct {}
+
+func (s *S) fn() {}
+```
+
+</td></tr></tbody></table>
+
+#### Group similar definition
+
+Group similar definitions such as struct or interface declaration.
+We should not group interface and struct declaration in the same block, for example:
+
+<table>
+<thead><tr><th>Bad</th><th>Good</th></tr></thead>
+<tbody><tr><td>
+
+```go
+type (
+    I interface {}
+    I2 interface {}
+
+    s struct {}
+    s2 struct {}
+)
+```
+
+</td><td>
+
+```go
+type (
+    I interface {}
+    I2 interface {}
+)
+
+type (
+    s struct {}
+    s2 struct {}
+)
+```
+
+</td></tr></tbody></table>
+
 ### Interfaces
 
-Interface defines the program interface for usability and future extendability.
+The interface defines the program interface for usability and future extendability.
 Unlike other languages like Java, Go supports implicit interface implementation. The type implements do not need to specify the interface name; to "implements" the interface the structs only need to defined the methods the same as the interface, so please be careful to define the method name inside the interface.
 
 The interface should be named as:
@@ -231,7 +309,7 @@ ErrInvalidCacherType = New("invalid cacher type")
 
 ### Methods
 
-The method name should be named as:
+In this section, rules also apply to the `function` (without receiver). The method name should be named as:
 
 - Use MixedCaps.
 
@@ -246,6 +324,7 @@ func (s *something) some_method() {}
 func (s *something) someMethod() {}
 ```
 
+- Avoid using long function name.
 - Do not use short form unless the function name is too long.
 
 ```go
@@ -279,10 +358,10 @@ func (s *something) SetSignedTok(st string) {
 An unused variable may increase the complexity of the source code, it may confuse the developer hence introduce a new bug.
 So please delete the unused variable.
 
-Generally, the unused variable should be reported during compilation, but in some cases, the compiler may not report an error. 
+Generally, the unused variable should be reported during compilation, but in some cases, the compiler may not report an error.
 This is an example of the unused variable declaration that does not cause a compilation error.
 
-```golang
+```go
 // In this case, this example are not using `port` field, but dose not cause a compilation error.
 // So please delete `port` field of `server`.
 
@@ -307,6 +386,58 @@ All errors should define in [internal/errors package](https://github.com/vdaas/v
 
 Please use [internal/errgroup](https://github.com/vdaas/vald/blob/master/internal/errgroup) for synchronized error handling on multi-goroutine processing.
 
+### Error checking
+
+All functions return `error` if the function can fail. It is very important to ensure the error checking is performed.
+To reduce human mistake that missing the error checking, please check the error using the following style:
+
+<table>
+<thead><tr><th>Bad</th><th>Good</th></tr></thead>
+<tbody><tr><td>
+
+```go
+err := fn()
+if err != nil {
+    // handle error
+}
+```
+
+</td><td>
+
+```go
+if err := fn(); err != nil {
+    // handle error
+}
+```
+
+</td></tr></tbody></table>
+
+If you need the value outside the if statement, please use the following style:
+
+<table>
+<thead><tr><th>Bad</th><th>Good</th></tr></thead>
+<tbody><tr><td>
+
+```go
+if conn, err := net.Dial("tcp", "localhost:80");  err != nil {
+    // handle error
+} else {
+    // use the conn
+}
+```
+
+</td><td>
+
+```go
+conn, err := net.Dial("tcp", "localhost:80")
+if err != nil {
+    // handle error
+}
+// use the conn
+```
+
+</td></tr></tbody></table>
+
 ### Logging
 
 We define our own logging interface in [internal/log package](https://github.com/vdaas/vald/blob/master/internal/log). By default we use [glg](https://github.com/kpango/glg) to do the logging internally.
@@ -319,6 +450,123 @@ We defined the following logging levels.
 | WARN      | The message that indicates the application may having the issue or occurring unusual situation,<br>but does not affect the application behavior.<br>Someone should investigate the warning later.                                              | Failed to insert entry into the the database, but success with the retry.<br>Failed to update the cache, and the cache is not important.           | User 1 is successfully inserted into the database with retry,<br>retry count: 1, error: ErrMsg1, retry count: 2, error: ErrMsg2                                                                                        |
 | ERROR     | The message that indicates the application is having a serious issue or,<br>represent the failure of some important going on in the application.<br>It does not cause the application to go down.<br>Someone must investigate the error later. | Failed to insert an entry into the database, with retry count exceeded.<br>Failed to update the cache, and the cache is not important.             | User 1 is failed to insert in the database, errors:<br>retry count: 1, error: ErrMsg1, retry count: 2, error: ErrMsg2, ....                                                                                            |
 | FATAL     | Message that indicate the application is corrupting or having serious issue.<br>The application will go down after logging the fatal error. <br>Someone must investigate and resolve the fatal as soon as possible.                            | Failed to init the required cache during the application start.                                                                                    |                                                                                                                                                                                                                        |
+
+## Implementation
+
+This section includes some examples of general implementation which is widely used in Vald.
+The implementation may differ based on your use case.
+
+### Functional Option
+
+In Vald, the functional option pattern is widely used in Vald.
+You can refer to [this section](#Struct-initialization) for more details of the use case of this pattern.
+
+We provide the following errors to describe the error to apply the option.
+
+| Error | Description |
+|----|----|
+| errors.ErrInvalidOption | Error to apply the option, and the error is ignorable |
+| errors.ErrCriticalOption | Critical error to apply the option, the error cannot be ignored and should be handled |
+
+We strongly recommend the following implementation to set the value using functional option.
+
+If an invalid value is set to the functional option, the `ErrInvalidOption` error defined in the [internal/errors/option.go](https://github.com/vdaas/vald/blob/master/internal/errors/option.go) should be returned.
+
+The name argument (the first argument) of the `ErrInvalidOption` error should be the same as the functional option name without the `With` prefix.
+
+
+For example, the functional option name `WithVersion` should return the error with the argument `name` as `version`.
+
+```go
+func WithVersion(version string) Option {
+    return func(c *client) error {
+        if len(version) == 0 {
+            return errors.NewErrInvalidOption("version", version)
+        }
+        c.version = version
+        return nil
+    }
+}
+```
+
+We recommend the following implementation to parse the time string and set the time to the target struct.
+
+```go
+func WithTimeout(dur string) Option {
+    func(c *client) error {
+        if dur == "" {
+            return errors.NewErrInvalidOption("timeout", dur)
+        }
+        d, err := timeutil.Parse(dur)
+        if err != nil {
+            return errors.NewErrInvalidOption("timeout", dur, err)
+        }
+        c.timeout = d
+        return nil
+    }
+}
+```
+
+We recommend the following implementation to append the value to the slice if the value is not nil.
+
+```go
+func WithHosts(hosts ...string) Option {
+    return func(c *client) error {
+        if len(hosts) == 0 {
+            return errors.NewErrInvalidOption("hosts", hosts)
+        }
+        if c.hosts == nil {
+            c.hosts = hosts
+        } else {
+            c.hosts = append(c.hosts, hosts...)
+        }
+        return nil
+    }
+}
+```
+
+If the functional option error is a critical error, we should return `ErrCriticalOption` error instead of `ErrInvalidOption`.
+
+```go
+func WithConnectTimeout(dur string) Option {
+    return func(c *client) error {
+        if dur == "" {
+            return errors.NewErrInvalidOption("connectTimeout", dur)
+        }
+        d, err := timeutil.Parse(dur)
+        if err != nil {
+            return errors.NewErrCriticalOption("connectTimeout", dur, err)
+        }
+
+        c.connectTimeout = d
+        return nil
+    }
+}
+```
+
+In the caller side, we need to handle the error returned from the functional option.
+
+If the option failed to apply, an error wrapped with `ErrOptionFailed` defined in the [internal/errors/errors.go](https://github.com/vdaas/vald/blob/master/internal/errors/errors.go) should be returned.
+
+We recommend the following implementation to apply the options.
+
+```go
+func New(opts ...Option) (Server, error) {
+    srv := new(server)
+    for _, opt := range opts {
+        if err := opt(srv); err != nil {
+            werr := errors.ErrOptionFailed(err, reflect.ValueOf(opt))
+
+            e := new(errors.ErrCriticalOption)
+			if errors.As(err, &e) {
+                log.Error(werr)
+                return nil, werr
+            }
+            log.Warn(werr)
+        }
+    }
+}
+```
 
 ## Program comments
 
@@ -577,7 +825,7 @@ We do not suggest to modify the generated code other than the `tests` variable, 
     For example, Vald uses [glg](https://github.com/kpango/glg) library for logging by default, if the logger is not initialized before the test, the nil pointer error may be thrown during the test is running.
     You may need to implement `init()` function like:
 
-    ```golang
+    ```go
     func init() {
         log.Init()
     }
@@ -591,7 +839,7 @@ We do not suggest to modify the generated code other than the `tests` variable, 
     Sometimes you may want to skip the detection, for example, Vald uses [fastime](https://github.com/kpango/fastime) library but the internal Goroutine is not closed due to the needs of the library. 
     To skip the goleak detection we need to create the following variable to store the ignore function.
 
-    ```golang
+    ```go
     var (
         // Goroutine leak is detected by `fastime`, but it should be ignored in the test because it is an external package.
         goleakIgnoreOptions = []goleak.Option{
@@ -602,7 +850,7 @@ We do not suggest to modify the generated code other than the `tests` variable, 
 
     And modify the generated test code.
 
-    ```golang
+    ```go
     // before
     for _, test := range tests {
         t.Run(test.name, func(tt *testing.T) {
@@ -622,7 +870,7 @@ We do not suggest to modify the generated code other than the `tests` variable, 
 
     For example:
 
-    ```golang
+    ```go
     for _, test := range tests {
       t.Run(test.name, func(tt *testing.T) {
         defer goleak.VerifyNone(tt, goleakIgnoreOptions...)
@@ -643,11 +891,11 @@ We do not suggest to modify the generated code other than the `tests` variable, 
 
 1. Unused fields
 
-    By default, the template provides `fields` structure to initialize object of the test target. 
+    By default, the template provides `fields` structure to initialize object of the test target.
     But in some cases, not all `fields` are needed, so please delete the unnecessary fields.
     For example, the following struct and the corresponding function:
-    
-    ```golang
+
+    ```go
     type server struct {
         addr string
         port int
@@ -658,7 +906,8 @@ We do not suggest to modify the generated code other than the `tests` variable, 
     ```
 
     And the generated test code is:
-    ```golang
+
+    ```go
     func Test_server_Addr(t *testing.T) {
         type fields struct {
             addr string
@@ -669,7 +918,8 @@ We do not suggest to modify the generated code other than the `tests` variable, 
     ```
 
     Since the `port` variable is not used in this test case, you can delete the `port` definition in the test case.
-    ```golang
+
+    ```go
     func Test_server_Addr(t *testing.T) {
         type fields struct {
             addr string

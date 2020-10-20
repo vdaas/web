@@ -29,12 +29,14 @@ jobs:
         with:
           directory: "themes/vald/static/css"
       - name: Check Changes
-        uses: technote-space/get-diff-action@v1
         id: git_diff_static
-        with:
-          PREFIX_FILTER: themes/vald/static/
+        run: |
+          diff=`git diff themes/vald/static/`
+          if [ ! -z "$diff" ] ; then \
+            echo "::set-output name=diff::true"
+          fi
       - name: Commit Minified Files (pull_request)
-        if: steps.git_diff_static.outputs.diff && github.event_name== 'pull_request'
+        if: steps.git_diff_static.outputs.diff == 'true' && github.event_name== 'pull_request'
         run: |
           git config --global user.name "vdaas-ci"
           git config --global user.email "ci@vdaas.org"
@@ -48,7 +50,7 @@ jobs:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
       - name: Commit Minified Files (master)
-        if: steps.git_diff_static.outputs.diff && github.ref == 'refs/heads/master'
+        if: steps.git_diff_static.outputs.diff == 'true' && github.ref == 'refs/heads/master'
         run: |
           git config --global user.name "vdaas-ci"
           git config --global user.email "ci@vdaas.org"
