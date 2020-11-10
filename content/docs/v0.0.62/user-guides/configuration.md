@@ -1,8 +1,8 @@
 ---
-title: "Configuration_content/Docs/User Guides"
-date: 2020-11-10T18:34:00+09:00
-draft: false
-weight: 100
+title: "Configuration_content/Docs/V0.0.62/User Guides"
+date: 2020-11-10T18:33:56+09:00
+draft: true
+weight: 0
 menu:
   userguides:
     parent: User Guides
