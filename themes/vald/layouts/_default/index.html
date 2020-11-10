@@ -167,7 +167,13 @@
         <li class="about__item"><a href="https://www.docker.com/" target="_blank"><img class="about__logo" src="{{ .Site.BaseURL }}/images/docker.svg" alt="tech__docker" width="90"></a></li>
         <li class="about__item"><a href="https://kubernetes.io/" target="_blank"><img class="about__logo" src="{{ .Site.BaseURL }}/images/k8s.svg" alt="tech__k8s" width="140"></a></li>
         <li class="about__item"><a href="https://github.com/yahoojapan/NGT" target="_blank"><img class="about__logo" src="{{ .Site.BaseURL }}/images/ngt_color.svg" alt="tech__ngt" width="80"></a></li>
-        <li class="about__item"><a href="https://grpc.io/" target="_blank"><img class="about__logo" src="{{ .Site.BaseURL }}/images/grcp.svg" alt="tech__grcp" width="120"></a></li>
+        <li class="about__item"><a href="https://grpc.io/" target="_blank">
+        <picture>
+          <source srcset="{{ .Site.BaseURL }}/images/grcp_white.svg" media="(prefers-color-scheme: dark)">
+          <img class="about__logo" src="{{ .Site.BaseURL }}/images/grcp.svg" alt="logo__nodejs" width="120">
+        </picture>
+        </a>
+      </li>
       </ul>
     </div>
 
