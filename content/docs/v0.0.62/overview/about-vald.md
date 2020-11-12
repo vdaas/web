@@ -1,8 +1,8 @@
 ---
-title: "About Vald_content/Docs/Overview"
-date: 2020-11-10T18:33:57+09:00
-draft: false
-weight: 100
+title: "About Vald_content/Docs/V0.0.62/Overview"
+date: 2020-11-10T18:33:54+09:00
+draft: true
+weight: 0
 menu:
   overview:
     parent: Overview
@@ -84,8 +84,8 @@ Whenever one of the Vald Agent instances is down, the new Vald Agent instance wi
 Vald implements its custom resource and custom controller to integrate with Kubernetes.
 You can take all the benefits from Kubernetes.
 
-Please refer to the [architecture overview](/docs/overview/architecture) for more details about the architecture and how each component in Vald works together.
+Please refer to the [architecture overview](/docs/v0.0.62/overview/architecture) for more details about the architecture and how each component in Vald works together.
 
 ## Try Vald
 
-Please refer to [Get Started](/docs/tutorial/get-started) to try Vald :)
+Please refer to [Get Started](/docs/v0.0.62/tutorial/get-started) to try Vald :)
