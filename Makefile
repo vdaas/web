@@ -1,6 +1,6 @@
 .PHONY: all run deploy/staging deploy/production subup
 
-LATEST_VERSION = 0.0.62
+LATEST_VERSION = 0.0.65
 NEW_VERSION := ${LATEST_VERSION}
 ARCIVE_URL = https://github.com/vdaas/vald/archive/v$(LATEST_VERSION).zip
 
@@ -95,7 +95,7 @@ update-root-content: $(ROOT_DOC_FILES)
 
 .PHONY: update-dir-root-index
 update-dir-root-index:
-	@$(eval DIR := $(shell find content/docs -type d -maxdepth 1 | egrep -v "v{1}\d+" | egrep "content/docs/"))
+	@$(eval DIR := $(shell find content/docs -maxdepth 1 -type d | egrep -v "v{1}\d+" | egrep "content/docs/"))
 	$(foreach dir,$(DIR),$(call create-index-file,$(dir)))
 
 define create-index-file
@@ -149,10 +149,11 @@ endef
 
 define pre-create-doc
 	@echo -e "\e[1;33mprepare create document files...\e[0m"
-	@if [ -z $(find content/docs -type d -maxdepth 1 | egrep -v "^v{1}\d+") ]; then \
+	@if [ -z $(find content/docs -maxdepth 1 -type d| egrep -v "^v{1}\d+") ]; then \
 		cd content/docs && ls | egrep -v "^v{1}\d+" | xargs rm -rf ; \
 	fi
 	@mkdir -p tmp/vald-$(LATEST_VERSION)/docs/contributing
+	@rm tmp/vald-$(LATEST_VERSION)/docs/contributing/contributing-guide.md
 	@cp tmp/vald-$(LATEST_VERSION)/CONTRIBUTING.md tmp/vald-$(LATEST_VERSION)/docs/contributing/contributing-guide.md
 	@mkdir -p tmp/vald-$(LATEST_VERSION)/docs/release
 	@cp tmp/vald-$(LATEST_VERSION)/CHANGELOG.md tmp/vald-$(LATEST_VERSION)/docs/release/changelog.md
