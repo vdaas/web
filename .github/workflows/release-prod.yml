@@ -71,9 +71,12 @@ jobs:
       - name: Commit Production Changes
         if: steps.git_diff_preview.outputs.diff
         run: |
+          git diff
+          git branch
+          git log --oneline -n1
           git add public
           git commit --signoff -m ":robot: auto update production :arrow_up:"
-          git push origin master
+          git push origin ${{ github.head_ref }}
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}

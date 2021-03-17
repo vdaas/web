@@ -1,7 +1,7 @@
 ---
-title: "Changelog_content/Docs/Release"
-date: 2021-03-17T14:48:29+09:00
-draft: false
+title: "Changelog_content/Docs/V1.0.4/Release"
+date: 2021-03-17T14:48:22+09:00
+draft: true
 weight: 0
 menu:
   release:
