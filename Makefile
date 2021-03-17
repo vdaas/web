@@ -1,6 +1,6 @@
 .PHONY: all run deploy/staging deploy/production subup
 
-LATEST_VERSION = 1.0.3
+LATEST_VERSION = 1.0.4
 NEW_VERSION := ${LATEST_VERSION}
 ARCIVE_URL = https://github.com/vdaas/vald/archive/v$(LATEST_VERSION).zip
 
