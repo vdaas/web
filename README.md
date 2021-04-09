@@ -4,7 +4,7 @@ Vald WebSite repository based on HUGO.
 
 ## Document Tree
 
-- Vald WebSite is based on [HUGO](https://gohugo.io/), which is one of the popular site generator.<br>
+- Vald WebSite is developed based on [HUGO](https://gohugo.io/), which is one of the popular site generator.<br>
   If you don't know about HUGO, please read the official document at first.
 
 ```
@@ -48,7 +48,7 @@ Vald WebSite repository based on HUGO.
 
   The details of progress `init.sh`:
   1. check latest version.
-  1. get the latest Vald package from [vdaas/vald](https://github.com/vdaas/vald) and unpackaging.
+  1. get the latest Vald package from [vdaas/vald](https://github.com/vdaas/vald) and unpacking it.
   1. make sure directory for create contents and static files.
   1. create contents at content root directory (/content/docs) and latest version directory (/content/docs/{version}).
   1. create static files at static root dir (/static/{type}) and latest version dir (/static/{type}/{version}).
@@ -63,8 +63,8 @@ Before deploy to a staging environment, please check that there are some content
 
 
 - When you'd like to create the Pull Request or check update, we recommend you deploy to a staging environment.
-  The deployment for stage env will be done when you craete the PR.
-  If the deployment via Github Actions ends with failed, please deploy from local as below command.
+  The deployment for stage env will be done when you create the PR.
+  If the deployment via Github Actions ends with failed, please deploy manually from local as below command.
 
   ```bash
   // build files using Vald for stage env
@@ -96,7 +96,7 @@ $ make publish/version
 ```
 
 
-- When you'd like to publish the latest Vald WebSite, please craete the PR and merge it whose message is contains "release".
+- When you'd like to publish the latest Vald WebSite, please create the PR and merge it whose message is contains "release".
   If the deploy is failed, please deploy by below command.
 
   ```bash
