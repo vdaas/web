@@ -1,10 +1,15 @@
 {{ $current := .current }}
-{{ range .menu }}
+{{ range .page }}
   {{ if .HasChildren }}
+    {{ $parsedURL :=urls.Parse $current }}
+    {{ $base := "/docs/" }}
+    <li class="withchild{{ if eq $parsedURL.Path $base }} open {{ end }}" id="cat_{{ .Name }}">
+      {{- .Name -}}
       {{ if not (in $current "docs/v") }}
         {{ partial "category_child/default.html" (dict "children" .Children "current" $current) . -}}
       {{ else }}
         {{ partial "category_child/version.html" (dict "children" .Children "current" $current) . -}}
       {{ end }}
+    </li>
   {{ end }}
 {{ end }}
