@@ -1,7 +1,7 @@
 // initial sidebar
 window.onload = () => {
   initSidebar();
-  window.scroll(0, 0)
+  window.scroll(0, 0);
   if (location.hash.length > 0) {
     setTimeout(() => {
       scrollTocNav(location.hash.replace('#', ''));
@@ -150,15 +150,19 @@ for (let i = 0; i < links.length; i++) {
 const initSidebar = () => {
   const sidebar = document.getElementById('list-body');
   if (sidebar) {
-    for (let child of sidebar.children) {
-      let isOpen = false;
-      let category = document.getElementById(child.id);
-      const contents = category.getElementsByTagName('li');
-      for (const link of category.getElementsByTagName('li')) {
-        if (link.className === 'view') isOpen = !isOpen;
-      }
-      if (isOpen) {
-        category.className = "withchild open"
+      for (let child of sidebar.children) {
+      if (child.className == "withchild") {
+          child.className = "withchild open";
+      } else {
+        let isOpen = false;
+        let category = document.getElementById(child.id);
+        const contents = category.getElementsByTagName('li');
+        for (const link of category.getElementsByTagName('li')) {
+          if (link.className === 'withchild') isOpen = !isOpen;
+        }
+        if (isOpen) {
+          category.className = "withchild open"
+        }
       }
     }
   }
