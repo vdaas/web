@@ -17,7 +17,7 @@ window.onclick = (event) => {
   } else {
     if (elem.id === 'list-button') {
       toggleSideAll();
-    } else if (elem.id.startsWith('menu_')) {
+    } else if (elem.id.startsWith('cat_')) {
       toggleSidebar(elem);
     } else if (elem.href) {
       let id = elem.href.split('/').slice(-1)[0];
