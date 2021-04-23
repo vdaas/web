@@ -158,17 +158,16 @@ const initSidebar = () => {
     const lastPath = paths[paths.length - 1];
     for (let child of sidebar.children) {
       if ((lastPath == "docs" || lastPath.match("v\[0-9\]+")) && child.className == "withchild") {
-          child.className = "withchild open";
-      } else {
-        let isOpen = false;
-        let category = document.getElementById(child.id);
-        const contents = category.getElementsByTagName('li');
-        for (const link of category.getElementsByTagName('li')) {
-          if (link.className === 'withchild') isOpen = !isOpen;
-        }
-        if (isOpen) {
-          category.className = "withchild open"
-        }
+        child.className = "withchild open";
+      }
+      let isOpen = false;
+      let category = document.getElementById(child.id);
+      const contents = category.getElementsByTagName('li');
+      for (const link of contents) {
+        if (link.className === 'view') isOpen = !isOpen;
+      }
+      if (isOpen) {
+        category.className = "withchild open"
       }
     }
   }
