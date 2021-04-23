@@ -149,9 +149,15 @@ for (let i = 0; i < links.length; i++) {
 // initialize sidebar style
 const initSidebar = () => {
   const sidebar = document.getElementById('list-body');
+  const paths = window.location.href.split("/").filter((v) => {
+      if (v.length != 0) {
+          return v;
+      }
+  });
   if (sidebar) {
-      for (let child of sidebar.children) {
-      if (child.className == "withchild") {
+    const lastPath = paths[paths.length - 1];
+    for (let child of sidebar.children) {
+      if ((lastPath == "docs" || lastPath.match("v\[0-9\]+")) && child.className == "withchild") {
           child.className = "withchild open";
       } else {
         let isOpen = false;
