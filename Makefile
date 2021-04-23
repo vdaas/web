@@ -2,7 +2,7 @@
 
 LATEST_VERSION = 1.0.4
 NEW_VERSION := ${LATEST_VERSION}
-DOC_VERSION = 0.0
+DOC_VERSION = 1.0
 NEW_DOC_VERSION := $(DOC_VERSION)
 ARCIVE_URL = https://github.com/vdaas/vald/archive/v$(LATEST_VERSION).zip
 
@@ -125,6 +125,11 @@ update-root-content: $(ROOT_DOC_FILES)
 update-dir-version-index:
 	@$(eval DIR := $(shell find content/docs/v$(DOC_VERSION) -maxdepth 1 -type d | egrep "content/docs/v${DOC_VERSION}/"))
 	$(foreach dir,$(DIR),$(call create-index-file,$(dir)))
+	@if [ ! -e "content/docs/v$(DOC_VERSION)/_index.md" ]; then \
+		hugo new --kind version-top "content/docs/v$(DOC_VERSION)/index" >/dev/null ; \
+		mv content/docs/v$(DOC_VERSION)/index/index.md content/docs/v$(DOC_VERSION)/_index.md ; \
+		rm -rf content/docs/v$(DOC_VERSION)/index/ ; \
+	fi
 
 .PHONY: update-dir-root-index
 update-dir-root-index:
@@ -144,11 +149,6 @@ endef
 update/images:
 	$(call sync-image)
 	$(call fix-image-path)
-
-.PHONY: test
-test: \
-	update-version-content \
-	update-dir-version-index
 
 .PHONY: update/contents
 update/contents: \
