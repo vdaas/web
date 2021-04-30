@@ -4,6 +4,9 @@
 <div class="content">
   <div class="markdown">
     <h1>Document Overview</h1>
+    {{ if ne .Page.URL "/docs/" }}
+    <p>This Documents are for {{ index ($arr := split .Page.URL "/" ) 2 }}</p>
+    {{ end }}
     <p>
       There is a list of documents about Vald.<br>
       Let's try to check the documents that you want to know.

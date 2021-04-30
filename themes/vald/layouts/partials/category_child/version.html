@@ -1,0 +1,14 @@
+{{ $current := .current }}
+{{ $validPath := split ($current | relLangURL) "/" }}
+{{ $currentVersion := index $validPath 2 }}
+<ul>
+{{ range .children }}
+   {{ $permalink := absURL .URL }}
+   {{ $docVersion := index (split ($permalink | relLangURL) "/") 2 }}
+   {{ if eq $docVersion $currentVersion }}
+   <li class="{{ if eq $current $permalink }}view{{ else }}index{{ end }}">
+     <a href="{{ .URL }}">{{ index (split .Name "_") 0 }}</a>
+   </li>
+  {{ end }}
+{{ end }}
+</ul>

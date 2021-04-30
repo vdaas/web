@@ -2,11 +2,15 @@
 
 LATEST_VERSION = 1.0.4
 NEW_VERSION := ${LATEST_VERSION}
+DOC_VERSION = 1.0
+NEW_DOC_VERSION := $(DOC_VERSION)
 ARCIVE_URL = https://github.com/vdaas/vald/archive/v$(LATEST_VERSION).zip
 
 ORIGINAL_DOCS = $(eval ORIGINAL_DOCS:=$(shell find tmp/vald-$(LATEST_VERSION)/docs -type f -name "*.md" 2>/dev/null ))$(ORIGINAL_DOCS)
-# contents document each version
-V_DOC_FILES = $(ORIGINAL_DOCS:tmp/vald-$(LATEST_VERSION)/docs/%.md=content/docs/v$(LATEST_VERSION)/%.md)
+# contents document latest version
+LATEST_DOC_FILES = $(ORIGINAL_DOCS:tmp/vald-$(LATEST_VERSION)/docs/%.md=content/docs/v$(LATEST_VERSION)/%.md)
+# contents document each minor
+V_DOC_FILES = $(ORIGINAL_DOCS:tmp/vald-$(LATEST_VERSION)/docs/%.md=content/docs/v$(DOC_VERSION)/%.md)
 # content document at root path
 ROOT_DOC_FILES = $(ORIGINAL_DOCS:tmp/vald-$(LATEST_VERSION)/docs/%.md=content/docs/%.md)
 
@@ -51,6 +55,15 @@ version:
 	    echo "\e[1;31mNothing to update.\e[0m" ; \
 	fi
 	$(eval LATEST_VERSION = $(NEW_VERSION))
+	@$(eval NEW_DOC_VERSION := $(subst $() ,.,$(wordlist 1,2,$(subst ., ,$(NEW_VERSION)))))
+	@$(eval rowNumber = $(shell grep "DOC_VERSION" -n Makefile | head -n 1 | cut -d ":" -f 1))
+	@if [ $(DOC_VERSION) != $(NEW_DOC_VERSION) ]; then \
+		echo "\e[1;32mUpdating to doc version $(NEW_VERSION)\e[0m" ; \
+		sed -i '${rowNumber}c\DOC_VERSION = ${NEW_DOC_VERSION}' Makefile ; \
+	else \
+	    echo "\e[1;31mNothing to update.\e[0m" ; \
+	fi
+	$(eval DOC_VERSION = $(NEW_DOC_VERSION))
 
 .PHONY: sync
 sync:
@@ -65,6 +78,18 @@ latest: \
 
 .PHONY: $(V_DOC_FILES)
 $(V_DOC_FILES): \
+	$(ORIGINAL_DOCS) \
+	archetypes/default.md
+	@echo "\e[1;33mcreate/update $@\e[0m"
+	@mkdir -p $(dir $@)
+	@if [ -e $@ ]; then \
+		rm $@ ; \
+	fi
+	@hugo new $@ >/dev/null
+	@cat $(patsubst content/docs/v$(DOC_VERSION)/%.md,tmp/vald-$(LATEST_VERSION)/docs/%.md,$@) >> $@
+
+.PHONY: $(LATEST_DOC_FILES)
+$(LATEST_DOC_FILES): \
 	$(ORIGINAL_DOCS) \
 	archetypes/default.md
 	@echo "\e[1;33mcreate/update $@\e[0m"
@@ -90,8 +115,21 @@ $(ROOT_DOC_FILES): \
 .PHONY: update-version-content
 update-version-content: $(V_DOC_FILES)
 
+.PHONY: update-latest-content
+update-latest-content: $(LATEST_DOC_FILES)
+
 .PHONY: update-root-content
 update-root-content: $(ROOT_DOC_FILES)
+
+.PHONY: update-dir-version-index
+update-dir-version-index:
+	@$(eval DIR := $(shell find content/docs/v$(DOC_VERSION) -maxdepth 1 -type d | egrep "content/docs/v${DOC_VERSION}/"))
+	$(foreach dir,$(DIR),$(call create-index-file,$(dir)))
+	@if [ ! -e "content/docs/v$(DOC_VERSION)/_index.md" ]; then \
+		hugo new --kind version-top "content/docs/v$(DOC_VERSION)/index" >/dev/null ; \
+		mv content/docs/v$(DOC_VERSION)/index/index.md content/docs/v$(DOC_VERSION)/_index.md ; \
+		rm -rf content/docs/v$(DOC_VERSION)/index/ ; \
+	fi
 
 .PHONY: update-dir-root-index
 update-dir-root-index:
@@ -114,9 +152,11 @@ update/images:
 
 .PHONY: update/contents
 update/contents: \
-	update-version-content \
+	update-latest-content \
 	update-root-content \
-	update-dir-root-index
+	update-dir-root-index \
+	update-version-content \
+	update-dir-version-index
 	$(call fix-document-path)
 	@echo "\e[1;32mfinish createing contens\e[0m"
 
@@ -125,18 +165,23 @@ clean:
 	$(call clean)
 	@echo "\e[1;32mUpdate document finished with success\e[0m"
 
-.PHONY: publish-root
+.PHONY: publish/root
 publish/root:
 	$(call publish-root)
 
-.PHONY: publish-version
+.PHONY: publish/version
 publish/version:
 	$(call publish-version)
 
+.PHONY: publish/latest
+publish/latest:
+	$(call publish-latest)
+
 .PHONY: publish/all
 publish/all:
-	$(call publish-root)
-	$(call publish-version)
+	$(call publish/root)
+	$(call publish/version)
+	$(call publish/latest)
 
 define get-latest
 	@echo "\e[1;32mstart sync latest document\e[0m"
@@ -170,6 +215,7 @@ define sync-image
 		mkdir -p static/images/v$(LATEST_VERSION) ; \
 		cd tmp/vald-$(LATEST_VERSION)/assets/docs && cp -R ./ ../../../../static/images/ && cd ../../../../ ; \
 		cd tmp/vald-$(LATEST_VERSION)/assets/docs && cp -R . ../../../../static/images/v$(LATEST_VERSION) && cd ../../../../ ; \
+		cd tmp/vald-$(LATEST_VERSION)/assets/docs && cp -R . ../../../../static/images/v$(DOC_VERSION) && cd ../../../../ ; \
 		find static/images -type f -not -name "*svg" -not -name "*.png" | xargs rm -rf ; \
 	fi
 endef
@@ -177,8 +223,10 @@ endef
 define fix-image-path
 	@echo "\e[1;32mstart fix image path\e[0m"
 	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/\.\.\/\.\.\/design/\/images\/v$(LATEST_VERSION)/g"
+	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\.\.\/\.\.\/design/\/images\/v$(DOC_VERSION)/g"
 	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\.\.\/\.\.\/design/\/images/g"
 	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/\.\.\/\.\.\/assets\/docs/\/images\/v$(LATEST_VERSION)/g"
+	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\.\.\/\.\.\/assets\/docs/\/images\/v$(DOC_VERSION)/g"
 	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\.\.\/\.\.\/assets\/docs/\/images/g"
 endef
 
@@ -186,6 +234,8 @@ define fix-document-path
 	@echo "\e[1;32mstart fix document path\e[0m"
 	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/\.md//g"
 	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\/v$(LATEST_VERSION)\//g"
+	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\.md//g"
+	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\/v$(DOC_VERSION)\//g"
 	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\.md//g"
 	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\//g"
 endef
@@ -196,6 +246,11 @@ define publish-root
 endef
 
 define publish-version
+	@echo "\e[1;32mpublish version document\e[0m"
+	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "4 s/true/false/g"
+endef
+
+define publish-latest
 	@echo "\e[1;32mpublish version document\e[0m"
 	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "4 s/true/false/g"
 endef
