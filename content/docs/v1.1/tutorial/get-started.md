@@ -1,8 +1,8 @@
 ---
-title: "Get Started_content/Docs/Tutorial"
-date: 2021-05-20T15:47:50+09:00
-draft: false
-weight: 100
+title: "Get Started_content/Docs/V1.1/Tutorial"
+date: 2021-05-20T15:47:55+09:00
+draft: true
+weight: 0
 menu:
   tutorial:
     parent: Tutorial
@@ -22,14 +22,14 @@ Before starting, let's check the below image.
 It shows the architecture image about the deployment result of Get Started.<br>
 The 4 kinds of components, `Vald LB Gateway`, `Vald Discoverer`, `Vald Agent`, and `Vald Index Manager` will be deployed to the Kubernetes.
 
-<img src="/images/tutorial/getstarted.png" />
+<img src="/images/v1.1/tutorial/getstarted.png" />
 
 The 5 steps to Get Started with Vald:
-1. [Check and Satisfy the Requirements](#requirements)
-1. [Prepare Kubernetes Cluster](#prepare-the-kubernetes-cluster)
-1. [Deploy Vald on Kubernetes Cluster](#deploy-vald-on-kubernetes-cluster)
-1. [Run Example Code](#run-example-code)
-1. [Cleanup](#cleanup)
+1. [Check and Satisfy the Requirements](#Requirements)
+1. [Prepare Kubernetes Cluster](#Prepare-the-Kubernetes-Cluster)
+1. [Deploy Vald on Kubernetes Cluster](#Deploy-Vald-on-Kubernetes-Cluster)
+1. [Run Example Code](#Run-Example-Code)
+1. [Cleanup](#Cleanup)
 
 ## Requirements
 
@@ -141,7 +141,7 @@ The [fashion-mnist](https://github.com/zalandoresearch/fashion-mnist) is used as
 
 The example code is implemented Go and using [vald-client-go](https://github.com/vdaas/vald-client-go), one of the official Vald client libraries,  for requesting to Vald cluster.
 Vald provides multiple language client libraries such as Go, Java, Node.js, Python, and so on.
-If you are interested in, please refer to [SDKs](/docs/user-guides/sdks).<br>
+If you are interested in, please refer to [SDKs](/docs/v1.1/user-guides/sdks).<br>
 
 1. Port Forward
 
@@ -382,9 +382,9 @@ helm uninstall vald
 Congratulation! You completely entered the Vald World!
 
 If you want, you can try other tutorials such as:
-- [Vald Agent Standalone on k8s](/docs/tutorial/vald-agent-standalone-on-k8s)
-- [Vald Agent on Docker](/docs/tutorial/vald-agent-standalone-on-docker)
+- [Vald Agent Standalone on k8s](/docs/v1.1/tutorial/vald-agent-standalone-on-k8s)
+- [Vald Agent on Docker](/docs/v1.1/tutorial/vald-agent-standalone-on-docker)
 
 For more information, we recommend you to check:
-- [Configuration](/docs/user-guides/configuration)
-- [Operations](/docs/user-guides/operations)
+- [Configuration](/docs/v1.1/user-guides/configuration)
+- [Operations](/docs/v1.1/user-guides/operations)

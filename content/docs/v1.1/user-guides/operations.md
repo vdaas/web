@@ -1,8 +1,8 @@
 ---
-title: "Operations_content/Docs/User Guides"
-date: 2021-05-20T15:47:52+09:00
-draft: false
-weight: 200
+title: "Operations_content/Docs/V1.1/User Guides"
+date: 2021-05-20T15:47:56+09:00
+draft: true
+weight: 0
 menu:
   userguides:
     parent: User Guides
@@ -103,7 +103,7 @@ It is required to set your Prometheus to a data source.
 Now you can construct your own Grafana dashboard to monitor Vald metrics.
 This is an example of a custom dashboard. It is based on [our standard dashboard settings][vald-grafana-dashboards].
 
-<img src="/images/guides/operations/grafana-example.png" />
+<img src="/images/v1.1/guides/operations/grafana-example.png" />
 
 
 ## Upgrading
