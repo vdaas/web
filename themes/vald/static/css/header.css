@@ -344,11 +344,10 @@ a.version__link{
   a.version__link {
       color: #00BAB1;
   }
-  .version__item{
-    background-color: rgba(51, 51, 51, 0.9);
-  }
+
   @media screen and (min-width: 768px){
   .version__item {
+    background-color: rgba(51, 51, 51, 0.9);
     border-bottom: 1px solid #393939;
   }
 }
