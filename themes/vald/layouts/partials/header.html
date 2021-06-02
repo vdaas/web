@@ -25,7 +25,22 @@
           <a href="https://vdaas-vald.medium.com/" target="_blank" class="header__link">Blog<br/></a>
         </li>
         <li class="header__item">
-          <a href="https://github.com/vdaas/vald" target="_blank" class="header__link header__link--button">Github</a>
+            <details class="header__version">
+              <summary class="version__current">v1.1.1</summary>
+              <ul class="version__list">
+                <il class="version__item"><a href="" class="version__link version__link--latest" target="_blank" class="">v1.1.1</a></il>
+                <il class="version__item"><a href="" class="version__link" target="_blank" class="">v1.1.0</a></il>
+                <il class="version__item"><a href="" class="version__link" target="_blank" class="">v1.0.0</a></il>
+              </ul>
+            </details>
+        </li>
+        <li class="header__item">
+          <a class="header__item header__icon" href="https://github.com/vdaas/vald">
+            <picture>
+              <source srcset="{{ .Site.BaseURL }}/images/logo_github_white.svg" media="(prefers-color-scheme: dark)" class="" width="24" height="24">
+              <img src="{{ .Site.BaseURL }}/images/logo_github_black.svg" alt="github" class="">
+            </picture>
+          </a>
         </li>
       </ul>
     </nav>
