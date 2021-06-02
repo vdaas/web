@@ -1,6 +1,6 @@
 ---
 title: "Contributing Guide_content/Docs/Contributing"
-date: 2021-05-20T15:47:49+09:00
+date: 2021-06-02T11:51:43+09:00
 draft: false
 weight: 100
 menu:

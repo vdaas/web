@@ -1,6 +1,6 @@
 ---
 title: "Vald Agent Standalone on Docker_content/Docs/Tutorial"
-date: 2021-05-20T15:47:51+09:00
+date: 2021-06-02T11:51:44+09:00
 draft: false
 weight: 300
 menu:
@@ -179,7 +179,7 @@ This chapter will use NGT for the core engine of Vald Agent.
     
     We use [`example/client/agent/main.go`](https://github.com/vdaas/vald/blob/master/example/client/agent/main.go) to run the example.
     The example code is the same as running an example only Vald agent on Kubernetes.
-    If you want to learn the detail of running an example, please refer to the tutorial of [Vald Agent Standalone on Kubernetes](/docs/tutorial/vald-agent-standalone-on-k8s/#run-example-code).
+    If you want to learn the detail of running an example, please refer to the tutorial of [Vald Agent Standalone on kubernetes](/docs/tutorial/get-started/#run-using-example-code).
 
     ```bash
     # run example

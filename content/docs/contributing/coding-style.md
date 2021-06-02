@@ -1,6 +1,6 @@
 ---
 title: "Coding Style_content/Docs/Contributing"
-date: 2021-05-20T15:47:49+09:00
+date: 2021-06-02T11:51:42+09:00
 draft: false
 weight: 200
 menu:
@@ -459,7 +459,7 @@ The implementation may differ based on your use case.
 ### Functional Option
 
 In Vald, the functional option pattern is widely used in Vald.
-You can refer to [this section](#Struct-initialization) for more details of the use case of this pattern.
+You can refer to [this section](#struct-initialization) for more details of the use case of this pattern.
 
 We provide the following errors to describe the error to apply the option.
 

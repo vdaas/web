@@ -1,6 +1,6 @@
 ---
 title: "Using Backup With Scylladb_content/Docs/V1.1/Tutorial"
-date: 2021-05-20T15:47:55+09:00
+date: 2021-06-02T11:51:49+09:00
 draft: true
 weight: 0
 menu:
@@ -25,11 +25,11 @@ The following image is the architecture image of this tutorial.
 <img src="/images/v1.1/tutorial/vald-with-syclladb.png" />
 
 The 5 steps to Using Backup with ScyllaDB:
-1. [Check and Satisfy the Requirements](#Requirements)
-1. [Prepare Kubernetes Cluster](#Prepare-the-Kubernetes-Cluster)
-1. [Deploy Vald on Kubernetes Cluster](#Deploy-Vald-on-Kubernetes-Cluster)
-1. [Run Example Code](#Run-Example-Code)
-1. [Cleanup](#Cleanup)
+1. [Check and Satisfy the Requirements](#requirements)
+1. [Prepare Kubernetes Cluster](#prepare-the-kubernetes-cluster)
+1. [Deploy Vald on Kubernetes Cluster](#deploy-vald-on-kubernetes-cluster)
+1. [Run Example Code](#run-example-code)
+1. [Cleanup](#cleanup)
 
 ## Requirements
 
@@ -236,7 +236,7 @@ This chapter shows how to perform a search action in Vald with fashion-mnist dat
     go run main.go
     ```
 
-    The detailed explanation of example code is shown in [Get Started](/docs/v1.1/tutorial/get-started#Running-Example-Code)
+    The detailed explanation of example code is shown in [Get Started](/docs/v1.1/tutorial/get-started#running-example-code)
 
 ## Cleanup
 

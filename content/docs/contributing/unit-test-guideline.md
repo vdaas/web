@@ -1,6 +1,6 @@
 ---
 title: "Unit Test Guideline_content/Docs/Contributing"
-date: 2021-05-20T15:47:49+09:00
+date: 2021-06-02T11:51:42+09:00
 draft: false
 weight: 300
 menu:
@@ -198,7 +198,7 @@ This change is very clear and you can apply it easily.
 Our basic test case depends on the type of 2 variadic argument.
 
   1. When input is `...interface{}`
-      - we have to write all test cases which satisfies `...interface{}` as same as [basic test case](#basic). For example, `val = 1`, `val = "input"`, `val = []float64{2020.12}` and so on.
+      - we have to write all test cases which satisfies `...interface{}` as same as [basic test case](#basic). for example, `val = 1`, `val = "input"`, `val = []float64{2020.12}` and so on.
   1. When input is not `...interface{}` but `...[]int`, `...[]string` or etc
       - we have to create only slice pattern test cases, which is the same as not create test cases with a single vale.
       - we should test with boundary cases, for example, we should test with `val = []int{math.MaxInt64()}` when the input value is `...[]int`.
