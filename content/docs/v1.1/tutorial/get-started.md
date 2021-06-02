@@ -1,6 +1,6 @@
 ---
 title: "Get Started_content/Docs/V1.1/Tutorial"
-date: 2021-05-20T15:47:55+09:00
+date: 2021-06-02T11:51:48+09:00
 draft: true
 weight: 0
 menu:
@@ -25,11 +25,11 @@ The 4 kinds of components, `Vald LB Gateway`, `Vald Discoverer`, `Vald Agent`, a
 <img src="/images/v1.1/tutorial/getstarted.png" />
 
 The 5 steps to Get Started with Vald:
-1. [Check and Satisfy the Requirements](#Requirements)
-1. [Prepare Kubernetes Cluster](#Prepare-the-Kubernetes-Cluster)
-1. [Deploy Vald on Kubernetes Cluster](#Deploy-Vald-on-Kubernetes-Cluster)
-1. [Run Example Code](#Run-Example-Code)
-1. [Cleanup](#Cleanup)
+1. [Check and Satisfy the Requirements](#requirements)
+1. [Prepare Kubernetes Cluster](#prepare-the-kubernetes-cluster)
+1. [Deploy Vald on Kubernetes Cluster](#deploy-vald-on-kubernetes-cluster)
+1. [Run Example Code](#run-example-code)
+1. [Cleanup](#cleanup)
 
 ## Requirements
 
