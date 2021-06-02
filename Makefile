@@ -1,6 +1,6 @@
 .PHONY: all run deploy/staging deploy/production subup
 
-LATEST_VERSION = 1.1.0
+LATEST_VERSION = 1.1.1
 NEW_VERSION := ${LATEST_VERSION}
 DOC_VERSION = 1.1
 NEW_DOC_VERSION := $(DOC_VERSION)
@@ -152,7 +152,6 @@ update/images:
 
 .PHONY: update/contents
 update/contents: \
-	update-latest-content \
 	update-root-content \
 	update-dir-root-index \
 	update-version-content \
@@ -181,7 +180,6 @@ publish/latest:
 publish/all:
 	$(call publish/root)
 	$(call publish/version)
-	$(call publish/latest)
 
 define get-latest
 	@echo "\e[1;32mstart sync latest document\e[0m"
@@ -214,7 +212,6 @@ define sync-image
 		mkdir -p static && mkdir -p static/images ; \
 		mkdir -p static/images/v$(LATEST_VERSION) ; \
 		cd tmp/vald-$(LATEST_VERSION)/assets/docs && cp -R ./ ../../../../static/images/ && cd ../../../../ ; \
-		cd tmp/vald-$(LATEST_VERSION)/assets/docs && cp -R . ../../../../static/images/v$(LATEST_VERSION) && cd ../../../../ ; \
 		cd tmp/vald-$(LATEST_VERSION)/assets/docs && cp -R . ../../../../static/images/v$(DOC_VERSION) && cd ../../../../ ; \
 		find static/images -type f -not -name "*svg" -not -name "*.png" | xargs rm -rf ; \
 	fi
@@ -222,22 +219,19 @@ endef
 
 define fix-image-path
 	@echo "\e[1;32mstart fix image path\e[0m"
-	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/\.\.\/\.\.\/design/\/images\/v$(LATEST_VERSION)/g"
 	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\.\.\/\.\.\/design/\/images\/v$(DOC_VERSION)/g"
 	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\.\.\/\.\.\/design/\/images/g"
-	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/\.\.\/\.\.\/assets\/docs/\/images\/v$(LATEST_VERSION)/g"
 	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\.\.\/\.\.\/assets\/docs/\/images\/v$(DOC_VERSION)/g"
 	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\.\.\/\.\.\/assets\/docs/\/images/g"
 endef
 
 define fix-document-path
 	@echo "\e[1;32mstart fix document path\e[0m"
-	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/\.md//g"
-	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\/v$(LATEST_VERSION)\//g"
 	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\.md//g"
 	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\/v$(DOC_VERSION)\//g"
 	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\.md//g"
 	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\//g"
+	@find content/docs -type f -name "*.md" | xargs sed -i "s/\(#\{1\}[A-Z]\{1\}.*\)/\L\1/g"
 endef
 
 define publish-root
