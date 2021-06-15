@@ -14,6 +14,8 @@ window.onclick = (event) => {
   let elem = getElemByEvent(event);
   if (elem.id === 'current') {
     toggleTocNav();
+  } else if (elem.className.includes('version__') || elem.className.includes('__version')) {
+    setVersion(elem);
   } else {
     if (elem.id === 'list-button') {
       toggleSideAll();
@@ -234,5 +236,25 @@ const getElemByEvent = (event) => {
 }
 
 const getParentByElem = (elem) => {
-  return elem.parentNode;
+    return elem.parentNode;
+}
+
+const setVersion = (elem) => {
+  if (elem.text === '' || elem.text === undefined) {
+    document.getElementById('version_details').removeAttribute('open');
+  } else if (elem.text.startsWith('v')) {
+    const beforeVersion = document.getElementById('current_version').textContent;
+    document.getElementById('current_version').textContent = elem.text;
+    document.getElementById('version_details').removeAttribute('open');
+    let links = document.getElementsByClassName('header__link')
+      for (var link of links) {
+        if (link.href.includes(beforeVersion)) {
+          link.href = link.href.replace('/' + beforeVersion, '');
+        }
+        if (!elem.className.includes('latest') && link.href.includes('/docs')) {
+          link.href = link.href.replace('/docs', '/docs/' + elem.text);
+        }
+    }
+  }
+  document.getElementById('version_details').removeAttribute('open');
 }
