@@ -261,6 +261,7 @@ summary.version__current::-webkit-details-marker {
   position: relative;
   font-weight: bold;
   margin-top: 8px;
+  z-index: 9999;
 }
 
 .version__item{
