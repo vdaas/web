@@ -1,4 +1,7 @@
-<header class="header" id="header">
+{{ $latest := "v1.1.1" }}
+{{ $ver := "" }}
+{{ $docsBaseURL := "/docs" }}
+<heade class="header" id="header">
   <div class="header__content">
     <nav class="header__nav cf">
       <a href="{{ .Site.BaseURL }}" class="header-nav__link">
@@ -8,27 +11,40 @@
         </picture>
       </a>
       <a class="header-nav__icon" id="nav-btn"><span class="header-nav__button"></span></a>
+      {{ if ne .Page.Permalink .Site.BaseURL }}
+      {{ $setURL := urls.Parse .Page.Permalink }}
+        {{ if (in $setURL.Path "docs/v") }}
+          {{ $ver = index (split $setURL.Path "/") 2 }}
+          {{ $docsBaseURL = path.Join $docsBaseURL $ver }}
+        {{ end }}
+      {{ end }}
       <ul class="header__list" id="menu">
         <li class="header__item">
-          <a href="{{ .Site.BaseURL }}/docs/overview/about-vald" class="header__link">About</a>
+          <a href="{{ $docsBaseURL }}/overview/about-vald" class="header__link">About</a>
         </li>
         <li class="header__item">
-          <a href="{{ .Site.BaseURL }}/docs/tutorial/get-started" class="header__link">Get Started</a>
+          <a href="{{ $docsBaseURL }}/tutorial/get-started" class="header__link">Get Started</a>
         </li>
         <li class="header__item">
-          <a href="{{ .Site.BaseURL }}/docs/user-guides/sdks" class="header__link">SDKs</a>
+          <a href="{{ $docsBaseURL }}/user-guides/sdks" class="header__link">SDKs</a>
         </li>
         <li class="header__item">
-          <a href="{{ .Site.BaseURL  }}/docs" class="header__link">Docs</a>
+          <a href="{{ $docsBaseURL  }}" class="header__link">Docs</a>
         </li>
         <li class="header__item">
           <a href="https://vdaas-vald.medium.com/" target="_blank" class="header__link">Blog<br/></a>
         </li>
         <li class="header__item">
             <details class="header__version" id="version_details">
-              <summary class="version__current" id="current_version">v1.1.1</summary>
+              <summary class="version__current" id="current_version">
+                {{ if ne $ver "" }}
+                  {{ $ver }}
+                {{ else }}
+                  {{ $latest }}
+                {{ end }}
+              </summary>
               <ul class="version__list">
-                <il class="version__item"><a href="javascript:void(0)" class="version__link version__link--latest" class="">v1.1.1</a></il>
+                <il class="version__item"><a href="javascript:void(0)" class="version__link version__link--latest" class="">{{ $latest }}</a></il>
                 <il class="version__item"><a href="javascript:void(0)" class="version__link" >v1.1</a></il>
                 <il class="version__item"><a href="javascript:void(0)" class="version__link" >v1.0</a></il>
               </ul>
