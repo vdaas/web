@@ -1,6 +1,6 @@
 ---
 title: "Using Backup With Scylladb_content/Docs/V1.1/Tutorial"
-date: 2021-06-02T11:51:49+09:00
+date: 2021-06-25T18:13:55+09:00
 draft: true
 weight: 0
 menu:
@@ -240,11 +240,11 @@ This chapter shows how to perform a search action in Vald with fashion-mnist dat
 
 ## Cleanup
 
-    Remove the Vald pods by executing:
+Remove the Vald pods by executing:
 
-    ```bash
-    helm uninstall vald
-    ```
+```bash
+helm uninstall vald
+```
 
 ## Recommended Documents
 
