@@ -274,14 +274,17 @@ const setVersion = (elem) => {
     const urls = {
       header: document.getElementsByClassName('header__link'),
       footer: document.getElementsByClassName('footer__link'),
+      lp: document.getElementsByClassName('mdl-link'),
     };
     for (const links in urls) {
-      for (var link of urls[links]) {
-        if (link.href.includes(beforeVersion)) {
-          link.href = link.href.replace('/' + beforeVersion, '');
-        }
-        if (!elem.className.includes('latest') && link.href.includes('/docs')) {
-          link.href = link.href.replace('/docs', '/docs/' + elem.text);
+      if (urls[links] != undefined || urls[links] != null) {
+        for (var link of urls[links]) {
+          if (link.href.includes(beforeVersion)) {
+            link.href = link.href.replace('/' + beforeVersion, '');
+          }
+          if (!elem.className.includes('latest') && link.href.includes('/docs')) {
+            link.href = link.href.replace('/docs', '/docs/' + elem.text);
+          }
         }
       }
     }
