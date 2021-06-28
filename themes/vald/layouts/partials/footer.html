@@ -1,20 +1,30 @@
+{{ $latest := "v1.1.1" }}
+{{ $ver := "" }}
+{{ $docsBaseURL := "/docs" }}
 <footer class="footer">
   <div class="footer__content cf">
+    {{ if ne .Page.Permalink .Site.BaseURL }}
+    {{ $setURL := urls.Parse .Page.Permalink }}
+      {{ if (in $setURL.Path "docs/v") }}
+        {{ $ver = index (split $setURL.Path "/") 2 }}
+        {{ $docsBaseURL = path.Join $docsBaseURL $ver }}
+      {{ end }}
+    {{ end }}
     <ul class="footer__list">
       <li class="footer__item">
-        <a href="{{ .Site.BaseURL }}/docs/overview/about-vald" class="footer__link">About<br/></a>
+        <a href="{{ $docsBaseURL }}/overview/about-vald" class="footer__link">About<br/></a>
       </li>
       <li class="footer__item">
-        <a href="{{ .Site.BaseURL }}/docs/tutorial/get-started" class="footer__link">Get Started<br/></a>
+        <a href="{{ $docsBaseURL }}/tutorial/get-started" class="footer__link">Get Started<br/></a>
       </li>
       <li class="footer__item">
-        <a href="{{ .Site.BaseURL }}/docs/user-guides/sdks" class="footer__link">SDKs</a>
+        <a href="{{ $docsBaseURL }}/user-guides/sdks" class="footer__link">SDKs</a>
       </li>
       <li class="footer__item">
-        <a href="{{ .Site.BaseURL  }}/docs" class="footer__link">Docs</a>
+        <a href="{{ $docsBaseURL  }}" class="footer__link">Docs</a>
       </li>
       <li class="footer__item">
-        <a href="https://medium.com/@vdaas_vald" target="_blank" class="footer__link">Blog<br/></a>
+        <a href="https://vdaas-vald.medium.com/" target="_blank" class="footer__link">Blog<br/></a>
       </li>
       <li class="footer__item">
         <a class="footer__item footer__icon" href="https://github.com/vdaas/vald">
@@ -26,5 +36,5 @@
       </li>
     </ul>
   </div>
-  <p class="footer__copylight">©2019-2021 vald.vdaas.org Vald team</p>
+  <p class="footer__copylight">©2019-{{ .Date.Format "2006" }} vald.vdaas.org Vald team</p>
 </footer>
