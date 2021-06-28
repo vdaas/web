@@ -419,7 +419,7 @@ For further details, there are references of Helm values in GitHub Vald reposito
 [vald-helm-chart]: https://github.com/vdaas/vald/tree/master/charts/vald
 [vald-helm-operator-chart]: https://github.com/vdaas/vald/tree/master/charts/vald-helm-operator
 
-[vald-operation-guide]: ./operations
+[vald-operation-guide]: ../operations
 
 [vald-apis-docs]: https://github.com/vdaas/vald/tree/master/apis/docs
 [vald-swagger-specs]: https://github.com/vdaas/vald/tree/master/apis/swagger

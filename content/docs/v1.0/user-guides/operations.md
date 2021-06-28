@@ -147,7 +147,7 @@ The operator will automatically detect the changes and update the deployed Vald 
 [pod-priority-preemption]: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
 [resource-quota]: https://kubernetes.io/docs/concepts/policy/resource-quotas/
 
-[coding-style-logging]: ../contributing/coding-style#logging
+[coding-style-logging]: ../../contributing/coding-style#logging
 
 [prometheus-io]: https://prometheus.io/
 [grafana]: https://grafana.com
