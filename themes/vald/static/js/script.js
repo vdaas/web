@@ -262,6 +262,7 @@ const setVersion = (elem) => {
     let url = location.href;
     const nextVersion = elem.className.includes('latest') ? '' : elem.text + '/';
     if (url.includes('/docs/')) {
+      // move to new document url .
       if (url.includes(beforeVersion)) {
         url = url.replace(beforeVersion + '/', nextVersion);
       } else {
@@ -269,14 +270,23 @@ const setVersion = (elem) => {
       }
       window.location.href = url;
     }
-    let links = document.getElementsByClassName('header__link')
-      for (var link of links) {
-        if (link.href.includes(beforeVersion)) {
-          link.href = link.href.replace('/' + beforeVersion, '');
+    // update link url
+    const urls = {
+      header: document.getElementsByClassName('header__link'),
+      footer: document.getElementsByClassName('footer__link'),
+      lp: document.getElementsByClassName('mdl-link'),
+    };
+    for (const links in urls) {
+      if (urls[links] != undefined || urls[links] != null) {
+        for (var link of urls[links]) {
+          if (link.href.includes(beforeVersion)) {
+            link.href = link.href.replace('/' + beforeVersion, '');
+          }
+          if (!elem.className.includes('latest') && link.href.includes('/docs')) {
+            link.href = link.href.replace('/docs', '/docs/' + elem.text);
+          }
         }
-        if (!elem.className.includes('latest') && link.href.includes('/docs')) {
-          link.href = link.href.replace('/docs', '/docs/' + elem.text);
-        }
+      }
     }
   }
   document.getElementById('version_details').removeAttribute('open');
