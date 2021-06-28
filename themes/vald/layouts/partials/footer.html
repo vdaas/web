@@ -1,22 +1,40 @@
+{{ $latest := "v1.1.1" }}
+{{ $ver := "" }}
+{{ $docsBaseURL := "/docs" }}
 <footer class="footer">
   <div class="footer__content cf">
+    {{ if ne .Page.Permalink .Site.BaseURL }}
+    {{ $setURL := urls.Parse .Page.Permalink }}
+      {{ if (in $setURL.Path "docs/v") }}
+        {{ $ver = index (split $setURL.Path "/") 2 }}
+        {{ $docsBaseURL = path.Join $docsBaseURL $ver }}
+      {{ end }}
+    {{ end }}
     <ul class="footer__list">
       <li class="footer__item">
-        <a href="{{ .Site.BaseURL }}/docs/overview/about-vald" class="footer__link">About<br/></a>
+        <a href="{{ $docsBaseURL }}/overview/about-vald" class="footer__link">About<br/></a>
       </li>
       <li class="footer__item">
-        <a href="{{ .Site.BaseURL }}/docs/tutorial/get-started" class="footer__link">Get Started<br/></a>
-      </li>
-      <!-- <li class="footer__item"> -->
-        <!-- <a href="" class="footer__link">Docs<br/></a> -->
-      <!-- </li> -->
-      <li class="footer__item">
-        <a href="https://medium.com/@vdaas_vald" target="_blank" class="footer__link">Blog<br/></a>
+        <a href="{{ $docsBaseURL }}/tutorial/get-started" class="footer__link">Get Started<br/></a>
       </li>
       <li class="footer__item">
-        <a href="https://github.com/vdaas/vald" target="_blank" class="footer__link footer__link--button">Github<br/></a>
+        <a href="{{ $docsBaseURL }}/user-guides/sdks" class="footer__link">SDKs</a>
+      </li>
+      <li class="footer__item">
+        <a href="{{ $docsBaseURL  }}" class="footer__link">Docs</a>
+      </li>
+      <li class="footer__item">
+        <a href="https://vdaas-vald.medium.com/" target="_blank" class="footer__link">Blog<br/></a>
+      </li>
+      <li class="footer__item">
+        <a class="footer__item footer__icon" href="https://github.com/vdaas/vald">
+          <picture>
+            <source srcset="{{ .Site.BaseURL }}/images/logo_github_white.svg" media="(prefers-color-scheme: dark)" class="icon__image" width="24" height="24">
+            <img src="{{ .Site.BaseURL }}/images/logo_github_black.svg" alt="github" class="icon__image">
+          </picture>
+        </a>
       </li>
     </ul>
   </div>
-  <p class="footer__copylight">©2019-2021 vald.vdaas.org Vald team</p>
+  <p class="footer__copylight">©2019-{{ .Date.Format "2006" }} vald.vdaas.org Vald team</p>
 </footer>
