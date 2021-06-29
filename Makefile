@@ -18,7 +18,7 @@ all: deploy
 	git add -A;git commit -m fix;git push
 
 run:
-	hugo server -D
+	hugo server -D --bind 0.0.0.0
 
 subup:
 	git submodule foreach git pull origin gh-pages
