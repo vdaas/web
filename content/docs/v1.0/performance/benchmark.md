@@ -2,7 +2,7 @@
 title: "Benchmark_content/Docs/V1.0/Performance"
 date: 2021-04-16T16:50:25+09:00
 draft: false
-weight: 0
+weight: 100
 menu:
   performance:
     parent: Performance

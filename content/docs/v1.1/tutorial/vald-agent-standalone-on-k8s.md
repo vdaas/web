@@ -1,8 +1,8 @@
 ---
 title: "Vald Agent Standalone on K8s_content/Docs/V1.1/Tutorial"
 date: 2021-06-02T11:51:49+09:00
-draft: true
-weight: 0
+draft: false
+weight: 200
 menu:
   tutorial:
     parent: Tutorial

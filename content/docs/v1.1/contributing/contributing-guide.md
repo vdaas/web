@@ -1,8 +1,8 @@
 ---
 title: "Contributing Guide_content/Docs/V1.1/Contributing"
 date: 2021-06-02T11:51:47+09:00
-draft: true
-weight: 0
+draft: false
+weight: 100
 menu:
   contributing:
     parent: Contributing
