@@ -1,11 +1,14 @@
 // initial sidebar
 window.onload = () => {
   initSidebar();
-  window.scroll(0, 0);
   if (location.hash.length > 0) {
+    const height = document.getElementsByClassName('header__nav')[0].offsetHeight;
+    window.scrollBy(0, -height);
     setTimeout(() => {
       scrollTocNav(location.hash.replace('#', ''));
     }, 100)
+  } else {
+    window.scroll(0, 0);
   }
 }
 

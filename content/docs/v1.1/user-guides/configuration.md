@@ -1,8 +1,8 @@
 ---
 title: "Configuration_content/Docs/V1.1/User Guides"
 date: 2021-05-20T15:47:56+09:00
-draft: true
-weight: 0
+draft: false
+weight: 100
 menu:
   userguides:
     parent: User Guides
@@ -419,7 +419,7 @@ For further details, there are references of Helm values in GitHub Vald reposito
 [vald-helm-chart]: https://github.com/vdaas/vald/tree/master/charts/vald
 [vald-helm-operator-chart]: https://github.com/vdaas/vald/tree/master/charts/vald-helm-operator
 
-[vald-operation-guide]: ./operations
+[vald-operation-guide]: ../operations
 
 [vald-apis-docs]: https://github.com/vdaas/vald/tree/master/apis/docs
 [vald-swagger-specs]: https://github.com/vdaas/vald/tree/master/apis/swagger

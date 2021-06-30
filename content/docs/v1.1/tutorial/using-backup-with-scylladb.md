@@ -1,8 +1,8 @@
 ---
 title: "Using Backup With Scylladb_content/Docs/V1.1/Tutorial"
 date: 2021-06-25T18:13:55+09:00
-draft: true
-weight: 0
+draft: false
+weight: 400
 menu:
   tutorial:
     parent: Tutorial

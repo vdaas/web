@@ -1,8 +1,8 @@
 ---
 title: "Coding Style_content/Docs/V1.1/Contributing"
 date: 2021-06-25T18:13:53+09:00
-draft: true
-weight: 0
+draft: false
+weight: 200
 menu:
   contributing:
     parent: Contributing

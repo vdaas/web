@@ -2,7 +2,7 @@
 title: "Get Started_content/Docs/V1.0/Tutorial"
 date: 2021-04-16T16:50:26+09:00
 draft: false
-weight: 0
+weight: 100
 menu:
   tutorial:
     parent: Tutorial

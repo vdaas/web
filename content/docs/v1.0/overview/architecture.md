@@ -2,7 +2,7 @@
 title: "Architecture_content/Docs/V1.0/Overview"
 date: 2021-04-16T16:50:24+09:00
 draft: false
-weight: 0
+weight: 200
 menu:
   overview:
     parent: Overview

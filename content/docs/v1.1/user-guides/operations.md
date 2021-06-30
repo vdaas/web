@@ -1,8 +1,8 @@
 ---
 title: "Operations_content/Docs/V1.1/User Guides"
 date: 2021-05-20T15:47:56+09:00
-draft: true
-weight: 0
+draft: false
+weight: 200
 menu:
   userguides:
     parent: User Guides
@@ -153,7 +153,7 @@ The operator will automatically detect the changes and update the deployed Vald 
 [pod-priority-preemption]: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
 [resource-quota]: https://kubernetes.io/docs/concepts/policy/resource-quotas/
 
-[coding-style-logging]: ../contributing/coding-style#logging
+[coding-style-logging]: ../../contributing/coding-style#logging
 
 [prometheus-io]: https://prometheus.io/
 [grafana]: https://grafana.com
