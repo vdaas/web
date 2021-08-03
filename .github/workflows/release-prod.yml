@@ -63,7 +63,7 @@ jobs:
           cd public
           git checkout gh-pages
           git add .
-          git commit -S --signoff -m ":arrow_up: v${LATEST_VERSION} `date`"
+          git commit --signoff -m ":arrow_up: v${LATEST_VERSION} `date`"
           git push origin gh-pages
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
@@ -76,7 +76,7 @@ jobs:
           git branch
           git log --oneline -n1
           git add public
-          git commit -S --signoff -m ":robot: auto update production :arrow_up:"
+          git commit --signoff -m ":robot: auto update production :arrow_up:"
           git push origin ${{ github.head_ref }}
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
