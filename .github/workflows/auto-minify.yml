@@ -35,6 +35,12 @@ jobs:
           if [ ! -z "$diff" ] ; then \
             echo "::set-output name=diff::true"
           fi
+      - uses: crazy-max/ghaction-import-gpg@v3
+        if: steps.check_comments_format.outputs.BOOL_TRIGGERED == 'true' && steps.check_permissions.outputs.EXECUTABLE == 'true'
+        with:
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          git-user-signingkey: true
+          git-commit-gpgsign: true
       - name: Commit Minified Files (pull_request)
         if: steps.git_diff_static.outputs.diff == 'true' && github.event_name== 'pull_request'
         run: |
@@ -84,6 +90,12 @@ jobs:
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: latest
+      - uses: crazy-max/ghaction-import-gpg@v3
+        if: steps.check_comments_format.outputs.BOOL_TRIGGERED == 'true' && steps.check_permissions.outputs.EXECUTABLE == 'true'
+        with:
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          git-user-signingkey: true
+          git-commit-gpgsign: true
       - name: Setup for Build
         if: github.event_name == 'pull_request'
         run: |
