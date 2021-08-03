@@ -42,7 +42,7 @@ jobs:
           git config --global user.email "ci@vdaas.org"
 
           git add themes/vald/static
-          git commit --signoff -m ":robot: auto update minified files :recycle:"
+          git commit -S --signoff -m ":robot: auto update minified files :recycle:"
 
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git push origin ${{ github.head_ref }}
@@ -57,7 +57,7 @@ jobs:
           git checkout master
 
           git add themes/vald/static
-          git commit --signoff -m ":robot: auto update minified files :recycle:"
+          git commit -S --signoff -m ":robot: auto update minified files :recycle:"
 
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git push origin master
@@ -136,7 +136,7 @@ jobs:
           cd preview
           git checkout gh-pages
           git add .
-          git commit --signoff -m ":arrow_up: v${LATEST_VERSION} `date`"
+          git commit -S --signoff -m ":arrow_up: v${LATEST_VERSION} `date`"
           git push origin gh-pages
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
@@ -145,7 +145,7 @@ jobs:
         if: steps.git_diff_preview.outputs.diff == 'true' && github.event_name == 'pull_request'
         run: |
           git add preview
-          git commit --signoff -m ":robot: auto update stage :arrow_up:"
+          git commit -S --signoff -m ":robot: auto update stage :arrow_up:"
           git push origin ${{ github.head_ref }}
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
@@ -154,7 +154,7 @@ jobs:
         if: steps.git_diff_preview.outputs.diff == 'true' && github.ref == 'refs/heads/master'
         run: |
           git add preview
-          git commit --signoff -m ":robot: auto update stage :arrow_up:"
+          git commit -S --signoff -m ":robot: auto update stage :arrow_up:"
           git push origin master
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
