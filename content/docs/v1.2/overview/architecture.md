@@ -1,7 +1,7 @@
 ---
-title: "Architecture_content/Docs/Overview"
-date: 2021-08-03T11:35:22+09:00
-draft: true
+title: "Architecture_content/Docs/V1.2/Overview"
+date: 2021-08-03T11:35:27+09:00
+draft: false
 weight: 200
 menu:
   overview:
@@ -30,7 +30,7 @@ Vald is based on the following techologies.
 
 - [Helm](https://helm.sh/)
 
-    Helm helps you to deploy and configure Vald.
+    Helm helps you to deploy and configure Vald. 
     Vald contains multiple components and configurations.
     Helm helps us to manage those manifest and provides a better and easy way to deploy and configure Vald.
 
@@ -88,7 +88,7 @@ Here are the concepts of Vald.
 Vald is based on microservice architecture, which means Vald is composited by multiple components, you can deploy part of the components to your cluster depending on your needs.
 In this section, we will introduce the basic architecture of Vald.
 
-<img src="/images/overview/Vald Basic Architecture.svg" />
+<img src="/images/v1.2/overview/Vald Basic Architecture.svg" />
 
 We will introduce each component and why it is needed in Vald.
 
