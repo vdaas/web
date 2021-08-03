@@ -35,12 +35,6 @@ jobs:
           if [ ! -z "$diff" ] ; then \
             echo "::set-output name=diff::true"
           fi
-      - uses: crazy-max/ghaction-import-gpg@v3
-        if: steps.check_comments_format.outputs.BOOL_TRIGGERED == 'true' && steps.check_permissions.outputs.EXECUTABLE == 'true'
-        with:
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-          git-user-signingkey: true
-          git-commit-gpgsign: true
       - name: Commit Minified Files (pull_request)
         if: steps.git_diff_static.outputs.diff == 'true' && github.event_name== 'pull_request'
         run: |
@@ -48,7 +42,7 @@ jobs:
           git config --global user.email "ci@vdaas.org"
 
           git add themes/vald/static
-          git commit -S --signoff -m ":robot: auto update minified files :recycle:"
+          git commit --signoff -m ":robot: auto update minified files :recycle:"
 
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git push origin ${{ github.head_ref }}
@@ -63,7 +57,7 @@ jobs:
           git checkout master
 
           git add themes/vald/static
-          git commit -S --signoff -m ":robot: auto update minified files :recycle:"
+          git commit --signoff -m ":robot: auto update minified files :recycle:"
 
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git push origin master
@@ -90,12 +84,6 @@ jobs:
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: latest
-      - uses: crazy-max/ghaction-import-gpg@v3
-        if: steps.check_comments_format.outputs.BOOL_TRIGGERED == 'true' && steps.check_permissions.outputs.EXECUTABLE == 'true'
-        with:
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-          git-user-signingkey: true
-          git-commit-gpgsign: true
       - name: Setup for Build
         if: github.event_name == 'pull_request'
         run: |
@@ -148,7 +136,7 @@ jobs:
           cd preview
           git checkout gh-pages
           git add .
-          git commit -S --signoff -m ":arrow_up: v${LATEST_VERSION} `date`"
+          git commit --signoff -m ":arrow_up: v${LATEST_VERSION} `date`"
           git push origin gh-pages
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
@@ -157,7 +145,7 @@ jobs:
         if: steps.git_diff_preview.outputs.diff == 'true' && github.event_name == 'pull_request'
         run: |
           git add preview
-          git commit -S --signoff -m ":robot: auto update stage :arrow_up:"
+          git commit --signoff -m ":robot: auto update stage :arrow_up:"
           git push origin ${{ github.head_ref }}
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
@@ -166,7 +154,7 @@ jobs:
         if: steps.git_diff_preview.outputs.diff == 'true' && github.ref == 'refs/heads/master'
         run: |
           git add preview
-          git commit -S --signoff -m ":robot: auto update stage :arrow_up:"
+          git commit --signoff -m ":robot: auto update stage :arrow_up:"
           git push origin master
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
