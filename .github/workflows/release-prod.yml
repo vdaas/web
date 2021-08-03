@@ -71,6 +71,7 @@ jobs:
       - name: Commit Production Changes
         if: steps.git_diff_preview.outputs.diff
         run: |
+          git checkout master
           git diff
           git branch
           git log --oneline -n1
