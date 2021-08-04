@@ -210,7 +210,7 @@ define sync-image
 	else \
 		echo "\e[1;32msyncing image files\e[0m" ; \
 		mkdir -p static && mkdir -p static/images ; \
-		mkdir -p static/images/v$(LATEST_VERSION) ; \
+		mkdir -p static/images/v$(DOC_VERSION) ; \
 		cd tmp/vald-$(LATEST_VERSION)/assets/docs && cp -R ./ ../../../../static/images/ && cd ../../../../ ; \
 		cd tmp/vald-$(LATEST_VERSION)/assets/docs && cp -R . ../../../../static/images/v$(DOC_VERSION) && cd ../../../../ ; \
 		find static/images -type f -not -name "*svg" -not -name "*.png" | xargs rm -rf ; \
