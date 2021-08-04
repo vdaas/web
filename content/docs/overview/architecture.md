@@ -1,7 +1,7 @@
 ---
 title: "Architecture_content/Docs/Overview"
 date: 2021-08-03T11:35:22+09:00
-draft: true
+draft: false
 weight: 200
 menu:
   overview:
