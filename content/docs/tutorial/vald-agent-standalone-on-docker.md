@@ -1,6 +1,6 @@
 ---
 title: "Vald Agent Standalone on Docker_content/Docs/Tutorial"
-date: 2021-06-02T11:51:44+09:00
+date: 2021-08-16T23:06:35+09:00
 draft: false
 weight: 300
 menu:
@@ -140,7 +140,7 @@ This chapter will use NGT for the core engine of Vald Agent.
       - Please check whether there is `config.yaml` file and `backup` directory in your current directory.
 
     ```bash
-    docker run -v $(pwd)/:/etc/server -p 8081:8081 --rm -it vdaas/vald-agent-ngt
+    docker run -v $(pwd):/etc/server -u "$(id -u $USER):$(id -g $USER)" -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro -p 8081:8081 --rm -it vdaas/vald-agent-ngt
     ```
 
 1. Verify
@@ -188,6 +188,10 @@ This chapter will use NGT for the core engine of Vald Agent.
     Note:
       - We recommend you to run `CreateIndex()` after `Insert()` without waiting for auto indexing.
       - When finish indexing completely, the backup files (metadata.json and ngt-meta.kvsdb) can be confirmed in your mount directory.
+
+    Warning:
+      - If you use Go(v1.16~) and catch the error like `missing go.sum entry to add it` when running `go run main.go`, please run `go mod tidy` and retry.
+          - This error comes from [Go Command Changes of Go 1.16 Release Notes](https://golang.org/doc/go1.16#go-command).
 
 1. Clean Up
 
