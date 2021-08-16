@@ -1,6 +1,6 @@
 ---
 title: "Coding Style_content/Docs/V1.2/Contributing"
-date: 2021-08-03T11:35:26+09:00
+date: 2021-08-16T23:06:36+09:00
 draft: false
 weight: 200
 menu:
@@ -18,7 +18,7 @@ Please also read the [Contribution guideline](/docs/v1.2/contributing/contributi
 
 ## Code Formatting and Naming Convension
 
-Code formatting and naming conventions affect coding readability and maintainability. Every developer has a different coding style, luckily Go provides tools to format source code and checking for the potential issue in the source code. We recommend using [gofumpt](https://github.com/mvdan/gofumpt) and [goimports](https://github.com/golang/tools/tree/master/cmd/goimports) to format the source code in Vald, and [golangci-lint](https://github.com/golangci/golangci-lint) with `--enable-all` option. We suggest everyone install the plugin for your editor to format the code once you edit the code automatically, and  we suggest using `make format/go` command if you want to format the source code manually.
+Code formatting and naming conventions affect coding readability and maintainability. Every developer has a different coding style, luckily Go provides tools to format source code and checking for the potential issue in the source code. We recommend using [golines](https://github.com/segmentio/golines) and [gofumpt](https://github.com/mvdan/gofumpt) and [goimports](https://github.com/golang/tools/tree/master/cmd/goimports) to format the source code in Vald, and [golangci-lint](https://github.com/golangci/golangci-lint) with `--enable-all` option. We suggest everyone install the plugin for your editor to format the code once you edit the code automatically, and  we suggest using `make format/go` command if you want to format the source code manually.
 
 But having tools to format source code doesn't mean you do not need to care the formatting of the code, for example:
 
