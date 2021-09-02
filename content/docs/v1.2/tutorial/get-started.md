@@ -1,8 +1,8 @@
 ---
 title: "Get Started_content/Docs/V1.2/Tutorial"
-date: 2021-08-03T11:35:28+09:00
+date: 2021-09-02T10:01:50+09:00
 draft: false
-weight: 100
+weight: 0
 menu:
   tutorial:
     parent: Tutorial
@@ -330,7 +330,7 @@ If you are interested in, please refer to [SDKs](/docs/v1.2/user-guides/sdks).<b
                     Config: &payload.Search_Config{
                         Num: 10,
                         Radius: -1,
-                        Epsilon: 0.01,
+                        Epsilon: 0.1,
                     }
                 }
                 if err != nil {
