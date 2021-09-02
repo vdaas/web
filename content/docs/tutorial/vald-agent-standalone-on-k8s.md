@@ -1,8 +1,8 @@
 ---
 title: "Vald Agent Standalone on K8s_content/Docs/Tutorial"
-date: 2021-05-20T15:47:51+09:00
+date: 2021-09-02T10:01:46+09:00
 draft: false
-weight: 200
+weight: 0
 menu:
   tutorial:
     parent: Tutorial
@@ -320,7 +320,7 @@ This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perf
                     Config: &payload.Search_Config{
                         Num: 10,
                         Radius: -1,
-                        Epsilon: 0.01,
+                        Epsilon: 0.1,
                     }
                 }
                 if err != nil {
