@@ -1,7 +1,7 @@
 ---
 title: "Changelog_content/Docs/Release"
 date: 2021-09-22T10:30:55+09:00
-draft: true
+draft: false
 weight: 0
 menu:
   release:
