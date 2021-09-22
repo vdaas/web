@@ -1,14 +1,12 @@
 .PHONY: all run deploy/staging deploy/production subup
 
-LATEST_VERSION = 1.2.2
+LATEST_VERSION = 1.2.3
 NEW_VERSION := ${LATEST_VERSION}
 DOC_VERSION = 1.2
 NEW_DOC_VERSION := $(DOC_VERSION)
 ARCIVE_URL = https://github.com/vdaas/vald/archive/v$(LATEST_VERSION).zip
 
 ORIGINAL_DOCS = $(eval ORIGINAL_DOCS:=$(shell find tmp/vald-$(LATEST_VERSION)/docs -type f -name "*.md" 2>/dev/null ))$(ORIGINAL_DOCS)
-# contents document latest version
-LATEST_DOC_FILES = $(ORIGINAL_DOCS:tmp/vald-$(LATEST_VERSION)/docs/%.md=content/docs/v$(LATEST_VERSION)/%.md)
 # contents document each minor
 V_DOC_FILES = $(ORIGINAL_DOCS:tmp/vald-$(LATEST_VERSION)/docs/%.md=content/docs/v$(DOC_VERSION)/%.md)
 # content document at root path
@@ -71,6 +69,7 @@ sync:
 	$(call pre-create-doc)
 	@echo "\e[1;32mfinish download latest document\e[0m"
 
+.PHONY: latest
 latest: \
 	version \
 	sync
@@ -87,18 +86,6 @@ $(V_DOC_FILES): \
 	fi
 	@hugo new $@ >/dev/null
 	@cat $(patsubst content/docs/v$(DOC_VERSION)/%.md,tmp/vald-$(LATEST_VERSION)/docs/%.md,$@) >> $@
-
-.PHONY: $(LATEST_DOC_FILES)
-$(LATEST_DOC_FILES): \
-	$(ORIGINAL_DOCS) \
-	archetypes/default.md
-	@echo "\e[1;33mcreate/update $@\e[0m"
-	@mkdir -p $(dir $@)
-	@if [ -e $@ ]; then \
-		rm $@ ; \
-	fi
-	@hugo new $@ >/dev/null
-	@cat $(patsubst content/docs/v$(LATEST_VERSION)/%.md,tmp/vald-$(LATEST_VERSION)/docs/%.md,$@) >> $@
 
 .PHONY: $(ROOT_DOC_FILES)
 $(ROOT_DOC_FILES): \
@@ -172,10 +159,6 @@ publish/root:
 publish/version:
 	$(call publish-version)
 
-.PHONY: publish/latest
-publish/latest:
-	$(call publish-latest)
-
 .PHONY: publish/all
 publish/all:
 	$(call publish/root)
@@ -242,11 +225,6 @@ endef
 define publish-version
 	@echo "\e[1;32mpublish version document\e[0m"
 	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "4 s/true/false/g"
-endef
-
-define publish-latest
-	@echo "\e[1;32mpublish version document\e[0m"
-	@find content/docs/v$(LATEST_VERSION) -type f -name "*.md" | xargs sed -i "4 s/true/false/g"
 endef
 
 define clean
