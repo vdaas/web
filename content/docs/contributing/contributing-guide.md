@@ -1,6 +1,6 @@
 ---
 title: "Contributing Guide_content/Docs/Contributing"
-date: 2021-06-02T11:51:43+09:00
+date: 2021-10-13T17:22:33+09:00
 draft: false
 weight: 100
 menu:
@@ -134,7 +134,7 @@ Name your branches with prefixes: `[type]/[area]/[description]`
 | Field | Explanation | Naming Rule |
 | :--- | :--- | :--- |
 | type | The PR type | The type of PR can be feature, bug, refactoring, benchmark, security, documentation, dependencies, ci, test, or etc... |
-| area | Area of context | The area of PR can be gateway, meta, manager-backup, manager-replication, or etc... |
+| area | Area of context | The area of PR can be gateway, agent, agent-sidecar, lb-gateway, or etc... |
 | description | Summarized description of your branch | The description must be hyphenated. Please use [a-zA-Z0-9] and hyphen as characters, and do not use any other characters. |
 
 (\*) If you changed multiple areas, please list up each area with "-".

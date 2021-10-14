@@ -1,6 +1,6 @@
 ---
 title: "Vald Agent Standalone on Docker_content/Docs/V1.2/Tutorial"
-date: 2021-08-16T23:06:35+09:00
+date: 2021-10-13T17:22:39+09:00
 draft: false
 weight: 300
 menu:
@@ -122,6 +122,9 @@ This chapter will use NGT for the core engine of Vald Agent.
       # The maximum limit duration for an initial delay
       # initial_delay_max_duration should be 3m-5m for production use. The below setting is a just example.
       initial_delay_max_duration: 60s
+      # The default create index batch pool size.
+      # When it is too large comparing to machine resource, the docker container will be crash.
+      default_pool_size: 500
     EOF
     ```
 
