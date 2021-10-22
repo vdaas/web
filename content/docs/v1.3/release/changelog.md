@@ -1,8 +1,8 @@
 ---
-title: "Changelog_content/Docs/Release"
-date: 2021-10-20T10:29:10+09:00
+title: "Changelog_content/Docs/V1.3/Release"
+date: 2021-10-20T10:29:14+09:00
 draft: false
-weight: 0
+weight: 100
 menu:
   release:
     parent: Release
