@@ -1,6 +1,6 @@
 .PHONY: all run deploy/staging deploy/production subup
 
-LATEST_VERSION = 1.3.0
+LATEST_VERSION = 1.3.1
 NEW_VERSION := ${LATEST_VERSION}
 DOC_VERSION = 1.3
 NEW_DOC_VERSION := $(DOC_VERSION)
