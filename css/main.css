@@ -768,6 +768,10 @@ details > summary  {
     margin-bottom: 16px;
 }
 
+.language-bash{
+  word-break: break-all;
+}
+
 .error {
   width: 100%;
   text-align: center;
