@@ -1,6 +1,7 @@
 .PHONY: all run deploy/staging deploy/production subup
 
 LATEST_VERSION = 1.3.1
+RELEASE = master
 NEW_VERSION := ${LATEST_VERSION}
 DOC_VERSION = 1.3
 NEW_DOC_VERSION := $(DOC_VERSION)
@@ -49,18 +50,20 @@ version:
 	@if [ ${LATEST_VERSION} != ${NEW_VERSION} ]; then \
 		echo "\e[1;32mUpdating to latest version $(NEW_VERSION)\e[0m" ; \
 		sed -i '${rowNumber}c\LATEST_VERSION = ${NEW_VERSION}' Makefile ; \
+		$(eval LATEST_VERSION = $(NEW_VERSION)) \
+		$(eval RELEASE = $(NEW_VERSION)) \
+		@$(eval NEW_DOC_VERSION := $(subst $() ,.,$(wordlist 1,2,$(subst ., ,$(NEW_VERSION))))) \
+		@$(eval rowNumber = $(shell grep "DOC_VERSION" -n Makefile | head -n 1 | cut -d ":" -f 1)) \
 	else \
-	    echo "\e[1;31mNothing to update.\e[0m" ; \
+		$(eval RELEASE = master) \
+		echo "\e[1;31mNothing to update.\e[0m" ; \
 	fi
-	$(eval LATEST_VERSION = $(NEW_VERSION))
-	@$(eval NEW_DOC_VERSION := $(subst $() ,.,$(wordlist 1,2,$(subst ., ,$(NEW_VERSION)))))
-	@$(eval rowNumber = $(shell grep "DOC_VERSION" -n Makefile | head -n 1 | cut -d ":" -f 1))
 	@if [ $(DOC_VERSION) != $(NEW_DOC_VERSION) ]; then \
 		echo "\e[1;32mUpdating to doc version $(NEW_VERSION)\e[0m" ; \
 		sed -i '${rowNumber}c\DOC_VERSION = ${NEW_DOC_VERSION}' Makefile ; \
-	else \
-	    echo "\e[1;31mNothing to update.\e[0m" ; \
-	fi
+		else \
+			echo "\e[1;31mNothing to update.\e[0m" ; \
+		fi
 	$(eval DOC_VERSION = $(NEW_DOC_VERSION))
 
 .PHONY: sync
@@ -167,16 +170,24 @@ publish/all:
 define get-latest
 	@echo "\e[1;32mstart sync latest document\e[0m"
 	@mkdir -p tmp 1>/dev/null
-	@echo "\e[1;33mdownload v$(LATEST_VERSION).zip\e[0m"
-	wget -P tmp $(ARCIVE_URL)
-	@echo "\e[1;33munpackaging v$(LATEST_VERSION).zip\e[0m"
-	@cd tmp && unzip v$(LATEST_VERSION).zip 1>/dev/null
+	@if [ $(RELEASE) = $(LATEST_VERSION) ]; then \
+		echo "\e[1;33mdownload v$(LATEST_VERSION).zip\e[0m" ; \
+		wget -P tmp $(ARCIVE_URL) ; \
+		echo "\e[1;33munpackaging v$(LATEST_VERSION).zip\e[0m" ; \
+		cd tmp && unzip v$(LATEST_VERSION).zip 1>/dev/null ; \
+	else \
+		echo "\e[1;33mclone $(RELEASE) branch\e[0m" ; \
+		cd tmp && git clone https://github.com/vdaas/vald ; \
+		mv vald vald-$(LATEST_VERSION) ; \
+	fi
 endef
 
 define pre-create-doc
 	@echo "\e[1;33mprepare create document files...\e[0m"
-	@if [ -z $(find content/docs -maxdepth 1 -type d| egrep -v "^v{1}\d+") ]; then \
-		cd content/docs && ls | egrep -v "^v{1}\d+" | xargs rm -rf ; \
+	@if [ -z $(find content/docs -maxdepth 1 -type d| egrep -v "^v{1}+") ]; then \
+		echo "\e[1;33mremove current docs...\e[0m" ; \
+		cd content/docs && ls | egrep -v "^v{1}+" | xargs rm -rf ; \
+		ls | egrep "^v$(DOC_VERSION)" | xargs rm -rf ; \
 	fi
 	@mkdir -p tmp/vald-$(LATEST_VERSION)/docs/contributing
 	@rm tmp/vald-$(LATEST_VERSION)/docs/contributing/contributing-guide.md
