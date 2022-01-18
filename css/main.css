@@ -425,7 +425,8 @@
 
 pre {
   padding: 24px;
-  overflow: auto;
+  white-space: pre-wrap;
+  position: relative;
   font-size: 85%;
   line-height: 1.45;
   background-color: #f6f8fa;
@@ -433,6 +434,7 @@ pre {
   font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
   letter-spacing: 0;
 }
+
 
 code {
   display: inline-block;
@@ -910,6 +912,70 @@ details > summary  {
   }
 }
 
+
+/* card */
+
+.notice,
+.caution,
+.warning{
+  width: 100%;
+  margin: 0 0 16px 0;
+  font-size: 1.4rem;
+  padding: 16px;
+  border-radius: 4px;
+  color: #093E92;
+  word-break:break-all;
+  display: inline-block;
+}
+
+.notice .label,
+.caution .label,
+.warning .label{
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.notice .label::before,
+.caution .label::before,
+.warning .label::before{
+  content: '';
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+  background-image: url("../images/docs_icon_card.png");
+  background-size: 28px 42px;
+}
+
+.notice{
+  background-color: #F0F6FF;
+  color: #001E4D;
+}
+
+.caution{
+  background-color: #FFF6DC;
+  color: #4A3800;
+}
+.warning{
+  background-color: #FFECE9;
+  color: #440900;
+}
+
+.notice .label::before{
+  background-position: 0 0;
+}
+
+.caution .label::before{
+  background-position: 0 -14px;
+}
+
+.warning .label::before{
+  background-position: 0 -28px;
+}
+/* card end*/
+
 @media (prefers-color-scheme: dark) {
 
  html{
@@ -996,4 +1062,32 @@ details > summary  {
       border: none;
     }
   }
+
+  /* card dark*/
+  .notice{
+    background-color: #001E4D;
+    color:#F0F6FF;
+  }
+
+  .caution{
+    background-color: #4A3800;
+    color:#FFF6DC;
+  }
+  .warning{
+    background-color: #440900;
+    color: #FFECE9;
+  }
+
+  .notice .label::before{
+    background-position: -14px 0;
+  }
+
+  .caution .label::before{
+    background-position: -14px -14px;
+  }
+
+  .warning .label::before{
+    background-position: -14px -28px;
+  }
+
 }
