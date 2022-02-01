@@ -458,6 +458,12 @@ pre {
   transition: opacity 0.3s;
 }
 
+.page ul li:hover{
+    color: #00BAB1;
+}
+.page a:hover{
+    color: #00BAB1;
+}
 
 .highlight::after{
   content: '';
@@ -479,7 +485,7 @@ pre {
 }
 
 
-pre::-webkit-scrollbar{height:8px;}
+pre::-webkit-scrollbar{height:4px;}
 pre::-webkit-scrollbar-track{
   background:#e9e9e9;
 }
@@ -487,12 +493,21 @@ pre::-webkit-scrollbar-thumb{
   background:#777777;
 }
 
-table::-webkit-scrollbar{height:8px;}
+/*table::-webkit-scrollbar{height:6px;}
 table::-webkit-scrollbar-track{
   background:#e9e9e9;
 }
 table::-webkit-scrollbar-thumb{
   background:#777777;
+}*/
+
+@media (prefers-color-scheme: dark) {
+  pre::-webkit-scrollbar-track{
+    background:#777777;
+  }
+  pre::-webkit-scrollbar-thumb{
+    background:#e9e9e9;
+  }
 }
 
 code {
