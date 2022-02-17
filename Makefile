@@ -83,24 +83,23 @@ $(V_DOC_FILES): \
 	$(ORIGINAL_DOCS) \
 	archetypes/default.md
 	@echo "\e[1;33mcreate/update $@\e[0m"
-	@mkdir -p $(dir $@)
-	@if [ -e $@ ]; then \
-		rm $@ ; \
-	fi
-	@hugo new $@ >/dev/null
+	$(call create-content-file,$@)
 	@cat $(patsubst content/docs/v$(DOC_VERSION)/%.md,tmp/vald-$(LATEST_VERSION)/docs/%.md,$@) >> $@
+
 
 .PHONY: $(ROOT_DOC_FILES)
 $(ROOT_DOC_FILES): \
 	$(ORIGINAL_DOCS) \
 	archetypes/default.md
 	@echo "\e[1;33mcreate/update $@\e[0m"
-	@mkdir -p $(dir $@)
-	@if [ -e $@ ]; then \
-		rm $@ ; \
-	fi
-	@hugo new $@ >/dev/null
+	$(call create-content-file,$@)
 	@cat $(patsubst content/docs/%.md,tmp/vald-$(LATEST_VERSION)/docs/%.md,$@) >> $@
+
+define create-content-file
+	@mkdir -p $(dir $(1))
+	@rm -rf $(1)
+	@hugo new $(1) >/dev/null
+endef
 
 .PHONY: update-version-content
 update-version-content: $(V_DOC_FILES)
@@ -132,6 +131,11 @@ define create-index-file
 	fi
 	@hugo new --kind directory-top $(1) >/dev/null
 	@mv $(1)/index.md $(1)/_index.md
+	@if [ -e "$(1)/README.md" ]; then \
+		rm $(1)/_index.md ; \
+		sed '6,8d' $(1)/README.md > $(1)/_index.md ; \
+		sed -i -e "2 s/README/index/g" $(1)/_index.md ; \
+	fi
 
 endef
 
