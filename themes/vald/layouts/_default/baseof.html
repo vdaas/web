@@ -7,7 +7,7 @@
     <link rel="canonical" href="https://vald.vdaas.org">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="robots" content='{{ if eq .Hugo.Environment "development" }}index, follow{{ else }}noindex{{ end }}'>
+    <meta name="robots" content='{{ if eq hugo.Environment "development" }}index, follow{{ else }}noindex{{ end }}'>
     <title>{{ .Site.Title }}{{ if not .IsHome}} | {{ index (split .Name "_") 0 }}{{ end }}</title>
     <meta name="description" content="{{ .Site.Params.description }}"}>
     <meta name="format-detection" content="telephone=no">
