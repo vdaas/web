@@ -1,8 +1,8 @@
 ---
-title: "Vald Agent Standalone on K8s_content/Docs/V1.3/Tutorial"
-date: 2021-10-20T10:29:13+09:00
+title: "Vald Agent Standalone on K8s_v1.3/Tutorial"
+date: 2022-02-17T16:51:43+09:00
 draft: false
-weight: 200
+weight: 300
 menu:
   tutorial:
     parent: Tutorial
@@ -321,6 +321,7 @@ This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perf
                         Num: 10,
                         Radius: -1,
                         Epsilon: 0.1,
+                        Timeout: 100000000,
                     }
                 }
                 if err != nil {
