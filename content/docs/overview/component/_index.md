@@ -3,9 +3,6 @@ title: "Component_content/Docs/Overview/Component"
 date: 2021-10-13T17:22:33+09:00
 draft: true
 weight: 0
-menu:
-  component:
-    parent: Component
 ---
 
 # Components <!-- omit in toc -->
