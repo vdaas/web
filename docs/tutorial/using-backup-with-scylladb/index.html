@@ -55,10 +55,12 @@
 <li class=header__item>
 <details class=header__version id=version_details>
 <summary class=version__current id=current_version>
-v1.2.1
+v1.4.0
 </summary>
 <ul class=version__list>
-<il class=version__item><a href=javascript:void(0) class="version__link version__link--latest">v1.2.1</a></il>
+<il class=version__item><a href=javascript:void(0) class="version__link version__link--latest">v1.4.0</a></il>
+<il class=version__item><a href=javascript:void(0) class=version__link>v1.4</a></il>
+<il class=version__item><a href=javascript:void(0) class=version__link>v1.3</a></il>
 <il class=version__item><a href=javascript:void(0) class=version__link>v1.2</a></il>
 <il class=version__item><a href=javascript:void(0) class=version__link>v1.1</a></il>
 <il class=version__item><a href=javascript:void(0) class=version__link>v1.0</a></il>
@@ -93,6 +95,13 @@ v1.2.1
 </li>
 <li class=index>
 <a href=/docs/overview/data-flow/>Data Flow</a>
+</li>
+</ul>
+</li>
+<li class=withchild id=cat_Component>Component
+<ul>
+<li class=index>
+<a href=/docs/overview/component/agent/>Agent</a>
 </li>
 </ul>
 </li>
@@ -142,6 +151,31 @@ v1.2.1
 </li>
 </ul>
 </li>
+<li class=withchild id=cat_Api>Api
+<ul>
+<li class=index>
+<a href=/docs/api/insert/>Insert</a>
+</li>
+<li class=index>
+<a href=/docs/api/update/>Update</a>
+</li>
+<li class=index>
+<a href=/docs/api/upsert/>Upsert</a>
+</li>
+<li class=index>
+<a href=/docs/api/serach/>Serach</a>
+</li>
+<li class=index>
+<a href=/docs/api/remove/>Remove</a>
+</li>
+<li class=index>
+<a href=/docs/api/object/>Object</a>
+</li>
+<li class=index>
+<a href=/docs/api/build_proto/>Build Proto</a>
+</li>
+</ul>
+</li>
 <li class=withchild id=cat_Contributing>Contributing
 <ul>
 <li class=index>
@@ -184,7 +218,7 @@ In this tutorial, you will use ScyllaDB deployed to the Persistent Volume for ba
 And you will also deploy more microservices than <a href=/docs/tutorial/get-started>Get Started</a>.
 If you haven&rsquo;t completed <a href=/docs/tutorial/get-started>Get Started</a> yet, we recommend trying it out at first.</p>
 <p>The following image is the architecture image of this tutorial.</p>
-<p><img src=/images/tutorial/vald-with-syclladb.png></p>
+<img src=/images/tutorial/vald-with-syclladb.png>
 <p>The 5 steps to Using Backup with ScyllaDB:</p>
 <ol>
 <li><a href=#requirements>Check and Satisfy the Requirements</a></li>
@@ -406,7 +440,7 @@ go run main.go
 </li>
 </ul>
 </div>
-<p class=footer__copylight>©2019-2021 vald.vdaas.org Vald team</p>
+<p class=footer__copylight>©2019-2022 vald.vdaas.org Vald team</p>
 </footer>
 </body>
 </html>
