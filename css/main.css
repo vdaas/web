@@ -1002,6 +1002,13 @@ details > summary  {
   display: inline-block;
 }
 
+.notice p,
+.caution p,
+.warning p{
+  margin-bottom: 0;
+}
+
+
 .notice .label,
 .caution .label,
 .warning .label{
