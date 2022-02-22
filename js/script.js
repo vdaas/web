@@ -19,7 +19,16 @@ window.onclick = (event) => {
   if (elem.id === '' && elem.className === "highlight") {
     const code = elem.children[0].children[0].innerText;
     navigator.clipboard.writeText(code)
-      .then()
+      .then(() => {
+        if (!elem.classList.contains("clicked")) {
+          elem.classList.add("clicked")
+          setTimeout(() => {
+            elem.classList.remove("clicked");
+          }, 500);
+        } else {
+          elem.classList.remove("clicked");
+        }
+      })
       .catch((e) => {
         console.log("failed to copy code");
       })
