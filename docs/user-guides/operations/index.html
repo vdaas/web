@@ -245,7 +245,7 @@ If the number of replicas of the index is three, which means N=3, the total amou
 <h3 id=logging>Logging</h3>
 <p>The logging level of Vald components can be configured by using <code>defaults.logging.level</code> (or <code>[component].logging.level</code>) field in Helm Chart values.
 The level must be a one of &ldquo;debug&rdquo;, &ldquo;info&rdquo;, &ldquo;warn&rdquo;, &ldquo;error&rdquo; and &ldquo;fatal&rdquo;.
-The levels are defined in <a href=../../contributing/coding-style/#logging>the Coding Style document</a>.</p>
+The levels are defined in <a href=/docs/contributing/coding-style#logging>the Coding Style document</a>.</p>
 <h3 id=observability-features-of-vald>Observability features of Vald</h3>
 <p>The observability features are useful for monitoring Vald components.
 Vald has various types of exporters, such as Prometheus, Jaeger, or Stackdriver.
@@ -292,9 +292,9 @@ After that, please update the image tags of Vald components in your deployments.
 <p>In case of using Helm and Vald&rsquo;s chart, please update <code>defaults.image.tag</code> field and install it.</p>
 <h3 id=in-case-of-using-vald-helm-operator>In case of using Vald-Helm-Operator</h3>
 <p>In case of using Vald-Helm-Operator, please upgrade the CRDs first because Helm doesn&rsquo;t have a support to upgrade CRDs.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ VERSION<span style=color:#f92672>=</span>v1.0.4
-$ kubectl replace -f https://raw.githubusercontent.com/vdaas/vald/<span style=color:#e6db74>${</span>VERSION<span style=color:#e6db74>}</span>/charts/vald-helm-operator/crds/valdrelease.yaml
-$ kubectl replace -f https://raw.githubusercontent.com/vdaas/vald/<span style=color:#e6db74>${</span>VERSION<span style=color:#e6db74>}</span>/charts/vald-helm-operator/crds/valdhelmoperatorrelease.yaml
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>VERSION<span style=color:#f92672>=</span>v1.4.1
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl replace -f https://raw.githubusercontent.com/vdaas/vald/<span style=color:#e6db74>${</span>VERSION<span style=color:#e6db74>}</span>/charts/vald-helm-operator/crds/valdrelease.yaml <span style=color:#f92672>&amp;&amp;</span> <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>kubectl replace -f https://raw.githubusercontent.com/vdaas/vald/<span style=color:#e6db74>${</span>VERSION<span style=color:#e6db74>}</span>/charts/vald-helm-operator/crds/valdhelmoperatorrelease.yaml
 </code></pre></div><p>After upgrading CRDs, please upgrade the operator.
 If you&rsquo;re using <code>valdhelmoperatorrelease</code> (or <code>vhor</code>) resource, please update the <code>spec.image.tag</code> field of it.
 On the other hand, please update the operator&rsquo;s deployment manually.</p>
@@ -367,7 +367,7 @@ The operator will automatically detect the changes and update the deployed Vald 
 </li>
 </ul>
 </div>
-<p class=footer__copylight>©2019-2021 vald.vdaas.org Vald team</p>
+<p class=footer__copylight>©2019-2022 vald.vdaas.org Vald team</p>
 </footer>
 </body>
 </html>
