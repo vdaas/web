@@ -1,6 +1,6 @@
 .PHONY: all run deploy/staging deploy/production subup
 
-LATEST_VERSION = 1.4.0
+LATEST_VERSION = 1.4.1
 RELEASE = master
 NEW_VERSION := ${LATEST_VERSION}
 DOC_VERSION = 1.4
@@ -219,8 +219,8 @@ define fix-image-path
 	@echo "\e[1;32mstart fix image path\e[0m"
 	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\.\.\/\.\.\/design/\/images\/v$(DOC_VERSION)/g"
 	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\.\.\/\.\.\/design/\/images/g"
-	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/(\.\.\/)+?\.\.\/assets\/docs/\/images\/v$(DOC_VERSION)/g"
-	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/(\.\.\/)+?\.\.\/assets\/docs/\/images/g"
+	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\(\.\.\/\)+?\.\.\/assets\/docs/\/images\/v$(DOC_VERSION)/g"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\(\.\.\/\)+?\.\.\/assets\/docs/\/images/g"
 endef
 
 define fix-document-path
