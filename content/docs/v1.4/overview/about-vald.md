@@ -1,6 +1,6 @@
 ---
 title: "About Vald_v1.4/Overview"
-date: 2022-02-17T19:23:18+09:00
+date: 2022-02-24T15:51:05+09:00
 draft: false
 weight: 100
 menu:
@@ -10,7 +10,7 @@ menu:
 
 # About Vald <!-- omit in toc -->
 
-This document gives an overview of what is Vald and what you can do with Vald. 
+This document gives an overview of what is Vald and what you can do with Vald.
 
 ## What is Vald?
 
