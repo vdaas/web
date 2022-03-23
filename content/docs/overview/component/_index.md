@@ -1,7 +1,7 @@
 ---
 title: "Component_content/Docs/Overview/Component"
 date: 2021-10-13T17:22:33+09:00
-draft: true
+draft: false
 weight: 0
 ---
 
