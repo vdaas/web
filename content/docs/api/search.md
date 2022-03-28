@@ -1,5 +1,5 @@
 ---
-title: "Serach_api"
+title: "Search_api"
 date: 2022-03-23T17:49:37+09:00
 draft: false
 weight: 400
