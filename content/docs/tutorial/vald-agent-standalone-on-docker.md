@@ -1,6 +1,6 @@
 ---
-title: "Vald Agent Standalone on Docker_content/Docs/Tutorial"
-date: 2021-10-13T17:22:35+09:00
+title: "Vald Agent Standalone on Docker_tutorial"
+date: 2022-03-25T12:29:59+09:00
 draft: false
 weight: 300
 menu:

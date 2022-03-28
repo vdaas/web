@@ -1,6 +1,6 @@
 ---
 title: "Get Started_tutorial"
-date: 2022-02-17T16:51:38+09:00
+date: 2022-03-25T12:29:59+09:00
 draft: false
 weight: 100
 menu:
@@ -22,7 +22,7 @@ The below image shows the architecture image about the deployment result of `Get
 The 4 kinds of components, `Vald LB Gateway`, `Vald Discoverer`, `Vald Agent`, and `Vald Index Manager` will be deployed to the Kubernetes.
 For more information about Vald's architecture, please refer to [Architecture](/docs/docs/overview/architecture).
 
-<img src="/images/tutorial/getstarted.png" />
+<img src="/images/tutorial/getstarted.svg" />
 
 The 5 steps to Get Started with Vald:
 

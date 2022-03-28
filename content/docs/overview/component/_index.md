@@ -1,6 +1,6 @@
 ---
-title: "Component_content/Docs/Overview/Component"
-date: 2021-10-13T17:22:33+09:00
+title: "Component_overview/Component"
+date: 2022-03-25T12:29:57+09:00
 draft: false
 weight: 0
 ---
@@ -77,8 +77,6 @@ Agent-NGT uses [yahoojapan/NGT](https://github.com/yahoojapan/NGT) as a core lib
 Each Vald Agent pod has its own vector data space because only several Vald Agents are selected to be inserted/updated in a single insert/update request.
 
 When searching a vector in Vald, each Vald Agent return different results of _k_-nearest neighbors depending on their index, and you'll get the merged result of them.
-
-<img src="..//images/vector_data_space_explain.svg" />
 
 ### Vald Agent Scheduler
 
