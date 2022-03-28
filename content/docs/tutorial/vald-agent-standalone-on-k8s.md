@@ -1,6 +1,6 @@
 ---
 title: "Vald Agent Standalone on K8s_tutorial"
-date: 2022-02-17T16:51:38+09:00
+date: 2022-03-25T12:29:59+09:00
 draft: false
 weight: 200
 menu:
@@ -19,7 +19,7 @@ In the [Get Started](/docs/tutorial/get-started), you may use 4 kinds of compone
 In this case, you use only 1 component, `Vald Agent` that is the core component for Vald named `vald-agent-ngt`, to deploy.
 The below image shows the architecture image of this case.
 
-<img src="/images/tutorial/vald-agent-standalone-on-k8s.png">
+<img src="/images/tutorial/vald-agent-standalone-on-k8s.svg">
 
 Notice: Using only Vald Agent, the auto indexing function is not in use.
 

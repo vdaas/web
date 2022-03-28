@@ -1,8 +1,8 @@
 ---
 title: "Lb Gateway_overview/Component"
-date: 2022-03-23T17:49:39+09:00
-draft: true
-weight: 200 
+date: 2022-03-25T12:29:58+09:00
+draft: false
+weight: 200
 menu:
   component:
     parent: Component

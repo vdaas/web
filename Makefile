@@ -1,9 +1,9 @@
 .PHONY: all run deploy/staging deploy/production subup
 
-LATEST_VERSION = 1.4.1
+LATEST_VERSION = 1.5.0
 RELEASE = master
 NEW_VERSION := ${LATEST_VERSION}
-DOC_VERSION = 1.4
+DOC_VERSION = 1.5
 NEW_DOC_VERSION := $(DOC_VERSION)
 ARCIVE_URL = https://github.com/vdaas/vald/archive/v$(LATEST_VERSION).zip
 
@@ -52,8 +52,8 @@ version:
 		sed -i '${rowNumber}c\LATEST_VERSION = ${NEW_VERSION}' Makefile ; \
 		$(eval LATEST_VERSION = $(NEW_VERSION)) \
 		$(eval RELEASE = $(NEW_VERSION)) \
-		@$(eval NEW_DOC_VERSION := $(subst $() ,.,$(wordlist 1,2,$(subst ., ,$(NEW_VERSION))))) \
-		@$(eval rowNumber = $(shell grep "DOC_VERSION" -n Makefile | head -n 1 | cut -d ":" -f 1)) \
+		$(eval NEW_DOC_VERSION := $(subst $() ,.,$(wordlist 1,2,$(subst ., ,$(NEW_VERSION))))) \
+		$(eval rowNumber = $(shell grep "DOC_VERSION" -n Makefile | head -n 1 | cut -d ":" -f 1)) \
 	else \
 		$(eval RELEASE = master) \
 		echo "\e[1;31mNothing to update.\e[0m" ; \

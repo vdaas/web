@@ -2,16 +2,24 @@
 {{ $current := .Page.Permalink }}
 {{ partial "sidebar.html" . }}
 <div class="content">
+  {{ if gt (len .Content) 0 }}
+    <div class="markdown">
+      {{ .Content }}
+    </div>
+    {{ partial "toc.html" . }}
+  {{ else }}
   <div class="markdown">
     <h1>Document Overview</h1>
     {{ if ne .Page.RelPermalink "/docs/" }}
-    <p>This Documents are for {{ index ($arr := split .Page.RelPermalink "/" ) 2 }}</p>
+    <div class="caution">
+      <p>This Documents are for <strong>{{ index ($arr := split .Page.RelPermalink "/" ) 2 }}</strong>.</p>
+    </div>
     {{ end }}
     <p>
       There is a list of documents about Vald.<br>
       Let's try to check the documents that you want to know.
     </p>
-    
+
     <h2>Overview</h2>
       <p>
         Overview shows the concept of Vald and mentions the top level of Vald.
@@ -59,5 +67,6 @@
       </p>
       {{ partial "list.html" (dict "menu" .Site.Menus.support "current" $current) -}}
   </div>
+  {{ end }}
 </div>
 {{ end }}

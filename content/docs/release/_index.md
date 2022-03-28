@@ -1,6 +1,6 @@
 ---
-title: "Release_content/Docs/Release"
-date: 2021-06-02T11:51:47+09:00
+title: "Release_release"
+date: 2022-03-25T12:30:01+09:00
 draft: false
 weight: 0
 ---

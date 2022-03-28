@@ -1,6 +1,6 @@
 ---
 title: "Data Flow_overview"
-date: 2022-03-23T17:49:39+09:00
+date: 2022-03-25T12:29:58+09:00
 draft: false
 weight: 300
 menu:
@@ -18,6 +18,7 @@ The below image is the basic Vald architecture.
 <img src="/images/overview/vald_basic_architecture.svg" />
 
 We will explain using this image in the following sections.
+
 - [Data Flow](#data-flow)
   - [Insert](#insert)
   - [Search](#search)
@@ -40,7 +41,7 @@ Please note that only one embedding space is supported in a single Vald Cluster,
 When the user inserts data into Vald:
 
 1. Vald Ingress receives the request from the user. The request includes the vector and the vector ID. The vector ID is the user-defined unique ID for each vector.
-2. Vald Ingress will forward the request to the Vald LB Gateway to process the request. 
+2. Vald Ingress will forward the request to the Vald LB Gateway to process the request.
 3. Vald LB Gateway will determine which Vald Agent(s) to process the request based on the resource usage of the nodes and pods, and the number of vector replicas.
 4. Vald LB Gateway will generate the UUID, and forward the generated UUID and the vector data to the selected Vald Agents in parallel. Vald Agent will insert the vector and UUID in an on-memory vector queue. A vector queue will be committed to an ANN graph index by a `CreateIndex` instruction executed by the Vald Index Manager.
 5. If Vald Agent successfully inserts the request data, it will return success to the Vald LB Gateway.

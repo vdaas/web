@@ -1,6 +1,6 @@
 ---
-title: "Architecture_content/Docs/Overview"
-date: 2021-08-16T23:06:33+09:00
+title: "Architecture_overview"
+date: 2022-03-25T12:29:57+09:00
 draft: false
 weight: 200
 menu:
