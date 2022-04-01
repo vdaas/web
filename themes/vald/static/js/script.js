@@ -290,11 +290,13 @@ const setVersion = (elem) => {
       }
       const regex = /v\d{1}\.\d{1}/;
       // move to new document url .
-      if (vOfUrl === beforeVersion) {
-        url = url.replace(beforeVersion + '/', nextVersion);
-      } else if (vOfUrl.match(regex).length === 1) {
-        // when 404 page is show, this branch will run.
-        url = url.replace(vOfUrl + '/', nextVersion);
+      if (vOfUrl !== "") {
+        if (vOfUrl === beforeVersion) {
+          url = url.replace(beforeVersion + '/', nextVersion);
+        } else if (vOfUrl.match(regex).length === 1) {
+          // when 404 page is show, this branch will run.
+          url = url.replace(vOfUrl + '/', nextVersion);
+        }
       } else {
         url = url.replace('/docs/', '/docs/' + nextVersion);
       }
