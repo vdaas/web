@@ -289,13 +289,16 @@ const setVersion = (elem) => {
         vOfUrl = url.split('/docs/')[1].split('/')[0];
       }
       const regex = /v\d{1}\.\d{1}/;
+      const match = vOfUrl.match(regex);
       // move to new document url .
-      if (vOfUrl !== "") {
+      if (vOfUrl.length > 0) {
         if (vOfUrl === beforeVersion) {
           url = url.replace(beforeVersion + '/', nextVersion);
-        } else if (vOfUrl.match(regex).length === 1) {
+        } else if (!match && match.length === 1) {
           // when 404 page is show, this branch will run.
           url = url.replace(vOfUrl + '/', nextVersion);
+        } else {
+          url = url.replace('/docs/', '/docs/' + nextVersion);
         }
       } else {
         url = url.replace('/docs/', '/docs/' + nextVersion);
