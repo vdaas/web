@@ -294,7 +294,7 @@ const setVersion = (elem) => {
       if (vOfUrl.length > 0) {
         if (vOfUrl === beforeVersion) {
           url = url.replace(beforeVersion + '/', nextVersion);
-        } else if (!match && match.length === 1) {
+        } else if (match && match.length === 1) {
           // when 404 page is show, this branch will run.
           url = url.replace(vOfUrl + '/', nextVersion);
         } else {
