@@ -284,7 +284,10 @@ const setVersion = (elem) => {
     let url = location.href;
     const nextVersion = elem.className.includes('latest') ? '' : elem.text + '/';
     if (url.includes('/docs/')) {
-      const vOfUrl = url.split('/docs/')[1].split('/')[0];
+      let vOfUrl = "";
+      if (url.split('/docs/').length > 1) {
+        vOfUrl = url.split('/docs/')[1].split('/')[0];
+      }
       const regex = /v\d{1}\.\d{1}/;
       // move to new document url .
       if (vOfUrl === beforeVersion) {
