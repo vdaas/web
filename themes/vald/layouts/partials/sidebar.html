@@ -3,7 +3,7 @@
 <aside class="page">
   {{ $current := .Page.Permalink }}
   <nav>
-    <button class="index open" id="list-button">Pages</button>
+    <!-- <button class="index open" id="list-button">Pages</button> -->
     <ul id="list-body">
       {{ partial "sidebar_category.html" (dict "page" .Site.Menus.overview "current" $current) -}}
       {{ partial "sidebar_category.html" (dict "page" .Site.Menus.component "current" $current) -}}
@@ -16,6 +16,6 @@
       {{ partial "sidebar_category.html" (dict "page" .Site.Menus.support "current" $current) -}}
       {{ partial "sidebar_category.html" (dict "page" .Site.Menus.release "current" $current) -}}
     </ul>
-  <nav>
+  </nav>
 </aside>
 <!-- sidebar end -->
