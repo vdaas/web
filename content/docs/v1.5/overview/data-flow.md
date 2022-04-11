@@ -1,6 +1,6 @@
 ---
 title: "Data Flow_v1.5/Overview"
-date: 2022-03-25T12:30:03+09:00
+date: 2022-04-11T11:12:52+09:00
 draft: false
 weight: 300
 menu:
@@ -36,7 +36,7 @@ To make the insert command effective, the `CreateIndex` instruction is required 
 
 Please note that only one embedding space is supported in a single Vald Cluster, if you want to support multiple embedded spaces, you may need to consider to deploy multiple Vald cluster to support this use case.
 
-<img src="/images/v1.5/overview/insert_flow_v2.svg" />
+<img src="/images/v1.5/overview/insert_flow.svg" />
 
 When the user inserts data into Vald:
 
@@ -54,7 +54,7 @@ Users can perform a _k_ nearest neighbor vector searching in Vald. The searching
 
 The search request will be broadcast to all Vald Agents to search the top _k_ nearest neighbor vectors from each Vald Agents, and the result will be combined and sorted by the distance of the target vector by the Vald LB Gateway.
 
-<img src="/images/v1.5/overview/search_flow_v2.svg" />
+<img src="/images/v1.5/overview/search_flow.svg" />
 
 When the user searches a vector from Vald:
 
@@ -70,7 +70,7 @@ When the user searches a vector from Vald:
 
 Users can update a vector by sending an update request to Vald. Vald will perform delete and insert requests to perform a single update command.
 
-<img src="/images/v1.5/overview/update_flow_v2.svg" />
+<img src="/images/v1.5/overview/update_flow.svg" />
 
 When the user updates a vector from Vald:
 
@@ -87,7 +87,7 @@ When the user updates a vector from Vald:
 
 Upsert request updates the existing vector if the same vector ID exists, or inserts the vector into Vald.
 
-<img src="/images/v1.5/overview/upsert_flow_v2.svg" />
+<img src="/images/v1.5/overview/upsert_flow.svg" />
 
 When the user upserts a vector to Vald:
 
@@ -104,7 +104,7 @@ When the user upserts a vector to Vald:
 
 Delete request will delete the vector in Vald cluster. Vald will broadcast the delete request to all Vald Agents to delete the vector inside the cluster. To make the delete command effective, the `CreateIndex` command is required by the Vald Index Manager or Vald Agent itself to update the vector index.
 
-<img src="/images/v1.5/overview/delete_flow_v2.svg" />
+<img src="/images/v1.5/overview/delete_flow.svg" />
 
 When the user deletes a vector that is indexed in Vald Agent:
 

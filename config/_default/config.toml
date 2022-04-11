@@ -4,6 +4,7 @@ title = "Vald"
 theme = "vald"
 publishDir = "tmp_pre"
 disableKinds = "RSS"
+enableEmoji=true
 [markup.goldmark.renderer]
     unsafe= true
 [params]
