@@ -226,9 +226,9 @@ endef
 define fix-document-path
 	@echo "\e[1;32mstart fix document path\e[0m"
 	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\.md//g"
-	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\/v$(DOC_VERSION)\//g"
+	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\/v$(DOC_VERSION)\///g"
 	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\.md//g"
-	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\//g"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i -e "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\///g"
 	@find content/docs -type f -name "*.md" | xargs sed -i "s/\(#\{1\}[A-Z]\{1\}.*\)/\L\1/g"
 endef
 
