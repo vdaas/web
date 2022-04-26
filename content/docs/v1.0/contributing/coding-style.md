@@ -459,7 +459,7 @@ The implementation may differ based on your use case.
 ### Functional Option
 
 In Vald, the functional option pattern is widely used in Vald.
-You can refer to [this section](#Struct-initialization) for more details of the use case of this pattern.
+You can refer to [this section](#struct-initialization) for more details of the use case of this pattern.
 
 We provide the following errors to describe the error to apply the option.
 
