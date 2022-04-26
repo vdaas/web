@@ -192,13 +192,13 @@ One of the features is the Go will convert a single value to a slice value when 
 
 And we apply the table-driven test for running unit tests.
 For example, when we create the unit test of `func getMeta(...[]int)`, the test code will be more complex than other functions' test which don't use variadic argument as the input if we create the test for all input patterns.
-Considering those, we define the basic unit case which is a little diffrent from [the basic test case](#Basic).
+Considering those, we define the basic unit case which is a little diffrent from [the basic test case](#basic).
 
 This change is very clear and you can apply it easily.
 Our basic test case depends on the type of 2 variadic argument.
 
   1. When input is `...interface{}`
-      - we have to write all test cases which satisfies `...interface{}` as same as [basic test case](#Basic). For example, `val = 1`, `val = "input"`, `val = []float64{2020.12}` and so on.
+      - we have to write all test cases which satisfies `...interface{}` as same as [basic test case](#basic). for example, `val = 1`, `val = "input"`, `val = []float64{2020.12}` and so on.
   1. When input is not `...interface{}` but `...[]int`, `...[]string` or etc
       - we have to create only slice pattern test cases, which is the same as not create test cases with a single vale.
       - we should test with boundary cases, for example, we should test with `val = []int{math.MaxInt64()}` when the input value is `...[]int`.
@@ -213,4 +213,4 @@ Summarize Vald unit test guideline:
 
 ## Coding Style
 
-Please refer [here](/docs/v1.0/contributing/coding-style#Test)
+Please refer [here](/docs/v1.0/contributing/coding-style#test)
