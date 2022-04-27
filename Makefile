@@ -1,6 +1,6 @@
 .PHONY: all run deploy/staging deploy/production subup
 
-LATEST_VERSION = 1.5.1
+LATEST_VERSION = 1.5.2
 RELEASE = master
 NEW_VERSION := ${LATEST_VERSION}
 DOC_VERSION = 1.5
@@ -170,6 +170,27 @@ publish/version:
 publish/all:
 	$(call publish/root)
 	$(call publish/version)
+
+.PHONY: checkout/hugos/changes
+checkout/hugos/changes:
+	@$(eval FILE := $(shell git status | grep "modified:" | grep "content/" | awk '{print $$2}'))
+	$(foreach file,$(FILE),$(call check-diff,$(file)))
+
+
+define check-diff
+	$(eval diffNum := $(shell git diff --numstat $(1) | awk '{print $$1+$$2}'))
+	$(eval detailDiff := $(shell git diff -U0 $(1) | grep "+title" | awk '{print $$1}'))
+	@if [ $(diffNum) = "4" ]; then \
+	        git checkout $(1) ; \
+	elif [ $(diffNum) = "6" ] ; then \
+	        git checkout $(1) ; \
+	elif [ $(diffNum) = "2" ] ; then \
+	        git checkout $(1) ; \
+	elif [ $(diffNum) = "8" ] && [ -n $(detailDiff) ] ; then \
+	        git checkout $(1) ; \
+	fi
+
+endef
 
 define get-latest
 	@echo "\e[1;32mstart sync latest document\e[0m"
