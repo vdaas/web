@@ -1,6 +1,6 @@
 ---
 title: "index_v1.5/Api"
-date: 2022-03-25T12:30:01+09:00
+date: 2022-04-26T20:56:11+09:00
 draft: false
 weight: 0
 ---
@@ -24,7 +24,6 @@ The APIs overview tables is here:
 |       ^        | ^                                                                                                                                                 | [LinearSearch](/docs/v1.5/api/search#linearsearch-rpc)<br>[LinearSearchByID](/docs/v1.5/api/search#linearsearchbyid-rpc)<br>[StreamLinearSearch](/docs/v1.5/api/search#streamlinearsearch-rpc)<br>[StreamLinearSearchByID](/docs/v1.5/api/search#streamlinearsearchbyid-rpc)<br>[MultiLinearSearch](/docs/v1.5/api/search#multilinearsearch-rpc)<br>[MultiLinearSearchByID](/docs/v1.5/api/search#multilinearsearchbyid-rpc) | ^                                    |
 | Remove Service | Remove the exists vector(s) from the Vald Agent Pods.                                                                                             | [Remove](/docs/v1.5/api/remove#remove-rpc)<br>[StreamRemove](/docs/v1.5/api/remove#streamremove-rpc)<br>[MultiRemove](/docs/v1.5/api/remove#multiremove-rpc)                                                                                                                                                                                                                                                  | [Vald Remove APIs](/docs/v1.5/api/remove) |
 | Object Service | Get information of vector(s) indexed into the Vald Agent Pods.                                                                                    | [Exists](/docs/v1.5/api/object#exists-rpc)<br>[GetObject](/docs/v1.5/api/object#getobject-rpc)<br>[StreamGetObject](/docs/v1.5/api/object#streamgetobject-rpc)                                                                                                                                                                                                                                                | [Vald Object APIs](/docs/v1.5/api/object) |
-
 
 <br>
 <br>
