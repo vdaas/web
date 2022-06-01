@@ -13,8 +13,11 @@ V_DOC_FILES = $(ORIGINAL_DOCS:tmp/vald-$(LATEST_VERSION)/docs/%.md=content/docs/
 # content document at root path
 ROOT_DOC_FILES = $(ORIGINAL_DOCS:tmp/vald-$(LATEST_VERSION)/docs/%.md=content/docs/%.md)
 
-all: deploy
-	git add -A;git commit -m fix;git push
+all: latest \
+     update/contents \
+     update/images \
+     checkout/hugos/changes \
+     clean
 
 run:
 	hugo server -D --bind 0.0.0.0
@@ -45,7 +48,7 @@ deploy/production: subup \
 .PHONY: version
 version:
 	@echo "\e[1;32mChecking Vald latest version...\e[0m"
-	@$(eval NEW_VERSION = $(shell curl --silent https://github.com/vdaas/vald/releases/latest | sed 's#.*tag/\(.*\)\".*#\1#' | sed 's/v//g'))
+	@$(eval NEW_VERSION = $(shell curl --silent https://raw.githubusercontent.com/vdaas/vald/master/versions/VALD_VERSION | sed 's/v//g'))
 	@$(eval rowNumber := $(shell grep "LATEST_VERSION" -n Makefile | head -n 1 | cut -d ":" -f 1))
 	@if [ ${LATEST_VERSION} != ${NEW_VERSION} ]; then \
 		echo "\e[1;32mUpdating to latest version $(NEW_VERSION)\e[0m" ; \
@@ -112,7 +115,7 @@ update-root-content: $(ROOT_DOC_FILES)
 
 .PHONY: update-dir-version-index
 update-dir-version-index:
-	@$(eval DIR := $(shell find content/docs/v$(DOC_VERSION) -maxdepth 1 -type d | egrep "content/docs/v${DOC_VERSION}/"))
+	@$(eval DIR := $(shell find content/docs/v$(DOC_VERSION) -maxdepth 3 -type d | egrep "content/docs/v${DOC_VERSION}/"))
 	$(foreach dir,$(DIR),$(call create-index-file,$(dir)))
 	@if [ ! -e "content/docs/v$(DOC_VERSION)/_index.md" ]; then \
 		hugo new --kind version-top "content/docs/v$(DOC_VERSION)/index" >/dev/null ; \
@@ -122,7 +125,7 @@ update-dir-version-index:
 
 .PHONY: update-dir-root-index
 update-dir-root-index:
-	@$(eval DIR := $(shell find content/docs -maxdepth 1 -type d | egrep -v 'v+' | egrep "content/docs/"))
+	@$(eval DIR := $(shell find content/docs -maxdepth 3 -type d | egrep -v 'v[0-9]' | egrep "content/docs/"))
 	$(foreach dir,$(DIR),$(call create-index-file,$(dir)))
 
 define create-index-file

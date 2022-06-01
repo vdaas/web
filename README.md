@@ -43,7 +43,7 @@ Vald WebSite repository based on HUGO.
 - You can get the latest contents of Vald by below
 
   ```bash
-  $ sh init.sh
+  $ make all
   ```
 
   The details of progress `init.sh`:
