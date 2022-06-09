@@ -1,6 +1,6 @@
 .PHONY: all run deploy/staging deploy/production subup
 
-LATEST_VERSION = 1.5.3
+LATEST_VERSION = 1.5.4
 RELEASE = master
 NEW_VERSION := ${LATEST_VERSION}
 DOC_VERSION = 1.5
@@ -171,8 +171,8 @@ publish/version:
 
 .PHONY: publish/all
 publish/all:
-	$(call publish/root)
-	$(call publish/version)
+	$(call publish-root)
+	$(call publish-version)
 
 .PHONY: checkout/hugos/changes
 checkout/hugos/changes:
