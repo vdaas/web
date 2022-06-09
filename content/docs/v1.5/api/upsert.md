@@ -1,6 +1,6 @@
 ---
 title: "Upsert_v1.5/Api"
-date: 2022-03-25T12:30:02+09:00
+date: 2022-06-09T11:19:26+09:00
 draft: false
 weight: 300
 menu:
@@ -14,7 +14,7 @@ menu:
 
 Upsert Service is responsible for updating existing vectors in the `vald-agent` or inserting new vectors into the `vald-agent` if the vector is not exists.
 
-```bash
+```rpc
 service Upsert {
 
   rpc Upsert(payload.v1.Upsert.Request)
@@ -36,7 +36,7 @@ Upsert RPC is the method to update a single vector and add a new single vector.
 
 - the scheme of `payload.v1.Upsert.Request`
 
-  ```bash
+  ```rpc
   message Upsert {
     message Request {
       Object.Vector vector = 1 [ (validate.rules).repeated .min_items = 2 ];
@@ -59,29 +59,32 @@ Upsert RPC is the method to update a single vector and add a new single vector.
   ```
 
   - Upsert.Request
-    |field|type|label|required|desc.|
-    |:---:|:---|:---|:---:|:---|
-    |vector|Object.Vector| | \* | the information of vector |
-    |config|Config| | \* | the configuration of the upsert request |
+
+    | field  | type          | label | required | desc.                                   |
+    | :----: | :------------ | :---- | :------: | :-------------------------------------- |
+    | vector | Object.Vector |       |    \*    | the information of vector               |
+    | config | Config        |       |    \*    | the configuration of the upsert request |
 
   - Upsert.Config
-    |field|type|label|required|desc.|
-    |:---:|:---|:---|:---:|:---|
-    |skip_strict_exist_check|bool| | | check the same vector is already inserted or not.<br>the ID should be unique if the value is `true`. |
-    |timestamp|int64| | | the timestamp of the vector updated/inserted.<br>if it is N/A, the current time will be used. |
-    |filters|Filter.Config| | | configuration for filter |
+
+    |          field          | type          | label | required | desc.                                                                                                |
+    | :---------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
+    | skip_strict_exist_check | bool          |       |          | check the same vector is already inserted or not.<br>the ID should be unique if the value is `true`. |
+    |        timestamp        | int64         |       |          | the timestamp of the vector updated/inserted.<br>if it is N/A, the current time will be used.        |
+    |         filters         | Filter.Config |       |          | configuration for filter                                                                             |
 
   - Object.Vector
-    |field|type|label|required|desc.|
-    |:---:|:---|:---|:---:|:---|
-    |id|string| | \* | the ID of a vector. ID should consist of 1 or more characters. |
-    |vector|float| repeated(Array[float]) | \* | the vector data. its dimension is between 2 and 65,536.|
+
+    | field  | type   | label                  | required | desc.                                                          |
+    | :----: | :----- | :--------------------- | :------: | :------------------------------------------------------------- |
+    |   id   | string |                        |    \*    | the ID of a vector. ID should consist of 1 or more characters. |
+    | vector | float  | repeated(Array[float]) |    \*    | the vector data. its dimension is between 2 and 65,536.        |
 
 ### Output
 
 - the scheme of `payload.v1.Object.Location`
 
-  ```bash
+  ```rpc
   message Object {
       message Location {
         string name = 1;
@@ -92,11 +95,12 @@ Upsert RPC is the method to update a single vector and add a new single vector.
   ```
 
   - Object.Location
-    |field|type|label|desc.|
-    |:---:|:---|:---|:---|
-    |name|string| | the name of vald agent pod where the request vector is updated/inserted. |
-    |uuid|string| | the ID of the updated/inserted vector. It is the same as an `Object.Vector`. |
-    |ips|string| repeated(Array[string]) | the IP list of `vald-agent` pods where the request vector is updated/inserted. |
+
+    | field | type   | label                   | desc.                                                                          |
+    | :---: | :----- | :---------------------- | :----------------------------------------------------------------------------- |
+    | name  | string |                         | the name of vald agent pod where the request vector is updated/inserted.       |
+    | uuid  | string |                         | the ID of the updated/inserted vector. It is the same as an `Object.Vector`.   |
+    |  ips  | string | repeated(Array[string]) | the IP list of `vald-agent` pods where the request vector is updated/inserted. |
 
 ### Status Code
 
@@ -118,7 +122,7 @@ It's the recommended method to upsert the large amount of vectors.
 
 - the scheme of `payload.v1.Upsert.Request stream`
 
-  ```bash
+  ```rpc
   message Upsert {
       message Request {
           Object.Vector vector = 1 [ (validate.rules).repeated .min_items = 2 ];
@@ -140,29 +144,32 @@ It's the recommended method to upsert the large amount of vectors.
   ```
 
   - Upsert.Request
-    |field|type|label|required|desc.|
-    |:---:|:---|:---|:---:|:---|
-    |vector|Object.Vector| | \* | the information of vector |
-    |config|Config| | \* | the configuration of the upsert request |
+
+    | field  | type          | label | required | desc.                                   |
+    | :----: | :------------ | :---- | :------: | :-------------------------------------- |
+    | vector | Object.Vector |       |    \*    | the information of vector               |
+    | config | Config        |       |    \*    | the configuration of the upsert request |
 
   - Upsert.Config
-    |field|type|label|required|desc.|
-    |:---:|:---|:---|:---:|:---|
-    |skip_strict_exist_check|bool| | | check the same vector is already inserted or not.<br>the ID should be unique if the value is `true`. |
-    |timestamp|int64| | | the timestamp of the vector updated/inserted.<br>if it is N/A, the current time will be used. |
-    |filters|Filter.Config| | | configuration for filter |
+
+    |          field          | type          | label | required | desc.                                                                                                |
+    | :---------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
+    | skip_strict_exist_check | bool          |       |          | check the same vector is already inserted or not.<br>the ID should be unique if the value is `true`. |
+    |        timestamp        | int64         |       |          | the timestamp of the vector updated/inserted.<br>if it is N/A, the current time will be used.        |
+    |         filters         | Filter.Config |       |          | configuration for filter                                                                             |
 
   - Object.Vector
-    |field|type|label|required|desc.|
-    |:---:|:---|:---|:---:|:---|
-    |id|string| | \* | the ID of the vector. ID should consist of 1 or more characters. |
-    |vector|float| repeated(Array[float]) | \* | the vector data. its dimension is between 2 and 65,536.|
+
+    | field  | type   | label                  | required | desc.                                                            |
+    | :----: | :----- | :--------------------- | :------: | :--------------------------------------------------------------- |
+    |   id   | string |                        |    \*    | the ID of the vector. ID should consist of 1 or more characters. |
+    | vector | float  | repeated(Array[float]) |    \*    | the vector data. its dimension is between 2 and 65,536.          |
 
 ### Output
 
 - the scheme of `payload.v1.Object.StreamLocation`
 
-  ```bash
+  ```rpc
   message Object {
       message StreamLocation {
         oneof payload {
@@ -180,24 +187,27 @@ It's the recommended method to upsert the large amount of vectors.
   ```
 
   - Object.StreamLocation
-    |field|type|label|desc.|
-    |:---:|:---|:---|:---|
-    |location|Object.Location| | the information of Object.Location data. |
-    |status|google.rpc.Status| | the status of google RPC. |
+
+    |  field   | type              | label | desc.                                    |
+    | :------: | :---------------- | :---- | :--------------------------------------- |
+    | location | Object.Location   |       | the information of Object.Location data. |
+    |  status  | google.rpc.Status |       | the status of google RPC.                |
 
   - Object.Location
-    |field|type|label|desc.|
-    |:---:|:---|:---|:---|
-    |name|string| | the name of vald agent pod where the request vector is updated/inserted. |
-    |uuid|string| | the ID of the updated/inserted vector. It is the same as an `Object.Vector`. |
-    |ips|string| repeated(Array[string]) | the IP list of `vald-agent` pods where the request vector is updated/inserted. |
+
+    | field | type   | label                   | desc.                                                                          |
+    | :---: | :----- | :---------------------- | :----------------------------------------------------------------------------- |
+    | name  | string |                         | the name of vald agent pod where the request vector is updated/inserted.       |
+    | uuid  | string |                         | the ID of the updated/inserted vector. It is the same as an `Object.Vector`.   |
+    |  ips  | string | repeated(Array[string]) | the IP list of `vald-agent` pods where the request vector is updated/inserted. |
 
   - [google.rpc.Status](https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto)
-    |field|type|label|desc.|
-    |:---:|:---|:---|:---|
-    |code|int32| | status code (code list is next section)|
-    |message|string| | error message |
-    |details|google.protobuf.Any| repeated(Array[any]) | the details error message list|
+
+    |  field  | type                | label                | desc.                                   |
+    | :-----: | :------------------ | :------------------- | :-------------------------------------- |
+    |  code   | int32               |                      | status code (code list is next section) |
+    | message | string              |                      | error message                           |
+    | details | google.protobuf.Any | repeated(Array[any]) | the details error message list          |
 
 ### Status Code
 
@@ -221,7 +231,7 @@ Please be careful that the size of the request exceed the limit.
 
 - the scheme of `payload.v1.Upsert.MultiRequest`
 
-  ```bash
+  ```rpc
   message Upsert {
       message MultiRequest { repeated Request requests = 1; }
 
@@ -246,34 +256,38 @@ Please be careful that the size of the request exceed the limit.
   ```
 
   - Upsert.MultiRequest
-    |field|type|label|required|desc.|
-    |:---:|:---|:---|:---:|:---|
-    |requests|Upsert.Request| repeated(Array[Insert.Request]) | \* | the request list |
+
+    |  field   | type           | label                           | required | desc.            |
+    | :------: | :------------- | :------------------------------ | :------: | :--------------- |
+    | requests | Upsert.Request | repeated(Array[Insert.Request]) |    \*    | the request list |
 
   - Upsert.Request
-    |field|type|label|required|desc.|
-    |:---:|:---|:---|:---:|:---|
-    |vector|Object.Vector| | \* | the information of vector |
-    |config|Config| | \* | the configuration of the upsert request |
+
+    | field  | type          | label | required | desc.                                   |
+    | :----: | :------------ | :---- | :------: | :-------------------------------------- |
+    | vector | Object.Vector |       |    \*    | the information of vector               |
+    | config | Config        |       |    \*    | the configuration of the upsert request |
 
   - Upsert.Config
-    |field|type|label|required|desc.|
-    |:---:|:---|:---|:---:|:---|
-    |skip_strict_exist_check|bool| | | check the same vector is already updated/inserted or not.<br>the ID should be unique if the value is `true`. |
-    |timestamp|int64| | | the timestamp of the vector updated/inserted.<br>if it is N/A, the current time will be used. |
-    |filters|Filter.Config| | | configuration for filter |
+
+    |          field          | type          | label | required | desc.                                                                                                        |
+    | :---------------------: | :------------ | :---- | :------: | :----------------------------------------------------------------------------------------------------------- |
+    | skip_strict_exist_check | bool          |       |          | check the same vector is already updated/inserted or not.<br>the ID should be unique if the value is `true`. |
+    |        timestamp        | int64         |       |          | the timestamp of the vector updated/inserted.<br>if it is N/A, the current time will be used.                |
+    |         filters         | Filter.Config |       |          | configuration for filter                                                                                     |
 
   - Object.Vector
-    |field|type|label|required|desc.|
-    |:---:|:---|:---|:---:|:---|
-    |id|string| | \* | the ID of a vector. ID should consist of 1 or more characters. |
-    |vector|float| repeated(Array[float]) | \* | the vector data. its dimension is between 2 and 65,536.|
+
+    | field  | type   | label                  | required | desc.                                                          |
+    | :----: | :----- | :--------------------- | :------: | :------------------------------------------------------------- |
+    |   id   | string |                        |    \*    | the ID of a vector. ID should consist of 1 or more characters. |
+    | vector | float  | repeated(Array[float]) |    \*    | the vector data. its dimension is between 2 and 65,536.        |
 
 ### Output
 
 - the scheme of `payload.v1.Object.Locations`.
 
-  ```bash
+  ```rpc
   message Object {
       message Locations { repeated Location locations = 1; }
 
@@ -286,16 +300,18 @@ Please be careful that the size of the request exceed the limit.
   ```
 
   - Object.Locations
-    |field|type|label|desc.|
-    |:---:|:---|:---|:---|
-    |location|Object.Location| repeated(Array[Object.Location]) | the list of `Object.Location` |
+
+    |  field   | type            | label                            | desc.                         |
+    | :------: | :-------------- | :------------------------------- | :---------------------------- |
+    | location | Object.Location | repeated(Array[Object.Location]) | the list of `Object.Location` |
 
   - Object.Location
-    |field|type|label|desc.|
-    |:---:|:---|:---|:---|
-    |name|string| | the name of vald agent pod where the request vector is updated/inserted. |
-    |uuid|string| | the ID of the updated/inserted vector. It is the same as an `Object.Vector`. |
-    |ips|string| repeated(Array[string]) | the IP list of `vald-agent` pods where the request vector is updated/inserted. |
+
+    | field | type   | label                   | desc.                                                                          |
+    | :---: | :----- | :---------------------- | :----------------------------------------------------------------------------- |
+    | name  | string |                         | the name of vald agent pod where the request vector is updated/inserted.       |
+    | uuid  | string |                         | the ID of the updated/inserted vector. It is the same as an `Object.Vector`.   |
+    |  ips  | string | repeated(Array[string]) | the IP list of `vald-agent` pods where the request vector is updated/inserted. |
 
 ### Status Code
 
