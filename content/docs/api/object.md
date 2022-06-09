@@ -1,6 +1,6 @@
 ---
 title: "Object_api"
-date: 2022-02-17T16:51:36+09:00
+date: 2022-06-09T11:19:25+09:00
 draft: false
 weight: 600
 menu:
@@ -14,7 +14,7 @@ menu:
 
 Object Service is responsible for getting inserted vectors and checking whether vectors are inserted into the `vald-agent` or not.
 
-```bash
+```rpc
 service Object {
   rpc Exists(payload.v1.Object.ID) returns (payload.v1.Object.ID) {}
 
@@ -34,7 +34,7 @@ Exists RPC is the method to check the a vector exists in the `vald-agent`.
 
 - the scheme of `payload.v1.Object.ID`
 
-  ```bash
+  ```rpc
   message Object {
       message ID {
           string id = 1 [ (validate.rules).string.min_len = 1 ];
@@ -43,15 +43,16 @@ Exists RPC is the method to check the a vector exists in the `vald-agent`.
   ```
 
   - Object.ID
-    |field|type|label|required|desc.|
-    |:---:|:---|:---|:---:|:---|
-    |id|string| | \* | the ID of a vector. ID should consist of 1 or more characters. |
+
+    | field | type   | label | required | desc.                                                          |
+    | :---: | :----- | :---- | :------: | :------------------------------------------------------------- |
+    |  id   | string |       |    \*    | the ID of a vector. ID should consist of 1 or more characters. |
 
 ### Output
 
 - the scheme of `payload.v1.Object.ID`
 
-  ```bash
+  ```rpc
   message Object {
       message ID {
           string id = 1 [ (validate.rules).string.min_len = 1 ];
@@ -60,18 +61,20 @@ Exists RPC is the method to check the a vector exists in the `vald-agent`.
   ```
 
   - Object.ID
-    |field|type|label|desc.|
-    |:---:|:---|:---|:---|
-    |id|string| | the ID of a vector. ID should consist of 1 or more characters. |
+
+    | field | type   | label | desc.                                                          |
+    | :---: | :----- | :---- | :------------------------------------------------------------- |
+    |  id   | string |       | the ID of a vector. ID should consist of 1 or more characters. |
 
 ### Status Code
 
-| code | desc.            |
-| :--: | :--------------- |
-|  0   | OK               |
-|  3   | INVALID_ARGUMENT |
-|  5   | NOT_FOUND        |
-|  13  | INTERNAL         |
+| code | desc.             |
+| :--: | :---------------- |
+|  0   | OK                |
+|  3   | INVALID_ARGUMENT  |
+|  4   | DEADLINE_EXCEEDED |
+|  5   | NOT_FOUND         |
+|  13  | INTERNAL          |
 
 ## GetObject RPC
 
@@ -81,7 +84,7 @@ GetObject RPC is the method to get the metadata of a vector inserted into the `v
 
 - the scheme of `payload.v1.Object.VectorRequest`
 
-  ```bash
+  ```rpc
   message Object {
       message VectorRequest {
         ID id = 1 [ (validate.rules).repeated .min_items = 2 ];
@@ -95,21 +98,23 @@ GetObject RPC is the method to get the metadata of a vector inserted into the `v
   ```
 
   - Object.VectorRequest
-    |field|type|label|required|desc.|
-    |:---:|:---|:---|:---:|:---|
-    |id|Object.ID| | \* | the ID of a vector. ID should consist of 1 or more characters. |
-    |filters|Filter.Config| | | configuration for filter. |
+
+    |  field  | type          | label | required | desc.                                                          |
+    | :-----: | :------------ | :---- | :------: | :------------------------------------------------------------- |
+    |   id    | Object.ID     |       |    \*    | the ID of a vector. ID should consist of 1 or more characters. |
+    | filters | Filter.Config |       |          | configuration for filter.                                      |
 
   - Object.ID
-    |field|type|label|required|desc.|
-    |:---:|:---|:---|:---:|:---|
-    |id|string| | \* | the ID of a vector. ID should consist of 1 or more characters. |
+
+    | field | type   | label | required | desc.                                                          |
+    | :---: | :----- | :---- | :------: | :------------------------------------------------------------- |
+    |  id   | string |       |    \*    | the ID of a vector. ID should consist of 1 or more characters. |
 
 ### Output
 
 - the scheme of `payload.v1.Object.Vector`
 
-  ```bash
+  ```rpc
   message Object {
       message Vector {
           string id = 1 [ (validate.rules).string.min_len = 1 ];
@@ -119,10 +124,11 @@ GetObject RPC is the method to get the metadata of a vector inserted into the `v
   ```
 
   - Object.Vector
-    |field|type|label|desc.|
-    |:---:|:---|:---|:---|
-    |id|string| | the ID of a vector. ID should consist of 1 or more characters. |
-    |vector|float| repeated(Array[float]) | the vector data. its dimension is between 2 and 65,536. |
+
+    | field  | type   | label                  | desc.                                                          |
+    | :----: | :----- | :--------------------- | :------------------------------------------------------------- |
+    |   id   | string |                        | the ID of a vector. ID should consist of 1 or more characters. |
+    | vector | float  | repeated(Array[float]) | the vector data. its dimension is between 2 and 65,536.        |
 
 ### Status Code
 
@@ -141,7 +147,7 @@ Each Upsert request and response are independent.
 
 - the scheme of `payload.v1.Object.VectorRequest stream`
 
-  ```bash
+  ```rpc
   message Object {
       message VectorRequest {
         ID id = 1 [ (validate.rules).repeated .min_items = 2 ];
@@ -155,21 +161,23 @@ Each Upsert request and response are independent.
   ```
 
   - Object.VectorRequest
-    |field|type|label|required|desc.|
-    |:---:|:---|:---|:---:|:---|
-    |id|Object.ID| | \* | the ID of a vector. ID should consist of 1 or more characters. |
-    |filters|Filter.Config| | | configuration for filter. |
+
+    |  field  | type          | label | required | desc.                                                          |
+    | :-----: | :------------ | :---- | :------: | :------------------------------------------------------------- |
+    |   id    | Object.ID     |       |    \*    | the ID of a vector. ID should consist of 1 or more characters. |
+    | filters | Filter.Config |       |          | configuration for filter.                                      |
 
   - Object.ID
-    |field|type|label|required|desc.|
-    |:---:|:---|:---|:---:|:---|
-    |id|string| | \* | the ID of a vector. ID should consist of 1 or more characters. |
+
+    | field | type   | label | required | desc.                                                          |
+    | :---: | :----- | :---- | :------: | :------------------------------------------------------------- |
+    |  id   | string |       |    \*    | the ID of a vector. ID should consist of 1 or more characters. |
 
 ### Output
 
 - the scheme of `payload.v1.Object.StreamVector`
 
-  ```bash
+  ```rpc
   message Object {
       message StreamVector {
         oneof payload {
@@ -185,16 +193,18 @@ Each Upsert request and response are independent.
   ```
 
   - Object.StreamVector
-    |field|type|label|desc.|
-    |:---:|:---|:---|:---|
-    |vector|Vector| | the information of Object.Vector data. |
-    |status|google.rpc.Status| | the status of google RPC. |
+
+    | field  | type              | label | desc.                                  |
+    | :----: | :---------------- | :---- | :------------------------------------- |
+    | vector | Vector            |       | the information of Object.Vector data. |
+    | status | google.rpc.Status |       | the status of google RPC.              |
 
   - Object.Vector
-    |field|type|label|desc.|
-    |:---:|:---|:---|:---|
-    |id|string| | the ID of a vector. ID should consist of 1 or more characters. |
-    |vector|float| repeated(Array[float]) | the vector data. its dimension is between 2 and 65,536. |
+
+    | field  | type   | label                  | desc.                                                          |
+    | :----: | :----- | :--------------------- | :------------------------------------------------------------- |
+    |   id   | string |                        | the ID of a vector. ID should consist of 1 or more characters. |
+    | vector | float  | repeated(Array[float]) | the vector data. its dimension is between 2 and 65,536.        |
 
 ### Status Code
 
@@ -204,4 +214,3 @@ Each Upsert request and response are independent.
 |  3   | INVALID_ARGUMENT |
 |  5   | NOT_FOUND        |
 |  13  | INTERNAL         |
-
