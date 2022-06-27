@@ -8,3 +8,7 @@ googleAnalytics = "UA-164223416-1"
 enableEmoji=true
 [markup.goldmark.renderer]
     unsafe= true
+[sitemap]
+    changefreq = "weekly"
+    filename = "sitemap.xml"
+    priority = 0.5

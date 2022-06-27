@@ -1,6 +1,6 @@
 ---
 title: "FAQ_support"
-date: 2022-04-26T11:55:30+09:00
+date: 2022-06-27T14:26:47+09:00
 draft: false
 weight: 200
 menu:
@@ -10,7 +10,7 @@ menu:
 
 # FAQ
 
-This page answers the common questions.
+This page shows the answers for the common questions.
 
 Please refer to [the troubleshooting page](/docs/user-guides/troubleshooting) when you encounter operation problems.
 

@@ -1,6 +1,6 @@
 ---
 title: "Get Started_tutorial"
-date: 2022-04-26T11:55:30+09:00
+date: 2022-06-27T14:26:47+09:00
 draft: false
 weight: 100
 menu:
@@ -414,28 +414,26 @@ If you are interested in, please refer to [SDKs](/docs/user-guides/sdks).<br>
 
     1.  Remove
 
-            - Remove 400 indexed training datasets from the Vald agent.
-                <details><summary>example code</summary><br>
+        - Remove 400 indexed training datasets from the Vald agent.
+            <details><summary>example code</summary><br>
 
-                ```go
-                for i := range ids [:insertCount] {
-                    _, err := client.Remove(ctx, &payload.Remove_Request{
-                        Id: &payload.Object_ID{
-                            Id: ids[i],
-                        },
-                    })
-                    if err != nil {
-                        glg.Fatal(err)
-                    }
-                    if i%10 == 0 {
-                        glg.Infof("Removed %d", i)
-                    }
+            ```go
+            for i := range ids [:insertCount] {
+                _, err := client.Remove(ctx, &payload.Remove_Request{
+                    Id: &payload.Object_ID{
+                        Id: ids[i],
+                    },
+                })
+                if err != nil {
+                    glg.Fatal(err)
                 }
-                ```
+                if i%10 == 0 {
+                    glg.Infof("Removed %d", i)
+                }
+            }
+            ```
 
-                </details>
-
-        </details>
+            </details>
 
 ## Cleanup
 
