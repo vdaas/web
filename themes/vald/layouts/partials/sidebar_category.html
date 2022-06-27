@@ -4,7 +4,11 @@
     {{ $parsedURL :=urls.Parse $current }}
     {{ $base := "/docs/" }}
     <li class="withchild{{ if eq $parsedURL.Path $base }} open {{ end }}" id="cat_{{ .Name }}">
-      {{- .Name -}}
+      {{ if eq .Name "Api" }}
+        {{- upper .Name -}}
+      {{ else }}
+        {{- .Name -}}
+      {{ end }}
       {{ if not (in $current "docs/v") }}
         {{ partial "category_child/default.html" (dict "children" .Children "current" $current) . -}}
       {{ else }}

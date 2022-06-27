@@ -33,6 +33,13 @@
       </p>
       {{ partial "list.html" (dict "menu" .Site.Menus.tutorial "current" $current) -}}
 
+    <h2>Usecase</h2>
+      <p>
+        Usecase supports you to imagine how to use Vald for your services.<br>
+        Also, you can get the introduction examples.
+      </p>
+      {{ partial "list.html" (dict "menu" .Site.Menus.usecase "current" $current) -}}
+
     <h2>User Guides</h2>
       <p>
         If you'd like to configure for your Vald Cluster or wonder how to operate, you can find out the answer from these documents.
@@ -47,12 +54,11 @@
       </p>
       {{ partial "list.html" (dict "menu" .Site.Menus.api "current" $current) -}}
 
-    <h2>Usecase</h2>
+    <h2>Troubleshooting</h2>
       <p>
-        Usecase supports you to imagine how to use Vald for your services.<br>
-        Also, you can get the introduction examples.
+        When you encounter any problem, please refer to these documents and try to resolve it.
       </p>
-      {{ partial "list.html" (dict "menu" .Site.Menus.usecase "current" $current) -}}
+      {{ partial "list.html" (dict "menu" .Site.Menus.troubleshooting "current" $current) -}}
 
     <h2>Contributing</h2>
       <p>
