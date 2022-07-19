@@ -2,8 +2,8 @@
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
 name = "Vald"
-license = "MIT"
-licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE"
+license = "APACHE 2.0"
+licenselink = "https://github.com/vdaas/vald/blob/master/LICENSE"
 description = "HUGO template for Vald Public Document"
 homepage = "https://vald.vdaas.org/"
 tags = []
