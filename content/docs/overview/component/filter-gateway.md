@@ -1,8 +1,8 @@
 ---
 title: "Filter Gateway_overview/Component"
 date: 2022-07-21T10:34:24+09:00
-draft: true
-weight: 0
+draft: false
+weight: 300
 menu:
   component:
     parent: Component
