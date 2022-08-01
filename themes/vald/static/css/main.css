@@ -1140,6 +1140,9 @@ details > summary  {
   .markdown tr:hover {
     background: #222222;
   }
+  .markdown code {
+    background-color: rgba(40, 40, 40, 1);
+  }
 
   @media screen and (min-width: 768px) {
     .current {
