@@ -773,11 +773,12 @@ details > summary  {
 
 
 .markdown table{
-  display: block;
+  width: 100%;
+  margin-bottom: 32px;
   overflow: auto;
   white-space: nowrap;
   background: #f8f8f8;
-  margin-top: 32px;
+  text-align: left;
   border-spacing: 0 30px 0 0;
 }
 
@@ -794,10 +795,10 @@ details > summary  {
 }
 
 .markdown th, .markdown td {
-  text-align: left;
   padding: 10px 45px 10px 10px;
 }
 .markdown thead th {
+  padding: 10px;
   border-bottom: solid 1px #ccc;
 }
 
