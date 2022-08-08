@@ -1,7 +1,7 @@
 .PHONY: all run deploy/staging deploy/production subup
 
 LATEST_VERSION = 1.5.6
-RELEASE = master
+RELEASE = main
 NEW_VERSION := ${LATEST_VERSION}
 DOC_VERSION = 1.5
 NEW_DOC_VERSION := $(DOC_VERSION)
@@ -48,7 +48,7 @@ deploy/production: subup \
 .PHONY: version
 version:
 	@echo "\e[1;32mChecking Vald latest version...\e[0m"
-	@$(eval NEW_VERSION = $(shell curl --silent https://raw.githubusercontent.com/vdaas/vald/master/versions/VALD_VERSION | sed 's/v//g'))
+	@$(eval NEW_VERSION = $(shell curl --silent https://raw.githubusercontent.com/vdaas/vald/main/versions/VALD_VERSION | sed 's/v//g'))
 	@$(eval rowNumber := $(shell grep "LATEST_VERSION" -n Makefile | head -n 1 | cut -d ":" -f 1))
 	@if [ ${LATEST_VERSION} != ${NEW_VERSION} ]; then \
 		echo "\e[1;32mUpdating to latest version $(NEW_VERSION)\e[0m" ; \
@@ -58,7 +58,7 @@ version:
 		$(eval NEW_DOC_VERSION := $(subst $() ,.,$(wordlist 1,2,$(subst ., ,$(NEW_VERSION))))) \
 		$(eval rowNumber = $(shell grep "DOC_VERSION" -n Makefile | head -n 1 | cut -d ":" -f 1)) \
 	else \
-		$(eval RELEASE = master) \
+		$(eval RELEASE = main) \
 		echo "\e[1;31mNothing to update.\e[0m" ; \
 	fi
 	@if [ $(DOC_VERSION) != $(NEW_DOC_VERSION) ]; then \

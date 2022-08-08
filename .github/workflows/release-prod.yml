@@ -1,7 +1,7 @@
 name: 'Production Release'
 on:
   push:
-    branches: master
+    branches: main
 
 jobs:
   deploy-prod:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Actions
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         uses: actions/checkout@v1
         with:
           ref: ${{github.ref}}
@@ -50,7 +50,7 @@ jobs:
         if: steps.check_release.outputs.release == 'true'
         run: |
           make build/production
-      - name: Check Changes public 
+      - name: Check Changes public
         id: git_diff_preview
         run: |
           diff=`git diff public/`
@@ -71,7 +71,7 @@ jobs:
       - name: Commit Production Changes
         if: steps.git_diff_preview.outputs.diff
         run: |
-          git checkout master
+          git checkout main
           git diff
           git branch
           git log --oneline -n1
