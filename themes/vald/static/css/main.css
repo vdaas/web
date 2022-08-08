@@ -761,10 +761,16 @@ details > summary  {
   overflow-wrap: break-word;
 }
 
+
 .markdown pre code{
   padding:0;
   font-size: 100%;
 }
+
+.markdown code.language-rpc{
+  background-color: rgba(0, 0, 0, 0);
+}
+
 
 .markdown table{
   display: block;
@@ -1139,6 +1145,9 @@ details > summary  {
   }
   .markdown tr:hover {
     background: #222222;
+  }
+  .markdown code {
+    background-color: rgba(40, 40, 40, 1);
   }
 
   @media screen and (min-width: 768px) {
