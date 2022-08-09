@@ -2,7 +2,7 @@ name: 'Minify Assets Files(css/js) and Deploy to Stage'
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 jobs:
@@ -15,8 +15,8 @@ jobs:
         uses: actions/checkout@v1
         with:
           ref: ${{github.head_ref}}
-      - name: Checkout Actions (master)
-        if: github.ref == 'refs/heads/master'
+      - name: Checkout Actions (main)
+        if: github.ref == 'refs/heads/main'
         uses: actions/checkout@v1
         with:
           ref: ${{github.ref}}
@@ -49,18 +49,18 @@ jobs:
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-      - name: Commit Minified Files (master)
-        if: steps.git_diff_static.outputs.diff == 'true' && github.ref == 'refs/heads/master'
+      - name: Commit Minified Files (main)
+        if: steps.git_diff_static.outputs.diff == 'true' && github.ref == 'refs/heads/main'
         run: |
           git config --global user.name "vdaas-ci"
           git config --global user.email "ci@vdaas.org"
-          git checkout master
+          git checkout main
 
           git add themes/vald/static
           git commit --signoff -m ":robot: auto update minified files :recycle:"
 
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push origin master
+          git push origin main
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
@@ -75,8 +75,8 @@ jobs:
         uses: actions/checkout@v1
         with:
           ref: ${{github.head_ref}}
-      - name: Checkout Actions (master)
-        if: github.ref == 'refs/heads/master'
+      - name: Checkout Actions (main)
+        if: github.ref == 'refs/heads/main'
         uses: actions/checkout@v1
         with:
           ref: ${{github.ref}}
@@ -102,14 +102,14 @@ jobs:
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-      - name: Setup for Build (master)
-        if: github.ref == 'refs/heads/master'
+      - name: Setup for Build (main)
+        if: github.ref == 'refs/heads/main'
         run: |
           git config --global user.name "vdaas-ci"
           git config --global user.email "ci@vdaas.org"
 
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git pull origin master
+          git pull origin main
 
           git submodule update --init --recursive
 
@@ -150,12 +150,12 @@ jobs:
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-      - name: Commit Stage Changes (master)
-        if: steps.git_diff_preview.outputs.diff == 'true' && github.ref == 'refs/heads/master'
+      - name: Commit Stage Changes (main)
+        if: steps.git_diff_preview.outputs.diff == 'true' && github.ref == 'refs/heads/main'
         run: |
           git add preview
           git commit --signoff -m ":robot: auto update stage :arrow_up:"
-          git push origin master
+          git push origin main
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
