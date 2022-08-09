@@ -3,7 +3,7 @@
 
 name = "Vald"
 license = "APACHE 2.0"
-licenselink = "https://github.com/vdaas/vald/blob/master/LICENSE"
+licenselink = "https://github.com/vdaas/vald/blob/main/LICENSE"
 description = "HUGO template for Vald Public Document"
 homepage = "https://vald.vdaas.org/"
 tags = []
