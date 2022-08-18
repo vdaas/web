@@ -775,23 +775,28 @@ details > summary  {
 .markdown table{
   width: 100%;
   margin-bottom: 32px;
+  white-space: nowrap;
   overflow: auto;
-  /* white-space: nowrap; */
   background: #f8f8f8;
   text-align: left;
   border-spacing: 0 30px 0 0;
+  display: block;
 }
+
 
 .markdown tbody {
   border-collapse: collapse;
 }
+
 .markdown tr:hover {
   background: #eee;
 }
 .markdown tr:not(:first-child) {
+
   th, td {
     border-top: solid 1px #ddd;
   }
+
 }
 
 .markdown th, .markdown td {
@@ -987,6 +992,7 @@ details > summary  {
   .page p.index {
     display: none;
   }
+
 }
 
 @media screen and (min-width: 1440px) {
