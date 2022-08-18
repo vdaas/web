@@ -1,6 +1,6 @@
 ---
 title: "Agent_overview/Component"
-date: 2022-03-25T12:29:57+09:00
+date: 2022-08-18T11:00:03+09:00
 draft: false
 weight: 100
 menu:
@@ -46,7 +46,7 @@ as core algorithm layer.
 
 Vald Agent NGT uses [NGT](https://github.com/yahoojapan/NGT) as an algorithm.
 
-The main functions are following:
+The main functions are the followings:
 
 - Insert
   - Request to insert new vectors into the NGT.
@@ -56,13 +56,13 @@ The main functions are following:
 - Update
   - Create a request to update the specific vectors to the new vectors.
   - Requested vectors are stored in the `vqueue`.
-- Delete
+- Remove
   - Create a request to remove the specific vectors from NGT indexes.
   - Requested vectors are stored in the `vqueue`.
 - GetObject
-  - Get the information of the indexed vectors.
+  - Get the information on the indexed vectors.
 - Exist
-  - Check the specific vectors are already inserted or not.
+  - Check whether the specific vectors are already inserted or not.
 - CreateIndex
   - Create a new NGT index structure in memory using vectors stored in the `vqueue` and the existing NGT index structure if it exists.
 - SaveIndex
@@ -95,7 +95,7 @@ Please refer to [Go Doc](https://pkg.go.dev/github.com/vdaas/vald@v1.3.1/pkg/age
 The main functions are:
 
 - Backup
-  - When `Agent Core` completes creating the index metadata files, `Sidecar` hooks to store them to the external storage.
+  - When `Agent Core` completes creating the index metadata files, `Sidecar` hooks to store them in the external storage.
 
 <img src="/images/overview/component/agent/sidecar_backup.png" />
 

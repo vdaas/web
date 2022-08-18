@@ -1,6 +1,6 @@
 ---
 title: "Architecture_overview"
-date: 2022-03-25T12:29:57+09:00
+date: 2022-08-18T11:00:03+09:00
 draft: false
 weight: 200
 menu:
@@ -8,7 +8,7 @@ menu:
     parent: Overview
 ---
 
-# Vald Architecture <!-- omit in toc -->
+# Vald Architecture
 
 This document describes the high-level architecture design of Vald and explains each component in Vald.
 
@@ -20,24 +20,24 @@ Before reading this document, you need to have some understanding of the basic i
 
 ### Technologies used by Vald
 
-Vald is based on the following techologies.
+Vald is based on the following technologies.
 
 - [Kubernetes](https://kubernetes.io/)
 
     To easily scale and manage Vald, it is used by deploying and running on [Kubernetes](https://kubernetes.io/).
-    Vald takes all of the advantages of using Kuberenetes.
+    Vald takes all of the advantages of using Kubernetes.
     For more details please read the [next section](#concept).
 
 - [Helm](https://helm.sh/)
 
     Helm helps you to deploy and configure Vald.
     Vald contains multiple components and configurations.
-    Helm helps us to manage those manifest and provides a better and easy way to deploy and configure Vald.
+    Helm helps us to manage those manifests and provides a better and easy way to deploy and configure Vald.
 
 - [NGT](https://github.com/yahoojapan/NGT)
 
-    NGT is one of the core component of Vald.
-    NGT is a super fast vector search engine used by Vald to guarantee the high performance of Vald.
+    NGT is one of the core components of Vald.
+    NGT is a super-fast vector search engine used by Vald to guarantee the high performance of Vald.
 
 ### Concept
 
@@ -49,7 +49,7 @@ Here are the concepts of Vald.
 
 - Containerized
 
-  All components in Vald are containerized, which means you can easily deploy Vald components on any environment.
+  All components in Vald are containerized, which means you can easily deploy Vald components in any environment.
 
 - Observability & Real-time monitoring
 
@@ -69,7 +69,7 @@ Here are the concepts of Vald.
 
   - Horizontal scalable
 
-    All Vald components are designed and implemented to be scalable. You can add any node in Kubernetes cluster at any time to scale your Kuberentes cluster, or changing the number of replicas to scale Vald.
+    All Vald components are designed and implemented to be scalable. You can add any node in the Kubernetes cluster at any time to scale your Kubernetes cluster or change the number of replicas to scale Vald.
 
   - Auto-healing
 
@@ -77,7 +77,7 @@ Here are the concepts of Vald.
 
   - Data persistency
 
-    Vald implements backup features. Whenever a Vald Agent is down and kubernetes start a new Vald Agent instance, the data is automatically restored to the new instance to prevent data loss.
+    Vald implements backup features. Whenever a Vald Agent is down, and Kubernetes start a new Vald Agent instance, the data is automatically restored to the new instance to prevent data loss.
 
   - Easy to manage
 

@@ -1,8 +1,8 @@
 ---
 title: "Capacity Planning_user Guides"
-date: 2022-07-19T14:38:18+09:00
-draft: false
-weight: 400
+date: 2022-08-18T11:00:06+09:00
+draft: true
+weight: 700
 menu:
   userguides:
     parent: User Guides
@@ -53,7 +53,7 @@ E.g., there are a noisy problem, high memory usage for createIndex (indexing on 
 When the Node capacity (e.g., RAM, CPU) reaches the limit, Kubernetes will decide to kill some Pods according to QoS and Pod priority.
 Kubernetes performs pod scheduling with pods Priority Class as the priority and QoS as the second priority.
 
-**Pod priority**
+#### Pod priority
 
 Pod priority has the integer value, and the higher value, the higher priority.
 
@@ -87,7 +87,7 @@ It is easy to change by editing your `values.yaml`.
       ...
 ```
 
-**QoS**
+#### QoS
 
 QoS value can be either Guaranteed, Burstable, or BestEffort.
 And, QoS priority is higher in the order of Guaranteed, Burstable, BestEffort, and Kubernetes will kill Pods in ascending order of importance.
@@ -143,7 +143,7 @@ In this situation, we recommend you to set the affinity/anti-affinity configurat
 It is easy to change by editing each component setting on your `values.yaml`.
 
 <div class="warning">
-The affinity setting for Vald Agent is the significant for the Vald cluster.<BR>
+The affinity setting for Vald Agent is significant for the Vald cluster.<BR>
 Please DO NOT remove the default settings.
 </div>
 
