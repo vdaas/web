@@ -1,6 +1,6 @@
 ---
 title: "Build Proto_v1.5/Api"
-date: 2022-04-26T11:55:33+09:00
+date: 2022-08-18T11:00:09+09:00
 draft: false
 weight: 700
 menu:
@@ -13,54 +13,55 @@ menu:
 This page shows how to build gRPC proto file for calling API to your Vald Cluster.
 
 <div class="notice">
-Vald provides the official client libraries (see: https://vald.vdaas.org/docs/user-guides/sdks ), if you can use one of SDKs we recommend to use it.
+Vald provides the official client libraries (see: <a href="https://vald.vdaas.org/docs/user-guides/sdks">SDK document</a> ).
+If you can use one of the SDKs we recommend using it.
 </div>
 
 ## Target proto files
 
-Vald defines proto file for each API.
+Vald defines the proto file for each API.
 Let's check the below table for the details.
 
 | API service name |                                           proto                                           |                                                                                              dependencies                                                                                               | usage                                                              |
 | :--------------: | :---------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------- |
-|      Insert      | [insert.proto](https://github.com/vdaas/vald/blob/master/apis/proto/v1/vald/insert.proto) | [payload.proto](https://github.com/vdaas/vald/blob/master/apis/proto/v1/payload/payload.proto)<br>[annotation.proto](https://github.com/googleapis/googleapis/blob/master/google/api/annotations.proto) | Insert vectors into Vald Agent                                     |
-|      Update      | [update.proto](https://github.com/vdaas/vald/blob/master/apis/proto/v1/vald/update.proto) | [payload.proto](https://github.com/vdaas/vald/blob/master/apis/proto/v1/payload/payload.proto)<br>[annotation.proto](https://github.com/googleapis/googleapis/blob/master/google/api/annotations.proto) | Update vectors stored in Vald Agent                                |
-|      Upsert      | [upsert.proto](https://github.com/vdaas/vald/blob/master/apis/proto/v1/vald/upsert.proto) | [payload.proto](https://github.com/vdaas/vald/blob/master/apis/proto/v1/payload/payload.proto)<br>[annotation.proto](https://github.com/googleapis/googleapis/blob/master/google/api/annotations.proto) | Update vectors stored Vald Agent or Insert vectors into Vald Agent |
-|      Search      | [search.proto](https://github.com/vdaas/vald/blob/master/apis/proto/v1/vald/search.proto) | [payload.proto](https://github.com/vdaas/vald/blob/master/apis/proto/v1/payload/payload.proto)<br>[annotation.proto](https://github.com/googleapis/googleapis/blob/master/google/api/annotations.proto) | Search similar vectors with query                                  |
-|      Remove      | [remove.proto](https://github.com/vdaas/vald/blob/master/apis/proto/v1/vald/remove.proto) | [payload.proto](https://github.com/vdaas/vald/blob/master/apis/proto/v1/payload/payload.proto)<br>[annotation.proto](https://github.com/googleapis/googleapis/blob/master/google/api/annotations.proto) | Remove stored vectors from Vald Agent                              |
-|      Object      | [object.proto](https://github.com/vdaas/vald/blob/master/apis/proto/v1/vald/object.proto) | [payload.proto](https://github.com/vdaas/vald/blob/master/apis/proto/v1/payload/payload.proto)<br>[annotation.proto](https://github.com/googleapis/googleapis/blob/master/google/api/annotations.proto) | Get object information of vector stored in Vald Agent              |
+|      Insert      | [insert.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/vald/insert.proto) | [payload.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/payload/payload.proto)<br>[annotation.proto](https://github.com/googleapis/googleapis/blob/master/google/api/annotations.proto) | Insert vectors into Vald Agent                                     |
+|      Update      | [update.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/vald/update.proto) | [payload.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/payload/payload.proto)<br>[annotation.proto](https://github.com/googleapis/googleapis/blob/master/google/api/annotations.proto) | Update vectors stored in Vald Agent                                |
+|      Upsert      | [upsert.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/vald/upsert.proto) | [payload.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/payload/payload.proto)<br>[annotation.proto](https://github.com/googleapis/googleapis/blob/master/google/api/annotations.proto) | Update vectors stored Vald Agent or Insert vectors into Vald Agent |
+|      Search      | [search.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/vald/search.proto) | [payload.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/payload/payload.proto)<br>[annotation.proto](https://github.com/googleapis/googleapis/blob/master/google/api/annotations.proto) | Search similar vectors with query                                  |
+|      Remove      | [remove.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/vald/remove.proto) | [payload.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/payload/payload.proto)<br>[annotation.proto](https://github.com/googleapis/googleapis/blob/master/google/api/annotations.proto) | Remove stored vectors from Vald Agent                              |
+|      Object      | [object.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/vald/object.proto) | [payload.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/payload/payload.proto)<br>[annotation.proto](https://github.com/googleapis/googleapis/blob/master/google/api/annotations.proto) | Get object information of vector stored in Vald Agent              |
 
 ## How to build protobuf
 
-### The way to build proto file
+### The way to build proto files
 
 Let's build proto files using your favorite programming language.
 
-There are 3 steps to build api proto:
+There are 3 steps to building API proto:
 
 1. Install gRPC tools
 
    - gRPC official document provides [the way to install for each language](https://grpc.io/docs/languages/).<br>
-     If the your favorite programming language is not there, you can find 3rd party tools for building.
+     If your favorite programming language is not there, you can find 3rd party tools for building.
 
 1. Download Vald api proto files and external dependence
 
-   - [vald api proto](https://github.com/vdaas/vald/tree/master/apis/proto/v1/vald)
-   - [vald payload proto](https://github.com/vdaas/vald/tree/master/apis/proto/v1/payload)
+   - [vald api proto](https://github.com/vdaas/vald/tree/main/apis/proto/v1/vald)
+   - [vald payload proto](https://github.com/vdaas/vald/tree/main/apis/proto/v1/payload)
    - [googleapis](https://github.com/googleapis/googleapis)
    - [PGV](https://github.com/envoyproxy/protoc-gen-validate)
 
 1. Choose proto file(s) and build
 
-### Example: Build proto in Rust
+### Example: Build proto files in Rust
 
-This section shows the example steps for build proto files using Rust.
+This section shows the example steps for building proto files using Rust.
 
 There are many tools for building proto in Rust, we use [tonic](https://github.com/hyperium/tonic) as an example.
 
 1.  Check version
 
-    This example runs on the this environment.
+    This example runs in this environment.
 
     ```bash
     $ cargo version
@@ -379,7 +380,7 @@ There are many tools for building proto in Rust, we use [tonic](https://github.c
 
 1.  Running example
 
-    After creating Vald cluster, you can run an example code by following command.
+    After creating Vald cluster, you can run an example code by the following command.
 
     ```bash
     cargo run src/client.rs

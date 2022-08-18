@@ -1,7 +1,7 @@
 ---
 title: "Changelog_release"
-date: 2022-07-21T10:34:25+09:00
-draft: false
+date: 2022-08-18T11:00:07+09:00
+draft: true
 weight: 0
 menu:
   release:
@@ -2523,7 +2523,7 @@ menu:
 ### Changes
 - bugfix: do not create metadata file when create/append flag is not set for the agent/agent-sidecar ([#904](https://github.com/vdaas/vald/pull/904))
 - :robot: Update license headers / Format Go codes and YAML files ([#913](https://github.com/vdaas/vald/pull/913))
-- :green_heart: Add formatter for master branch ([#911](https://github.com/vdaas/vald/pull/911))
+- :green_heart: Add formatter for main branch ([#911](https://github.com/vdaas/vald/pull/911))
 - :page_facing_up: Update license headers for .github yamls ([#907](https://github.com/vdaas/vald/pull/907))
 - Add test case for internal/errors/io.go ([#910](https://github.com/vdaas/vald/pull/910))
 - Add test case for internal/errors/grpc.go ([#903](https://github.com/vdaas/vald/pull/903))

@@ -2,7 +2,7 @@
 title: "Benchmark_v1.5/Performance"
 date: 2022-03-25T12:30:04+09:00
 draft: false
-weight: 200
+weight: 100
 menu:
   performance:
     parent: Performance

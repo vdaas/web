@@ -1,6 +1,6 @@
 ---
 title: "Vald Agent Standalone on K8s_v1.5/Tutorial"
-date: 2022-04-26T11:55:36+09:00
+date: 2022-08-18T11:00:14+09:00
 draft: false
 weight: 200
 menu:
@@ -15,13 +15,15 @@ This article will show you how to deploy a standalone Vald Agent using Helm and 
 ## Overview
 
 Vald is made up of multiple microservices.
-In the [Get Started](/docs/v1.5/tutorial/get-started), you may use 4 kinds of components to deploy Vald.
+In [Get Started](/docs/v1.5/tutorial/get-started), you may use 4 kinds of components to deploy Vald.
 In this case, you use only 1 component, `Vald Agent` that is the core component for Vald named `vald-agent-ngt`, to deploy.
 The below image shows the architecture image of this case.
 
 <img src="/images/v1.5/tutorial/vald-agent-standalone-on-k8s.svg">
 
-Notice: Using only Vald Agent, the auto indexing function is not in use.
+<div class="warning">
+Using only Vald Agent, the auto indexing function is not in use.
+</div>
 
 The 5 steps to Vald Agent Standalone on Kubernetes with Vald:
 1. [Check and Satisfy the Requirements](#requirements)
@@ -35,15 +37,15 @@ The 5 steps to Vald Agent Standalone on Kubernetes with Vald:
 - Kubernetes: v1.19 ~
 - Go: v1.15 ~
 - Helm: v3 ~
-- libhdf5 (_only required for get started_)
+- libhdf5 (_only required for tutorial_)
 
-Helm is used to deploying Vald on your Kubernetes and Hdf5 is used to decode the sample data file to run the example.<br>
+Helm is used to deploying Vald on your Kubernetes, and Hdf5 decodes the sample data.<br>
 If Helm or HDF5 is not installed, please install [Helm](https://helm.sh/docs/intro/install) and [HDF5](https://www.hdfgroup.org/).
 
 <details><summary>Installation command for Helm</summary><br>
 
 ```bash
-curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 ```
 
 </details>
@@ -68,17 +70,17 @@ brew install hdf5
 1. Prepare Kubernetes cluster
 
     To complete get started, the Kubernetes cluster is required.<br>
-    Vald will run on Cloud Service such as GKE, AWS.
+    Vald will run on Cloud Services such as GKE, AWS.
     In the sense of trying to "Get-Started", [k3d](https://k3d.io/) or [kind](https://kind.sigs.k8s.io/) are easy Kubernetes tools to use.
 
 ## Deploy Vald Agent Standalone on Kubernetes Cluster
 
 This chapter will show you how to deploy a standalone Vald Agent using Helm and run it on your Kubernetes cluster. <br>
-This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perform vector insertion operation, indexing, and searching operations.<br>
+This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perform vector insertion operation, indexing, and searching operation.<br>
 
 1. Clone the repository
 
-    To use the `deployment yaml` for deploy, let's clone [`vdaas/vald`](https://github.com/vdaas/vald.git) repository.
+    To use the `deployment yaml` for deployment, let's clone [`vdaas/vald`](https://github.com/vdaas/vald.git) repository.
 
     ```bash
     git clone https://github.com/vdaas/vald.git && \
@@ -87,7 +89,7 @@ This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perf
 
 1. Deploy Vald Agent Standalone using Helm
 
-    There is the [values.yaml](https://github.com/vdaas/vald/blob/master/example/helm/values-standalone-agent-ngt.yaml) to deploy standalone Vald Agent.
+    There is the [values.yaml](https://github.com/vdaas/vald/blob/main/example/helm/values-standalone-agent-ngt.yaml) to deploy standalone Vald Agent.
     Each component can be disabled by setting the value `false` to the `[component].enabled` field.
     This is useful for deploying standalone Vald Agent NGT pods.
 
@@ -127,22 +129,22 @@ This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perf
 
 1. Download dataset
 
-    Download [fashion-mnist](https://github.com/zalandoresearch/fashion-mnist) that is used as a dataset for indexing and search query.
+    Download [Fashion-MNIST](https://github.com/zalandoresearch/fashion-mnist) that is used as a dataset for indexing and search query.
 
     ```bash
-    # move to working directory
+    # move to the work directory
     cd example/client/agent
     ```
 
     ```bash
-    # download fashion-mnist testing dataset
+    # download Fashion-MNIST testing dataset
     wget http://ann-benchmarks.com/fashion-mnist-784-euclidean.hdf5
     ```
 
 1. Run Example
 
-    We use [`example/client/agent/main.go`](https://github.com/vdaas/vald/blob/master/example/client/agent/main.go) to run the example.<br>
-    This example will insert and index 400 vectors into the Vald from the fashion-mnist dataset via gRPC.
+    We use [`example/client/agent/main.go`](https://github.com/vdaas/vald/blob/main/example/client/agent/main.go) to run the example.<br>
+    This example will insert and index 400 vectors into the Vald from the Fashion-MNIST dataset via gRPC.
     And then after waiting for indexing, it will request for searching the nearest vector 10 times.
     You will get the 10 nearest neighbor vectors for each search query.<br>
     Run example codes by executing the below command.
@@ -225,7 +227,7 @@ This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perf
 
     1. load
 
-        - Loading from fashion-mnist dataset and set id for each vector that is loaded. This step will return the training dataset, test dataset, and ids list of ids when loading is completed with success.
+        - Loading from Fashion-MNIST dataset and set id for each vector that is loaded. This step will return the training dataset, test dataset, and ids list of ids when loading is completed with success.
             <details><summary>example code</summary><br>
 
             ```go
@@ -378,10 +380,10 @@ This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perf
     </details>
 
     <div class="caution">
-    It would be best to run `CreateIndex()` after `Insert()` without waiting for auto-indexing in your client code, even you can wait for the finishing auto createIndex function, which sometimes takes a long time.
+    It would be best to run CreateIndex() after Insert() without waiting for auto-indexing in your client code, even you can wait for the finishing auto createIndex function, which sometimes takes a long time.
     The backup files (e.g., ngt-meta.kvsdb) will be in your mount directory when vald-agent-ngt finishes indexing.
     </div>
-
+      
     <div class="warning">
     If you use Go(v1.16~) and catch the error like `missing go.sum entry to add it` when running `go run main.go`, please run `go mod tidy` and retry.
     This error comes from Go Command Changes of Go 1.16 Release Notes.(Please refer to https://golang.org/doc/go1.16#go-command for more details).
