@@ -27,6 +27,8 @@
     <link rel="shortcut icon" href="{{ .Site.BaseURL }}/favicon.ico">
     <!-- load css files and js files -->
     {{ partial "style.html" . }}
+    <!-- apply -webkit-text-size-adjust -->
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, maximum-scale=1.0, user-scalable=yes">
   </head>
 
   <body>
