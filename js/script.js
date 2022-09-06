@@ -2,7 +2,12 @@
 window.onload = async () => {
   initSidebar();
   const githubObj = await getGitHubStar();
-  // console.log(githubObj.stargazers_count)
+  //console.log(githubObj.stargazers_count);
+  if (githubObj.stargazers_count) {
+    let elem = document.getElementById("git-star-num");
+    elem.innerHTML = githubObj.stargazers_count;
+  }
+
   if (location.hash.length > 0) {
     const height = document.getElementsByClassName('header__nav')[0].offsetHeight;
     window.scrollBy(0, -height);
@@ -338,19 +343,3 @@ const getGitHubStar = async () => {
   const json = await res.json()
   return json
 }
-
-// cut see also reading text
-
-function textTrim() {
-  var selector = document.getElementsByClassName('card__text');
-  var wordCount = 60;
-  var clamp = '…';
-  for (var i = 0; i < selector.length; i++) {
-    if (selector[i].innerText.length > wordCount) {
-      var str = selector[i].innerText;
-      str = str.substr(0, (wordCount - 1));
-      selector[i].innerText = str + clamp;
-    }
-  }
-}
-textTrim();
