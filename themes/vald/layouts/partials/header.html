@@ -1,13 +1,14 @@
 {{ $latest := "v1.5.6" }}
 {{ $ver := "" }}
 {{ $docsBaseURL := "/docs" }}
+
 <header class="header" id="header">
   <div class="header__content">
-    <nav class="header__nav cf">
+    <nav class="header__nav">
       <a href="{{ .Site.BaseURL }}" class="header-nav__link">
-        <picture>
-          <source srcset="{{ .Site.BaseURL }}/images/vald_white.svg" media="(prefers-color-scheme: dark)" class="header-nav__image">
-          <img src="{{ .Site.BaseURL }}/images/vald_color_1.svg" alt="" class="header-nav__image">
+        <picture  class="header-nav__image">
+          <source srcset="{{ .Site.BaseURL }}/images/vald_white.svg" media="(prefers-color-scheme: dark)">
+          <img src="{{ .Site.BaseURL }}/images/vald_color_1.svg" alt="">
         </picture>
       </a>
       <a class="header-nav__icon" id="nav-btn"><span class="header-nav__button"></span></a>
@@ -55,11 +56,14 @@
             </details>
         </li>
         <li class="header__item">
-          <a class="header__item header__icon" href="https://github.com/vdaas/vald">
-            <picture>
-              <source srcset="{{ .Site.BaseURL }}/images/logo_github_white.svg" media="(prefers-color-scheme: dark)" class="" width="24" height="24">
-              <img src="{{ .Site.BaseURL }}/images/logo_github_black.svg" alt="github" class="">
+          <a class="header__git" href="https://github.com/vdaas/vald" target="_blank">
+            <picture class="git__logo">
+              <source srcset="{{ .Site.BaseURL }}/images/logo_github_white.svg" media="(prefers-color-scheme: dark)" class="" width="18" height="18">
+              <img src="{{ .Site.BaseURL }}/images/logo_github_black.svg" alt="github" class="" width="18" height="18">
             </picture>
+            <div class="git__star">
+                <p class=git__starnum id="git-star-num"></p>
+            </div>
           </a>
         </li>
       </ul>
