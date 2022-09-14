@@ -2,7 +2,12 @@
 window.onload = async () => {
   initSidebar();
   const githubObj = await getGitHubStar();
-  // console.log(githubObj.stargazers_count)
+  //console.log(githubObj.stargazers_count);
+  if (githubObj.stargazers_count) {
+    let elem = document.getElementById("git-star-num");
+    elem.innerHTML = githubObj.stargazers_count;
+  }
+
   if (location.hash.length > 0) {
     const height = document.getElementsByClassName('header__nav')[0].offsetHeight;
     window.scrollBy(0, -height);
