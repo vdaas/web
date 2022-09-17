@@ -1,0 +1,43 @@
+{{ $sections := lower (index (split .Name "_") 1) }}
+{{ $url := urls.Parse .Page.Permalink }}
+{{ $docVersion := index (split ($url | relLangURL) "/") 2 }}
+{{ $section := replaceRE "(\\s)" "" $sections }}
+{{ if in $docVersion "v" }}{{ $section = (index (split $section "/") 1) }}{{ end }}
+{{ range $menu, $value := .Site.Menus }}
+  {{ if eq $menu $section }}
+    {{ range $value }}
+      {{ if .HasChildren }}
+        <h2>See also</h2>
+        <div class="cardlist">
+        {{ if not (in $url "docs/v") }}
+          <!-- latest page -->
+          {{ $.Scratch.Set "index" 0 }}
+          {{ range .Children }}
+            {{ if (and (not ( in .URL "docs/v" )) (ne $url.Path .URL) (lt ($.Scratch.Get "index") 4 )) }}
+              <a href={{ .URL }} class="cardlist__card">
+                <p class="card__title">{{- upper (index (split .Name  "_") 0) -}}</p>
+                <!-- we should add the page description each document -->
+                <p class="card__text">{{ .Page.Description }}</p>
+              </a>
+              {{ $.Scratch.Set "index" (add ($.Scratch.Get "index") 1) }}
+            {{ end }}
+          {{ end }}
+        {{ else }}
+          <!-- versioning -->
+          {{ $.Scratch.Set "index" 0 }}
+          {{ range .Children }}
+            {{ if (and (in .URL $docVersion) (ne $url.Path .URL) (lt ($.Scratch.Get "index") 4 )) }}
+              <a href={{ .URL }} class="cardlist__card">
+                <p class="card__title">{{- upper (index (split .Name  "_") 0) -}}</p>
+                <!-- we should add the page description each document -->
+                <!-- <p class="card__text">{{ .Page.Description }}</p> -->
+              </a>
+              {{ $.Scratch.Set "index" (add ($.Scratch.Get "index") 1) }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        </div>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}

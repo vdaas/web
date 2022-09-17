@@ -1,7 +1,7 @@
 {{ $current := .current }}
 {{ range .page }}
   {{ if .HasChildren }}
-    {{ $parsedURL :=urls.Parse $current }}
+    {{ $parsedURL := urls.Parse $current }}
     {{ $base := "/docs/" }}
     <li class="withchild{{ if eq $parsedURL.Path $base }} open {{ end }}" id="cat_{{ .Name }}">
       {{ if eq .Name "Api" }}
