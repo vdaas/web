@@ -1,6 +1,6 @@
 ---
-title: "Coding Style_contributing"
-date: 2022-10-06T10:56:52+09:00
+title: "Coding Style_v1.6/Contributing"
+date: 2022-10-06T10:57:01+09:00
 draft: false
 weight: 200
 menu:
@@ -17,7 +17,7 @@ Everyone should follow this guideline to keep the style consistent, so everyone 
 You should have the basic knowledge of how to write Go before contributing to Vald.
 If you find any bugs, please create [a GitHub issue](https://github.com/vdaas/vald/issues/new?assignees=&labels=type%2Fbug%2C+priority%2Fmedium%2C+team%2Fcore&template=bug_report&title=), and we will work on it.
 
-Please also read the [Contribution guideline](/docs/contributing/contributing-guide) before you start contributing to Vald.
+Please also read the [Contribution guideline](/docs/v1.6/contributing/contributing-guide) before you start contributing to Vald.
 
 ## Code Formatting and Naming Convention
 
