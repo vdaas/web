@@ -1,6 +1,6 @@
 ---
-title: "Changelog_release"
-date: 2022-10-06T10:56:57+09:00
+title: "Changelog_v1.6/Release"
+date: 2022-10-06T10:57:06+09:00
 draft: false
 weight: 0
 menu:
