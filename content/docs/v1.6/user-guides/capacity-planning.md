@@ -1,8 +1,8 @@
 ---
-title: "Capacity Planning_user Guides"
-date: 2022-08-18T11:00:06+09:00
+title: "Capacity Planning_v1.6/User Guides"
+date: 2022-10-06T10:57:05+09:00
 draft: false
-weight: 700
+weight: 800
 menu:
   userguides:
     parent: User Guides
