@@ -2,9 +2,13 @@
 {{ $url := urls.Parse .Page.Permalink }}
 {{ $docVersion := index (split ($url | relLangURL) "/") 2 }}
 {{ $section := replaceRE "(\\s)" "" $sections }}
-{{ if in $docVersion "v" }}{{ $section = (index (split $section "/") 1) }}{{ end }}
+{{ if in $docVersion "v" }}
+  {{ if ( and (eq $docVersion "overview") (in $section "/")) }}
+    {{ $section = (index (split $section "/") 1) }}
+  {{ end }}
+{{ end }}
 {{ range $menu, $value := .Site.Menus }}
-  {{ if eq $menu $section }}
+  {{ if (and (eq $menu $section) (and (ne $section "usecase") (ne $section "release"))) }}
     {{ range $value }}
       {{ if .HasChildren }}
         <h2>See also</h2>
