@@ -1,6 +1,7 @@
 ---
 title: "Agent_overview/Component"
 date: 2022-08-18T11:00:03+09:00
+description: Describes the overview of Vald Agent component.
 draft: false
 weight: 100
 menu:

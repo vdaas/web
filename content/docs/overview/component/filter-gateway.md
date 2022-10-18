@@ -1,6 +1,7 @@
 ---
 title: "Filter Gateway_overview/Component"
 date: 2022-08-18T11:00:04+09:00
+description: Describes the overview of Vald Filter Gateway component.
 draft: false
 weight: 300
 menu:
