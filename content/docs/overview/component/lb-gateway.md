@@ -1,5 +1,5 @@
 ---
-title: "Lb Gateway_overview/Component"
+title: "LB Gateway_overview/Component"
 date: 2022-03-25T12:29:58+09:00
 description: Describes the overview of Vald LB Gateway component.
 draft: false

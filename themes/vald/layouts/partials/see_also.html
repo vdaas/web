@@ -19,7 +19,7 @@
           {{ range .Children }}
             {{ if (and (not ( in .URL "docs/v" )) (ne $url.Path .URL) (lt ($.Scratch.Get "index") 4 )) }}
               <a href={{ .URL }} class="cardlist__card">
-                <p class="card__title">{{- upper (index (split .Name  "_") 0) -}}</p>
+                <p class="card__title">{{- humanize (index (split .Name  "_") 0) -}}</p>
                 <!-- we should add the page description each document -->
                 <p class="card__text">{{ .Page.Description }}</p>
               </a>
@@ -32,7 +32,7 @@
           {{ range .Children }}
             {{ if (and (in .URL $docVersion) (ne $url.Path .URL) (lt ($.Scratch.Get "index") 4 )) }}
               <a href={{ .URL }} class="cardlist__card">
-                <p class="card__title">{{- upper (index (split .Name  "_") 0) -}}</p>
+                <p class="card__title">{{- humanize (index (split .Name  "_") 0) -}}</p>
                 <!-- we should add the page description each document -->
                 <!-- <p class="card__text">{{ .Page.Description }}</p> -->
               </a>

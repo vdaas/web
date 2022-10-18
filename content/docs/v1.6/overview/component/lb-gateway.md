@@ -1,5 +1,5 @@
 ---
-title: "Lb Gateway_v1.6/Overview/Component"
+title: "LB Gateway_v1.6/Overview/Component"
 date: 2022-10-06T10:57:02+09:00
 draft: false
 weight: 200
