@@ -1,6 +1,7 @@
 ---
 title: "Get Started_tutorial"
 date: 2022-08-18T11:00:05+09:00
+description: The tutorial of running Vlad cluster on the Kubernetes cluster.
 draft: false
 weight: 100
 menu:

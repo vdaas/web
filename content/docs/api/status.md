@@ -1,6 +1,7 @@
 ---
 title: "Status Code_api"
 date: 2022-08-18T11:00:02+09:00
+description: Describes each gRPC status which you will get.
 draft: false
 weight: 800
 menu:

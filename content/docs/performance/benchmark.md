@@ -1,6 +1,7 @@
 ---
 title: "Benchmark_performance"
 date: 2022-03-25T12:29:58+09:00
+description: Explains the benchmark of ANN on the Vald cluster.
 draft: false
 weight: 100
 menu:

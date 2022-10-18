@@ -1,6 +1,7 @@
 ---
 title: "About Vald_overview"
 date: 2022-08-18T11:00:03+09:00
+description: Gives an overview of what is Vald and what you can do with Vald.
 draft: false
 weight: 100
 menu:

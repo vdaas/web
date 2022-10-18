@@ -1,6 +1,7 @@
 ---
 title: "Coding Style_contributing"
 date: 2022-10-06T10:56:52+09:00
+description: Introducing the coding style for the Vald project.
 draft: false
 weight: 200
 menu:

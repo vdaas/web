@@ -1,6 +1,7 @@
 ---
 title: "Contributing Guide_contributing"
 date: 2022-08-18T11:00:03+09:00
+description: Describes the contributing guide for new contributors.
 draft: false
 weight: 100
 menu:

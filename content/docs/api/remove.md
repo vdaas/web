@@ -1,6 +1,7 @@
 ---
 title: "Remove_api"
 date: 2022-08-18T11:00:02+09:00
+description: Describes the Remove service for deleting index from the Vald cluster.
 draft: false
 weight: 500
 menu:

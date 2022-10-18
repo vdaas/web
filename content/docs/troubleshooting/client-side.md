@@ -1,6 +1,7 @@
 ---
 title: "Client Side_troubleshooting"
 date: 2022-06-27T14:26:47+09:00
+description: If you encounter the problem with client side, it will help you.
 draft: false
 weight: 200
 menu:

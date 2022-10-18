@@ -1,6 +1,7 @@
 ---
 title: "Build Proto_api"
 date: 2022-08-18T11:00:01+09:00
+description: The way to build gRPC proto files for calling API to your Vald Cluster.
 draft: false
 weight: 700
 menu:

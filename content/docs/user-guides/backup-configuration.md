@@ -1,6 +1,7 @@
 ---
 title: "Backup Configuration_user Guides"
 date: 2022-09-06T16:10:46+09:00
+description: How to set the backup configuration.
 draft: false
 weight: 200
 menu:

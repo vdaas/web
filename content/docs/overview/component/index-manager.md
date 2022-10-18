@@ -1,6 +1,7 @@
 ---
 title: "Index Manager_overview/Component"
 date: 2022-03-25T12:29:58+09:00
+description: Describes the overview of Vald Index Manager component.
 draft: false
 weight: 500
 menu:
