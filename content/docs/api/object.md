@@ -1,6 +1,7 @@
 ---
 title: "Object_api"
 date: 2022-06-09T11:19:25+09:00
+description: Describes the Object service to get the object information from the Vald cluster.
 draft: false
 weight: 600
 menu:

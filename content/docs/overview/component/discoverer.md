@@ -1,6 +1,7 @@
 ---
 title: "Discoverer_overview/Component"
 date: 2022-03-25T12:29:57+09:00
+description: Describes the overview of Vald Discoverer component.
 draft: false
 weight: 400
 menu:

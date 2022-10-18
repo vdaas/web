@@ -1,6 +1,7 @@
 ---
 title: "Vald Agent Standalone on K8s_tutorial"
 date: 2022-08-18T11:00:06+09:00
+description: The tutorial of running Vlad Agent on the Kubernetes cluster.
 draft: false
 weight: 200
 menu:

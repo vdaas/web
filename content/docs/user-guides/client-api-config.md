@@ -1,6 +1,7 @@
 ---
 title: "Client Api Config_user Guides"
 date: 2022-10-06T10:56:56+09:00
+description: Describes the details of Vald API configuration.
 draft: false
 weight: 800
 menu:

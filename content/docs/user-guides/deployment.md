@@ -1,6 +1,7 @@
 ---
 title: "Deployment_user Guides"
 date: 2022-08-18T11:00:06+09:00
+description: Introducing how to deploy the Vald cluster.
 draft: false
 weight: 400
 menu:

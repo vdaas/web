@@ -1,6 +1,7 @@
 ---
 title: "FAQ_support"
 date: 2022-08-18T11:00:05+09:00
+description: The major questions about using Vald.
 draft: false
 weight: 200
 menu:

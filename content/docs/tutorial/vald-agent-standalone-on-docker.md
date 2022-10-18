@@ -1,6 +1,7 @@
 ---
 title: "Vald Agent Standalone on Docker_tutorial"
 date: 2022-08-18T11:00:05+09:00
+description: The tutorial of running Vlad Agent on Docker.
 draft: false
 weight: 300
 menu:

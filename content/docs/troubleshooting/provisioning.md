@@ -1,6 +1,7 @@
 ---
 title: "Provisioning_troubleshooting"
 date: 2022-08-18T11:00:05+09:00
+description: If you have any provisioning trouble, it will help you.
 draft: false
 weight: 100
 menu:

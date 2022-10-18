@@ -1,6 +1,7 @@
 ---
 title: "Search_api"
 date: 2022-08-18T11:00:02+09:00
+description: Describes the Search service to get the similar vectors from the Vald cluster.
 draft: false
 weight: 400
 menu:

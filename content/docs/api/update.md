@@ -1,6 +1,7 @@
 ---
 title: "Update_api"
 date: 2022-06-09T11:19:25+09:00
+description: Describes the Update service to update index in the Vald cluster.
 draft: false
 weight: 200
 menu:

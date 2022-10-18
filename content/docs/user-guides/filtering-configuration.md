@@ -1,6 +1,7 @@
 ---
 title: "Filtering Configuration_user Guides"
 date: 2022-08-18T11:00:07+09:00
+description: Explains how to use the filter function in Vald.
 draft: false
 weight: 300
 menu:

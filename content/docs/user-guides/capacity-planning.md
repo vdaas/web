@@ -1,6 +1,7 @@
 ---
 title: "Capacity Planning_user Guides"
 date: 2022-08-18T11:00:06+09:00
+description: Describes the capacity planning of the Kubernetes .
 draft: false
 weight: 700
 menu:

@@ -1,6 +1,7 @@
 ---
 title: "Usage Example_usecase"
 date: 2022-08-18T11:00:06+09:00
+description: Introduces the application method using Vald.
 draft: false
 weight: 0
 menu:

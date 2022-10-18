@@ -1,6 +1,7 @@
 ---
 title: "Configuration_user Guides"
 date: 2022-08-18T11:00:06+09:00
+description: Describes the basic configuration for deploying a Vald cluster.
 draft: false
 weight: 100
 menu:
