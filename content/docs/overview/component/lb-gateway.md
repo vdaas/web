@@ -1,6 +1,6 @@
 ---
 title: "LB Gateway_overview/Component"
-date: 2022-03-25T12:29:58+09:00
+date: 2022-10-19T22:10:11+09:00
 description: Describes the overview of Vald LB Gateway component.
 draft: false
 weight: 200
@@ -22,7 +22,7 @@ This page introduces the overview and features of Vald Gateway.
 Vald LB Gateway is responsible for:
 
 - Pass and load balancing requests to other Vald components
-- Control processing with timeout setting
+- Control processing with a timeout setting
 - Aggregate search results from each Vald Agent
 - Sort and combine into one search result
 
@@ -54,7 +54,7 @@ Then, Vald Filter Gateway sends the processed request to the Vald LB Gateway.
 
 As its name shows, Vald LB Gateway has the load balancing feature.
 
-Vald LB Gateway controls insert vector requests based on `index replica` and each Vald Agent Pod resource usage, which [Vald Discoverer](/docs/component/discoverer) provides, to avoid uneven resource usage.
+Vald LB Gateway controls insert vector requests based on `index replica` and each Vald Agent Pod resource usage, which [Vald Discoverer](/docs/overview/component/discoverer) provides, to avoid uneven resource usage.
 
 ### Broadcast search request and aggregate search result
 
@@ -78,7 +78,7 @@ Vald LB Gateway will send the search result to the Egress when the egress compon
 
 <div class="note">
 
-For more information about Vald Filter Gateway, please refer to [Vald Filter Gateway Overview](/docs/component/filter-gateway).
+For more information about Vald Filter Gateway, please refer to [Vald Filter Gateway Overview](/docs/overview/component/filter-gateway).
 
 </div>
 

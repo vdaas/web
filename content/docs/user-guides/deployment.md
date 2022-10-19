@@ -3,7 +3,7 @@ title: "Deployment_user Guides"
 date: 2022-08-18T11:00:06+09:00
 description: Introducing how to deploy the Vald cluster.
 draft: false
-weight: 400
+weight: 500
 menu:
   userguides:
     parent: User Guides
@@ -51,7 +51,7 @@ Please refer to [the basic configuration document](/docs/user-guides/configurati
 
 In addition, as you need, please refer to the followings:
 - [Backup Configuration](/docs/user-guides/backup-configuration)
-- [Filter Configuration](/docs/user-guides/filter-configuration)
+- [Filter Configuration](/docs/user-guides/filtering-configuration)
 
 Moreover, we publish the example configuration files for each use case.
 Please also refer to [here](https://github.com/vdaas/vald/tree/main/charts/vald/values).

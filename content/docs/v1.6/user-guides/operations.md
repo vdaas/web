@@ -1,8 +1,8 @@
 ---
 title: "Operations_v1.6/User Guides"
-date: 2022-10-06T10:57:05+09:00
+date: 2022-10-19T22:10:23+09:00
 draft: false
-weight: 500
+weight: 600
 menu:
   userguides:
     parent: User Guides
@@ -144,9 +144,9 @@ The operator will automatically detect the changes and update the deployed Vald 
 
 ### References
 
-- [vald-helm-chart](vald-helm-chart)
-- [vald-helm-operator-chart](vald-helm-operator-chart)
-- [CHANGELOG](CHANGELOG)
+- [vald-helm-chart][vald-helm-chart]
+- [vald-helm-operator-chart][vald-helm-operator-chart]
+- [CHANGELOG][CHANGELOG]
 
 
 [vald-helm-chart]: https://github.com/vdaas/vald/tree/main/charts/vald

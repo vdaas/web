@@ -2,7 +2,7 @@
 title: "Sdks_v1.6/User Guides"
 date: 2022-10-06T10:57:05+09:00
 draft: false
-weight: 600
+weight: 1000
 menu:
   userguides:
     parent: User Guides

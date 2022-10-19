@@ -1,6 +1,6 @@
 ---
 title: "Discoverer_v1.6/Overview/Component"
-date: 2022-10-06T10:57:02+09:00
+date: 2022-10-19T22:10:19+09:00
 draft: false
 weight: 400
 menu:
@@ -22,7 +22,7 @@ Vald Discoverer is responsible for retrieving each Node and Pod resource usage f
 
 ### Getting Node and Pod metrics
 
-Vald Discoverer requires [kube-apiserver](https://kubernetes.io/ja/docs/reference/command-line-tools-reference/kube-apiserver/) to get Node and Pod metrics in the Vald cluster.
+Vald Discoverer requires [kube-apiserver](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) to get Node and Pod metrics in the Vald cluster.
 
 It synchronizes the metrics when it changes by the `Reconcile function`, one of the internal functions.
 
@@ -75,3 +75,7 @@ For example, Vald LB Gateway creates the new `discoverer client` with config par
 When the `initContainer` successes, Vald LB Gateway can get the metrics asynchronously according to its set parameters.
 
 <!-- TODO:image -->
+
+### Cluster role configurations
+
+Please refer [here](/docs/v1.6/user-guides/cluster-role-binding) for more information about the cluster role configuration.
