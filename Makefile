@@ -191,9 +191,8 @@ define check-diff
 	  [ $(diffNum) = "5" ] || \
 	  [ $(diffNum) = "6" ] || \
 	  [ $(diffNum) = "7" ] || \
-	  [ $(diffNum) = "2" ] ; then \
-	        git checkout $(1) ; \
-	elif [ $(diffNum) = "9" ] && [ -n $(detailDiff) ] ; then \
+	  [ $(diffNum) = "2" ] || \
+	  [ $(diffNum) = "9" ] && [ -n $(detailDiff) ] ; then \
 	        git checkout $(1) ; \
 	fi
 
