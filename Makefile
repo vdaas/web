@@ -207,9 +207,8 @@ define check-diff-version
 	# it will be deleted after adding description of each document.
 	@if [ $(diffNum) = "4" ] || \
 	  [ $(diffNum) = "6" ] || \
-	  [ $(diffNum) = "2" ] ; then \
-		git checkout $(1) ; \
-	elif [ $(diffNum) = "8" ] && [ -n $(detailDiff) ] ; then \
+	  [ $(diffNum) = "2" ] || \
+	  [ $(diffNum) = "8" ] && [ -n $(detailDiff) ] ; then \
 	        git checkout $(1) ; \
 	fi
 
