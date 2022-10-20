@@ -186,15 +186,12 @@ define check-diff
 	$(eval diffNum := $(shell git diff --numstat $(1) | awk '{print $$1+$$2}'))
 	$(eval detailDiff := $(shell git diff -U0 $(1) | grep "+title" | awk '{print $$1}'))
 	$(eval dir := $(shell ))
-	@if [ $(diffNum) = "4" ]; then \
-	        git checkout $(1) ; \
-	elif [ $(diffNum) = "5" ] ; then \
-	        git checkout $(1) ; \
-	elif [ $(diffNum) = "6" ] ; then \
-	        git checkout $(1) ; \
-	elif [ $(diffNum) = "7" ] ; then \
-	        git checkout $(1) ; \
-	elif [ $(diffNum) = "2" ] ; then \
+	# checkout if the diffNum/datailDiff satisfies below condition because these condition includes no raw document changes.
+	@if [ $(diffNum) = "4" ] || \
+	  [ $(diffNum) = "5" ] || \
+	  [ $(diffNum) = "6" ] || \
+	  [ $(diffNum) = "7" ] || \
+	  [ $(diffNum) = "2" ] ; then \
 	        git checkout $(1) ; \
 	elif [ $(diffNum) = "9" ] && [ -n $(detailDiff) ] ; then \
 	        git checkout $(1) ; \
@@ -206,12 +203,12 @@ define check-diff-version
 	$(eval diffNum := $(shell git diff --numstat $(1) | awk '{print $$1+$$2}'))
 	$(eval detailDiff := $(shell git diff -U0 $(1) | grep "+title" | awk '{print $$1}'))
 	$(eval dir := $(shell ))
-	@if [ $(diffNum) = "4" ]; then \
-	        git checkout $(1) ; \
-	elif [ $(diffNum) = "6" ] ; then \
-	        git checkout $(1) ; \
-	elif [ $(diffNum) = "2" ] ; then \
-	        git checkout $(1) ; \
+	# checkout if the diffNum/datailDiff satisfies below condition because these condition includes no raw document changes.
+	# it will be deleted after adding description of each document.
+	@if [ $(diffNum) = "4" ] || \
+	  [ $(diffNum) = "6" ] || \
+	  [ $(diffNum) = "2" ] ; then \
+		git checkout $(1) ; \
 	elif [ $(diffNum) = "8" ] && [ -n $(detailDiff) ] ; then \
 	        git checkout $(1) ; \
 	fi
