@@ -3,7 +3,7 @@ title: "Sdks_user Guides"
 date: 2022-08-18T11:00:07+09:00
 description: Shows the introduction of the Vald SDKs.
 draft: false
-weight: 600
+weight: 1000
 menu:
   userguides:
     parent: User Guides

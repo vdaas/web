@@ -1,6 +1,6 @@
 ---
 title: "Build Proto_api"
-date: 2022-08-18T11:00:01+09:00
+date: 2022-10-19T22:10:08+09:00
 description: The way to build gRPC proto files for calling API to your Vald Cluster.
 draft: false
 weight: 700
@@ -14,7 +14,7 @@ menu:
 This page shows how to build gRPC proto file for calling API to your Vald Cluster.
 
 <div class="notice">
-Vald provides the official client libraries (see: <a href="https://vald.vdaas.org/docs/user-guides/sdks">SDK document</a> ).
+Vald provides the official client libraries (see: <a href="https://vald.vdaas.org/docs/user-guides/sdks">SDK document</a>).
 If you can use one of the SDKs we recommend using it.
 </div>
 

@@ -2,7 +2,7 @@
 title: "Deployment_v1.6/User Guides"
 date: 2022-10-06T10:57:05+09:00
 draft: false
-weight: 400
+weight: 500
 menu:
   userguides:
     parent: User Guides
@@ -50,7 +50,7 @@ Please refer to [the basic configuration document](/docs/v1.6/user-guides/config
 
 In addition, as you need, please refer to the followings:
 - [Backup Configuration](/docs/v1.6/user-guides/backup-configuration)
-- [Filter Configuration](/docs/v1.6/user-guides/filter-configuration)
+- [Filter Configuration](/docs/v1.6/user-guides/filtering-configuration)
 
 Moreover, we publish the example configuration files for each use case.
 Please also refer to [here](https://github.com/vdaas/vald/tree/main/charts/vald/values).

@@ -70,7 +70,7 @@ Every filter component should meet Vald's filter gRPC interface.
     }
     ```
 
-For more details, please refer to [the Vald Filter Gateway document](/docs/v1.6/overview/component/filter-gatewya)
+For more details, please refer to [the Vald Filter Gateway document](/docs/v1.6/overview/component/filter-gateway)
 
 ### Official filter components
 

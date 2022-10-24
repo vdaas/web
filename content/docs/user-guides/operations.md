@@ -1,9 +1,9 @@
 ---
 title: "Operations_user Guides"
-date: 2022-08-18T11:00:07+09:00
-description: Describes the basic operation for the Vald cluster.
+date: 2022-10-19T22:10:14+09:00
+description: Describes the basic operation for the Vald Cluster.
 draft: false
-weight: 500
+weight: 600
 menu:
   userguides:
     parent: User Guides
@@ -145,9 +145,9 @@ The operator will automatically detect the changes and update the deployed Vald 
 
 ### References
 
-- [vald-helm-chart](vald-helm-chart)
-- [vald-helm-operator-chart](vald-helm-operator-chart)
-- [CHANGELOG](CHANGELOG)
+- [vald-helm-chart][vald-helm-chart]
+- [vald-helm-operator-chart][vald-helm-operator-chart]
+- [CHANGELOG][CHANGELOG]
 
 
 [vald-helm-chart]: https://github.com/vdaas/vald/tree/main/charts/vald

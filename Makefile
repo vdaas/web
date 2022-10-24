@@ -1,6 +1,6 @@
 .PHONY: all run deploy/staging deploy/production subup
 
-LATEST_VERSION = 1.6.1
+LATEST_VERSION = 1.6.3
 RELEASE = main
 NEW_VERSION := ${LATEST_VERSION}
 DOC_VERSION = 1.6
@@ -176,24 +176,43 @@ publish/all:
 
 .PHONY: checkout/hugos/changes
 checkout/hugos/changes:
-	@$(eval FILE := $(shell git status | grep "modified:" | grep "content/" | awk '{print $$2}'))
+	@$(eval FILE := $(shell git status | grep "modified:" | grep "content/" | grep -v "content/docs/v1" | awk '{print $$2}'))
 	$(foreach file,$(FILE),$(call check-diff,$(file)))
+	@$(eval VERSION_FILE := $(shell git status | grep "modified:" | grep "content/docs/v1" | awk '{print $$2}'))
+	$(foreach file,$(VERSION_FILE),$(call check-diff-version,$(file)))
 
 
 define check-diff
 	$(eval diffNum := $(shell git diff --numstat $(1) | awk '{print $$1+$$2}'))
 	$(eval detailDiff := $(shell git diff -U0 $(1) | grep "+title" | awk '{print $$1}'))
-	@if [ $(diffNum) = "4" ]; then \
-	        git checkout $(1) ; \
-	elif [ $(diffNum) = "6" ] ; then \
-	        git checkout $(1) ; \
-	elif [ $(diffNum) = "2" ] ; then \
-	        git checkout $(1) ; \
-	elif [ $(diffNum) = "8" ] && [ -n $(detailDiff) ] ; then \
+	$(eval dir := $(shell ))
+	# checkout if the diffNum/datailDiff satisfies below condition because these condition includes no raw document changes.
+	@if [ $(diffNum) = "4" ] || \
+	  [ $(diffNum) = "5" ] || \
+	  [ $(diffNum) = "6" ] || \
+	  [ $(diffNum) = "7" ] || \
+	  [ $(diffNum) = "2" ] || \
+	  [ $(diffNum) = "9" ] && [ -n $(detailDiff) ] ; then \
 	        git checkout $(1) ; \
 	fi
 
 endef
+
+define check-diff-version
+	$(eval diffNum := $(shell git diff --numstat $(1) | awk '{print $$1+$$2}'))
+	$(eval detailDiff := $(shell git diff -U0 $(1) | grep "+title" | awk '{print $$1}'))
+	$(eval dir := $(shell ))
+	# checkout if the diffNum/datailDiff satisfies below condition because these condition includes no raw document changes.
+	# it will be deleted after adding description of each document.
+	@if [ $(diffNum) = "4" ] || \
+	  [ $(diffNum) = "6" ] || \
+	  [ $(diffNum) = "2" ] || \
+	  [ $(diffNum) = "8" ] && [ -n $(detailDiff) ] ; then \
+	        git checkout $(1) ; \
+	fi
+
+endef
+
 
 define get-latest
 	@echo "\e[1;32mstart sync latest document\e[0m"
