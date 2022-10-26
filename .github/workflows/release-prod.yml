@@ -21,7 +21,7 @@ jobs:
           if [ ! -z "$PR_NUM" ] ; then \
             TITLE=`echo "$LAST_COMMIT_MESSAGE" | grep -o -e "release" -e "Release"`
             if [ ! -z "$TITLE" ] ; then \
-              echo "::set-output name=release::true"
+              echo "release=true" >> $GITHUB_OUTPUT
             fi
           fi
       - name: Setup Hugo
@@ -55,7 +55,7 @@ jobs:
         run: |
           diff=`git diff public/`
           if [ ! -z "$diff" ] ; then \
-            echo "::set-output name=diff::true"
+            echo "diff=true" >> $GITHUB_OUTPUT
           fi
       - name: Production Deploy
         if: steps.git_diff_preview.outputs.diff
