@@ -33,7 +33,7 @@ jobs:
         run: |
           diff=`git diff themes/vald/static/`
           if [ ! -z "$diff" ] ; then \
-            echo "::set-output name=diff::true"
+            echo "diff=true" >> $GITHUB_OUTPUT
           fi
       - name: Commit Minified Files (pull_request)
         if: steps.git_diff_static.outputs.diff == 'true' && github.event_name== 'pull_request'
@@ -128,7 +128,7 @@ jobs:
         run: |
           diff=`git diff preview/`
           if [ ! -z "$diff" ] ; then \
-            echo "::set-output name=diff::true"
+            echo "diff=true" >> $GITHUB_OUTPUT
           fi
       - name: Stage Deploy
         if: steps.git_diff_preview.outputs.diff == 'true'
