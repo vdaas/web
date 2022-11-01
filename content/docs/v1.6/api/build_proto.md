@@ -2,7 +2,7 @@
 title: "Build Proto_v1.6/Api"
 date: 2022-10-19T22:10:17+09:00
 draft: false
-weight: 800
+weight: 900
 menu:
   api:
     parent: Api
