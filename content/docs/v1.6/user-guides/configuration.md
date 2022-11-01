@@ -292,7 +292,7 @@ gateway:
 
 #### Cluster Role
 
-Vald Discoverer gets the Node and Pod metrics from [kube-apiserver](https://kubernetes.io/ja/docs/reference/command-line-tools-reference/kube-apiserver/) as described in [Vald Discoverer](/docs/v1.6/overview/component/discoverer).
+Vald Discoverer gets the Node and Pod metrics from [kube-apiserver](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) as described in [Vald Discoverer](/docs/overview/component/discoverer).
 Vald's Helm deployment supports RBAC as default, and the default configuration is the following.
 
 ```yaml

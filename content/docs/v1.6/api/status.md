@@ -2,7 +2,7 @@
 title: "Status_v1.6/Api"
 date: 2022-10-06T10:57:00+09:00
 draft: false
-weight: 700
+weight: 800
 menu:
   api:
     parent: Api
