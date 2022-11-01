@@ -12,7 +12,7 @@ menu:
 
 This page introduces the popular troubleshooting for client side.
 
-The [flow chart](/docs/v1.6/troubleshooting/chart) helps you find the root reason for your problem.
+The [flow chart](/docs/v1.6/troubleshooting/provisioning) helps you find the root reason for your problem.
 
 Additionally, if you encounter some errors when using API, the [API status code](/docs/v1.6/api/status) helps you, too.
 
