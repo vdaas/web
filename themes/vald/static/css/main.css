@@ -765,19 +765,11 @@ details > summary {
   background-color: rgba(0, 0, 0, 0);
 }
 
-.markdown li {
-  /* overflow: auto; */
-}
-
 .markdown table {
   display: block;
   white-space: nowrap;
   margin-bottom: 32px;
   overflow: auto;
-}
-
-.markdown li table {
-  /* display: table; */
 }
 
 .markdown table tr th,
