@@ -3,7 +3,7 @@ body {
 }
 
 .top {
-  background-color: #54b9b2;
+  background-color: #54b9b2; /*#54b9b3 change for run minifycss*/
   position: relative;
   height: 600px;
   overflow: hidden;
