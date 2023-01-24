@@ -1,6 +1,6 @@
 ---
 title: "Build Proto_api"
-date: 2022-10-19T22:10:08+09:00
+date: 2023-01-24T16:35:07+09:00
 description: The way to build gRPC proto files for calling API to your Vald Cluster.
 draft: false
 weight: 900
@@ -23,8 +23,8 @@ If you can use one of the SDKs we recommend using it.
 Vald defines the proto file for each API.
 Let's check the below table for the details.
 
-| API service name |                                           proto                                           |                                                                                              dependencies                                                                                               | usage                                                              |
-| :--------------: | :---------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------- |
+| API service name |                                          proto                                          |                                                                                             dependencies                                                                                              | usage                                                              |
+| :--------------: | :-------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------- |
 |      Insert      | [insert.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/vald/insert.proto) | [payload.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/payload/payload.proto)<br>[annotation.proto](https://github.com/googleapis/googleapis/blob/master/google/api/annotations.proto) | Insert vectors into Vald Agent                                     |
 |      Update      | [update.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/vald/update.proto) | [payload.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/payload/payload.proto)<br>[annotation.proto](https://github.com/googleapis/googleapis/blob/master/google/api/annotations.proto) | Update vectors stored in Vald Agent                                |
 |      Upsert      | [upsert.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/vald/upsert.proto) | [payload.proto](https://github.com/vdaas/vald/blob/main/apis/proto/v1/payload/payload.proto)<br>[annotation.proto](https://github.com/googleapis/googleapis/blob/master/google/api/annotations.proto) | Update vectors stored Vald Agent or Insert vectors into Vald Agent |

@@ -1,6 +1,6 @@
 ---
-title: "FAQ_support"
-date: 2022-08-18T11:00:05+09:00
+title: "Faq_support"
+date: 2023-01-24T16:35:11+09:00
 description: The major questions about using Vald.
 draft: false
 weight: 200
@@ -86,6 +86,7 @@ There are three ways to backup index data:
 1. Using the external storage and Persistent Volume
 
 <!-- TODO: change link when publish the backup configuration page -->
+
 Please refer to [the sample configurations](https://github.com/vdaas/vald/tree/main/charts/vald/values).
 
 ---
