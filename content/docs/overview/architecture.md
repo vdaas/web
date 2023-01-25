@@ -1,6 +1,6 @@
 ---
 title: "Architecture_overview"
-date: 2022-08-18T11:00:03+09:00
+date: 2023-01-24T16:35:09+09:00
 description: The high-level architecture design of Vald and overview of each component.
 draft: false
 weight: 200
@@ -25,20 +25,20 @@ Vald is based on the following technologies.
 
 - [Kubernetes](https://kubernetes.io/)
 
-    To easily scale and manage Vald, it is used by deploying and running on [Kubernetes](https://kubernetes.io/).
-    Vald takes all of the advantages of using Kubernetes.
-    For more details please read the [next section](#concept).
+  To easily scale and manage Vald, it is used by deploying and running on [Kubernetes](https://kubernetes.io/).
+  Vald takes all of the advantages of using Kubernetes.
+  For more details please read the [next section](#concept).
 
 - [Helm](https://helm.sh/)
 
-    Helm helps you to deploy and configure Vald.
-    Vald contains multiple components and configurations.
-    Helm helps us to manage those manifests and provides a better and easy way to deploy and configure Vald.
+  Helm helps you to deploy and configure Vald.
+  Vald contains multiple components and configurations.
+  Helm helps us to manage those manifests and provides a better and easy way to deploy and configure Vald.
 
 - [NGT](https://github.com/yahoojapan/NGT)
 
-    NGT is one of the core components of Vald.
-    NGT is a super-fast vector search engine used by Vald to guarantee the high performance of Vald.
+  NGT is one of the core components of Vald.
+  NGT is a super-fast vector search engine used by Vald to guarantee the high performance of Vald.
 
 ### Concept
 

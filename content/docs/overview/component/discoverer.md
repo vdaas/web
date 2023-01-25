@@ -1,6 +1,6 @@
 ---
 title: "Discoverer_overview/Component"
-date: 2022-10-19T22:10:11+09:00
+date: 2023-01-24T16:35:10+09:00
 description: Describes the overview of Vald Discoverer component.
 draft: false
 weight: 400
@@ -50,7 +50,6 @@ The kind of metrics are here:
   | IP        | IP address                      |
   | CPU       | CPU limit and CPU request       |
   | Memory    | Memory limit and Memory request |
-
 
 When syncing success, Vald Discoverer chooses the necessary metrics from the result and stores them into their four kinds of `Map` on their local memory:
 
