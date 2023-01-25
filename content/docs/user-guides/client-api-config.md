@@ -1,6 +1,6 @@
 ---
 title: "Client Api Config_user Guides"
-date: 2022-10-06T10:56:56+09:00
+date: 2023-01-24T16:35:13+09:00
 description: Describes the details of Vald API configuration.
 draft: false
 weight: 900
@@ -381,7 +381,6 @@ message Filter {
 
 `timestamp` is the timestamp when the vector is inserted or updated.
 When `timestamp` is not set, the current time will be used.
-
 
 ## Search Service
 

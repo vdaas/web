@@ -1,6 +1,6 @@
 ---
 title: "Coding Style_contributing"
-date: 2022-10-06T10:56:52+09:00
+date: 2023-01-24T16:35:09+09:00
 description: Introducing the coding style for the Vald project.
 draft: false
 weight: 200
@@ -1171,7 +1171,7 @@ Still, in some cases, you may need to change the generated code to meet your req
                     ngt:               test.fields.ngt,
                     eg:                test.fields.eg,
                     streamConcurrency: test.fields.streamConcurrency,
-                    // we may have more fields defined in the struct, 
+                    // we may have more fields defined in the struct,
                     // and we need to set them all here
                 }
 
@@ -1236,7 +1236,7 @@ The generated test case will enable these two parallel modes by default. It is i
 func Test_server_CreateIndex(t *testing.T) {
     t.Parallel() // parallel for the test function
     type args struct {
-   
+
     ...
 
     for _, tc := range tests {

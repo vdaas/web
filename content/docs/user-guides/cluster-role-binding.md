@@ -1,6 +1,7 @@
 ---
 title: "Cluster Role Binding_user Guides"
-date: 2022-10-19T22:10:14+09:00
+date: 2023-01-24T16:35:13+09:00
+description: Describes the cluster role configuration for the Vald cluster.
 draft: false
 weight: 400
 menu:
@@ -48,7 +49,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: discoverer
-...
+---
 rules:
   - apiGroups:
       - apps
@@ -119,23 +120,22 @@ To customize the cluster role configuration on the Helm chart for Vald Discovere
 
 ```yaml
 discoverer:
-...
-  clusterRole:
-    # discoverer.clusterRole.enabled -- creates clusterRole resource
-    enabled: true
-    # discoverer.clusterRole.name -- name of clusterRole
-    name: discoverer
-  clusterRoleBinding:
-    # discoverer.clusterRoleBinding.enabled -- creates clusterRoleBinding resource
-    enabled: true
-    # discoverer.clusterRoleBinding.name -- name of clusterRoleBinding
-    name: discoverer
-  serviceAccount:
-    # discoverer.serviceAccount.enabled -- creates service account
-    enabled: true
-    # discoverer.serviceAccount.name -- name of service account
-    name: vald
-...
+---
+clusterRole:
+  # discoverer.clusterRole.enabled -- creates clusterRole resource
+  enabled: true
+  # discoverer.clusterRole.name -- name of clusterRole
+  name: discoverer
+clusterRoleBinding:
+  # discoverer.clusterRoleBinding.enabled -- creates clusterRoleBinding resource
+  enabled: true
+  # discoverer.clusterRoleBinding.name -- name of clusterRoleBinding
+  name: discoverer
+serviceAccount:
+  # discoverer.serviceAccount.enabled -- creates service account
+  enabled: true
+  # discoverer.serviceAccount.name -- name of service account
+  name: vald
 ```
 
 <div class="warning">
@@ -149,6 +149,7 @@ If you want to modify or disable these configurations, you need to grant the [cl
 Please refer to the official guidelines to configure cluster role configuration for your cloud provider, and configure the service account name for Vald Discoverer.
 
 For example:
+
 - [Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html)
 - [GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control)
 

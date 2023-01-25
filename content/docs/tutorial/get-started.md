@@ -1,7 +1,7 @@
 ---
 title: "Get Started_tutorial"
-date: 2022-08-18T11:00:05+09:00
-description: The tutorial of running Vlad cluster on the Kubernetes cluster.
+date: 2023-01-24T16:35:12+09:00
+description: The tutorial of running Vald cluster on the Kubernetes cluster.
 draft: false
 weight: 100
 menu:
@@ -418,21 +418,21 @@ If you are interested, please refer to [SDKs](/docs/user-guides/sdks).<br>
         - Remove 400 indexed training datasets from the Vald agent.
             <details><summary>example code</summary><br>
 
-            ```go
-            for i := range ids [:insertCount] {
-                _, err := client.Remove(ctx, &payload.Remove_Request{
-                    Id: &payload.Object_ID{
-                        Id: ids[i],
-                    },
-                })
-                if err != nil {
-                    glg.Fatal(err)
-                }
-                if i%10 == 0 {
-                    glg.Infof("Removed %d", i)
-                }
-            }
-            ```
+          ```go
+          for i := range ids [:insertCount] {
+              _, err := client.Remove(ctx, &payload.Remove_Request{
+                  Id: &payload.Object_ID{
+                      Id: ids[i],
+                  },
+              })
+              if err != nil {
+                  glg.Fatal(err)
+              }
+              if i%10 == 0 {
+                  glg.Infof("Removed %d", i)
+              }
+          }
+          ```
 
             </details>
 

@@ -1,6 +1,6 @@
 ---
 title: "Index Manager_overview/Component"
-date: 2022-03-25T12:29:58+09:00
+date: 2023-01-24T16:35:10+09:00
 description: Describes the overview of Vald Index Manager component.
 draft: false
 weight: 500
@@ -48,7 +48,8 @@ At the end of each process, Vald Index Manager updates the index information fro
 Vald Index Manager runs this process periodically by set time intervals.
 
 <div class="notice">
-Concurrency means the number of Vald Agent pods for simultaneously sending requests for the indexing operation.
+Concurrency means the number of Vald Agent pods for simultaneously sending requests for the indexing operation.<BR>
 
 When the Vald Agent pod has no uncommitted index or is running the indexing function already, it does not send the request.
+
 </div>
