@@ -3,7 +3,7 @@ title: "Insert_api"
 date: 2022-08-18T11:00:01+09:00
 description: Describes the Insert service to insert new vector to the Vald cluster.
 draft: false
-weight: 1100
+weight: 100
 menu:
   api:
     parent: Api
