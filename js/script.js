@@ -1,7 +1,7 @@
 // initial sidebar
 window.onload = async () => {
   initSidebar();
-  const checked = checkGitStar();
+  const checked = checkGitHubStar();
   if (checked.flag) {
     let elem = document.getElementById("git-star-num");
     elem.innerHTML = checked.count;
