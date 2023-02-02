@@ -30,24 +30,6 @@ window.onload = async () => {
   }
 };
 
-// github star checkFunc
-const checkGitStar = () => {
-  let flag = false;
-  count = 0;
-  const str = localStorage.getItem("github-star");
-  if (str && str !== "") {
-    const obj = JSON.parse(str);
-    const limit = Date.now() - obj.createdAt;
-    // if 24h has passed from the last update, it will try to get new star.
-    if (limit < 86400000) {
-      flag = true;
-      count = obj.count;
-      return { flag, count };
-    }
-  }
-  return { flag, count };
-};
-
 // click event
 window.onclick = (event) => {
   let elem = getElemByEvent(event);
@@ -385,6 +367,24 @@ const setVersion = (elem) => {
     }
   }
   document.getElementById("version_details").removeAttribute("open");
+};
+
+// github star checkFunc
+const checkGitHubStar = () => {
+  let flag = false;
+  count = 0;
+  const str = localStorage.getItem("github-star");
+  if (str && str !== "") {
+    const obj = JSON.parse(str);
+    const limit = Date.now() - obj.createdAt;
+    // if 24h has passed from the last update, it will try to get new star.
+    if (limit < 86400000) {
+      flag = true;
+      count = obj.count;
+      return { flag, count };
+    }
+  }
+  return { flag, count };
 };
 
 // get github star
