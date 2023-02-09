@@ -1,6 +1,6 @@
 ---
 title: "Status_v1.7/Api"
-date: 2023-01-24T16:35:17+09:00
+date: 2023-02-09T15:05:45+09:00
 draft: false
 weight: 800
 menu:
@@ -20,6 +20,7 @@ The sections below describe the meaning of each code and why API returns.
 | code | name                                      |
 | :--: | :---------------------------------------- |
 |  0   | [OK](#ok)                                 |
+|  1   | [CANCELLED](#cancelled)                   |
 |  3   | [INVALID_ARGUMENT](#invalid_argument)     |
 |  4   | [DEADLINE_EXCEEDED](#deadline_exceeded)   |
 |  5   | [NOT_FOUND](#not_found)                   |
@@ -31,6 +32,12 @@ The sections below describe the meaning of each code and why API returns.
 ## OK
 
 `OK` means complete process with success.
+
+Services that return this code are all services.
+
+## CANCELLED
+
+`CANCELLED` means the operation was cancelled.
 
 Services that return this code are all services.
 
