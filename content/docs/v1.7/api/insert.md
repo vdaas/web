@@ -1,6 +1,6 @@
 ---
 title: "Insert_v1.7/Api"
-date: 2023-01-24T16:35:16+09:00
+date: 2023-02-09T15:05:45+09:00
 draft: false
 weight: 100
 menu:
@@ -100,12 +100,14 @@ Inset RPC is the method to add a new single vector.
 
 ### Status Code
 
-| code | desc.            |
-| :--: | :--------------- |
-|  0   | OK               |
-|  3   | INVALID_ARGUMENT |
-|  6   | ALREADY_EXISTS   |
-|  13  | INTERNAL         |
+| code | desc.             |
+| :--: | :---------------- |
+|  0   | OK                |
+|  1   | CANCELLED         |
+|  3   | INVALID_ARGUMENT  |
+|  4   | DEADLINE_EXCEEDED |
+|  6   | ALREADY_EXISTS    |
+|  13  | INTERNAL          |
 
 ## StreamInsert RPC
 
@@ -207,12 +209,14 @@ It's the recommended method to insert a large number of vectors.
 
 ### Status Code
 
-| code | desc.            |
-| :--: | :--------------- |
-|  0   | OK               |
-|  3   | INVALID_ARGUMENT |
-|  6   | ALREADY_EXISTS   |
-|  13  | INTERNAL         |
+| code | desc.             |
+| :--: | :---------------- |
+|  0   | OK                |
+|  1   | CANCELLED         |
+|  3   | INVALID_ARGUMENT  |
+|  4   | DEADLINE_EXCEEDED |
+|  6   | ALREADY_EXISTS    |
+|  13  | INTERNAL          |
 
 ## MultiInsert RPC
 
@@ -311,9 +315,11 @@ Please be careful that the size of the request exceeds the limit.
 
 ### Status Code
 
-| code | desc.            |
-| :--: | :--------------- |
-|  0   | OK               |
-|  3   | INVALID_ARGUMENT |
-|  6   | ALREADY_EXISTS   |
-|  13  | INTERNAL         |
+| code | desc.             |
+| :--: | :---------------- |
+|  0   | OK                |
+|  1   | CANCELLED         |
+|  3   | INVALID_ARGUMENT  |
+|  4   | DEADLINE_EXCEEDED |
+|  6   | ALREADY_EXISTS    |
+|  13  | INTERNAL          |

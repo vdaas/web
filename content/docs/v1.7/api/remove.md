@@ -1,6 +1,6 @@
 ---
 title: "Remove_v1.7/Api"
-date: 2023-01-24T16:35:17+09:00
+date: 2023-02-09T15:05:45+09:00
 draft: false
 weight: 500
 menu:
@@ -102,6 +102,7 @@ Remove RPC is the method to remove a single vector.
 | code | desc.             |
 | :--: | :---------------- |
 |  0   | OK                |
+|  1   | CANCELLED         |
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
@@ -207,6 +208,7 @@ It's the recommended method to remove a large number of vectors.
 | code | desc.             |
 | :--: | :---------------- |
 |  0   | OK                |
+|  1   | CANCELLED         |
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
@@ -310,6 +312,7 @@ Please be careful that the size of the request exceeds the limit.
 | code | desc.             |
 | :--: | :---------------- |
 |  0   | OK                |
+|  1   | CANCELLED         |
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |

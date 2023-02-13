@@ -1,7 +1,6 @@
 ---
 title: "Remove_api"
-date: 2022-08-18T11:00:02+09:00
-description: Describes the Remove service for deleting index from the Vald cluster.
+date: 2023-02-09T15:05:36+09:00
 draft: false
 weight: 500
 menu:
@@ -103,6 +102,7 @@ Remove RPC is the method to remove a single vector.
 | code | desc.             |
 | :--: | :---------------- |
 |  0   | OK                |
+|  1   | CANCELLED         |
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
@@ -208,6 +208,7 @@ It's the recommended method to remove a large number of vectors.
 | code | desc.             |
 | :--: | :---------------- |
 |  0   | OK                |
+|  1   | CANCELLED         |
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
@@ -311,6 +312,7 @@ Please be careful that the size of the request exceeds the limit.
 | code | desc.             |
 | :--: | :---------------- |
 |  0   | OK                |
+|  1   | CANCELLED         |
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |

@@ -1,6 +1,6 @@
 ---
 title: "Object_v1.7/Api"
-date: 2023-01-24T16:35:17+09:00
+date: 2023-02-09T15:05:45+09:00
 draft: false
 weight: 600
 menu:
@@ -71,6 +71,7 @@ Exists RPC is the method to check the a vector exists in the `vald-agent`.
 | code | desc.             |
 | :--: | :---------------- |
 |  0   | OK                |
+|  1   | CANCELLED         |
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
@@ -132,12 +133,14 @@ GetObject RPC is the method to get the metadata of a vector inserted into the `v
 
 ### Status Code
 
-| code | desc.            |
-| :--: | :--------------- |
-|  0   | OK               |
-|  3   | INVALID_ARGUMENT |
-|  5   | NOT_FOUND        |
-|  13  | INTERNAL         |
+| code | desc.             |
+| :--: | :---------------- |
+|  0   | OK                |
+|  1   | CANCELLED         |
+|  3   | INVALID_ARGUMENT  |
+|  4   | DEADLINE_EXCEEDED |
+|  5   | NOT_FOUND         |
+|  13  | INTERNAL          |
 
 ## StreamGetObject RPC
 
@@ -208,9 +211,11 @@ Each Upsert request and response are independent.
 
 ### Status Code
 
-| code | desc.            |
-| :--: | :--------------- |
-|  0   | OK               |
-|  3   | INVALID_ARGUMENT |
-|  5   | NOT_FOUND        |
-|  13  | INTERNAL         |
+| code | desc.             |
+| :--: | :---------------- |
+|  0   | OK                |
+|  1   | CANCELLED         |
+|  3   | INVALID_ARGUMENT  |
+|  4   | DEADLINE_EXCEEDED |
+|  5   | NOT_FOUND         |
+|  13  | INTERNAL          |
