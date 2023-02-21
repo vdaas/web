@@ -562,7 +562,7 @@ details > summary {
 .current {
   position: fixed;
   top: 90px;
-  right: -2px;
+  right: -8px;
   border: 1px solid #006076;
   padding: 16px 12px 37px 14px;
   background-color: #ffffff;
@@ -595,7 +595,7 @@ details > summary {
 .current .menu {
   display: block;
   position: fixed;
-  right: 20px;
+  right: 12px;
   z-index: 20;
 }
 
