@@ -1,6 +1,6 @@
 ---
 title: "Changelog_release"
-date: 2023-02-09T15:05:42+09:00
+date: 2023-03-03T17:30:09+09:00
 draft: false
 weight: 0
 menu:
@@ -9,6 +9,79 @@ menu:
 ---
 
 # CHANGELOG
+
+## v1.7.2
+
+### Docker images
+
+<table>
+  <tr>
+    <th>component</th>
+    <th>Docker pull</th>
+  </tr>
+  <tr>
+    <td>Agent NGT</td>
+    <td>
+      <code>docker pull vdaas/vald-agent-ngt:v1.7.2</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-agent-ngt:v1.7.2</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Agent sidecar</td>
+    <td>
+      <code>docker pull vdaas/vald-agent-sidecar:v1.7.2</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-agent-sidecar:v1.7.2</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Discoverers</td>
+    <td>
+      <code>docker pull vdaas/vald-discoverer-k8s:v1.7.2</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-discoverer-k8s:v1.7.2</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Gateways</td>
+    <td>
+      <code>docker pull vdaas/vald-lb-gateway:v1.7.2</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-lb-gateway:v1.7.2</code><br/>
+      <code>docker pull vdaas/vald-filter-gateway:v1.7.2</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-filter-gateway:v1.7.2</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Index Manager</td>
+    <td>
+      <code>docker pull vdaas/vald-manager-index:v1.7.2</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-manager-index:v1.7.2</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Helm Operator</td>
+    <td>
+      <code>docker pull vdaas/vald-helm-operator:v1.7.2</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-helm-operator:v1.7.2</code>
+    </td>
+  </tr>
+</table>
+
+### Documents
+
+- [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.7.2)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.2/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.2/charts/vald-helm-operator/README)
+
+### Changes
+:bug: Bug fix
+- Vald gRPC Client and Pool logic makes huge backoff [#1953](https://github.com/vdaas/vald/pull/1953)
+- Missing backoff metrics [#1958](https://github.com/vdaas/vald/pull/1958)
+
+:recycle: Refactor
+- Update test template to exclude deepsource warning [#1954](https://github.com/vdaas/vald/pull/1954)
+
+:white_check_mark: Test
+- Remove non-implemented test [#1952](https://github.com/vdaas/vald/pull/1952)
+
 
 ## v1.7.1
 
@@ -72,15 +145,17 @@ menu:
 - [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.1/charts/vald-helm-operator/README)
 
 ### Changes
-#### 🐛 Bugfix 
-- [bugfix] add target length validation for each grpc client exection method [#1939](https://github.com/vdaas/vald/pull/1939)
+
+#### 🐛 Bugfix
+
+- [bugfix] add target length validation for each gRPC client exection method [#1939](https://github.com/vdaas/vald/pull/1939)
 
 #### ♻️ Refactor
-- update grpc status code for API docs [#1943](https://github.com/vdaas/vald/pull/1943)
+
+- update gRPC status code for API docs [#1943](https://github.com/vdaas/vald/pull/1943)
 - Refactor: Add t.Helper() on test helper function [#1935](https://github.com/vdaas/vald/pull/1935)
 - Fix syntax error on dump context workflow [#1936](https://github.com/vdaas/vald/pull/1936)
 - format codes [#1934](https://github.com/vdaas/vald/pull/1934)
-
 
 ## v1.7.0
 
@@ -2287,7 +2362,7 @@ menu:
 - :robot: Update license headers / Format Go codes and YAML files ([#1255](https://github.com/vdaas/vald/pull/1255))
 - :fire: Remove invalid initialization option ([#1252](https://github.com/vdaas/vald/pull/1252))
 - add single connection client for agent & vald ([#1254](https://github.com/vdaas/vald/pull/1254))
-- bugfix remove unneccessary error return & add grpc status code handling for backoff ([#1253](https://github.com/vdaas/vald/pull/1253))
+- bugfix remove unneccessary error return & add gRPC status code handling for backoff ([#1253](https://github.com/vdaas/vald/pull/1253))
 - bugfix agent vqueue & refactor tools/deps ([#1250](https://github.com/vdaas/vald/pull/1250))
 - Add test for pkg/agent/core/ngt/service/vqueue/option ([#1233](https://github.com/vdaas/vald/pull/1233))
 - Add config agent core ngt service kvs test ([#1223](https://github.com/vdaas/vald/pull/1223))
@@ -2389,7 +2464,7 @@ menu:
 
 #### Feature
 
-- add correct grpc status and error handling (#1224)
+- add correct gRPC status and error handling (#1224)
 - Add Cloud Storage mode of Agent Sidecar. (#519)
 - Add general info metrics package / Add NGT info metrics (#1195)
 - improve internal/info implementation (#1177)
@@ -3035,7 +3110,7 @@ menu:
 - change grpc bidi-stream error handling and change grpc API interface ([#928](https://github.com/vdaas/vald/pull/928))
 - fix unclosed string literal in Dockerfile's ARG MAINTAINER ([#923](https://github.com/vdaas/vald/pull/923))
 - Revise building workflow of ci and dev containers ([#922](https://github.com/vdaas/vald/pull/922))
-- bugfix add nil check for grpc connection pool objects in grpc/client.go ([#921](https://github.com/vdaas/vald/pull/921))
+- bugfix add nil check for gRPC connection pool objects in grpc/client.go ([#921](https://github.com/vdaas/vald/pull/921))
 - remove unneccessary pr-tag definition from chart ([#920](https://github.com/vdaas/vald/pull/920))
 - :pencil: Fix typo in gateway-vald configmap template ([#919](https://github.com/vdaas/vald/pull/919))
 - change docker base image PRIMARY_TAG name from nightly to latest ([#917](https://github.com/vdaas/vald/pull/917))
@@ -4811,7 +4886,7 @@ menu:
 ### Changes
 
 - async compressor
-- optimized gRPC pool connection
+- optimized gRPC connection pool
 - update helm chart API version
 - internal gRPC client for Vald
 - Cassandra NewConvictionPolicy
