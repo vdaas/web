@@ -1,6 +1,6 @@
 ---
 title: "Observability Configuration_user Guides"
-date: 2023-01-24T16:35:13+09:00
+date: 2023-03-13T13:26:01+09:00
 description: Introducing how to enable to observability function.
 draft: false
 weight: 1000
@@ -80,7 +80,11 @@ make k8s/metrics/grafana/deploy
 Vald uses OpenTelemetry Collector to get the telemetry data and export it to monitor backend components.
 The following command deploys OpenTelemtry Collector via OpenTelemerty Collector.
 
-```
+<div class="warn">
+Before executing the following command, please ensure the Prometheus operator runs healthy.
+</div>
+
+```bash
 make k8s/otel/operator/install k8s/otel/collector/install
 ```
 
@@ -246,3 +250,8 @@ Telemetry data can be monitored using Grafana, Jaeger, etc.
 Vald publishes [the sample manifest](https://github.com/vdaas/vald/blob/main/charts/vald/values/dev-observability.yaml), which enables Grafana and Jaeger.
 
 You can apply it after creating an observability environment.
+
+<div class="notice">
+The default manifests don't set ingress host.<BR>
+You can monitor the browser by port forwarding or define the ingress host by yourself.
+</div>
