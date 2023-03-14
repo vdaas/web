@@ -1,6 +1,6 @@
 ---
 title: "Upsert_v1.7/Api"
-date: 2023-03-13T13:26:06+09:00
+date: 2023-03-14T15:09:12+09:00
 draft: false
 weight: 300
 menu:
@@ -67,12 +67,12 @@ Upsert RPC is the method to update a single vector and add a new single vector.
 
   - Upsert.Config
 
-    |          field           | type          | label | required | desc.                                                                                                |
-    | :----------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
-    | skip_strict_exist_check  | bool          |       |          | check the same vector is already inserted or not.<br>the ID should be unique if the value is `true`. |
-    |        timestamp         | int64         |       |          | the timestamp of the vector updated/inserted.<br>if it is N/A, the current time will be used.        |
-    |         filters          | Filter.Config |       |          | configuration for filter                                                                             |
-    | disabled_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.     |
+    |          field          | type          | label | required | desc.                                                                                                |
+    | :---------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
+    | skip_strict_exist_check | bool          |       |          | check the same vector is already inserted or not.<br>the ID should be unique if the value is `true`. |
+    |        timestamp        | int64         |       |          | the timestamp of the vector updated/inserted.<br>if it is N/A, the current time will be used.        |
+    |         filters         | Filter.Config |       |          | configuration for filter                                                                             |
+    | disable_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.     |
 
   - Object.Vector
 
@@ -155,12 +155,12 @@ It’s the recommended method to upsert a large number of vectors.
 
   - Upsert.Config
 
-    |          field           | type          | label | required | desc.                                                                                                |
-    | :----------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
-    | skip_strict_exist_check  | bool          |       |          | check the same vector is already inserted or not.<br>the ID should be unique if the value is `true`. |
-    |        timestamp         | int64         |       |          | the timestamp of the vector updated/inserted.<br>if it is N/A, the current time will be used.        |
-    |         filters          | Filter.Config |       |          | configuration for filter                                                                             |
-    | disabled_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.     |
+    |          field          | type          | label | required | desc.                                                                                                |
+    | :---------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
+    | skip_strict_exist_check | bool          |       |          | check the same vector is already inserted or not.<br>the ID should be unique if the value is `true`. |
+    |        timestamp        | int64         |       |          | the timestamp of the vector updated/inserted.<br>if it is N/A, the current time will be used.        |
+    |         filters         | Filter.Config |       |          | configuration for filter                                                                             |
+    | disable_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.     |
 
   - Object.Vector
 
@@ -276,12 +276,12 @@ Please be careful that the size of the request exceeds the limit.
 
   - Upsert.Config
 
-    |          field           | type          | label | required | desc.                                                                                                        |
-    | :----------------------: | :------------ | :---- | :------: | :----------------------------------------------------------------------------------------------------------- |
-    | skip_strict_exist_check  | bool          |       |          | check the same vector is already updated/inserted or not.<br>the ID should be unique if the value is `true`. |
-    |        timestamp         | int64         |       |          | the timestamp of the vector updated/inserted.<br>if it is N/A, the current time will be used.                |
-    |         filters          | Filter.Config |       |          | configuration for filter                                                                                     |
-    | disabled_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.             |
+    |          field          | type          | label | required | desc.                                                                                                        |
+    | :---------------------: | :------------ | :---- | :------: | :----------------------------------------------------------------------------------------------------------- |
+    | skip_strict_exist_check | bool          |       |          | check the same vector is already updated/inserted or not.<br>the ID should be unique if the value is `true`. |
+    |        timestamp        | int64         |       |          | the timestamp of the vector updated/inserted.<br>if it is N/A, the current time will be used.                |
+    |         filters         | Filter.Config |       |          | configuration for filter                                                                                     |
+    | disable_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.             |
 
   - Object.Vector
 

@@ -1,6 +1,6 @@
 ---
 title: "Update_v1.7/Api"
-date: 2023-03-13T13:26:06+09:00
+date: 2023-03-14T15:09:12+09:00
 draft: false
 weight: 200
 menu:
@@ -63,12 +63,12 @@ Update RPC is the method to update a single vector.
 
   - Update.Config
 
-    |          field           | type          | label | required | desc.                                                                                                |
-    | :----------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
-    | skip_strict_exist_check  | bool          |       |          | check the same vector is already inserted or not.<br>the ID should be unique if the value is `true`. |
-    |        timestamp         | int64         |       |          | the timestamp of the vector updated.<br>if it is N/A, the current time will be used.                 |
-    |         filters          | Filter.Config |       |          | configuration for filter                                                                             |
-    | disabled_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.     |
+    |          field          | type          | label | required | desc.                                                                                                |
+    | :---------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
+    | skip_strict_exist_check | bool          |       |          | check the same vector is already inserted or not.<br>the ID should be unique if the value is `true`. |
+    |        timestamp        | int64         |       |          | the timestamp of the vector updated.<br>if it is N/A, the current time will be used.                 |
+    |         filters         | Filter.Config |       |          | configuration for filter                                                                             |
+    | disable_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.     |
 
   - Object.Vector
 
@@ -152,12 +152,12 @@ It's the recommended method to update the large amount of vectors.
 
   - Update.Config
 
-    |          field           | type          | label | required | desc.                                                                                                |
-    | :----------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
-    | skip_strict_exist_check  | bool          |       |          | check the same vector is already inserted or not.<br>the ID should be unique if the value is `true`. |
-    |        timestamp         | int64         |       |          | the timestamp of the vector updated.<br>if it is N/A, the current time will be used.                 |
-    |         filters          | Filter.Config |       |          | configuration for filter                                                                             |
-    | disabled_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.     |
+    |          field          | type          | label | required | desc.                                                                                                |
+    | :---------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
+    | skip_strict_exist_check | bool          |       |          | check the same vector is already inserted or not.<br>the ID should be unique if the value is `true`. |
+    |        timestamp        | int64         |       |          | the timestamp of the vector updated.<br>if it is N/A, the current time will be used.                 |
+    |         filters         | Filter.Config |       |          | configuration for filter                                                                             |
+    | disable_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.     |
 
   - Object.Vector
 
@@ -274,12 +274,12 @@ Please be careful that the size of the request exceed the limit.
 
   - Update.Config
 
-    |          field           | type          | label | required | desc.                                                                                                |
-    | :----------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
-    | skip_strict_exist_check  | bool          |       |          | check the same vector is already inserted or not.<br>the ID should be unique if the value is `true`. |
-    |        timestamp         | int64         |       |          | the timestamp of the vector updated.<br>if it is N/A, the current time will be used.                 |
-    |         filters          | Filter.Config |       |          | configuration for filter                                                                             |
-    | disabled_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.     |
+    |          field          | type          | label | required | desc.                                                                                                |
+    | :---------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
+    | skip_strict_exist_check | bool          |       |          | check the same vector is already inserted or not.<br>the ID should be unique if the value is `true`. |
+    |        timestamp        | int64         |       |          | the timestamp of the vector updated.<br>if it is N/A, the current time will be used.                 |
+    |         filters         | Filter.Config |       |          | configuration for filter                                                                             |
+    | disable_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.     |
 
   - Object.Vector
 
