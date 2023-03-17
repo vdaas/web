@@ -1,6 +1,6 @@
 ---
 title: "Filter Gateway_v1.7/Api"
-date: 2023-03-13T13:26:05+09:00
+date: 2023-03-14T15:09:11+09:00
 draft: false
 weight: 700
 menu:
@@ -495,12 +495,12 @@ service Filter {
 
   - Update.Config
 
-    |          field           | type          | label | required | desc.                                                                                               |
-    | :----------------------: | :------------ | :---- | :------: | :-------------------------------------------------------------------------------------------------- |
-    | skip_strict_exist_check  | bool          |       |          | check the same vector is already updated or not.<br>the ID should be unique if the value is `true`. |
-    |        timestamp         | int64         |       |          | the timestamp of the vector updated.<br>if it is N/A, the current time will be used.                |
-    |         filters          | Filter.Config |       |          | configuration for filter                                                                            |
-    | disabled_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.    |
+    |          field          | type          | label | required | desc.                                                                                               |
+    | :---------------------: | :------------ | :---- | :------: | :-------------------------------------------------------------------------------------------------- |
+    | skip_strict_exist_check | bool          |       |          | check the same vector is already updated or not.<br>the ID should be unique if the value is `true`. |
+    |        timestamp        | int64         |       |          | the timestamp of the vector updated.<br>if it is N/A, the current time will be used.                |
+    |         filters         | Filter.Config |       |          | configuration for filter                                                                            |
+    | disable_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.    |
 
   - Filter.Target
 
@@ -617,12 +617,12 @@ service Filter {
 
   - Update.Config
 
-    |          field           | type          | label | required | desc.                                                                                               |
-    | :----------------------: | :------------ | :---- | :------: | :-------------------------------------------------------------------------------------------------- |
-    | skip_strict_exist_check  | bool          |       |          | check the same vector is already updated or not.<br>the ID should be unique if the value is `true`. |
-    |        timestamp         | int64         |       |          | the timestamp of the vector updated.<br>if it is N/A, the current time will be used.                |
-    |         filters          | Filter.Config |       |          | configuration for filter                                                                            |
-    | disabled_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.    |
+    |          field          | type          | label | required | desc.                                                                                               |
+    | :---------------------: | :------------ | :---- | :------: | :-------------------------------------------------------------------------------------------------- |
+    | skip_strict_exist_check | bool          |       |          | check the same vector is already updated or not.<br>the ID should be unique if the value is `true`. |
+    |        timestamp        | int64         |       |          | the timestamp of the vector updated.<br>if it is N/A, the current time will be used.                |
+    |         filters         | Filter.Config |       |          | configuration for filter                                                                            |
+    | disable_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.    |
 
   - Filter.Target
 
@@ -778,12 +778,12 @@ service Filter {
 
   - Update.Config
 
-    |          field           | type          | label | required | desc.                                                                                               |
-    | :----------------------: | :------------ | :---- | :------: | :-------------------------------------------------------------------------------------------------- |
-    | skip_strict_exist_check  | bool          |       |          | check the same vector is already updated or not.<br>the ID should be unique if the value is `true`. |
-    |        timestamp         | int64         |       |          | the timestamp of the vector updated.<br>if it is N/A, the current time will be used.                |
-    |         filters          | Filter.Config |       |          | configuration for filter                                                                            |
-    | disabled_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.    |
+    |          field          | type          | label | required | desc.                                                                                               |
+    | :---------------------: | :------------ | :---- | :------: | :-------------------------------------------------------------------------------------------------- |
+    | skip_strict_exist_check | bool          |       |          | check the same vector is already updated or not.<br>the ID should be unique if the value is `true`. |
+    |        timestamp        | int64         |       |          | the timestamp of the vector updated.<br>if it is N/A, the current time will be used.                |
+    |         filters         | Filter.Config |       |          | configuration for filter                                                                            |
+    | disable_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.    |
 
   - Filter.Target
 
@@ -910,12 +910,12 @@ service Filter {
 
   - Update.Config
 
-    |          field           | type          | label | required | desc.                                                                                                |
-    | :----------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
-    | skip_strict_exist_check  | bool          |       |          | check the same vector is already upserted or not.<br>the ID should be unique if the value is `true`. |
-    |        timestamp         | int64         |       |          | the timestamp of the vector upserted.<br>if it is N/A, the current time will be used.                |
-    |         filters          | Filter.Config |       |          | configuration for filter                                                                             |
-    | disabled_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.     |
+    |          field          | type          | label | required | desc.                                                                                                |
+    | :---------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
+    | skip_strict_exist_check | bool          |       |          | check the same vector is already upserted or not.<br>the ID should be unique if the value is `true`. |
+    |        timestamp        | int64         |       |          | the timestamp of the vector upserted.<br>if it is N/A, the current time will be used.                |
+    |         filters         | Filter.Config |       |          | configuration for filter                                                                             |
+    | disable_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.     |
 
   - Filter.Target
 
@@ -1029,12 +1029,12 @@ service Filter {
 
   - Update.Config
 
-    |          field           | type          | label | required | desc.                                                                                                |
-    | :----------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
-    | skip_strict_exist_check  | bool          |       |          | check the same vector is already upserted or not.<br>the ID should be unique if the value is `true`. |
-    |        timestamp         | int64         |       |          | the timestamp of the vector upserted.<br>if it is N/A, the current time will be used.                |
-    |         filters          | Filter.Config |       |          | configuration for filter                                                                             |
-    | disabled_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.     |
+    |          field          | type          | label | required | desc.                                                                                                |
+    | :---------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
+    | skip_strict_exist_check | bool          |       |          | check the same vector is already upserted or not.<br>the ID should be unique if the value is `true`. |
+    |        timestamp        | int64         |       |          | the timestamp of the vector upserted.<br>if it is N/A, the current time will be used.                |
+    |         filters         | Filter.Config |       |          | configuration for filter                                                                             |
+    | disable_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.     |
 
   - Filter.Target
 
@@ -1190,12 +1190,12 @@ service Filter {
 
   - Update.Config
 
-    |          field           | type          | label | required | desc.                                                                                                |
-    | :----------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
-    | skip_strict_exist_check  | bool          |       |          | check the same vector is already upserted or not.<br>the ID should be unique if the value is `true`. |
-    |        timestamp         | int64         |       |          | the timestamp of the vector upserted.<br>if it is N/A, the current time will be used.                |
-    |         filters          | Filter.Config |       |          | configuration for filter                                                                             |
-    | disabled_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.     |
+    |          field          | type          | label | required | desc.                                                                                                |
+    | :---------------------: | :------------ | :---- | :------: | :--------------------------------------------------------------------------------------------------- |
+    | skip_strict_exist_check | bool          |       |          | check the same vector is already upserted or not.<br>the ID should be unique if the value is `true`. |
+    |        timestamp        | int64         |       |          | the timestamp of the vector upserted.<br>if it is N/A, the current time will be used.                |
+    |         filters         | Filter.Config |       |          | configuration for filter                                                                             |
+    | disable_balanced_update | bool          |       |          | A flag to disable balanced update (split remove -&gt; insert operation) during update operation.     |
 
   - Filter.Target
 
