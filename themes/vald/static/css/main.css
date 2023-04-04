@@ -3,7 +3,7 @@ body {
 }
 
 .top {
-  background-color: #54b9b2;
+  background: linear-gradient(270.43deg, #00bab1 0%, #006076 100%);
   position: relative;
   height: 600px;
   overflow: hidden;
@@ -22,6 +22,10 @@ body {
   padding: 0 24px;
   position: relative;
   z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .top__title {
@@ -93,6 +97,19 @@ body {
   width: 100%;
   height: 100%;
 }
+
+/* .top__bg .rect-wrap {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.top__bg .rect {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ffffff;
+  transform: rotateZ(-60deg) skewY(30deg) scale(0.7071, 0.8165);
+} */
 
 .top__bg .bg__img {
   position: absolute;
