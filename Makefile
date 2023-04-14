@@ -1,6 +1,6 @@
 .PHONY: all run deploy/staging deploy/production subup
 
-LATEST_VERSION = 1.7.3
+LATEST_VERSION = 1.7.4
 RELEASE = main
 NEW_VERSION := ${LATEST_VERSION}
 DOC_VERSION = 1.7
@@ -79,7 +79,7 @@ sync:
 latest: \
 	version \
 	sync
-	@echo "\e[1;32mstart createing contents\e[0m"
+	@echo "\e[1;32mstart creating contents\e[0m"
 
 .PHONY: $(V_DOC_FILES)
 $(V_DOC_FILES): \
