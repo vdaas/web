@@ -1372,8 +1372,8 @@ details > summary {
     background-color: rgba(40, 40, 40, 1);
   }
   .notice code,
-  .caution,
-  .warning {
+  .caution code,
+  .warning code {
     color: #fff;
   }
 
