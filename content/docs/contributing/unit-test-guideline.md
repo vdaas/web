@@ -3,7 +3,7 @@ title: "Unit Test Guideline_contributing"
 date: 2022-08-18T11:00:03+09:00
 description: Describes the unit test guideline for the Vald unit testing.
 draft: false
-weight: 300
+weight: 400
 menu:
   contributing:
     parent: Contributing

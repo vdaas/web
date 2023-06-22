@@ -3,7 +3,7 @@ title: "Coding Style_contributing"
 date: 2023-01-24T16:35:09+09:00
 description: Introducing the coding style for the Vald project.
 draft: false
-weight: 200
+weight: 300
 menu:
   contributing:
     parent: Contributing

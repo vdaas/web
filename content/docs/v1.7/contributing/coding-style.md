@@ -2,7 +2,7 @@
 title: "Coding Style_v1.7/Contributing"
 date: 2023-01-24T16:35:18+09:00
 draft: false
-weight: 200
+weight: 300
 menu:
   contributing:
     parent: Contributing
