@@ -1,6 +1,7 @@
 ---
 title: "Contributing Guide_contributing"
-date: 2023-06-22T16:25:47+09:00
+date: 2023-06-23T15:46:13+09:00
+description: Contribute guide for Vald project.
 draft: false
 weight: 100
 menu:
@@ -91,7 +92,7 @@ Please submit the security issue report [here](https://github.com/vdaas/vald/iss
 
 ## Contributing Source Code
 
-Please refer to our [development documentaion](./docs/contributing/development) for information on setting up a development environment.
+Please refer to our [development documentation](/docs/contributing/development) for information on setting up a development environment.
 
 ### Before contributing source code
 

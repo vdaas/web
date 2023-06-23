@@ -1,6 +1,7 @@
 ---
 title: "Development_contributing"
 date: 2023-06-22T16:25:47+09:00
+description: Development guide for Vald project.
 draft: false
 weight: 200
 menu:
