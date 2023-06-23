@@ -91,7 +91,7 @@ Please submit the security issue report [here](https://github.com/vdaas/vald/iss
 
 ## Contributing Source Code
 
-Please refer to our [development documentaion](./docs/contributing/development) for information on setting up a development environment.
+Please refer to our [development documentation](/docs/v1.7/contributing/development) for information on setting up a development environment.
 
 ### Before contributing source code
 
