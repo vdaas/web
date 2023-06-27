@@ -19,6 +19,10 @@ all: latest \
      checkout/hugos/changes \
      clean
 
+.PHONY: vald/version
+vald/version:
+	@echo ${LATEST_VERSION}
+
 run:
 	hugo server -D --bind 0.0.0.0
 
