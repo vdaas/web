@@ -60,6 +60,7 @@ jobs:
       - name: Production Deploy
         if: steps.git_diff_preview.outputs.diff
         run: |
+          LATEST_VERSION=`make vald/version`
           cd public
           git checkout gh-pages
           git add .
