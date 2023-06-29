@@ -49,7 +49,7 @@ There are two possible reasons.
    In the sense of search operation, you can modify search timeout by [payload config](/docs/api/search).
 
 <div class="notice">
-It is easy to find out which problem occurs by inspections of the log of each Pod, like <a href="https://github.com/wercker/stern">stern</a>.
+It is easy to find out which problem occurs by inspections of the log of each Pod, like <a href="https://github.com/stern/stern">stern</a>.
 </div>
 
 ## Others

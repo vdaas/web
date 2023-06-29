@@ -33,6 +33,7 @@ build/stage:
 	@hugo --environment=staging -D --minify
 	@cd tmp_pre && cp -r * ../preview/
 	@cp Makefile preview/Makefile
+	@cp -R public/charts preview/content/charts
 
 deploy/stage: subup \
 	build/stage
