@@ -1,7 +1,7 @@
 ---
 title: "Changelog_v1.5/Release"
 date: 2022-08-18T11:00:15+09:00
-draft: true
+draft: false
 weight: 0
 menu:
   release:

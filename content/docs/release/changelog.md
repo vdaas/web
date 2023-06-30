@@ -1,7 +1,7 @@
 ---
 title: "Changelog_release"
 date: 2023-06-22T16:25:54+09:00
-draft: true
+draft: false
 weight: 0
 menu:
   release:
