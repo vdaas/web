@@ -284,7 +284,7 @@ endef
 
 define publish-root
 	@echo "\e[1;32mpublish root document\e[0m"
-	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "4 s/true/false/g"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "5 s/true/false/g"
 endef
 
 define publish-version
