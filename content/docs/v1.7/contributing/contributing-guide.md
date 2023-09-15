@@ -1,6 +1,6 @@
 ---
 title: "Contributing Guide_v1.7/Contributing"
-date: 2023-06-22T16:26:00+09:00
+date: 2023-09-15T09:38:52+09:00
 draft: false
 weight: 100
 menu:
@@ -91,7 +91,7 @@ Please submit the security issue report [here](https://github.com/vdaas/vald/iss
 
 ## Contributing Source Code
 
-Please refer to our [development documentation](/docs/v1.7/contributing/development) for information on setting up a development environment.
+Please refer to our [development documentation](/docs/contributing/development) for information on setting up a development environment.
 
 ### Before contributing source code
 
@@ -130,7 +130,7 @@ To contribute unit test code, the steps are almost the same as [contribute sourc
 
 1. Execute `make gotests/gen` command under Vald repository
 1. Move the test function which you would like to implement above the placeholder `// NOT IMPLEMENTED BELOW`
-1. Implement the test function
+1. Uncomment and implement the test function
 
 Vald implmentes unit test code to ensure the quality of Vald.
 Each implementation file comes with its unit test file, with `*_test.go` postfix.
@@ -142,10 +142,10 @@ func Test_implementedTest(t *testing.T) {
 }
 
 // NOT IMPLEMENTED BELOW
-
-func Test_notImplementedTest(t *testing.T) {
-    // this unit test function is not implemented yet
-}
+//
+// func Test_notImplementedTest(t *testing.T) {
+//     // this unit test function is not implemented yet
+// }
 ```
 
 Vald defines a placeholder `// NOT IMPLEMENTED BELOW` to separate the implemented unit test from the unimplemented unit test.
@@ -157,13 +157,13 @@ If no test functions are implemented in the test file, the placeholder will be p
 package test
 
 // NOT IMPLEMENTED BELOW
-func Test_unimplementedTest(t *testing.T) {
-    // this unit test function is not implemented yet
-}
+// func Test_unimplementedTest(t *testing.T) {
+//     // this unit test function is not implemented yet
+// }
 
-func Test_unimplementedTest2(t *testing.T) {
-    // this unit test function is not implemented yet
-}
+// func Test_unimplementedTest2(t *testing.T) {
+//     // this unit test function is not implemented yet
+// }
 ```
 
 If all test functions are implemented, the placeholder will be placed on the bottom of the file.
