@@ -1,6 +1,6 @@
 ---
 title: "Changelog_release"
-date: 2023-06-22T16:25:54+09:00
+date: 2023-09-15T09:38:46+09:00
 draft: false
 weight: 0
 menu:
@@ -9,6 +9,142 @@ menu:
 ---
 
 # CHANGELOG
+
+## v1.7.7
+
+### Docker images
+
+<table>
+  <tr>
+    <th>component</th>
+    <th>Docker pull</th>
+  </tr>
+  <tr>
+    <td>Agent NGT</td>
+    <td>
+      <code>docker pull vdaas/vald-agent-ngt:v1.7.7</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-agent-ngt:v1.7.7</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Agent sidecar</td>
+    <td>
+      <code>docker pull vdaas/vald-agent-sidecar:v1.7.7</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-agent-sidecar:v1.7.7</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Discoverers</td>
+    <td>
+      <code>docker pull vdaas/vald-discoverer-k8s:v1.7.7</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-discoverer-k8s:v1.7.7</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Gateways</td>
+    <td>
+      <code>docker pull vdaas/vald-lb-gateway:v1.7.7</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-lb-gateway:v1.7.7</code><br/>
+      <code>docker pull vdaas/vald-filter-gateway:v1.7.7</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-filter-gateway:v1.7.7</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Index Manager</td>
+    <td>
+      <code>docker pull vdaas/vald-manager-index:v1.7.7</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-manager-index:v1.7.7</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Helm Operator</td>
+    <td>
+      <code>docker pull vdaas/vald-helm-operator:v1.7.7</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-helm-operator:v1.7.7</code>
+    </td>
+  </tr>
+</table>
+
+### Documents
+
+- [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.7.7)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.7/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.7/charts/vald-helm-operator/README)
+
+### Changes
+:sparkles: New feature
+- Add CopyBuffer to copy.go [#2167](https://github.com/vdaas/vald/pull/2167)
+- Add Vald standard internal/sync package [#2153](https://github.com/vdaas/vald/pull/2153)
+- Add RemoveByTimestamp RPC [#2158](https://github.com/vdaas/vald/pull/2158)
+- Implement StreamListObject and its tests [#2145](https://github.com/vdaas/vald/pull/2145)
+- Add apiversion capabilities check to helm template [#2137](https://github.com/vdaas/vald/pull/2137)
+- Add timestamp field to Object.Vector [#2136](https://github.com/vdaas/vald/pull/2136)
+- Add gache's generic Map as internal/sync.Map and replace standard sync.Map with it  [#2115](https://github.com/vdaas/vald/pull/2115)
+- Make internal/cache generic [#2104](https://github.com/vdaas/vald/pull/2104)
+- Install additional tools for docker image for devcontainer [#2101](https://github.com/vdaas/vald/pull/2101)
+- Install buf and apply buf format [#2094](https://github.com/vdaas/vald/pull/2094)
+- Add backup origin when CoW enabled and failed to load primary [#2091](https://github.com/vdaas/vald/pull/2091)
+- Add decode kvsdb tool [#2059](https://github.com/vdaas/vald/pull/2059)
+- Add user custom network policy [#2078](https://github.com/vdaas/vald/pull/2078)
+
+:recycle: Refactor
+- Refactor agent ngt core. [#2172](https://github.com/vdaas/vald/pull/2172)
+- Refactor proto [#2173](https://github.com/vdaas/vald/pull/2173)
+- Refactor search status [#2168](https://github.com/vdaas/vald/pull/2168)
+- Refactor internal/core/algorithm/ngt mutex lock timing [#2144](https://github.com/vdaas/vald/pull/2144)
+- Refactor github actions [#2141](https://github.com/vdaas/vald/pull/2141)
+- Update license text [#2169](https://github.com/vdaas/vald/pull/2169)
+- Refactor agent error not to wrap with details for performance issue [#2154](https://github.com/vdaas/vald/pull/2154)
+- Use internal comparator instead of go-cmp [#2132](https://github.com/vdaas/vald/pull/2132)
+- Refactor context [#2121](https://github.com/vdaas/vald/pull/2121)
+- Propagate context to Search operation. [#2117](https://github.com/vdaas/vald/pull/2117)
+- Refactor fix url http to https [#2090](https://github.com/vdaas/vald/pull/2090)
+- Update "make gotests/gen" command [#2085](https://github.com/vdaas/vald/pull/2085)
+
+:bug: Bugfix
+- Fix duplicate make command [#2165](https://github.com/vdaas/vald/pull/2165)
+- Add timestamp check for GetObject e2e [#2142](https://github.com/vdaas/vald/pull/2142)
+- Modified apiversion capabilities check [#2149](https://github.com/vdaas/vald/pull/2149)
+- Fix ngt index path of test case [#2130](https://github.com/vdaas/vald/pull/2130)
+- Fix hack/benchmark search interface change [#2129](https://github.com/vdaas/vald/pull/2129)
+- Fix internal/gache definition variable type [#2123](https://github.com/vdaas/vald/pull/2123)
+- Use GOBIN instead of GOPATH/bin [#2102](https://github.com/vdaas/vald/pull/2102)
+- Fix jaeger operator wait logic [#2114](https://github.com/vdaas/vald/pull/2114)
+- Fix make k8s/metrics/jaeger/deploy failure [#2077](https://github.com/vdaas/vald/pull/2077)
+- Bugfix Makefile KUBECONFIG recursive reference [#2089](https://github.com/vdaas/vald/pull/2089)
+- Fix deploy command [#2088](https://github.com/vdaas/vald/pull/2088)
+- Fix non-trusted module problem of v1.7.6 and disable not found debug message [#2076](https://github.com/vdaas/vald/pull/2076)
+- Bugfix lb gateway pacicked caused by pairing heap search aggregator makes nil pointer when empty search result [#2181](https://github.com/vdaas/vald/pull/2181)
+
+:pencil2: Document
+- Update testing guideline for updated testing policy [#2131](https://github.com/vdaas/vald/pull/2131)
+- Add troubleshooting for each rpc [#2163](https://github.com/vdaas/vald/pull/2163)
+- Fix format network policy document [#2108](https://github.com/vdaas/vald/pull/2108)
+- Add broken index backup document [#2096](https://github.com/vdaas/vald/pull/2096)
+- Add network policy document [#2095](https://github.com/vdaas/vald/pull/2095)
+- Fix 404 URL link [#2098](https://github.com/vdaas/vald/pull/2098)
+- Update observability document [#2086](https://github.com/vdaas/vald/pull/2086)
+- Fix typo of contribution guide [#2087](https://github.com/vdaas/vald/pull/2087)
+- Update docs: search API and client API config [#2081](https://github.com/vdaas/vald/pull/2081)
+
+:white_check_mark: Testing
+- Re-Generate test codes [#2107](https://github.com/vdaas/vald/pull/2107)
+- Update golangci-lint configuration: use white-list configuration pattern [#2106](https://github.com/vdaas/vald/pull/2106)
+
+:green_heart: CI
+- Fix coverage CI error [#2150](https://github.com/vdaas/vald/pull/2150)
+- Remove some linters to make ci faster [#2116](https://github.com/vdaas/vald/pull/2116)
+
+:chart_with_upwards_trend: Metrics/Tracing
+- Divide latency of CreateIndex and SaveIndex metrics [#2099](https://github.com/vdaas/vald/pull/2099)
+- Add broken index count metrics [#2083](https://github.com/vdaas/vald/pull/2083)
+
+:arrow_up: Update dependencies
+- Update go modules [#2092](https://github.com/vdaas/vald/pull/2092)
+
+:art: Design
+- Modified svg images [#2178](https://github.com/vdaas/vald/pull/2178)
+
 
 ## v1.7.6
 
@@ -68,8 +204,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.7.6)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.6/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.6/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.6/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.6/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -188,8 +324,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.7.5)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.5/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.5/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.5/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.5/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -294,8 +430,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.7.4)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.4/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.4/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.4/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.4/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -373,8 +509,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.7.3)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.3/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.3/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.3/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.3/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -456,8 +592,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.7.2)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.2/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.2/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.2/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.2/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -532,8 +668,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.7.1)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.1/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.1/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.1/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.1/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -606,8 +742,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.7.0)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.0/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.0/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.0/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.0/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -764,8 +900,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.6.3)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.6.3/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.6.3/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.6.3/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.6.3/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -839,8 +975,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.6.2)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.6.2/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.6.2/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.6.2/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.6.2/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -916,8 +1052,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.6.1)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.6.1/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.6.1/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.6.1/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.6.1/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -987,8 +1123,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.6.0)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.6.0/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.6.0/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.6.0/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.6.0/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -1097,8 +1233,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.5.6)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.5.6/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.5.6/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.5.6/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.5.6/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -1177,8 +1313,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.5.5)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.5.5/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.5.5/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.5.5/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.5.5/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -1270,8 +1406,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.5.4)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.5.4/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.5.4/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.5.4/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.5.4/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -1361,8 +1497,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.5.3)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.5.3/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.5.3/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.5.3/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.5.3/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -1465,8 +1601,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.5.2)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.5.2/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.5.2/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.5.2/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.5.2/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -1565,8 +1701,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.5.1)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.5.1/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.5.1/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.5.1/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.5.1/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -1651,8 +1787,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.5.0)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.5.0/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.5.0/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.5.0/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.5.0/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -1748,8 +1884,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.4.1)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.4.1/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.4.1/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.4.1/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.4.1/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -1814,8 +1950,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.4.0)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.4.0/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.4.0/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.4.0/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.4.0/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -1935,8 +2071,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.3.1)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.3.1/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.3.1/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.3.1/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.3.1/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -2004,8 +2140,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.3.0)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.3.0/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.3.0/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.3.0/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.3.0/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -2070,8 +2206,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.2.4)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.2.4/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.2.4/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.2.4/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.2.4/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -2175,8 +2311,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.2.3)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.2.3/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.2.3/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.2.3/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.2.3/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -2276,8 +2412,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.2.2)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.2.2/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.2.2/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.2.2/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.2.2/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -2383,8 +2519,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.2.1)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.2.1/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.2.1/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.2.1/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.2.1/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -2493,8 +2629,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.2.0)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.2.0/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.2.0/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.2.0/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.2.0/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -2619,8 +2755,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.1.2)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.1.2/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.1.2/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.1.2/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.1.2/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -2734,8 +2870,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.1.1)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.1.1/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.1.1/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.1.1/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.1.1/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -2848,8 +2984,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.1.0)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.1.0/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.1.0/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.1.0/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.1.0/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -3041,8 +3177,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.0.4)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.0.4/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.0.4/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.0.4/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.0.4/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -3143,8 +3279,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.0.3)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.0.3/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.0.3/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.0.3/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.0.3/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -3250,8 +3386,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.0.2)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.0.2/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.0.2/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.0.2/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.0.2/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -3359,8 +3495,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.0.1)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.0.1/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.0.1/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.0.1/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.0.1/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -3461,8 +3597,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.0.0)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.0.0/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.0.0/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.0.0/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.0.0/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -3600,8 +3736,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.66)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.66/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.66/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.66/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.66/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -3704,8 +3840,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.65)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.65/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.65/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.65/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.65/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -3804,8 +3940,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.64)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.64/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.64/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.64/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.64/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -3909,8 +4045,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.63)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.63/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.63/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.63/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.63/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4024,8 +4160,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.62)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.62/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.62/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.62/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.62/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4124,8 +4260,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.61)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.61/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.61/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.61/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.61/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4223,8 +4359,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.60)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.60/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.60/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.60/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.60/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4253,8 +4389,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.59)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.59/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.59/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.59/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.59/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4282,8 +4418,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.58)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.58/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.58/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.58/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.58/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4322,8 +4458,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.57)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.57/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.57/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.57/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.57/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4356,8 +4492,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.56)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.56/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.56/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.56/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.56/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4394,8 +4530,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.55)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.55/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.55/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.55/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.55/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4423,8 +4559,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.54)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.54/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.54/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.54/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.54/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4452,8 +4588,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.53)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.53/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.53/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.53/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.53/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4484,8 +4620,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.52)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.52/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.52/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.52/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.52/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4514,8 +4650,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.51)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.51/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.51/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.51/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.51/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4581,8 +4717,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.50)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.50/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.50/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.50/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.50/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4618,8 +4754,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.49)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.49/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.49/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.49/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.49/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4647,8 +4783,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.48)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.48/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.48/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.48/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.48/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4678,8 +4814,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.47)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.47/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.47/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.47/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.47/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4708,8 +4844,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.46)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.46/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.46/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.46/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.46/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4745,8 +4881,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.45)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.45/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.45/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.45/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.45/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4760,7 +4896,7 @@ menu:
 - :white_check_mark: add internal/config/ngt test ([#554](https://github.com/vdaas/vald/pull/554))
 - :white_check_mark: internal/cache/cacher test ([#553](https://github.com/vdaas/vald/pull/553))
 - :white_check_mark: Add test case for `internal/file` ([#550](https://github.com/vdaas/vald/pull/550))
-- :white_check_mark: add internal/singleflight test ([#542](https://github.com/vdaas/vald/pull/542))
+- :white_check_mark: add internal/sync/singleflight test ([#542](https://github.com/vdaas/vald/pull/542))
 - not to force rebuild gotests ([#548](https://github.com/vdaas/vald/pull/548))
 - :pencil: Add use case document ([#482](https://github.com/vdaas/vald/pull/482))
 - :white_check_mark: add internal/log/mock/retry test ([#549](https://github.com/vdaas/vald/pull/549))
@@ -4790,8 +4926,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.44)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.44/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.44/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.44/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.44/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4829,8 +4965,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.43)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.43/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.43/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.43/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.43/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4862,8 +4998,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.42)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.42/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.42/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.42/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.42/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4896,8 +5032,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.41)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.41/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.41/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.41/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.41/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4934,8 +5070,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.40)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.40/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.40/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.40/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.40/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -4972,8 +5108,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.39)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.39/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.39/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.39/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.39/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -5011,8 +5147,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.38)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.38/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.38/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.38/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.38/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -5057,8 +5193,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.37)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.37/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.37/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.37/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.37/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -5086,8 +5222,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.36)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.36/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.36/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.36/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.36/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -5121,8 +5257,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.35)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.35/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.35/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.35/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.35/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -5152,8 +5288,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.34)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.34/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.34/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.34/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.34/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -5184,8 +5320,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.33)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.33/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.33/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.33/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.33/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -5215,8 +5351,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.32)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.32/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.32/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.32/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.32/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -5244,8 +5380,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.31)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.31/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.31/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.31/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.31/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -5271,8 +5407,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.30)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.30/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.30/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.30/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.30/charts/vald-helm-operator/README)
 
 ### Changes
 
@@ -5282,7 +5418,7 @@ menu:
 - internal gRPC client for Vald
 - Cassandra NewConvictionPolicy
 - dicoverer now returns clone object
-- new internal/singleflight package
+- new internal/sync/singleflight package
 - new internal/net package
 - coding guideline
 
@@ -5306,8 +5442,8 @@ menu:
 ### Documents
 
 - [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v0.0.26)
-- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.26/charts/vald/README.md)
-- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.26/charts/vald-helm-operator/README.md)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v0.0.26/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v0.0.26/charts/vald-helm-operator/README)
 
 ### Changes
 
