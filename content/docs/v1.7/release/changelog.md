@@ -1,6 +1,6 @@
 ---
 title: "Changelog_v1.7/Release"
-date: 2023-09-15T09:39:01+09:00
+date: 2023-09-15T15:10:03+09:00
 draft: false
 weight: 0
 menu:
@@ -9,6 +9,75 @@ menu:
 ---
 
 # CHANGELOG
+
+## v1.7.8
+
+### Docker images
+
+<table>
+  <tr>
+    <th>component</th>
+    <th>Docker pull</th>
+  </tr>
+  <tr>
+    <td>Agent NGT</td>
+    <td>
+      <code>docker pull vdaas/vald-agent-ngt:v1.7.8</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-agent-ngt:v1.7.8</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Agent sidecar</td>
+    <td>
+      <code>docker pull vdaas/vald-agent-sidecar:v1.7.8</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-agent-sidecar:v1.7.8</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Discoverers</td>
+    <td>
+      <code>docker pull vdaas/vald-discoverer-k8s:v1.7.8</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-discoverer-k8s:v1.7.8</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Gateways</td>
+    <td>
+      <code>docker pull vdaas/vald-lb-gateway:v1.7.8</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-lb-gateway:v1.7.8</code><br/>
+      <code>docker pull vdaas/vald-filter-gateway:v1.7.8</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-filter-gateway:v1.7.8</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Index Manager</td>
+    <td>
+      <code>docker pull vdaas/vald-manager-index:v1.7.8</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-manager-index:v1.7.8</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Helm Operator</td>
+    <td>
+      <code>docker pull vdaas/vald-helm-operator:v1.7.8</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-helm-operator:v1.7.8</code>
+    </td>
+  </tr>
+</table>
+
+### Documents
+
+- [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.7.8)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.8/charts/vald/README)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.8/charts/vald-helm-operator/README)
+
+### Changes
+
+♻️ Refactor
+
+- change default creation poolsize [#2190](https://github.com/vdaas/vald/pull/2190)
+- List kvs and vqueue data [#2188](https://github.com/vdaas/vald/pull/2188)
+- refactor semver ci [#2189](https://github.com/vdaas/vald/pull/2189)
 
 ## v1.7.7
 
