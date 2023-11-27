@@ -699,6 +699,32 @@ details > summary {
   position: relative;
 }
 
+.content__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.content__header {
+  width: 100%;
+  height: 200px;
+  background-image: url("../images/graphic.png");
+  display: flex;
+  align-items: left;
+  background-size: cover;
+  background-position: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content__header p{
+  font-size: 32px;
+  margin-left: 40px;
+}
+
+.content__header span{
+  margin-left: 40px;
+}
+
 /*current*/
 .current {
   position: fixed;
@@ -1156,7 +1182,6 @@ details > summary {
   .page {
     width: 20%;
     margin-bottom: 0;
-    margin-right: 2%;
   }
 
   .content {
@@ -1164,6 +1189,7 @@ details > summary {
     display: -ms-flexbox;
     display: flex;
     width: 76%;
+    padding-left: 2%;
   }
 
   .markdown {
