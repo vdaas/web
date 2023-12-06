@@ -1,6 +1,6 @@
 ---
 title: "Get Started_v1.7/Tutorial"
-date: 2023-01-24T16:35:21+09:00
+date: 2023-12-06T16:56:34+09:00
 draft: false
 weight: 100
 menu:
@@ -77,6 +77,12 @@ Please make sure these functions are available.<br>
 The configuration of Kubernetes Ingress is depended on your Kubernetes cluster's provider.
 Please refer to on yourself.
 
+In the following example, we create the Kubernetes cluster using [k3d](https://k3d.io/), that the internal port 80 (where the traefik ingress controller is listening on) is exposed on the host system.
+
+```bash
+k3d cluster create -p 8081:80@loadbalancer
+```
+
 The way to deploy Kubernetes Metrics Service is here:
 
 ```bash
@@ -118,7 +124,7 @@ In this tutorial, you will deploy the basic configuration of Vald that is consis
          enabled: true
          # TODO: Set your ingress host.
          host: localhost
-         # TODO: Set annotations which you have to set for your k8s cluster.
+         # TODO: Set annotations which you have to set for your Ingress resource.
          annotations:
            ...
    ```
@@ -174,8 +180,8 @@ In this tutorial, you will deploy the basic configuration of Vald that is consis
    <details><summary>Example output</summary><br>
 
    ```bash
-   NAME                      CLASS    HOSTS       ADDRESS        PORTS   AGE
-   vald-lb-gateway-ingress   <none>   localhost   192.168.16.2   80      7m43s
+   NAME                      CLASS     HOSTS       ADDRESS        PORTS   AGE
+   vald-lb-gateway-ingress   traefik   localhost   192.168.16.2   80      7m43s
    ```
 
    </details>
@@ -263,9 +269,9 @@ If you are interested, please refer to [SDKs](/docs/v1.7/user-guides/sdks).<br>
               "github.com/kpango/glg"
               "github.com/vdaas/vald-client-go/v1/payload"
               "github.com/vdaas/vald-client-go/v1/vald"
-
               "gonum.org/v1/hdf5"
               "google.golang.org/grpc"
+              "google.golang.org/grpc/credentials/insecure"
           )
           ```
 
@@ -333,7 +339,7 @@ If you are interested, please refer to [SDKs](/docs/v1.7/user-guides/sdks).<br>
         ```go
         ctx := context.Background()
 
-        conn, err := grpc.DialContext(ctx, grpcServerAddr, grpc.WithInsecure())
+        conn, err := grpc.DialContext(ctx, grpcServerAddr, grpc.WithTransportCredentials(insecure.NewCredentials()))
         if err != nil {
             glg.Fatal(err)
         }
