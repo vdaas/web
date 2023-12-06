@@ -1,0 +1,192 @@
+{
+  "overview": {
+    "about-vald": {
+      "weight": 100,
+      "description": "What is Vald and what you can do with Vald"
+    },
+    "architecture": {
+      "weight": 200,
+      "description": "High-Level architecture design and overview of each component"
+    },
+    "date-flow": {
+      "weight": 300,
+      "description": "Data flow inside Vald for each operation"
+    },
+    "component": {
+      "agent": {
+        "weight": 100,
+        "description": "Stores index data and Search ANN vectors"
+      },
+      "lb-gateway": {
+        "weight": 200,
+        "description": "Operates various type processes with Vald cluster"
+      },
+      "filter-gateway": {
+        "weight": 300,
+        "description": "Communicates with user-defined ingress/egress filter component"
+      },
+      "discoverer": {
+        "weight": 400,
+        "description": "Discovers Pod information and helps automate operation"
+      },
+      "index-manager": {
+        "weight": 500,
+        "description": "Controls indexing process of Vald Agent Pods"
+      }
+    }
+  },
+  "tutorial": {
+    "get-started": {
+      "weight": 100,
+      "description": "Running Vald cluster on Kubernetes and execute client codes"
+    },
+    "vald-agent-standalone-on-k8s": {
+      "weight": 200,
+      "description": "Running only Vald Agent on Kubernetes and execute client codes"
+    },
+    "vald-agent-standalone-on-docker": {
+      "weight": 300,
+      "description": "Running Vald Agent on Docker and execute client codes"
+    }
+  },
+  "api": {
+    "insert": {
+      "weight": 100,
+      "description": "Insert vectors to the Vald cluster"
+    },
+    "update": {
+      "weight": 200,
+      "description": "Update vectors indexed in the Vald cluster"
+    },
+    "upsert": {
+      "weight": 300,
+      "description": "Update or Insert vectors to the Vald cluster"
+    },
+    "search": {
+      "weight": 400,
+      "description": "Search ANN vectors from the Vald cluster"
+    },
+    "remove": {
+      "weight": 500,
+      "description": "Remove indexes from the Vald cluster"
+    },
+    "object": {
+      "weight": 600,
+      "description": "Get object information in the Vald cluster"
+    },
+    "filter-gateway": {
+      "weight": 700,
+      "description": "How to use CRUD API with filter gateway"
+    },
+    "status": {
+      "weight": 800,
+      "description": "API response description for each status"
+    },
+    "build_proto": {
+      "weight": 900,
+      "description": "How to build gRPC proto files for calling API to your Vald cluster"
+    }
+  },
+  "contributing": {
+    "contributing-guide": {
+      "weight": 100,
+      "description": "Contribute guideline for the Vald project"
+    },
+    "development": {
+      "weight": 200,
+      "description": "Basic development guide for the Vald project"
+    },
+    "coding-style": {
+      "weight": 300,
+      "description": "Coding style for Vald project"
+    },
+    "unit-test-guideline": {
+      "weight": 400,
+      "description": "Unit test guideline for Vald project"
+    }
+  },
+  "performance": {
+    "benchmark": {
+      "weight": 100,
+      "description": "Measuring performance of Vald cluster"
+    },
+    "loadtest": {
+      "weight": 200,
+      "description": "Shows how to perform load test in the Vald cluster"
+    }
+  },
+  "troubleshooting": {
+    "client-side": {
+      "weight": 100,
+      "description": "The popular troubleshooting for client side"
+    },
+    "provisioning": {
+      "weight": 200,
+      "description": "Shows how to resolve trouble with provisioning Vald cluster"
+    }
+  },
+  "support": {
+    "contacts": {
+      "weight": 100,
+      "description": "Please contact us"
+    },
+    "faq": {
+      "weight": 200,
+      "description": "The major questions about using Vald"
+    }
+  },
+  "usecase": {
+    "weight": 100,
+    "description": "Introduces the application method using Vald"
+  },
+  "user-guides": {
+    "configuration": {
+      "weight": 100,
+      "description": "Applies basic configuration for running Vald cluster"
+    },
+    "backup-configuration": {
+      "weight": 200,
+      "description": "Applies backup feature for saving and restoring indexes"
+    },
+    "filtering-configuration": {
+      "weight": 300,
+      "description": "Applies filtering feature to the Vald cluster"
+    },
+    "cluster-role-binding": {
+      "weight": 400,
+      "description": "Configures cluster role for Vald cluster"
+    },
+    "deployment": {
+      "weight": 500,
+      "description": "How to launch Vald cluster on your Kubernetes cluster"
+    },
+    "operations": {
+      "weight": 600,
+      "description": "Describes the basic operation for the Vald cluster"
+    },
+    "upgrade-cluster": {
+      "weight": 700,
+      "description": "Describes hot to upgrade Vald version for the running Vald cluster"
+    },
+    "capacity-planning": {
+      "weight": 800,
+      "description": "Estimates how Kubernetes resources will be required"
+    },
+    "client-api-config": {
+      "weight": 900,
+      "description": "Shows more detailed explanation about APIs configuration"
+    },
+    "observability-configuration": {
+      "weight": 1000,
+      "description": "Monitors performance on metrics dashboards"
+    },
+    "network-policy": {
+      "weight": 1100,
+      "description": "Enables to Kubernetes NetworkPolicy to the Vald cluster"
+    },
+    "sdks": {
+      "weight": 1200,
+      "description": "Sends request and receives response from the Vald cluster"
+    }
+  }
+}
