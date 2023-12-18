@@ -11,6 +11,11 @@
   padding: 0 24px;
 }
 
+
+.footer__icon:last-child {
+  margin-left: 4px;
+}
+
 @media screen and (min-width: 768px) {
   .footer__content {
     max-width: 1108px;
@@ -19,6 +24,9 @@
 }
 
 .footer__list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   padding: 24px 0;
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -58,10 +66,15 @@
 }
 
 @media screen and (min-width: 768px) {
+  .footer__list{
+    flex-direction: row;
+    align-items: center;
+  }
+  .footer__item {
+    margin-right: 24px;
+  }
   .footer__icon {
-    position: absolute;
-    margin-left: 12px;
-    margin-top: -18px;
+    margin-right: 12px;
   }
   .icon__image{
     width: 24px;
@@ -70,12 +83,7 @@
   }
 }
 
-@media screen and (min-width: 768px) {
-  .footer__item {
-    display: inline-block;
-    margin-right: 24px;
-  }
-}
+
 
 @media (prefers-color-scheme: dark) {
   .footer{
