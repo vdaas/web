@@ -1,6 +1,6 @@
 ---
 title: "Deployment_v1.7/User Guides"
-date: 2023-01-24T16:35:22+09:00
+date: 2023-12-25T19:23:16+09:00
 draft: false
 weight: 500
 menu:
@@ -55,6 +55,10 @@ In addition, as you need, please refer to the followings:
 
 Moreover, we publish the example configuration files for each use case.
 Please also refer to [here](https://github.com/vdaas/vald/tree/main/charts/vald/values).
+
+<div class="caution">
+For vald-discoverer to work correctly, if you deploy multiple Vald clusters in the same Kubernetes cluster, please deploy one Vald cluster in one namespace.
+</div>
 
 ## Use Helm command
 

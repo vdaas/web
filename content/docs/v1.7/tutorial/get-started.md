@@ -1,6 +1,6 @@
 ---
 title: "Get Started_v1.7/Tutorial"
-date: 2023-12-06T16:56:34+09:00
+date: 2023-12-25T19:23:14+09:00
 draft: false
 weight: 100
 menu:
@@ -94,6 +94,10 @@ kubectl wait -n kube-system --for=condition=ready pod -l k8s-app=metrics-server 
 
 This chapter shows how to deploy Vald using Helm and run it on your Kubernetes cluster.<br>
 In this tutorial, you will deploy the basic configuration of Vald that is consisted of vald-agent-ngt, vald-lb-gateway, vald-discoverer, and vald-manager-index.<br>
+
+<div class="caution">
+For vald-discoverer to work correctly, if you deploy multiple Vald clusters in the same Kubernetes cluster, please deploy one Vald cluster in one namespace.
+</div>
 
 1. Clone the repository
 
