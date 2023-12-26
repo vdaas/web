@@ -2,7 +2,7 @@
 {{ $ver := "" }}
 {{ $docsBaseURL := "/docs" }}
 <footer class="footer">
-  <div class="footer__content cf">
+  <div class="footer__content">
     {{ if ne .Page.Permalink .Site.BaseURL }}
     {{ $setURL := urls.Parse .Page.Permalink }}
       {{ if (in $setURL.Path "docs/v") }}
@@ -10,7 +10,7 @@
         {{ $docsBaseURL = path.Join $docsBaseURL $ver }}
       {{ end }}
     {{ end }}
-    <ul class="footer__list">
+    <ul class="footer__index">
       <li class="footer__item">
         <a href="{{ $docsBaseURL }}/overview/about-vald" class="footer__link">About<br/></a>
       </li>
@@ -25,6 +25,24 @@
       </li>
       <li class="footer__item">
         <a href="https://vdaas-vald.medium.com/" target="_blank" class="footer__link">Blog<br/></a>
+      </li>
+    </ul>
+    <ul class="footer__sns">
+      <li class="footer__item">
+        <a class="footer__item footer__icon" href="https://twitter.com/vdaas_vald" target="_blank">
+          <picture>
+            <source srcset="{{ .Site.BaseURL }}/images/logo_x_white.svg" media="(prefers-color-scheme: dark)" class="icon__image" width="24" height="24">
+            <img src="{{ .Site.BaseURL }}/images/logo_x_black.svg" alt="x" class="icon__image">
+          </picture>
+        </a>
+      </li>
+      <li class="footer__item">
+        <a class="footer__item footer__icon" href="https://join.slack.com/t/vald-community/shared_invite/zt-db2ky9o4-R_9p2sVp8xRwztVa8gfnPA" target="_blank">
+          <picture>
+            <source srcset="{{ .Site.BaseURL }}/images/logo_slack_white.svg" media="(prefers-color-scheme: dark)" class="icon__image" width="24" height="24">
+            <img src="{{ .Site.BaseURL }}/images/logo_slack_black.svg" alt="slack" class="icon__image">
+          </picture>
+        </a>
       </li>
       <li class="footer__item">
         <a class="footer__item footer__icon" href="https://github.com/vdaas/vald" target="_blank">
