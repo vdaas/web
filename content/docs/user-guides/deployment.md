@@ -1,6 +1,6 @@
 ---
 title: "Deployment_user Guides"
-date: 2023-01-24T16:35:13+09:00
+date: 2023-12-25T19:23:03+09:00
 description: Introducing how to deploy the Vald cluster.
 draft: false
 weight: 500
@@ -56,6 +56,10 @@ In addition, as you need, please refer to the followings:
 
 Moreover, we publish the example configuration files for each use case.
 Please also refer to [here](https://github.com/vdaas/vald/tree/main/charts/vald/values).
+
+<div class="caution">
+For vald-discoverer to work correctly, if you deploy multiple Vald clusters in the same Kubernetes cluster, please deploy one Vald cluster in one namespace.
+</div>
 
 ## Use Helm command
 
