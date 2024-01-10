@@ -1,9 +1,9 @@
 ---
 title: "Filter Gateway_overview/Component"
-date: 2023-01-24T16:35:10+09:00
-description: Describes the overview of Vald Filter Gateway component.
-draft: false
+date: 2024-01-10T18:16:41+09:00
+draft: true
 weight: 300
+description: Communicates with user-defined ingress/egress filter component
 menu:
   component:
     parent: Component

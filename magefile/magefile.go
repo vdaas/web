@@ -5,12 +5,14 @@ package main
 
 import (
 	"archive/zip"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
 	"path/filepath"
+	"reflect"
 	"regexp"
 	"strings"
 	"unsafe"
@@ -19,6 +21,7 @@ import (
 const ORIGINAL_VERSION = "https://raw.githubusercontent.com/vdaas/vald/main/versions/VALD_VERSION"
 const LATEST_VERSION_FILE = "../VERSIONS/VALD_LATEST_VERSION"
 const HUGO_HEADER = "../themes/vald/layouts/partials/header.html"
+const METADATE_PATH = "../description.json"
 
 // SyncVersion compares original VALD_VERSION and own VALD_LATEST_VERSION.
 // If VALD_LATEST_VERSION is NOT same as VALD_VERSION, it will replace to the original VALD_VERSION.
@@ -147,6 +150,7 @@ func unzipFile(src, dest string) error {
 	return nil
 }
 
+// ConvertLinks replaces the link for vald web instead of markdown format link.
 func ConvertLinks(path string) error {
 	path = "../" + path
 	b, err := os.ReadFile(path)
@@ -155,20 +159,94 @@ func ConvertLinks(path string) error {
 		return err
 	}
 	str := string(b)
+
+	// Fix document link paths
 	// remove ".md" from link
-	re := regexp.MustCompile(`.md\)`)
-	str = re.ReplaceAllString(str, ")")
+	re := regexp.MustCompile(`\.md`)
+	str = re.ReplaceAllString(str, "")
 	// remove "./docs" from link
 	re = regexp.MustCompile(`\][\(]\.\/docs\/`)
 	str = re.ReplaceAllString(str, "](/docs/")
 	// remove "../../" from link
+	re = regexp.MustCompile(`\][\(](\.\.\/)+`)
+	str = re.ReplaceAllString(str, "](/docs/")
+
+	// Fix image link path
+	re = regexp.MustCompile(`\.\.\/\.\.\/design`)
+	str = re.ReplaceAllString(str, "/images")
+	re = regexp.MustCompile(`(\.\.\/)*\.\.\/assets\/docs`)
+	str = re.ReplaceAllString(str, "/images")
+
 	return os.WriteFile(path, []byte(str), os.ModePerm)
 }
 
-func Hoge() error {
-	err := os.Mkdir("./tmp", os.ModeDir)
+// UpdateMetadata 
+func UpdateMetadata(path string) error {
+	path = "../" + path
+	b, err := os.ReadFile(path)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Errorf("error: ", err)
+		return err
 	}
-	return nil
+	str := string(b)
+
+	// json
+	d, err := os.ReadFile(METADATE_PATH)
+	if err != nil {
+		fmt.Errorf("error: ", err)
+		return err
+	}
+	var meta map[string]interface{}
+	json.Unmarshal(d, &meta)
+	m, ok := getMeta(path, meta)
+	if ok {
+		// update weight
+		weight := fmt.Sprintf("weight: %d", m.weight)
+		re := regexp.MustCompile(`weight: [\d\.]*`)
+		str = re.ReplaceAllString(str, weight)
+		// update description
+		desc := fmt.Sprintf("description: %s", m.description)
+		re = regexp.MustCompile(`description: "[\w\s]*"`)
+		str = re.ReplaceAllString(str, desc)
+	}
+	return os.WriteFile(path, []byte(str), os.ModePerm)
+}
+
+type metadata struct {
+	weight      int
+	description string
+}
+
+func getMeta(path string, meta map[string]interface{}) (metadata, bool) {
+	ps := strings.Split(strings.Split(path, "content/docs/")[1], "/")
+	if len(ps) == 0 {
+		return metadata{}, false
+	}
+	m := meta
+	for idx, p := range ps {
+		p = strings.Replace(p, ".md", "", -1)
+		v := m[p]
+		if v == nil {
+			return metadata{}, false
+		}
+		if reflect.TypeOf(v).Kind() == reflect.Map {
+			var nm map[string]interface{}
+			b, _ := json.Marshal(v)
+			json.Unmarshal(b, &nm)
+			if idx+1 == len(ps) {
+				var me metadata
+				for key, val := range nm {
+					if key == "weight" {
+						me.weight = int(val.(float64))
+					}
+					if key == "description" {
+						me.description = val.(string)
+					}
+				}
+				return me, true
+			}
+			m = nm
+		}
+	}
+	return metadata{}, false
 }

@@ -1,9 +1,9 @@
 ---
 title: "Contacts_support"
-date: 2023-01-24T16:35:11+09:00
-description: If any question, please contact us.
-draft: false
+date: 2024-01-10T18:16:42+09:00
+draft: true
 weight: 100
+description: Please contact us
 menu:
   support:
     parent: Support

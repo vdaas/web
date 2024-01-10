@@ -1,8 +1,8 @@
 ---
 title: "Index Correction_user Guides"
-date: 2023-12-06T16:56:24+09:00
-draft: false
-weight: 1200
+date: 2024-01-10T18:16:45+09:00
+draft: true
+weight: 0
 description: ""
 menu:
   userguides:

@@ -1,8 +1,9 @@
 ---
 title: "Insert_api"
-date: 2023-09-15T09:38:34+09:00
-draft: false
+date: 2024-01-10T18:16:38+09:00
+draft: true
 weight: 100
+description: Insert vectors to the Vald cluster
 menu:
   api:
     parent: Api

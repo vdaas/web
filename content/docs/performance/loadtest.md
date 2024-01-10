@@ -1,9 +1,9 @@
 ---
 title: "Loadtest_performance"
-date: 2022-08-18T11:00:04+09:00
-description: Explains the load testing for the Vald cluster.
-draft: false
+date: 2024-01-10T18:16:42+09:00
+draft: true
 weight: 200
+description: Shows how to perform load test in the Vald cluster
 menu:
   performance:
     parent: Performance

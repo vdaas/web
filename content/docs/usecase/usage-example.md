@@ -1,9 +1,9 @@
 ---
 title: "Usage Example_usecase"
-date: 2023-01-24T16:35:12+09:00
-description: Introduces the application method using Vald.
-draft: false
+date: 2024-01-10T18:16:44+09:00
+draft: true
 weight: 0
+description: ""
 menu:
   usecase:
     parent: Usecase

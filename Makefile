@@ -1,15 +1,10 @@
 .DEFALT_GOAL = all
+
 LATEST_VERSION = $(shell cat ./VERSIONS/VALD_LATEST_VERSION)
 SUPPORT_VERSION = $(shell cat ./VERSIONS/VALD_SUPPORT_VERSION)
 TARGET_TAG = main
-TARGET_VER = ""
+TARGET_VERSION = ""
 SYNC_REPO_PATH = vald
-
-LATEST_VERSION = 1.7.10
-RELEASE = main
-NEW_VERSION := ${LATEST_VERSION}
-DOC_VERSION = 1.7
-NEW_DOC_VERSION := $(DOC_VERSION)
 ARCIVE_URL = https://github.com/vdaas/vald/archive/v$(LATEST_VERSION).zip
 # ORIGINAL_DOCS = $(eval ORIGINAL_DOCS:=$(shell find tmp/$(SYNC_REPO_PATH)/docs -type f -name "*.md" 2>/dev/null ))$(ORIGINAL_DOCS)
 ORIGINAL_DOCS = $(eval ORIGINAL_DOCS:=$(shell find tmp/${SYNC_REPO_PATH}/docs -type f -name "*.md" 2>/dev/null ))$(ORIGINAL_DOCS)
@@ -19,7 +14,17 @@ ROOT_DOC_FILES = $(ORIGINAL_DOCS:tmp/${SYNC_REPO_PATH}/docs/%.md=content/docs/%.
 all:  init \
       version/sync \
       repo/sync \
+      update/docs/root \
+      clean
+
+test: init \
+      version/sync \
+      repo/sync \
       update/docs/root
+
+.PHONY: clean
+clean:
+	@rm tmp -rf
 
 init: \
 	subup
@@ -80,7 +85,6 @@ repo/sync:
 
 .PHONY: update/docs/root
 update/docs/root: \
-	repo/sync \
 	contents/prepare/root \
 	contents/update/root
 
@@ -106,6 +110,10 @@ contents/update/root: \
 	@echo "\e[1;33mcreate/update index files...\e[0m"
 	@$(eval DIR := $(shell find content/docs -maxdepth 3 -type d | egrep -v 'v[0-9]' | egrep "content/docs/"))
 	$(foreach dir,$(DIR),$(call create-index-file,$(dir)))
+	@echo "\e[1;33mfix document path...\e[0m"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs -I{} mage -d ./magefile ConvertLinks {}
+	@echo "\e[1;33mset metadata...\e[0m"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs -I{} mage -d ./magefile UpdateMetadata {}
 
 define create-content-file
 	@mkdir -p $(dir $(1))

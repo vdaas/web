@@ -1,9 +1,9 @@
 ---
 title: "Backup Configuration_user Guides"
-date: 2023-07-04T20:48:25+09:00
-description: How to set the backup configuration.
-draft: false
+date: 2024-01-10T18:16:44+09:00
+draft: true
 weight: 200
+description: Applies backup feature for saving and restoring indexes
 menu:
   userguides:
     parent: User Guides

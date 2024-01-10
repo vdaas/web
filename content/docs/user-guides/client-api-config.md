@@ -1,8 +1,9 @@
 ---
 title: "Client Api Config_user Guides"
-date: 2023-06-22T16:25:52+09:00
-draft: false
+date: 2024-01-10T18:16:44+09:00
+draft: true
 weight: 900
+description: Shows more detailed explanation about APIs configuration
 menu:
   userguides:
     parent: User Guides

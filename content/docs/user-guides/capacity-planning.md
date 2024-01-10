@@ -1,9 +1,9 @@
 ---
 title: "Capacity Planning_user Guides"
-date: 2022-08-18T11:00:06+09:00
-description: Describes the capacity planning of the Kubernetes cluster.
-draft: false
+date: 2024-01-10T18:16:44+09:00
+draft: true
 weight: 800
+description: Estimates how Kubernetes resources will be required
 menu:
   userguides:
     parent: User Guides
@@ -163,7 +163,7 @@ Please DO NOT remove the default settings.
         requiredDuringSchedulingIgnoredDuringExecution: []
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
+          - weight: 800
             podAffinityTerm:
               topologyKey: kubernetes.io/hostname
               labelSelector:
