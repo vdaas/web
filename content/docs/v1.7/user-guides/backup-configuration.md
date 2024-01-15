@@ -1,8 +1,9 @@
 ---
 title: "Backup Configuration_v1.7/User Guides"
-date: 2023-07-04T20:48:35+09:00
+date: 2024-01-15T17:31:17+09:00
 draft: false
 weight: 200
+description: Applies backup feature for saving and restoring indexes
 menu:
   userguides:
     parent: User Guides

@@ -1,8 +1,9 @@
 ---
 title: "Client Side_v1.7/Troubleshooting"
-date: 2023-01-24T16:35:20+09:00
+date: 2024-01-15T17:31:15+09:00
 draft: false
-weight: 200
+weight: 100
+description: The popular troubleshooting for client side
 menu:
   troubleshooting:
     parent: Troubleshooting

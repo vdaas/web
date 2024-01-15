@@ -1,8 +1,9 @@
 ---
 title: "Object_v1.7/Api"
-date: 2023-09-15T09:38:50+09:00
+date: 2024-01-15T17:31:08+09:00
 draft: false
 weight: 600
+description: Get object information in the Vald cluster
 menu:
   api:
     parent: Api

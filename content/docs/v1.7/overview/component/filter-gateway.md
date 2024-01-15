@@ -1,8 +1,9 @@
 ---
 title: "Filter Gateway_v1.7/Overview/Component"
-date: 2023-01-24T16:35:19+09:00
+date: 2024-01-15T17:31:13+09:00
 draft: false
 weight: 300
+description: Communicates with user-defined ingress/egress filter component
 menu:
   component:
     parent: Component

@@ -1,8 +1,9 @@
 ---
 title: "Configuration_v1.7/User Guides"
-date: 2023-01-24T16:35:22+09:00
+date: 2024-01-15T17:31:18+09:00
 draft: false
 weight: 100
+description: Applies basic configuration for running Vald cluster
 menu:
   userguides:
     parent: User Guides

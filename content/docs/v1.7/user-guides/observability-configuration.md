@@ -1,8 +1,9 @@
 ---
 title: "Observability Configuration_v1.7/User Guides"
-date: 2023-07-04T20:48:37+09:00
+date: 2024-01-15T17:31:19+09:00
 draft: false
-weight: 0
+weight: 1000
+description: Monitors performance on metrics dashboards
 menu:
   userguides:
     parent: User Guides

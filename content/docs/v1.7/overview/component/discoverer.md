@@ -1,8 +1,9 @@
 ---
 title: "Discoverer_v1.7/Overview/Component"
-date: 2023-01-24T16:35:19+09:00
+date: 2024-01-15T17:31:12+09:00
 draft: false
 weight: 400
+description: Discovers Pod information and helps automate operation
 menu:
   component:
     parent: Component

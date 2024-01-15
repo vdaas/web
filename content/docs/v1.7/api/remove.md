@@ -1,8 +1,9 @@
 ---
 title: "Remove_v1.7/Api"
-date: 2023-12-06T16:56:29+09:00
+date: 2024-01-15T17:31:08+09:00
 draft: false
 weight: 500
+description: Remove indexes from the Vald cluster
 menu:
   api:
     parent: Api
