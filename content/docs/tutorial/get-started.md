@@ -1,7 +1,6 @@
 ---
 title: "Get Started_tutorial"
-date: 2023-12-25T19:23:01+09:00
-description: The tutorial of running Vald cluster on the Kubernetes cluster.
+date: 2024-01-15T17:37:52+09:00
 draft: false
 weight: 100
 description: Running Vald cluster on Kubernetes and execute client codes
