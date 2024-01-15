@@ -8,7 +8,7 @@
       "weight": 200,
       "description": "High-Level architecture design and overview of each component"
     },
-    "date-flow": {
+    "data-flow": {
       "weight": 300,
       "description": "Data flow inside Vald for each operation"
     },

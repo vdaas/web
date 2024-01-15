@@ -1,9 +1,9 @@
 ---
 title: "Data Flow_v1.7/Overview"
-date: 2024-01-15T17:31:13+09:00
+date: 2024-01-15T18:01:47+09:00
 draft: false
-weight: 0
-description: ""
+weight: 300
+description: Data flow inside Vald for each operation
 menu:
   overview:
     parent: Overview

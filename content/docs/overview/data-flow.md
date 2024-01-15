@@ -1,9 +1,9 @@
 ---
 title: "Data Flow_overview"
-date: 2024-01-10T18:16:41+09:00
+date: 2024-01-15T17:58:54+09:00
 draft: false
-weight: 0
-description: ""
+weight: 300
+description: Data flow inside Vald for each operation
 menu:
   overview:
     parent: Overview
