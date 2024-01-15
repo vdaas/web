@@ -23,6 +23,11 @@ const LATEST_VERSION_FILE = "../VERSIONS/VALD_LATEST_VERSION"
 const HUGO_HEADER = "../themes/vald/layouts/partials/header.html"
 const METADATE_PATH = "../description.json"
 
+type metadata struct {
+	weight      int
+	description string
+}
+
 // SyncVersion compares original VALD_VERSION and own VALD_LATEST_VERSION.
 // If VALD_LATEST_VERSION is NOT same as VALD_VERSION, it will replace to the original VALD_VERSION.
 // The target file is `LATEST_VERSION_FILE` and `HUGO_HEADER`.
@@ -151,73 +156,74 @@ func unzipFile(src, dest string) error {
 }
 
 // ConvertLinks replaces the link for vald web instead of markdown format link.
-func ConvertLinks(path string) error {
+func ConvertLinks(path, tag string) error {
 	path = "../" + path
 	b, err := os.ReadFile(path)
 	if err != nil {
-		fmt.Println("error")
+		fmt.Println("failed to read file: %s", err.Error())
 		return err
 	}
 	str := string(b)
-
+	additionalPath := ""
+	if tag != "main" && tag != "" {
+		additionalPath = fmt.Sprintf("v%s/", tag)
+	}
 	// Fix document link paths
 	// remove ".md" from link
 	re := regexp.MustCompile(`\.md`)
 	str = re.ReplaceAllString(str, "")
-	// remove "./docs" from link
+	// convert "./docs" to "/docs" from link
 	re = regexp.MustCompile(`\][\(]\.\/docs\/`)
-	str = re.ReplaceAllString(str, "](/docs/")
-	// remove "../../" from link
+	str = re.ReplaceAllString(str, "](/docs/"+additionalPath)
+	// convert "../../" to "/docs" from link
 	re = regexp.MustCompile(`\][\(](\.\.\/)+`)
-	str = re.ReplaceAllString(str, "](/docs/")
+	str = re.ReplaceAllString(str, "](/docs/"+additionalPath)
 
-	// Fix image link path
-	re = regexp.MustCompile(`\.\.\/\.\.\/design`)
-	str = re.ReplaceAllString(str, "/images")
-	re = regexp.MustCompile(`(\.\.\/)*\.\.\/assets\/docs`)
-	str = re.ReplaceAllString(str, "/images")
+	// covert image link path
+	re = regexp.MustCompile(`\.\.\/\.\.\/design\/`)
+	str = re.ReplaceAllString(str, "/images/"+additionalPath)
+	re = regexp.MustCompile(`(\.\.\/)*\.\.\/assets\/docs\/`)
+	str = re.ReplaceAllString(str, "/images/"+additionalPath)
 
 	return os.WriteFile(path, []byte(str), os.ModePerm)
 }
 
-// UpdateMetadata 
+// UpdateMetadata rewrites metadata defined by `./description.json`.
 func UpdateMetadata(path string) error {
 	path = "../" + path
 	b, err := os.ReadFile(path)
 	if err != nil {
-		fmt.Errorf("error: ", err)
+		fmt.Println("failed to read file: %s", err.Error())
 		return err
 	}
 	str := string(b)
-
-	// json
+	// read json
 	d, err := os.ReadFile(METADATE_PATH)
 	if err != nil {
-		fmt.Errorf("error: ", err)
+		fmt.Println("failed to read file: %s", err.Error())
 		return err
 	}
 	var meta map[string]interface{}
 	json.Unmarshal(d, &meta)
 	m, ok := getMeta(path, meta)
-	if ok {
-		// update weight
-		weight := fmt.Sprintf("weight: %d", m.weight)
-		re := regexp.MustCompile(`weight: [\d\.]*`)
-		str = re.ReplaceAllString(str, weight)
-		// update description
-		desc := fmt.Sprintf("description: %s", m.description)
-		re = regexp.MustCompile(`description: "[\w\s]*"`)
-		str = re.ReplaceAllString(str, desc)
+	if !ok {
+		return nil
 	}
+	// update weight
+	weight := fmt.Sprintf("weight: %d", m.weight)
+	re := regexp.MustCompile(`weight: [\d\.]*`)
+	str = re.ReplaceAllString(str, weight)
+	// update description
+	desc := fmt.Sprintf("description: %s", m.description)
+	re = regexp.MustCompile(`description: "[\w\s]*"`)
+	str = re.ReplaceAllString(str, desc)
 	return os.WriteFile(path, []byte(str), os.ModePerm)
 }
 
-type metadata struct {
-	weight      int
-	description string
-}
-
+// getMeta gets the metadata corresponding to given path.
 func getMeta(path string, meta map[string]interface{}) (metadata, bool) {
+	re := regexp.MustCompile(`v[0-9]+\.[0-9]+\/`)
+	path = re.ReplaceAllString(path, "")
 	ps := strings.Split(strings.Split(path, "content/docs/")[1], "/")
 	if len(ps) == 0 {
 		return metadata{}, false
@@ -249,4 +255,17 @@ func getMeta(path string, meta map[string]interface{}) (metadata, bool) {
 		}
 	}
 	return metadata{}, false
+}
+
+// Publish sets the draft flag to `true` for publish as document.
+func Publish(path string) error {
+	path = "../" + path
+	b, err := os.ReadFile(path)
+	if err != nil {
+		fmt.Println("failed to read file: %s", err.Error())
+		return err
+	}
+	str := string(b)
+	str = strings.Replace(str, "draft: true", "draft: false", 1)
+	return os.WriteFile(path, []byte(str), os.ModePerm)
 }
