@@ -1,7 +1,7 @@
 ---
 title: "About Vald_overview"
 date: 2024-01-10T18:16:40+09:00
-draft: true
+draft: false
 weight: 100
 description: What is Vald and what you can do with Vald
 menu:

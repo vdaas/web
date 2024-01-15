@@ -1,7 +1,7 @@
 ---
 title: "Cluster Role Binding_user Guides"
 date: 2024-01-10T18:16:44+09:00
-draft: true
+draft: false
 weight: 400
 description: Configures cluster role for Vald cluster
 menu:

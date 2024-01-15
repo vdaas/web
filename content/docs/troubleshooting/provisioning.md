@@ -1,7 +1,7 @@
 ---
 title: "Provisioning_troubleshooting"
 date: 2024-01-10T18:16:43+09:00
-draft: true
+draft: false
 weight: 200
 description: Shows how to resolve trouble with provisioning Vald cluster
 menu:

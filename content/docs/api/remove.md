@@ -1,7 +1,7 @@
 ---
 title: "Remove_api"
 date: 2024-01-10T18:16:38+09:00
-draft: true
+draft: false
 weight: 500
 description: Remove indexes from the Vald cluster
 menu:

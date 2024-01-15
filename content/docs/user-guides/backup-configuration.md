@@ -1,7 +1,7 @@
 ---
 title: "Backup Configuration_user Guides"
 date: 2024-01-10T18:16:44+09:00
-draft: true
+draft: false
 weight: 200
 description: Applies backup feature for saving and restoring indexes
 menu:

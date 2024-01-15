@@ -1,7 +1,7 @@
 ---
 title: "Upsert_api"
 date: 2024-01-10T18:16:39+09:00
-draft: true
+draft: false
 weight: 300
 description: Update or Insert vectors to the Vald cluster
 menu:

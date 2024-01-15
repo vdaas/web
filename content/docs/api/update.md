@@ -1,7 +1,7 @@
 ---
 title: "Update_api"
 date: 2024-01-10T18:16:39+09:00
-draft: true
+draft: false
 weight: 200
 description: Update vectors indexed in the Vald cluster
 menu:

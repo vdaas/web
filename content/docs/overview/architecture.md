@@ -1,7 +1,7 @@
 ---
 title: "Architecture_overview"
 date: 2024-01-10T18:16:40+09:00
-draft: true
+draft: false
 weight: 200
 description: High-Level architecture design and overview of each component
 menu:

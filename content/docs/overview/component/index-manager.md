@@ -1,7 +1,7 @@
 ---
 title: "Index Manager_overview/Component"
 date: 2024-01-10T18:16:41+09:00
-draft: true
+draft: false
 weight: 500
 description: Controls indexing process of Vald Agent Pods
 menu:

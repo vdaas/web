@@ -1,7 +1,7 @@
 ---
 title: "Capacity Planning_user Guides"
 date: 2024-01-10T18:16:44+09:00
-draft: true
+draft: false
 weight: 800
 description: Estimates how Kubernetes resources will be required
 menu:

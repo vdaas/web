@@ -1,7 +1,7 @@
 ---
 title: "Faq_support"
 date: 2024-01-10T18:16:42+09:00
-draft: true
+draft: false
 weight: 200
 description: The major questions about using Vald
 menu:

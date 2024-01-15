@@ -1,7 +1,7 @@
 ---
 title: "Coding Style_contributing"
 date: 2024-01-10T18:16:39+09:00
-draft: true
+draft: false
 weight: 300
 description: Coding style for Vald project
 menu:

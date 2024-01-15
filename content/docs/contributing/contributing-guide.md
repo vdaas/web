@@ -1,7 +1,7 @@
 ---
 title: "Contributing Guide_contributing"
 date: 2024-01-10T18:16:39+09:00
-draft: true
+draft: false
 weight: 100
 description: Contribute guideline for the Vald project
 menu:
