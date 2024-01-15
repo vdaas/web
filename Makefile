@@ -92,13 +92,15 @@ update/docs:
 .PHONY: update/docs/root
 update/docs/root: \
 	contents/prepare/root \
-	contents/update/root
+	contents/update/root \
+	contents/publish/root
 
 # update versionning documents
 .PHONY: update/docs/tag
 update/docs/tag: \
 	contents/prepare/tag \
-	contents/update/tag
+	contents/update/tag \
+	contents/publish/tag
 
 # remove target file at once for creating content file by `hugo new` command.
 .PHONY: contents/prepare/root contents/prepare/tag
