@@ -2,6 +2,7 @@
 
 LATEST_VERSION := $(shell cat ./VERSIONS/VALD_LATEST_VERSION)
 SUPPORT_VERSION := $(shell cat ./VERSIONS/VALD_SUPPORT_VERSION)
+GO_VERSION := $(shell cat ./VERSIONS/GO_VERSION)
 TARGET_VER = ""
 TARGET_TAG := main
 SYNC_REPO_PATH := vald
@@ -33,15 +34,18 @@ run:
 subup:
 	git submodule foreach git pull origin gh-pages
 
-.PHONY: version/latest version/support version/tag version/sync
+.PHONY: version/latest version/support version/tag version/sync version/go
 version/latest:
 	@echo $(LATEST_VERSION)
 
 version/support:
 	@echo $(SUPPORT_VERSION)
 
+version/go:
+	@echo $(GO_VERSION)
+
 version/sync:
-	@echo "\e[1;32mChecking Vald latest version...\e[0m"
+	@echo "\e[1;32mChecking Vald latest version and Go version...\e[0m"
 	@mage -d ./magefile SyncVersion
 
 .PHONY: build/stage build/prod
