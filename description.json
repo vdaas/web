@@ -184,8 +184,12 @@
       "weight": 1100,
       "description": "Enables to Kubernetes NetworkPolicy to the Vald cluster"
     },
-    "sdks": {
+    "index-correction": {
       "weight": 1200,
+      "description": "Batch processing to make the index state correct"
+    },
+    "sdks": {
+      "weight": 1300,
       "description": "Sends request and receives response from the Vald cluster"
     }
   }
