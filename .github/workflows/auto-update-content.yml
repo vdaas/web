@@ -1,6 +1,7 @@
 name: Update content
 on:
   repository_dispatch:
+    types: [update-contents]
 
 jobs:
   update-content:
