@@ -18,8 +18,10 @@ import (
 	"unsafe"
 )
 
-const ORIGINAL_VERSION = "https://raw.githubusercontent.com/vdaas/vald/main/versions/VALD_VERSION"
+const ORIGINAL_VALD_VERSION = "https://raw.githubusercontent.com/vdaas/vald/main/versions/VALD_VERSION"
+const ORIGINAL_GO_VERSION = "https://raw.githubusercontent.com/vdaas/vald/main/versions/GO_VERSION"
 const LATEST_VERSION_FILE = "../VERSIONS/VALD_LATEST_VERSION"
+const GO_VERSION_FILE = "../VERSIONS/GO_VERSION"
 const HUGO_HEADER = "../themes/vald/layouts/partials/header.html"
 const METADATE_PATH = "../description.json"
 
@@ -40,7 +42,13 @@ func SyncVersion() error {
 	if err != nil {
 		return err
 	}
-	if latest == string(b) {
+	goVersion, err := getGoVersion()
+	if err != nil || goVersion == "" {
+		return err
+	}
+	gb, err := os.ReadFile(GO_VERSION_FILE)
+	if latest == string(b) && goVersion == string(gb) {
+		fmt.Println("\x1b[31mNothing to update...\x1b[0m")
 		return nil
 	}
 	return errors.Join(
@@ -48,6 +56,8 @@ func SyncVersion() error {
 		os.WriteFile(LATEST_VERSION_FILE, []byte(latest), os.ModePerm),
 		// update header template of hugo theme
 		updateHugoHeaderVersion(string(b), latest),
+		// update go version file
+		os.WriteFile(GO_VERSION_FILE, []byte(goVersion), os.ModePerm),
 	)
 }
 
@@ -65,7 +75,22 @@ func updateHugoHeaderVersion(old, latest string) error {
 
 // getValdLatestVersion gets the latest VALD_VERSION from https://github.com/vdaas/vald/blob/main/versions/VALD_VERSION.
 func getValdLatestVersion() (string, error) {
-	resp, err := http.Get(ORIGINAL_VERSION)
+	resp, err := http.Get(ORIGINAL_VALD_VERSION)
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
+	b, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return "", err
+	}
+	re := regexp.MustCompile(`^v`)
+	return re.ReplaceAllString(*(*string)(unsafe.Pointer(&b)), ""), nil
+}
+
+// getGoVersion gets the GO_VERSION from https://github.com/vdaas/vald/blob/main/versions/GO_VERSION.
+func getGoVersion() (string, error) {
+	resp, err := http.Get(ORIGINAL_GO_VERSION)
 	if err != nil {
 		return "", err
 	}
