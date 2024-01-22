@@ -67,10 +67,10 @@ func updateHugoHeaderVersion(old, latest string) error {
 	if err != nil {
 		return err
 	}
-	c := string(b)
-	re := regexp.MustCompile(strings.ReplaceAll(old, "\n", ""))
-	c = re.ReplaceAllString(c, strings.ReplaceAll(latest, "\n", ""))
-	return os.WriteFile(HUGO_HEADER, []byte(c), os.ModePerm)
+	old = strings.Trim(old, "\n")
+	latest = strings.Trim(latest, "\n")
+	str := strings.Replace(string(b), old, latest, 1)
+	return os.WriteFile(HUGO_HEADER, []byte(str), os.ModePerm)
 }
 
 // getValdLatestVersion gets the latest VALD_VERSION from https://github.com/vdaas/vald/blob/main/versions/VALD_VERSION.
@@ -84,8 +84,7 @@ func getValdLatestVersion() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	re := regexp.MustCompile(`^v`)
-	return re.ReplaceAllString(*(*string)(unsafe.Pointer(&b)), ""), nil
+	return strings.TrimPrefix(*(*string)(unsafe.Pointer(&b)), "v"), nil
 }
 
 // getGoVersion gets the GO_VERSION from https://github.com/vdaas/vald/blob/main/versions/GO_VERSION.
@@ -99,8 +98,7 @@ func getGoVersion() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	re := regexp.MustCompile(`^v`)
-	return re.ReplaceAllString(*(*string)(unsafe.Pointer(&b)), ""), nil
+	return strings.TrimPrefix(*(*string)(unsafe.Pointer(&b)), "v"), nil
 }
 
 // SyncRepo gets the original document files from vald repo with specified tag.
@@ -195,10 +193,9 @@ func ConvertLinks(path, tag string) error {
 	}
 	// Fix document link paths
 	// remove ".md" from link
-	re := regexp.MustCompile(`\.md`)
-	str = re.ReplaceAllString(str, "")
+	str = strings.ReplaceAll(str, ".md", "")
 	// convert "./docs" to "/docs" from link
-	re = regexp.MustCompile(`\][\(]\.\/docs\/`)
+	re := regexp.MustCompile(`\][\(]\.\/docs\/`)
 	str = re.ReplaceAllString(str, "](/docs/"+additionalPath)
 	// convert "../../" to "/docs" from link
 	re = regexp.MustCompile(`\][\(](\.\.\/)+`)
@@ -255,7 +252,7 @@ func getMeta(path string, meta map[string]interface{}) (metadata, bool) {
 	}
 	m := meta
 	for idx, p := range ps {
-		p = strings.Replace(p, ".md", "", -1)
+		p = strings.ReplaceAll(p, ".md", "")
 		v := m[p]
 		if v == nil {
 			return metadata{}, false
