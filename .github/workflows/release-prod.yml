@@ -51,7 +51,7 @@ jobs:
       - name: Production Build
         if: steps.check_release.outputs.release == 'true'
         run: |
-          make build/production
+          make build/prod
       - name: Check Changes public
         id: git_diff_preview
         run: |
