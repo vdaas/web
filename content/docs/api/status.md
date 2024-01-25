@@ -1,8 +1,9 @@
 ---
 title: "Status_api"
-date: 2023-02-09T15:05:36+09:00
+date: 2024-01-10T18:16:38+09:00
 draft: false
 weight: 800
+description: API response description for each status
 menu:
   api:
     parent: Api
@@ -19,15 +20,15 @@ The sections below describe the meaning of each code and why API returns.
 
 | code | name                                      |
 | :--: | :---------------------------------------- |
-|  0   | [OK](#ok)                                 |
-|  1   | [CANCELLED](#cancelled)                   |
-|  3   | [INVALID_ARGUMENT](#invalid_argument)     |
-|  4   | [DEADLINE_EXCEEDED](#deadline_exceeded)   |
-|  5   | [NOT_FOUND](#not_found)                   |
-|  6   | [ALREADY_EXISTS](#already_exists)         |
-|  8   | [RESOURCE_EXHAUSTED](#resource_exhausted) |
-|  13  | [INTERNAL](#internal)                     |
-|  14  | [UNAVAILABLE](#unavailable)               |
+|  0   | [OK](#OK)                                 |
+|  1   | [CANCELLED](#CANCELLED)                   |
+|  3   | [INVALID_ARGUMENT](#INVALID_ARGUMENT)     |
+|  4   | [DEADLINE_EXCEEDED](#DEADLINE_EXCEEDED)   |
+|  5   | [NOT_FOUND](#NOT_FOUND)                   |
+|  6   | [ALREADY_EXISTS](#ALREADY_EXISTS)         |
+|  8   | [RESOURCE_EXHAUSTED](#RESOURCE_EXHAUSTED) |
+|  13  | [INTERNAL](#INTERNAL)                     |
+|  14  | [UNAVAILABLE](#UNAVAILABLE)               |
 
 ## OK
 
@@ -54,7 +55,7 @@ If you get this code, please verify your request payload is correct.
 
 Services that return status are:
 
-- [Object Service(only Exists RPC)](/docs/api/object#exists-rpc)
+- [Object Service(only Exists RPC)](/docs/api/object#Exists-RPC)
 - [Insert Service](/docs/api/insert)
 - [Remove Service](/docs/api/insert)
 - [Search Service](/docs/api/search)

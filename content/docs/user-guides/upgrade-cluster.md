@@ -1,9 +1,9 @@
 ---
 title: "Upgrade Cluster_user Guides"
-date: 2022-09-06T16:10:47+09:00
-description: Describes how to upgrade the Vald cluster.
+date: 2024-01-10T18:16:46+09:00
 draft: false
 weight: 700
+description: Describes hot to upgrade Vald version for the running Vald cluster
 menu:
   userguides:
     parent: User Guides

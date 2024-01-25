@@ -1,8 +1,9 @@
 ---
 title: "Agent_v1.7/Overview/Component"
-date: 2023-01-24T16:35:19+09:00
+date: 2024-01-15T17:31:12+09:00
 draft: false
 weight: 100
+description: Stores index data and Search ANN vectors
 menu:
   component:
     parent: Component

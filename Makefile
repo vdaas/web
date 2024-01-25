@@ -1,298 +1,228 @@
-.PHONY: all run deploy/staging deploy/production subup
+.DEFALT_GOAL = all
 
-LATEST_VERSION = 1.7.10
-RELEASE = main
-NEW_VERSION := ${LATEST_VERSION}
-DOC_VERSION = 1.7
-NEW_DOC_VERSION := $(DOC_VERSION)
-ARCIVE_URL = https://github.com/vdaas/vald/archive/v$(LATEST_VERSION).zip
+LATEST_VERSION := $(shell cat ./VERSIONS/VALD_LATEST_VERSION)
+SUPPORT_VERSION := $(shell cat ./VERSIONS/VALD_SUPPORT_VERSION)
+GO_VERSION := $(shell cat ./VERSIONS/GO_VERSION)
+TARGET_VER = ""
+TARGET_TAG := main
+SYNC_REPO_PATH := vald
+ORIGINAL_DOCS := $(eval ORIGINAL_DOCS:=$(shell find tmp/${SYNC_REPO_PATH}/docs -type f -name "*.md" 2>/dev/null ))$(ORIGINAL_DOCS)
+ROOT_DOC_FILES := $(ORIGINAL_DOCS:tmp/${SYNC_REPO_PATH}/docs/%.md=content/docs/%.md)
+VERSION_DOC_FILES = $(ORIGINAL_DOCS:tmp/${SYNC_REPO_PATH}/docs/%.md=content/docs/v$(TARGET_TAG)/%.md)
 
-ORIGINAL_DOCS = $(eval ORIGINAL_DOCS:=$(shell find tmp/vald-$(LATEST_VERSION)/docs -type f -name "*.md" 2>/dev/null ))$(ORIGINAL_DOCS)
-# contents document each minor
-V_DOC_FILES = $(ORIGINAL_DOCS:tmp/vald-$(LATEST_VERSION)/docs/%.md=content/docs/v$(DOC_VERSION)/%.md)
-# content document at root path
-ROOT_DOC_FILES = $(ORIGINAL_DOCS:tmp/vald-$(LATEST_VERSION)/docs/%.md=content/docs/%.md)
+.PHONY: all
+all:  init \
+      version/sync \
+      repo/sync \
+      update/docs \
+      checkout/changes \
+      clean
 
-all: latest \
-     update/contents \
-     update/images \
-     checkout/hugos/changes \
-     clean
+.PHONY: clean
+clean:
+	@rm tmp -rf
 
-.PHONY: vald/version
-vald/version:
-	@echo ${LATEST_VERSION}
+init: \
+	subup
+	@go mod tidy
 
+.PHONY: run
 run:
 	hugo server -D --bind 0.0.0.0
 
+.PHONY: subup
 subup:
 	git submodule foreach git pull origin gh-pages
 
+.PHONY: version/latest version/support version/tag version/sync version/go
+version/latest:
+	@echo $(LATEST_VERSION)
+
+version/support:
+	@echo $(SUPPORT_VERSION)
+
+version/go:
+	@echo $(GO_VERSION)
+
+version/sync:
+	@echo "\e[1;32mChecking Vald latest version and Go version...\e[0m"
+	@mage -d ./magefile SyncVersion
+
+.PHONY: build/stage build/prod
 build/stage:
 	@hugo --environment=staging -D --minify
 	@cd tmp_pre && cp -r * ../preview/
 	@cp Makefile preview/Makefile
 
-deploy/stage: subup \
-	build/stage
-	@cd preview && git add -A;git commit -m ":arrow_up: v${LATEST_VERSION} `date`" && git push origin gh-pages
-	@rm -rf tmp_pre
-
-build/production:
+build/prod:
 	@hugo --environment=production --minify
 	@cp tmp_pre/404.html tmp_pre/ipfs-404.html
 	@cd tmp_pre && cp -r * ../public/
 
-deploy/production: subup \
-	build/production
-	@cd public && git add -A;git commit -m ":arrow_up: v${LATEST_VERSION} `date`" && git push origin gh-pages
+.PHONY: deploy/stage deploy/prod
+deploy/stage: subup \
+	build/stage
+	@cd preview && git add -A;git commit -m ":arrow_up: v`${LATEST_VERSION}` `date`" && git push origin gh-pages
 	@rm -rf tmp_pre
 
-.PHONY: version
-version:
-	@echo "\e[1;32mChecking Vald latest version...\e[0m"
-	@$(eval NEW_VERSION = $(shell curl --silent https://raw.githubusercontent.com/vdaas/vald/main/versions/VALD_VERSION | sed 's/v//g'))
-	@$(eval rowNumber := $(shell grep "LATEST_VERSION" -n Makefile | head -n 1 | cut -d ":" -f 1))
-	@if [ ${LATEST_VERSION} != ${NEW_VERSION} ]; then \
-		echo "\e[1;32mUpdating to latest version $(NEW_VERSION)\e[0m" ; \
-		sed -i '${rowNumber}c\LATEST_VERSION = ${NEW_VERSION}' Makefile ; \
-		$(eval LATEST_VERSION = $(NEW_VERSION)) \
-		$(eval RELEASE = $(NEW_VERSION)) \
-		$(eval NEW_DOC_VERSION := $(subst $() ,.,$(wordlist 1,2,$(subst ., ,$(NEW_VERSION))))) \
-		$(eval rowNumber = $(shell grep "DOC_VERSION" -n Makefile | head -n 1 | cut -d ":" -f 1)) \
-	else \
-		$(eval RELEASE = main) \
-		echo "\e[1;31mNothing to update.\e[0m" ; \
+deploy/prod: subup \
+	build/production
+	@cd public && git add -A;git commit -m ":arrow_up: v`${LATEST_VERSION}` `date`" && git push origin gh-pages
+	@rm -rf tmp_pre
+
+.PHONY: repo/sync
+repo/sync:
+	@if [ $(TARGET_VER) = "" ]; then \
+		$(eval TARGET_VER = main) \
+		echo $(TARGET_VER) ; \
 	fi
-	@if [ $(DOC_VERSION) != $(NEW_DOC_VERSION) ]; then \
-		echo "\e[1;32mUpdating to doc version $(NEW_VERSION)\e[0m" ; \
-		sed -i '${rowNumber}c\DOC_VERSION = ${NEW_DOC_VERSION}' Makefile ; \
-		else \
-			echo "\e[1;31mNothing to update.\e[0m" ; \
-		fi
-	$(eval DOC_VERSION = $(NEW_DOC_VERSION))
+	@echo "\e[1;33mGet original document files: tag=$(TARGET_VER)...\e[0m"
+	@mage -d ./magefile SyncRepo $(TARGET_VER) $(SYNC_REPO_PATH)
+	@mkdir -p tmp/$(SYNC_REPO_PATH)/docs/contributing
+	@cp tmp/$(SYNC_REPO_PATH)/CONTRIBUTING.md tmp/$(SYNC_REPO_PATH)/docs/contributing/contributing-guide.md
+	@mkdir -p tmp/${SYNC_REPO_PATH}/docs/release
+	@cp tmp/$(SYNC_REPO_PATH)/CHANGELOG.md tmp/$(SYNC_REPO_PATH)/docs/release/changelog.md
 
-.PHONY: sync
-sync:
-	$(call get-latest)
-	$(call pre-create-doc)
-	@echo "\e[1;32mfinish download latest document\e[0m"
+.PHONY: update/docs
+update/docs:
+	@if [ $(TARGET_VER) != "" ] && [ $(TARGET_VER) != "main" ]; then \
+		$(eval TARGET_TAG := $(subst $() ,.,$(wordlist 1,2,$(subst ., ,$(TARGET_VER))))) \
+		make TARGET_VER=$(TARGET_VER) TARGET_TAG=$(TARGET_TAG) update/docs/tag ; \
+	else \
+		make update/docs/root ; \
+	fi
 
-.PHONY: latest
-latest: \
-	version \
-	sync
-	@echo "\e[1;32mstart creating contents\e[0m"
-	@mkdir -p content/docs/v$(DOC_VERSION)
+# update root documents
+.PHONY: update/docs/root
+update/docs/root: \
+	contents/prepare/root \
+	contents/update/root \
+	contents/publish/root
 
-.PHONY: $(V_DOC_FILES)
-$(V_DOC_FILES): \
-	$(ORIGINAL_DOCS) \
-	archetypes/default.md
-	@echo "\e[1;33mcreate/update $@\e[0m"
-	$(call create-content-file,$@)
-	@cat $(patsubst content/docs/v$(DOC_VERSION)/%.md,tmp/vald-$(LATEST_VERSION)/docs/%.md,$@) >> $@
+# update versionning documents
+.PHONY: update/docs/tag
+update/docs/tag: \
+	contents/prepare/tag \
+	contents/update/tag \
+	contents/publish/tag
 
+# remove target file at once for creating content file by `hugo new` command.
+.PHONY: contents/prepare/root contents/prepare/tag
+contents/prepare/root:
+	@echo "\e[1;33mPrepare create root document files...\e[0m"
+	@if [ -z $(find content/docs -maxdepth 1 -type d | egrep -v "^v{1}+") ]; then \
+		echo "\e[1;33mRemove current latest docs...\e[0m" ; \
+		cd content/docs && ls | egrep -v "^v{1}+" | xargs rm -rf ; \
+	fi
+
+contents/prepare/tag:
+	@echo "\e[1;33mPrepare create version document files...\e[0m"
+	@if [ -z $(find content/docs -maxdepth 1 -type d | egrep -v "^v{1}+") ]; then \
+		echo "\e[1;33mRemove current version docs...\e[0m" ; \
+		cd content/docs && ls | egrep "^v$(TARGET_TAG)" | xargs rm -rf ; \
+	fi
 
 .PHONY: $(ROOT_DOC_FILES)
 $(ROOT_DOC_FILES): \
 	$(ORIGINAL_DOCS) \
 	archetypes/default.md
-	@echo "\e[1;33mcreate/update $@\e[0m"
+	@echo "\e[1;33mcreate/update root file: $@\e[0m"
 	$(call create-content-file,$@)
-	@cat $(patsubst content/docs/%.md,tmp/vald-$(LATEST_VERSION)/docs/%.md,$@) >> $@
+	@cat $(patsubst content/docs/%.md,tmp/${SYNC_REPO_PATH}/docs/%.md,$@) >> $@
+
+.PHONY: $(VERSION_DOC_FILES)
+$(VERSION_DOC_FILES): \
+	$(ORIGINAL_DOCS) \
+	archetypes/default.md
+	@echo "\e[1;33mcreate/update v$(TARGET_TAG) file: $@\e[0m"
+	$(call create-content-file,$@)
+	@cat $(patsubst content/docs/v$(TARGET_TAG)/%.md,tmp/$(SYNC_REPO_PATH)/docs/%.md,$@) >> $@
+
+
+# contents/update/root or tag updates each content files
+# It includes updating document, fixing document link path and fixing image file path for each target content.
+.PHONY: contents/update/root contents/update/tag
+contents/update/root: \
+	$(ROOT_DOC_FILES)
+	@echo "\e[1;33mcreate/update index files...\e[0m"
+	@$(eval DIR := $(shell find content/docs -maxdepth 3 -type d | egrep -v 'v[0-9]' | egrep "content/docs/"))
+	$(foreach dir,$(DIR),$(call create-index-file,$(dir)))
+	@echo "\e[1;33mfix document path...\e[0m"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs -I{} mage -d ./magefile ConvertLinks {} $(TARGET_TAG)
+	@echo "\e[1;33mset metadata...\e[0m"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs -I{} mage -d ./magefile UpdateMetadata {}
+
+contents/update/tag: \
+	$(VERSION_DOC_FILES)
+	@echo "\e[1;33mcreate/update version index files...\e[0m"
+	@$(eval DIR := $(shell find content/docs/v$(TARGET_TAG) -maxdepth 3 -type d | egrep "content/docs/v$(TARGET_TAG)/"))
+	$(foreach dir,$(DIR),$(call create-index-file,$(dir)))
+	@echo "\e[1;33mcreate v$(TARGET_TAG) top index file...\e[0m"
+	@if [ ! -e "content/docs/v$(TARGET_TAG)/_index.md" ]; then \
+		hugo new --kind version-top "content/docs/v$(TARGET_TAG)/index" >/dev/null ; \
+		mv content/docs/v$(TARGET_TAG)/index/index.md content/docs/v$(TARGET_TAG)/_index.md ; \
+		rm -rf content/docs/v$(TARGET_TAG)/index/ ; \
+	fi
+	@echo "\e[1;33mfix document path...\e[0m"
+	@find content/docs/v$(TARGET_TAG) -type f -name "*.md" | xargs -I{} mage -d ./magefile ConvertLinks {} $(TARGET_TAG)
+	@echo "\e[1;33mset metadata...\e[0m"
+	@find content/docs/v$(TARGET_TAG) -type f -name "*.md" | xargs -I{} mage -d ./magefile UpdateMetadata {}
+
+# contents/publish/root or tag toggle draft value to false for each contents file.
+.PHONY: contents/publish/root contents/publish/tag
+contents/publish/root:
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs -I{} mage -d ./magefile Publish {}
+
+contents/publish/tag:
+	$(eval TARGET_TAG := $(subst $() ,.,$(wordlist 1,2,$(subst ., ,$(TARGET_VER)))))
+	@find content/docs/v$(TARGET_TAG) -type f -name "*.md" | xargs -I{} mage -d ./magefile Publish {}
+
+
+# remove file from the list of git stage file if the content file changes only date of metadata.
+.PHONY: checkout/changes
+checkout/changes:
+	@$(eval FILE := $(shell git status | grep "modified:" | grep "content/" | grep -v "content/docs/v1" | awk '{print $$2}'))
+	$(foreach file,$(FILE),$(call check-diff,$(file)))
+	@$(eval VERSION_FILE := $(shell git status | grep "modified:" | grep "content/docs/v1" | awk '{print $$2}'))
+	$(foreach file,$(VERSION_FILE),$(call check-diff,$(file)))
 
 define create-content-file
 	@mkdir -p $(dir $(1))
 	@rm -rf $(1)
-	@hugo new $(1) >/dev/null
-endef
-
-.PHONY: update-version-content
-update-version-content: $(V_DOC_FILES)
-
-.PHONY: update-latest-content
-update-latest-content: $(LATEST_DOC_FILES)
-
-.PHONY: update-root-content
-update-root-content: $(ROOT_DOC_FILES)
-
-.PHONY: update-dir-version-index
-update-dir-version-index:
-	@$(eval DIR := $(shell find content/docs/v$(DOC_VERSION) -maxdepth 3 -type d | egrep "content/docs/v${DOC_VERSION}/"))
-	$(foreach dir,$(DIR),$(call create-index-file,$(dir)))
-	@if [ ! -e "content/docs/v$(DOC_VERSION)/_index.md" ]; then \
-		hugo new --kind version-top "content/docs/v$(DOC_VERSION)/index" >/dev/null ; \
-		mv content/docs/v$(DOC_VERSION)/index/index.md content/docs/v$(DOC_VERSION)/_index.md ; \
-		rm -rf content/docs/v$(DOC_VERSION)/index/ ; \
+	@if [ -z $(findstring _index.md,$(1)) ]; then \
+		hugo new $(1) >/dev/null ; \
+	else \
+		hugo new --kind index $(1) >/dev/null ; \
 	fi
 
-.PHONY: update-dir-root-index
-update-dir-root-index:
-	@$(eval DIR := $(shell find content/docs -maxdepth 3 -type d | egrep -v 'v[0-9]' | egrep "content/docs/"))
-	$(foreach dir,$(DIR),$(call create-index-file,$(dir)))
+endef
 
 define create-index-file
-	@if [ -e "$(1)/_index.md" ]; then \
-		rm $(1)/_index.md ; \
-	fi
-	@hugo new --kind directory-top $(1) >/dev/null
-	@mv $(1)/index.md $(1)/_index.md
-	@if [ -e "$(1)/README.md" ]; then \
-		sed -i -e '6,8d' $(1)/README.md ; \
-		sed -i -e "2 s/README/index/g" $(1)/README.md ; \
-		mv $(1)/README.md $(1)/_index.md ; \
+	@echo "\e[1;33mcreate/update index file: $(1)\e[0m"
+	@if [ ! -f "$(1)/_index.md" ]; then \
+		hugo new --kind directory-top $(1) >/dev/null ; \
+		mv $(1)/index.md $(1)/_index.md ; \
 	fi
 
 endef
 
-.PHONY: update/images
-update/images:
-	$(call sync-image)
-	$(call fix-image-path)
+define set-tag
+	@if [ $(1) != "" ]; then \
+		$(eval TARGET_TAG = $(subst $() ,.,$(wordlist 1,2,$(subst ., ,$(1))))) \
+		echo ${TARGET_TAG} ; \
+	else \
+		$(eval TARGET_TAG = main ) \
+		echo ${TARGET_TAG} ; \
+	fi
 
-.PHONY: update/contents
-update/contents: \
-	update-root-content \
-	update-dir-root-index \
-	update-version-content \
-	update-dir-version-index
-	$(call fix-document-path)
-	@echo "\e[1;32mfinish createing contens\e[0m"
-
-.PHONY: clean
-clean:
-	$(call clean)
-	@echo "\e[1;32mUpdate document finished with success\e[0m"
-
-.PHONY: publish/root
-publish/root:
-	$(call publish-root)
-
-.PHONY: publish/version
-publish/version:
-	$(call publish-version)
-
-.PHONY: publish/all
-publish/all:
-	$(call publish-root)
-	$(call publish-version)
-
-.PHONY: checkout/hugos/changes
-checkout/hugos/changes:
-	@$(eval FILE := $(shell git status | grep "modified:" | grep "content/" | grep -v "content/docs/v1" | awk '{print $$2}'))
-	$(foreach file,$(FILE),$(call check-diff,$(file)))
-	@$(eval VERSION_FILE := $(shell git status | grep "modified:" | grep "content/docs/v1" | awk '{print $$2}'))
-	$(foreach file,$(VERSION_FILE),$(call check-diff-version,$(file)))
-
+endef
 
 define check-diff
 	$(eval diffNum := $(shell git diff --numstat $(1) | awk '{print $$1+$$2}'))
 	$(eval detailDiff := $(shell git diff -U0 $(1) | grep "+title" | awk '{print $$1}'))
-	$(eval dir := $(shell ))
-	# checkout if the diffNum/datailDiff satisfies below condition because these condition includes no raw document changes.
-	@if [ $(diffNum) = "4" ] || \
-	  [ $(diffNum) = "5" ] || \
-	  [ $(diffNum) = "6" ] || \
-	  [ $(diffNum) = "7" ] || \
-	  [ $(diffNum) = "2" ] || \
-	  [ $(diffNum) = "9" ] && [ -n $(detailDiff) ] ; then \
-	        git checkout $(1) ; \
+	@if [ $(diffNum) = "2" ] ; then \
+		echo "remove changes $(1)" ; \
+	        git checkout $(1) >/dev/null ; \
 	fi
 
-endef
-
-define check-diff-version
-	$(eval diffNum := $(shell git diff --numstat $(1) | awk '{print $$1+$$2}'))
-	$(eval detailDiff := $(shell git diff -U0 $(1) | grep "+title" | awk '{print $$1}'))
-	$(eval dir := $(shell ))
-	# checkout if the diffNum/datailDiff satisfies below condition because these condition includes no raw document changes.
-	# it will be deleted after adding description of each document.
-	@if [ $(diffNum) = "4" ] || \
-	  [ $(diffNum) = "6" ] || \
-	  [ $(diffNum) = "2" ] || \
-	  [ $(diffNum) = "8" ] && [ -n $(detailDiff) ] ; then \
-	        git checkout $(1) ; \
-	fi
-
-endef
-
-
-define get-latest
-	@echo "\e[1;32mstart sync latest document\e[0m"
-	@mkdir -p tmp 1>/dev/null
-	@if [ $(RELEASE) = $(LATEST_VERSION) ]; then \
-		echo "\e[1;33mdownload v$(LATEST_VERSION).zip\e[0m" ; \
-		wget -P tmp $(ARCIVE_URL) ; \
-		echo "\e[1;33munpackaging v$(LATEST_VERSION).zip\e[0m" ; \
-		cd tmp && unzip v$(LATEST_VERSION).zip 1>/dev/null ; \
-	else \
-		echo "\e[1;33mclone $(RELEASE) branch\e[0m" ; \
-		cd tmp && git clone https://github.com/vdaas/vald ; \
-		mv vald vald-$(LATEST_VERSION) ; \
-	fi
-endef
-
-define pre-create-doc
-	@echo "\e[1;33mprepare create document files...\e[0m"
-	@if [ -z $(find content/docs -maxdepth 1 -type d| egrep -v "^v{1}+") ]; then \
-		echo "\e[1;33mremove current docs...\e[0m" ; \
-		cd content/docs && ls | egrep -v "^v{1}+" | xargs rm -rf ; \
-		ls | egrep "^v$(DOC_VERSION)" | xargs rm -rf ; \
-	fi
-	@mkdir -p tmp/vald-$(LATEST_VERSION)/docs/contributing
-	@rm tmp/vald-$(LATEST_VERSION)/docs/contributing/contributing-guide.md
-	@cp tmp/vald-$(LATEST_VERSION)/CONTRIBUTING.md tmp/vald-$(LATEST_VERSION)/docs/contributing/contributing-guide.md
-	@mkdir -p tmp/vald-$(LATEST_VERSION)/docs/release
-	@cp tmp/vald-$(LATEST_VERSION)/CHANGELOG.md tmp/vald-$(LATEST_VERSION)/docs/release/changelog.md
-endef
-
-define sync-image
-	@echo "\e[1;33mcheck image files...\e[0m"
-	@cd tmp/vald-$(LATEST_VERSION)/design && find . -type f -name ".png" -exec cp {} ../assets/docs/ \; && cd ../../../
-	@if [ ! -z $(find tmp/vald-$(LATEST_VERSION)/assets/docs -type f -name "*.svg" 2>/dev/null) ]; then \
-		echo "\e[1;31mNo image file has been synced.\e[0m" ; \
-	else \
-		echo "\e[1;32msyncing image files\e[0m" ; \
-		mkdir -p static && mkdir -p static/images ; \
-		mkdir -p static/images/v$(DOC_VERSION) ; \
-		cd tmp/vald-$(LATEST_VERSION)/assets/docs && cp -R ./ ../../../../static/images/ && cd ../../../../ ; \
-		cd tmp/vald-$(LATEST_VERSION)/assets/docs && cp -R . ../../../../static/images/v$(DOC_VERSION) && cd ../../../../ ; \
-		find static/images -type f -not -name "*svg" -not -name "*.png" | xargs rm -rf ; \
-	fi
-endef
-
-define fix-image-path
-	@echo "\e[1;32mstart fix image path\e[0m"
-	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\.\.\/\.\.\/design/\/images\/v$(DOC_VERSION)/g"
-	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\.\.\/\.\.\/design/\/images/g"
-	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\(\.\.\/\)*\.\.\/assets\/docs/\/images\/v$(DOC_VERSION)/g"
-	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\(\.\.\/\)*\.\.\/assets\/docs/\/images/g"
-endef
-
-define fix-document-path
-	@echo "\e[1;32mstart fix document path\e[0m"
-	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\.md//g"
-	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\][\(]\.\/docs\//\]\(\/docs\//g"
-	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\/v$(DOC_VERSION)\//g"
-	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\.md//g"
-	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\][\(]\.\/docs\//\]\(\/docs\//g"
-	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "s/\][\(]\(\.\.\/\)\+/\]\(\/docs\//g"
-	@find content/docs -type f -name "*.md" | xargs sed -i "s/\(#\{1\}[A-Z]\{1\}.*\)/\L\1/g"
-endef
-
-define publish-root
-	@echo "\e[1;32mpublish root document\e[0m"
-	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs sed -i "5 s/true/false/g"
-endef
-
-define publish-version
-	@echo "\e[1;32mpublish version document\e[0m"
-	@find content/docs/v$(DOC_VERSION) -type f -name "*.md" | xargs sed -i "4 s/true/false/g"
-endef
-
-define clean
-	@echo "\e[1;32mcleaning...\e[0m"
-	@rm -rf tmp/ 1>/dev/null
 endef

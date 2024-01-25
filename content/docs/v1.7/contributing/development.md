@@ -1,8 +1,9 @@
 ---
 title: "Development_v1.7/Contributing"
-date: 2023-06-22T16:25:59+09:00
+date: 2024-01-15T17:31:11+09:00
 draft: false
 weight: 200
+description: Basic development guide for the Vald project
 menu:
   contributing:
     parent: Contributing
@@ -66,7 +67,7 @@ make k3d/start
 # You might want to use k9s for this
 
 # Deploy Vald
-make k8s/vald/deploy
+make k8s/vald/deploy HELM_VALUES=example/helm/values.yaml
 
 # Wait for a while until the deployment is ready
 

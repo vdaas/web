@@ -1,8 +1,9 @@
 ---
 title: "Architecture_v1.7/Overview"
-date: 2023-01-24T16:35:18+09:00
+date: 2024-01-15T17:31:11+09:00
 draft: false
 weight: 200
+description: High-Level architecture design and overview of each component
 menu:
   overview:
     parent: Overview

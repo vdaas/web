@@ -1,8 +1,9 @@
 ---
 title: "Vald Agent Standalone on Docker_v1.7/Tutorial"
-date: 2023-01-24T16:35:21+09:00
+date: 2024-01-15T17:31:16+09:00
 draft: false
 weight: 300
+description: Running Vald Agent on Docker and execute client codes
 menu:
   tutorial:
     parent: Tutorial
@@ -174,7 +175,7 @@ This chapter will use NGT for the core engine of Vald Agent.
 
    ```bash
    # download Fashion-MNIST testing dataset
-   wget http://ann-benchmarks.com/fashion-mnist-784-euclidean.hdf5
+   wget https://ann-benchmarks.com/fashion-mnist-784-euclidean.hdf5
    ```
 
 1. Running example

@@ -3,6 +3,7 @@ title: "Changelog_release"
 date: 2023-12-25T19:23:05+09:00
 draft: false
 weight: 0
+description: ""
 menu:
   release:
     parent: Release

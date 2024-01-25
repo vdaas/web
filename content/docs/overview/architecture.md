@@ -1,9 +1,9 @@
 ---
 title: "Architecture_overview"
-date: 2023-01-24T16:35:09+09:00
-description: The high-level architecture design of Vald and overview of each component.
+date: 2024-01-10T18:16:40+09:00
 draft: false
 weight: 200
+description: High-Level architecture design and overview of each component
 menu:
   overview:
     parent: Overview

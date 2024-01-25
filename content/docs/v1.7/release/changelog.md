@@ -1,8 +1,9 @@
 ---
 title: "Changelog_v1.7/Release"
-date: 2023-12-25T19:23:18+09:00
+date: 2024-01-15T17:31:21+09:00
 draft: false
 weight: 0
+description: ""
 menu:
   release:
     parent: Release

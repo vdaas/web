@@ -1,9 +1,9 @@
 ---
 title: "Observability Configuration_user Guides"
-date: 2023-07-04T20:48:26+09:00
-description: Introducing how to enable to observability function.
+date: 2024-01-10T18:16:46+09:00
 draft: false
 weight: 1000
+description: Monitors performance on metrics dashboards
 menu:
   userguides:
     parent: User Guides

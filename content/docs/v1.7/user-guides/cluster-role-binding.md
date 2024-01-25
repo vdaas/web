@@ -1,8 +1,9 @@
 ---
 title: "Cluster Role Binding_v1.7/User Guides"
-date: 2023-01-24T16:35:22+09:00
+date: 2024-01-15T17:31:18+09:00
 draft: false
 weight: 400
+description: Configures cluster role for Vald cluster
 menu:
   userguides:
     parent: User Guides
@@ -109,7 +110,7 @@ subjects:
 When the role binds to the service account, the access right of the role will be granted to the service account.
 In this case, all the access rights of the role `discoverer` will be granted to the service account `vald`.
 
-The service account `vald` is required for [Vald Discoverer](https://github.com/vdaas/vald/blob/main/k8s/discoverer/deployment.yaml#l155) to retrieve the required information to operate the vald cluster.
+The service account `vald` is required for [Vald Discoverer](https://github.com/vdaas/vald/blob/main/k8s/discoverer/deployment.yaml#L155) to retrieve the required information to operate the Vald cluster.
 
 For more information about Vald Discoverer, please refer [here](/docs/v1.7/overview/component/discoverer).
 

@@ -1,9 +1,9 @@
 ---
 title: "Provisioning_troubleshooting"
-date: 2023-01-24T16:35:11+09:00
-description: If you have any provisioning trouble, it will help you.
+date: 2024-01-10T18:16:43+09:00
 draft: false
-weight: 100
+weight: 200
+description: Shows how to resolve trouble with provisioning Vald cluster
 menu:
   troubleshooting:
     parent: Troubleshooting

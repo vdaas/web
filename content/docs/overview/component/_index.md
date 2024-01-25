@@ -1,6 +1,6 @@
 ---
 title: "Component_overview/Component"
-date: 2022-03-25T12:29:57+09:00
+date: 2024-01-10T18:16:40+09:00
 draft: false
 weight: 0
 ---
@@ -51,6 +51,7 @@ This component can reorder the searching result from multiple Vald Agents based 
 ### Vald Filter Gateway
 
 Vald Filter Gateway forwards the request to Vald Ingress Filter before processing it and forwards the response to the Vald Egress Filter before returning the searching result to the user.
+
 ## Vald Load Balancing
 
 Load balancing is one of the important concepts in distributed computing, which means it distributes a set of tasks over a set of resources aiming for making the overall processing more efficient.

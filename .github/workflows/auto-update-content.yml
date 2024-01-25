@@ -1,0 +1,72 @@
+name: Update content
+on:
+  repository_dispatch:
+    types: [update-contents]
+
+jobs:
+  update-content:
+    name: Update Content
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set Git Config and checkout main branch
+        run: |
+          git config --global --add safe.directory ${GITHUB_WORKSPACE}
+          git config --global user.name "vdaas-ci"
+          git config --global user.email "ci@vdaas.org"
+          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git submodule update --init --recursive
+          git checkout main
+          git fetch --prune
+          git pull origin main
+        env:
+          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+      - name: Fetch Go version
+        id: go_version
+        shell: bash
+        run: |
+          GO_VERSION=${GO_VERSION:-`make version/go`}
+          echo "version=${GO_VERSION}" >> $GITHUB_OUTPUT
+        env:
+          GO_VERSION: ${{ input.go_version }}
+      - uses: actions/setup-go@v4
+        with:
+          go-version: ${{ steps.go_version.outputs.version }}
+      - name: Check Go version
+        shell: bash
+        run:
+          go version
+      - name: Setup Hugo
+        if: steps.check_release.outputs.release == 'true'
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: latest
+      - name: Update root content
+        run: |
+          make init
+          make all
+      - name: Update latest version content
+        run: |
+          make TARGET_VER=$(make version/latest) all
+      - name: Update support version content
+        run: |
+          make TARGET_VER=$(make version/support) all
+      - name: create pull request
+        uses: pater-evans/create-pull-requests@v5
+        with:
+          token: ${GITHUB_TOKEN}
+          commit-message: ":pencil: update contents"
+          commiter: ${GITHUB_USER}
+          author: ${GITHUB_USER}
+          signoff: true
+          branch: release/dispatch-update-contents
+          branch-suffix: timestamp
+          base: main
+          title: "release update contents"
+          body: ":pencil: release update contents"
+        env:
+          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}

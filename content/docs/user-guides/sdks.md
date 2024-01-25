@@ -1,9 +1,9 @@
 ---
 title: "Sdks_user Guides"
-date: 2022-08-18T11:00:07+09:00
-description: Shows the introduction of the Vald SDKs.
+date: 2024-01-16T17:45:15+09:00
 draft: false
 weight: 1300
+description: Sends request and receives response from the Vald cluster
 menu:
   userguides:
     parent: User Guides

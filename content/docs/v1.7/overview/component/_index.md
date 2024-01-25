@@ -1,6 +1,6 @@
 ---
-title: "index_v1.7/Overview/Component"
-date: 2023-01-24T16:35:18+09:00
+title: "Component_v1.7/Overview/Component"
+date: 2024-01-15T17:31:12+09:00
 draft: false
 weight: 0
 ---

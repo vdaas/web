@@ -1,9 +1,9 @@
 ---
 title: "Agent_overview/Component"
-date: 2022-08-18T11:00:03+09:00
-description: Describes the overview of Vald Agent component.
+date: 2024-01-10T18:16:40+09:00
 draft: false
 weight: 100
+description: Stores index data and Search ANN vectors
 menu:
   component:
     parent: Component

@@ -1,9 +1,9 @@
 ---
 title: "Deployment_user Guides"
-date: 2023-12-25T19:23:03+09:00
-description: Introducing how to deploy the Vald cluster.
+date: 2024-01-10T18:16:45+09:00
 draft: false
 weight: 500
+description: How to launch Vald cluster on your Kubernetes cluster
 menu:
   userguides:
     parent: User Guides

@@ -1,9 +1,9 @@
 ---
-title: "LB Gateway_overview/Component"
-date: 2022-10-19T22:10:11+09:00
-description: Describes the overview of Vald LB Gateway component.
+title: "Lb Gateway_overview/Component"
+date: 2024-01-10T18:16:41+09:00
 draft: false
 weight: 200
+description: Operates various type processes with Vald cluster
 menu:
   component:
     parent: Component

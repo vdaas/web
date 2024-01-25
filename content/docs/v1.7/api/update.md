@@ -1,8 +1,9 @@
 ---
 title: "Update_v1.7/Api"
-date: 2023-09-15T09:38:51+09:00
+date: 2024-01-15T17:31:09+09:00
 draft: false
 weight: 200
+description: Update vectors indexed in the Vald cluster
 menu:
   api:
     parent: Api

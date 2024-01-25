@@ -1,9 +1,9 @@
 ---
 title: "Network Policy_user Guides"
-date: 2023-07-04T20:48:26+09:00
-description: How to enable to Kubernetes NetworkPolicy to the Vald cluster.
+date: 2024-01-10T18:16:45+09:00
 draft: false
 weight: 1100
+description: Enables to Kubernetes NetworkPolicy to the Vald cluster
 menu:
   userguides:
     parent: User Guides

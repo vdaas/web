@@ -1,4 +1,4 @@
-name: 'Minify Assets Files(css/js) and Deploy to Stage'
+name: Minify Assets Files(css/js) and Deploy to Stage
 on:
   push:
     branches:
@@ -12,14 +12,16 @@ jobs:
     steps:
       - name: Checkout Actions
         if: github.event_name == 'pull_request'
-        uses: actions/checkout@v1
+        uses: actions/checkout@v4
         with:
           ref: ${{github.head_ref}}
+          persist-credentials: false
       - name: Checkout Actions (main)
         if: github.ref == 'refs/heads/main'
-        uses: actions/checkout@v1
+        uses: actions/checkout@v4
         with:
           ref: ${{github.ref}}
+          persist-credentials: false
       - name: Auco Minify JS
         uses: nizarmah/auto-minify@master
         with:
@@ -72,14 +74,16 @@ jobs:
     steps:
       - name: Checkout Actions
         if: github.event_name == 'pull_request'
-        uses: actions/checkout@v1
+        uses: actions/checkout@v4
         with:
           ref: ${{github.head_ref}}
+          persist-credentials: false
       - name: Checkout Actions (main)
         if: github.ref == 'refs/heads/main'
-        uses: actions/checkout@v1
+        uses: actions/checkout@v4
         with:
           ref: ${{github.ref}}
+          persist-credentials: false
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -133,6 +137,7 @@ jobs:
       - name: Stage Deploy
         if: steps.git_diff_preview.outputs.diff == 'true'
         run: |
+          export LATEST_VERSION=$(make version/latest)
           cd preview
           git checkout gh-pages
           git add .

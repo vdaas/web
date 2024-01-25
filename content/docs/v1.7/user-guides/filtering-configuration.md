@@ -1,8 +1,9 @@
 ---
 title: "Filtering Configuration_v1.7/User Guides"
-date: 2023-01-24T16:35:22+09:00
+date: 2024-01-15T17:31:19+09:00
 draft: false
 weight: 300
+description: Applies filtering feature to the Vald cluster
 menu:
   userguides:
     parent: User Guides

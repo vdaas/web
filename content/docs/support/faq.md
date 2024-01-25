@@ -1,9 +1,9 @@
 ---
 title: "Faq_support"
-date: 2023-01-24T16:35:11+09:00
-description: The major questions about using Vald.
+date: 2024-01-10T18:16:42+09:00
 draft: false
 weight: 200
+description: The major questions about using Vald
 menu:
   support:
     parent: Support

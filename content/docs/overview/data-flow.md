@@ -1,9 +1,9 @@
 ---
 title: "Data Flow_overview"
-date: 2022-06-27T14:26:46+09:00
-description: Showing the data flow inside Vald for each request.
+date: 2024-01-15T17:58:54+09:00
 draft: false
 weight: 300
+description: Data flow inside Vald for each operation
 menu:
   overview:
     parent: Overview

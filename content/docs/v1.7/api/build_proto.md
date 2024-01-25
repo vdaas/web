@@ -1,8 +1,9 @@
 ---
-title: "Build Proto_v1.7/Api"
-date: 2023-01-24T16:35:16+09:00
+title: "Build_proto_v1.7/Api"
+date: 2024-01-15T17:31:07+09:00
 draft: false
 weight: 900
+description: How to build gRPC proto files for calling API to your Vald cluster
 menu:
   api:
     parent: Api

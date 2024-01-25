@@ -1,7 +1,8 @@
-name: 'Production Release'
+name: Production Release
 on:
   push:
-    branches: main
+    branches:
+      - main
 
 jobs:
   deploy-prod:
@@ -10,9 +11,10 @@ jobs:
     steps:
       - name: Checkout Actions
         if: github.ref == 'refs/heads/main'
-        uses: actions/checkout@v1
+        uses: actions/checkout@v4
         with:
           ref: ${{github.ref}}
+          persist-credentials: false
       - name: Check Release
         id: check_release
         run: |
@@ -60,7 +62,7 @@ jobs:
       - name: Production Deploy
         if: steps.git_diff_preview.outputs.diff
         run: |
-          LATEST_VERSION=`make vald/version`
+          export LATEST_VERSION=$(make version/latest)
           cd public
           git checkout gh-pages
           git add .

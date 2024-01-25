@@ -1,8 +1,9 @@
 ---
 title: "Contributing Guide_v1.7/Contributing"
-date: 2023-09-15T09:38:52+09:00
+date: 2024-01-15T17:31:10+09:00
 draft: false
 weight: 100
+description: Contribute guideline for the Vald project
 menu:
   contributing:
     parent: Contributing
@@ -91,7 +92,7 @@ Please submit the security issue report [here](https://github.com/vdaas/vald/iss
 
 ## Contributing Source Code
 
-Please refer to our [development documentation](/docs/contributing/development) for information on setting up a development environment.
+Please refer to our [development documentation](/docs/v1.7/contributing/development) for information on setting up a development environment.
 
 ### Before contributing source code
 
@@ -108,7 +109,7 @@ Follow these steps to make a contribution to any of our open source repositories
 ### How to contribute source code
 
 1. Fork the repository ( https://github.com/vdaas/vald/fork )
-2. Create your feature branch (git checkout -b [`[type]/[area]/[description]`](#branch-naming-convention))
+2. Create your feature branch (git checkout -b [`[type]/[area]/[description]`](#Branch-naming-convention))
 3. Commit your changes on your branch (git commit -am 'Add some feature')
 4. Run tests (make test)
 5. Push to the forked branch (git push origin my-new-feature)
