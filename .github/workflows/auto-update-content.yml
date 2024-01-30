@@ -28,10 +28,8 @@ jobs:
         id: go_version
         shell: bash
         run: |
-          GO_VERSION=${GO_VERSION:-`make version/go`}
+          GO_VERSION=$(make version/go)
           echo "version=${GO_VERSION}" >> $GITHUB_OUTPUT
-        env:
-          GO_VERSION: ${{ input.go_version }}
       - uses: actions/setup-go@v4
         with:
           go-version: ${{ steps.go_version.outputs.version }}
