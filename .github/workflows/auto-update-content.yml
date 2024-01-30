@@ -53,7 +53,7 @@ jobs:
         run: |
           make TARGET_VER=$(make version/support) all
       - name: create pull request
-        uses: pater-evans/create-pull-requests@v5
+        uses: peter-evans/create-pull-requests@v5
         with:
           token: ${GITHUB_TOKEN}
           commit-message: ":pencil: update contents"
