@@ -25,6 +25,7 @@ clean:
 init: \
 	subup
 	@go mod tidy
+	@go mod download
 
 .PHONY: run
 run:
