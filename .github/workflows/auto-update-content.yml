@@ -46,12 +46,18 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+      - name: Install deps
+        run: |
+          go get .
+          go get -u -d github.com/magefile/mage
+          ls $GOPATH/src/github.com
       - name: Update root content
         run: |
           export GOPATH=$(go env GOPATH)
           export GOBIN=$(GOPATH)/bin
           export GOPROXY="https://proxy.golang.org,direct"
           echo $GOPATH
+          echo $GOBIN
           make init
           go env
           go get -u -d github.com/magefile/mage
