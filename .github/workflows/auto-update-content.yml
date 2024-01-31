@@ -55,7 +55,8 @@ jobs:
           go env
           go get -u -d github.com/magefile/mage
           ls ${GOPATH}/bin
-          make all
+          ls ${GOPATH}/pkg
+          # make all
       - name: Update latest version content
         run: |
           make TARGET_VER=$(make version/latest) all
