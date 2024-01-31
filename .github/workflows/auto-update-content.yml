@@ -46,6 +46,9 @@ jobs:
         run: |
           make init
           ls ./
+          echo $GOPATH
+          echo $GOROOT
+          echo $GOPRIVATE
           make all
       - name: Update latest version content
         run: |
