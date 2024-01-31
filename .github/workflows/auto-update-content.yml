@@ -54,8 +54,7 @@ jobs:
           export GOPATH
           echo $GOPATH
           go get -u -d github.com/magefile/mage
-          ls ./
-          which mage
+          cd ${GOPATH}/src/github.com/magefile/mage && mage install
           make all
       - name: Update latest version content
         run: |
