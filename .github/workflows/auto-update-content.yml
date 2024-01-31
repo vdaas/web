@@ -48,14 +48,16 @@ jobs:
           node-version: '18'
       - name: Update root content
         run: |
-          GOPATH=$(go env GOPATH)
-          export GOPATH
+          export GOPATH=$(go env GOPATH)
+          export GOBIN=$(GOPATH)/bin
+          export GOPROXY="https://proxy.golang.org,direct"
           echo $GOPATH
           make init
           go env
           go get -u -d github.com/magefile/mage
           ls ${GOPATH}/bin
           ls ${GOPATH}/pkg
+          ls ${GOPATH}/src
           # make all
       - name: Update latest version content
         run: |
