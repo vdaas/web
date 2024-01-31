@@ -52,6 +52,8 @@ jobs:
           ls ./
           go env
           go get -u -d github.com/magefile/mage
+          ls $GOPATH/
+          which mage
           make all
       - name: Update latest version content
         run: |
