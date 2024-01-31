@@ -42,13 +42,17 @@ jobs:
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: latest
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
       - name: Update root content
         run: |
           make init
           ls ./
-          echo $GOPATH
-          echo $GOROOT
-          echo $GOPRIVATE
+          go env
           make all
       - name: Update latest version content
         run: |
