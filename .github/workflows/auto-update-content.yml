@@ -49,10 +49,9 @@ jobs:
       - name: Update root content
         run: |
           make init
-          ls ./
           go env
           go get -u -d github.com/magefile/mage
-          ls home/runner/go/src/github.com
+          ls ./
           which mage
           make all
       - name: Update latest version content
