@@ -51,6 +51,7 @@ jobs:
           make init
           ls ./
           go env
+          go get -u all
           make all
       - name: Update latest version content
         run: |
