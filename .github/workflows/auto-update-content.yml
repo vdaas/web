@@ -54,7 +54,7 @@ jobs:
           make init
           go env
           go get -u -d github.com/magefile/mage
-          cd ${GOPATH}/src/github.com/magefile/mage && mage install
+          ls ${GOPATH}/bin
           make all
       - name: Update latest version content
         run: |
