@@ -45,6 +45,7 @@ jobs:
       - name: Update root content
         run: |
           make init
+          which mage
           make all
       - name: Update latest version content
         run: |
