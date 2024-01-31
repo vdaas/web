@@ -50,6 +50,8 @@ jobs:
         run: |
           make init
           go env
+          GOPATH=$(go env GOPATH)
+          export GOPATH
           echo $GOPATH
           go get -u -d github.com/magefile/mage
           ls ./
