@@ -48,11 +48,11 @@ jobs:
           node-version: '18'
       - name: Update root content
         run: |
-          make init
-          go env
           GOPATH=$(go env GOPATH)
           export GOPATH
           echo $GOPATH
+          make init
+          go env
           go get -u -d github.com/magefile/mage
           cd ${GOPATH}/src/github.com/magefile/mage && mage install
           make all
