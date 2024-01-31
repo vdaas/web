@@ -19,9 +19,9 @@ jobs:
           git config --global user.email "ci@vdaas.org"
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git submodule update --init --recursive
-          git checkout main
-          git fetch --prune
-          git pull origin main
+          #   git checkout main
+          #   git fetch --prune
+          #   git pull origin main
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
