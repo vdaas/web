@@ -48,7 +48,6 @@ jobs:
           node-version: '18'
       - name: Install deps
         run: |
-          go get .
           go get -u -d github.com/magefile/mage
           ls $GOPATH/src/github.com
       - name: Update root content
