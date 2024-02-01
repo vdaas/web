@@ -48,25 +48,9 @@ jobs:
           node-version: '18'
       - name: Install deps
         run: |
-          mkdir -p tmp
-          cd tmp
-          git clone https://github.com/magefile/mage
-          cd mage
-          go run bootstrap.go
+          make init
       - name: Update root content
         run: |
-          # export GOPATH=$(go env GOPATH)
-          # export GOBIN=$(GOPATH)/bin
-          # export GOPROXY="https://proxy.golang.org,direct"
-          # echo $GOPATH
-          # echo $GOBIN
-          # make init
-          # go env
-          # go get -u -d github.com/magefile/mage
-          # ls ${GOPATH}/bin
-          # ls ${GOPATH}/pkg
-          # ls ${GOPATH}/src
-          make init
           make all
       - name: Update latest version content
         run: |

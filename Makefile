@@ -26,6 +26,16 @@ init: \
 	subup
 	@go mod tidy
 	@go mod download
+	@if [ ! -z $(which mage) ]; then \
+		echo "\e[1;32minstall mage\e[0m" ; \
+		mkdir -p tmp ; \
+		cd tmp ; \
+		git clone https://github.com/magefile/mage ; \
+		cd mage ; \
+		go run bootstrap.go ; \
+	else \
+		echo "\e[1;33mmage is already installed\e[0m" ; \
+	fi
 
 .PHONY: run
 run:
