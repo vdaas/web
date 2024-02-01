@@ -45,6 +45,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+      - uses: crazy-max/ghaction-import-gpg@v4
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
       - name: Install deps
         run: |
           make init
@@ -58,18 +63,16 @@ jobs:
         run: |
           make TARGET_VER=$(make version/support) all
       - name: create pull request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${GITHUB_TOKEN}
-          commit-message: ":pencil: update contents"
-          committer: ${GITHUB_USER} <ci@vdaas.org>
-          author: ${GITHUB_USER} <ci@vdaas.org>
-          signoff: true
-          branch: release/dispatch-update-contents
-          branch-suffix: timestamp
-          base: main
-          title: "release update contents"
-          body: ":pencil: release update contents"
+        run: |
+            TS=$(date +%s)
+            BRANCH_NAME=`release/update-contents/$(TS)`
+            git checkout -b $(BRANCH_NAME)
+            git add .
+            git commit -S -m ":pencil: Update contents by GitHub Actions"
+            git push origin $(BRANCH_NAME)
+            gh pr create --base main \
+                         --title "Release update contents"
+                         --body ":pencil: Release update contents by GitHub Actions"
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
