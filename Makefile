@@ -26,7 +26,7 @@ init: \
 	subup
 	@go mod tidy
 	@go mod download
-	@if [ ! -z $(which mage) ]; then \
+	@if [ -z $(shell which mage) ]; then \
 		echo "\e[1;32minstall mage\e[0m" ; \
 		mkdir -p tmp ; \
 		cd tmp ; \
