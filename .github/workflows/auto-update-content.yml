@@ -1,6 +1,5 @@
 name: Update content
 on:
-  pull_request:
   repository_dispatch:
     types: [update-contents]
 
@@ -19,9 +18,9 @@ jobs:
           git config --global user.email "ci@vdaas.org"
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git submodule update --init --recursive
-          #   git checkout main
-          #   git fetch --prune
-          #   git pull origin main
+          git checkout main
+          git fetch --prune
+          git pull origin main
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
@@ -58,19 +57,19 @@ jobs:
       - name: Update support version content
         run: |
           make TARGET_VER=$(make version/support) all
-      # - name: create pull request
-      #   uses: peter-evans/create-pull-request@v5
-      #   with:
-      #     token: ${GITHUB_TOKEN}
-      #     commit-message: ":pencil: update contents"
-      #     commiter: ${GITHUB_USER}
-      #     author: ${GITHUB_USER}
-      #     signoff: true
-      #     branch: release/dispatch-update-contents
-      #     branch-suffix: timestamp
-      #     base: main
-      #     title: "release update contents"
-      #     body: ":pencil: release update contents"
-      #   env:
-      #     GITHUB_USER: ${{ secrets.DISPATCH_USER }}
-      #     GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+      - name: create pull request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${GITHUB_TOKEN}
+          commit-message: ":pencil: update contents"
+          commiter: ${GITHUB_USER}
+          author: ${GITHUB_USER}
+          signoff: true
+          branch: release/dispatch-update-contents
+          branch-suffix: timestamp
+          base: main
+          title: "release update contents"
+          body: ":pencil: release update contents"
+        env:
+          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
