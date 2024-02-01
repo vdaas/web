@@ -62,8 +62,6 @@ jobs:
         with:
           token: ${GITHUB_TOKEN}
           commit-message: ":pencil: update contents"
-          committer: ${GITHUB_USER}
-          author: ${GITHUB_USER}
           signoff: true
           branch: release/dispatch-update-contents
           branch-suffix: timestamp
@@ -71,5 +69,4 @@ jobs:
           title: "release update contents"
           body: ":pencil: release update contents"
         env:
-          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
