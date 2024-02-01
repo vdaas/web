@@ -38,13 +38,18 @@ jobs:
         run:
           go version
       - name: Setup Hugo
-        if: steps.check_release.outputs.release == 'true'
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: latest
-      - name: Update root content
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install deps
         run: |
           make init
+      - name: Update root content
+        run: |
           make all
       - name: Update latest version content
         run: |
