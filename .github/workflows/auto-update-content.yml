@@ -72,7 +72,7 @@ jobs:
             git commit -S -m ":pencil: Update contents by GitHub Actions"
             git push origin ${BRANCH_NAME}
             gh pr create --base main \
-                         --title "Release update contents"
+                         --title "Release update contents" \
                          --body ":pencil: Release update contents by GitHub Actions"
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
