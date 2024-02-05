@@ -65,7 +65,8 @@ jobs:
       - name: create pull request
         run: |
             TS=$(date +%s)
-            BRANCH_NAME=`release/update-contents/${TS}`
+            BRANCH_NAME="release/update-contents/${TS}"
+            git checkout main
             git checkout -b ${BRANCH_NAME}
             git add .
             git commit -S -m ":pencil: Update contents by GitHub Actions"
