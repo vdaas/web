@@ -279,7 +279,7 @@ func getMeta(path string, meta map[string]interface{}) (metadata, bool) {
 	return metadata{}, false
 }
 
-// Publish sets the draft flag to `true` for publish as document.
+// Publish sets the draft flag to `false` for publish as document.
 func Publish(path string) error {
 	path = "../" + path
 	b, err := os.ReadFile(path)
@@ -289,5 +289,18 @@ func Publish(path string) error {
 	}
 	str := string(b)
 	str = strings.Replace(str, "draft: true", "draft: false", 1)
+	return os.WriteFile(path, []byte(str), os.ModePerm)
+}
+
+// UnPublish sets the draft flag to `true` for un publish.
+func UnPublish(path string) error {
+	path = "../" + path
+	b, err := os.ReadFile(path)
+	if err != nil {
+		fmt.Println("failed to read file: %s", err.Error())
+		return err
+	}
+	str := string(b)
+	str = strings.Replace(str, "draft: false", "draft: true", 1)
 	return os.WriteFile(path, []byte(str), os.ModePerm)
 }

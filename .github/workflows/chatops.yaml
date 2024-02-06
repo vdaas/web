@@ -1,0 +1,81 @@
+name: web chatops
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  draft:
+    name: draft content file
+    runs-on: ubuntu-latest
+    if: github.event.comment.user.login != 'vdaas-ci'
+    steps:
+      - name: Checkout Actions
+        uses: actions/checkout@v4
+        with:
+          ref: ${{github.head_ref}}
+          persist-credentials: false
+      - name: check phrase
+        id: check-phrase
+        uses: machine-learning-apps/actions-chatops@master
+        with:
+          TRIGGER_PHRASE: "/draft"
+      - name: Fetch Go version
+        id: go_version
+        shell: bash
+        run: |
+          GO_VERSION=$(make version/go)
+          echo "version=${GO_VERSION}" >> $GITHUB_OUTPUT
+      - uses: actions/setup-go@v4
+        with:
+          go-version: ${{ steps.go_version.outputs.version }}
+      - name: Check Go version
+        shell: bash
+        run:
+          go version
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: latest
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - uses: crazy-max/ghaction-import-gpg@v4
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+      - name: Install deps
+        run: |
+          make init
+      - name: toggle file
+        if: steps.check-phrase.outputs.BOOL_TRIGGERED == 'true'
+        run: |
+          docs=`echo "${TRAILING_LINE}" | jq -cMR 'split(" ")'`
+          for doc in `echo ${docs}`
+          do
+            if [ -f ${doc} ]; then
+              mage -d ./magefile UnPublish ${doc}
+            fi
+          done
+        env:
+          TRAILING_LINE: ${{ steps.check-phrase.outputs.TRAILING_LINE }}
+      - name: Check Changes
+        id: git_diff_static
+        run: |
+          diff=`git diff --name-only`
+          if [ ! -z "$diff" ] ; then \
+            echo "diff=true" >> $GITHUB_OUTPUT
+          fi
+      - name: Commit Content Files (pull_request)
+        if: steps.git_diff_static.outputs.diff == 'true' && github.event_name== 'pull_request'
+        run: |
+          git config --global user.name "vdaas-ci"
+          git config --global user.email "ci@vdaas.org"
+          git add contents/
+          git commit --signoff -m ":robot: UnPublish docs :recycle:"
+
+          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin ${{ github.head_ref }}
+        env:
+          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
