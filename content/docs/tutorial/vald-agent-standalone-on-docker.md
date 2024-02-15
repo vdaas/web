@@ -1,8 +1,8 @@
 ---
 title: "Vald Agent Standalone on Docker_tutorial"
-date: 2024-01-10T18:16:43+09:00
+date: 2024-02-15T17:10:12+09:00
 draft: false
-weight: 300
+weight: 400
 description: Running Vald Agent on Docker and execute client codes
 menu:
   tutorial:

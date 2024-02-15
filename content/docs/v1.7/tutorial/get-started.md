@@ -1,9 +1,9 @@
 ---
 title: "Get Started_v1.7/Tutorial"
-date: 2023-12-25T19:23:14+09:00
+date: 2024-02-15T17:12:30+09:00
 draft: false
 weight: 100
-description: Running Vald cluster on Kubernetes and execute client codes
+description: Running Vald cluster with NGT Agent on Kubernetes and execute client codes
 menu:
   tutorial:
     parent: Tutorial

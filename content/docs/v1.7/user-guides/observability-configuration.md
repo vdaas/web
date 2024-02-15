@@ -1,8 +1,8 @@
 ---
 title: "Observability Configuration_v1.7/User Guides"
-date: 2024-01-15T17:31:19+09:00
+date: 2024-02-15T17:12:34+09:00
 draft: false
-weight: 1000
+weight: 1100
 description: Monitors performance on metrics dashboards
 menu:
   userguides:
@@ -143,7 +143,7 @@ defaults:
         - "go_version"
         - "go_os"
         - "go_arch"
-        - "ngt_version"
+        - "algorithm_info"
       # enable memory metrics
       enable_memory: true
       # enable goroutine metrics

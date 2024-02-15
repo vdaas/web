@@ -32,21 +32,33 @@
       "index-manager": {
         "weight": 500,
         "description": "Controls indexing process of Vald Agent Pods"
+      },
+      "mirror-gateway": {
+        "weight": 600,
+        "description": "Gateway for operating Vald cluster compatible with Multi-region and Multi AZ"
       }
     }
   },
   "tutorial": {
     "get-started": {
       "weight": 100,
-      "description": "Running Vald cluster on Kubernetes and execute client codes"
+      "description": "Running Vald cluster with NGT Agent on Kubernetes and execute client codes"
+    },
+    "get-started-with-faiss-agent": {
+      "weight": 200,
+      "description": "Running Vald cluster with faiss Agent on Kubernetes and execute client codes"
     },
     "vald-agent-standalone-on-k8s": {
-      "weight": 200,
+      "weight": 300,
       "description": "Running only Vald Agent on Kubernetes and execute client codes"
     },
     "vald-agent-standalone-on-docker": {
-      "weight": 300,
+      "weight": 400,
       "description": "Running Vald Agent on Docker and execute client codes"
+    },
+    "vald-multicluster-on-k8s": {
+      "weight": 500,
+      "description": "Running Multi Vald Clusters with Mirror Gateway on Kubernetes and execute client codes"
     }
   },
   "api": {
@@ -78,12 +90,16 @@
       "weight": 700,
       "description": "How to use CRUD API with filter gateway"
     },
+    "mirror-gateway": {
+      "weight": 900,
+      "description": "API description when operating Vald Mirror Gateway"
+    },
     "status": {
-      "weight": 800,
+      "weight": 900,
       "description": "API response description for each status"
     },
     "build_proto": {
-      "weight": 900,
+      "weight": 1000,
       "description": "How to build gRPC proto files for calling API to your Vald cluster"
     }
   },
@@ -123,6 +139,10 @@
     "provisioning": {
       "weight": 200,
       "description": "Shows how to resolve trouble with provisioning Vald cluster"
+    },
+    "tuning-search-performance": {
+      "weight": 300,
+      "description": "Shows how to improve search operation"
     }
   },
   "support": {
@@ -152,44 +172,48 @@
       "weight": 300,
       "description": "Applies filtering feature to the Vald cluster"
     },
-    "cluster-role-binding": {
+    "mirroring-configuration": {
       "weight": 400,
+      "description": "Applies mirror gateway for running multi Vald clusters"
+    },
+    "cluster-role-binding": {
+      "weight": 500,
       "description": "Configures cluster role for Vald cluster"
     },
     "deployment": {
-      "weight": 500,
+      "weight": 600,
       "description": "How to launch Vald cluster on your Kubernetes cluster"
     },
     "operations": {
-      "weight": 600,
+      "weight": 700,
       "description": "Describes the basic operation for the Vald cluster"
     },
     "upgrade-cluster": {
-      "weight": 700,
+      "weight": 800,
       "description": "Describes hot to upgrade Vald version for the running Vald cluster"
     },
     "capacity-planning": {
-      "weight": 800,
+      "weight": 900,
       "description": "Estimates how Kubernetes resources will be required"
     },
     "client-api-config": {
-      "weight": 900,
+      "weight": 1000,
       "description": "Shows more detailed explanation about APIs configuration"
     },
     "observability-configuration": {
-      "weight": 1000,
+      "weight": 1100,
       "description": "Monitors performance on metrics dashboards"
     },
     "network-policy": {
-      "weight": 1100,
+      "weight": 1200,
       "description": "Enables to Kubernetes NetworkPolicy to the Vald cluster"
     },
     "index-correction": {
-      "weight": 1200,
+      "weight": 1300,
       "description": "Batch processing to make the index state correct"
     },
     "sdks": {
-      "weight": 1300,
+      "weight": 1400,
       "description": "Sends request and receives response from the Vald cluster"
     }
   }

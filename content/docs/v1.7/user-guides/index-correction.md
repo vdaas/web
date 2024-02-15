@@ -1,8 +1,8 @@
 ---
 title: "Index Correction_v1.7/User Guides"
-date: 2024-01-16T17:45:54+09:00
+date: 2024-02-15T17:12:33+09:00
 draft: false
-weight: 1200
+weight: 1300
 description: Batch processing to make the index state correct
 menu:
   userguides:
