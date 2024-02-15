@@ -1,8 +1,8 @@
 ---
 title: "Status_v1.7/Api"
-date: 2024-01-15T17:31:09+09:00
+date: 2024-02-15T17:12:24+09:00
 draft: false
-weight: 800
+weight: 900
 description: API response description for each status
 menu:
   api:

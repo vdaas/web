@@ -1,8 +1,8 @@
 ---
 title: "Client Api Config_v1.7/User Guides"
-date: 2024-01-15T17:31:17+09:00
+date: 2024-02-15T17:12:32+09:00
 draft: false
-weight: 900
+weight: 1000
 description: Shows more detailed explanation about APIs configuration
 menu:
   userguides:

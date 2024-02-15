@@ -1,8 +1,8 @@
 ---
 title: "Network Policy_v1.7/User Guides"
-date: 2024-01-15T17:31:19+09:00
+date: 2024-02-15T17:12:33+09:00
 draft: false
-weight: 1100
+weight: 1200
 description: Enables to Kubernetes NetworkPolicy to the Vald cluster
 menu:
   userguides:

@@ -1,8 +1,8 @@
 ---
 title: "Sdks_user Guides"
-date: 2024-01-16T17:45:15+09:00
+date: 2024-02-15T17:10:16+09:00
 draft: false
-weight: 1300
+weight: 1400
 description: Sends request and receives response from the Vald cluster
 menu:
   userguides:

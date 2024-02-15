@@ -1,9 +1,9 @@
 ---
-title: "Get Started_tutorial"
-date: 2024-02-15T17:10:12+09:00
+title: "Get Started With Faiss Agent_v1.7/Tutorial"
+date: 2024-02-15T17:12:30+09:00
 draft: false
-weight: 100
-description: Running Vald cluster with NGT Agent on Kubernetes and execute client codes
+weight: 200
+description: Running Vald cluster with faiss Agent on Kubernetes and execute client codes
 menu:
   tutorial:
     parent: Tutorial
@@ -11,94 +11,13 @@ menu:
 
 # Get Started
 
-Vald is a highly scalable distributed fast approximate nearest neighbor dense vector search engine.<br>
-Vald is designed and implemented based on Cloud-Native architecture.
-
-This tutorial shows how to deploy and run the Vald components on your Kubernetes cluster.
-And, Fashion-MNIST is used as an example of a dataset.
-
-## Overview
-
-The below image shows the architecture image about the deployment result of `Get Started`.<br>
-The 4 kinds of components, `Vald LB Gateway`, `Vald Discoverer`, `Vald Agent`, and `Vald Index Manager` will be deployed to the Kubernetes.
-For more information about Vald's architecture, please refer to [Architecture](/docs/overview/architecture).
-
-<img src="/images/tutorial/getstarted.svg" />
-
-The 5 steps to Get Started with Vald:
-
-1. [Check and Satisfy the Requirements](#Requirements)
-1. [Prepare Kubernetes Cluster](#Prepare-the-Kubernetes-Cluster)
-1. [Deploy Vald on Kubernetes Cluster](#Deploy-Vald-on-Kubernetes-Cluster)
-1. [Run Example Code](#Run-Example-Code)
-1. [Cleanup](#Cleanup)
-
-## Requirements
-
-- Kubernetes: v1.19 ~
-- Go: v1.15 ~
-- Helm: v3 ~
-- libhdf5 (_only required for get started_)
-
-Helm is used to deploying Vald on your Kubernetes and HDF5 is used to decode the sample data file to run the example.<br>
-If Helm or HDF5 is not installed, please install [Helm](https://helm.sh/docs/intro/install) and [HDF5](https://www.hdfgroup.org/).
-
-<details><summary>Installation command for Helm</summary><br>
-
-```bash
-curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
-```
-
-</details>
-
-<details><summary>Installation command for HDF5</summary><br>
-
-```bash
-# yum
-yum install -y hdf5-devel
-
-# apt
-apt-get install libhdf5-serial-dev
-
-# homebrew
-brew install hdf5
-```
-
-</details>
-
-## Prepare the Kubernetes Cluster
-
-This tutorial requires the Kubernetes cluster.<br>
-Vald runs on public Cloud Kubernetes Services such as GKE, EKS.
-In the sense of trying to `Get Started`, [k3d](https://k3d.io/) or [kind](https://kind.sigs.k8s.io/) are easy Kubernetes tools to use.
-
-This tutorial uses Kubernetes Ingress and [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server) for running Vald.<br>
-Please make sure these functions are available.<br>
-
-The configuration of Kubernetes Ingress is depended on your Kubernetes cluster's provider.
-Please refer to on yourself.
-
-In the following example, we create the Kubernetes cluster using [k3d](https://k3d.io/), that the internal port 80 (where the traefik ingress controller is listening on) is exposed on the host system.
-
-```bash
-k3d cluster create -p 8081:80@loadbalancer
-```
-
-The way to deploy Kubernetes Metrics Service is here:
-
-```bash
-kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml && \
-kubectl wait -n kube-system --for=condition=ready pod -l k8s-app=metrics-server --timeout=600s
-```
+This tutorial is for those who have already completed [Get Started](https://github.com/vdaas/vald/blob/main/docs/tutorial/get-started).
+Please refer to Prepare the Kubernetes Cluster and others there.
 
 ## Deploy Vald on Kubernetes Cluster
 
 This chapter shows how to deploy Vald using Helm and run it on your Kubernetes cluster.<br>
-In this tutorial, you will deploy the basic configuration of Vald that is consisted of vald-agent-ngt, vald-lb-gateway, vald-discoverer, and vald-manager-index.<br>
-
-<div class="caution">
-For vald-discoverer to work correctly, if you deploy multiple Vald clusters in the same Kubernetes cluster, please deploy one Vald cluster in one namespace.
-</div>
+In this tutorial, you will deploy the basic configuration of Vald that is consisted of vald-agent-faiss, vald-lb-gateway, vald-discoverer, and vald-manager-index.<br>
 
 1. Clone the repository
 
@@ -129,9 +48,34 @@ For vald-discoverer to work correctly, if you deploy multiple Vald clusters in t
          enabled: true
          # TODO: Set your ingress host.
          host: localhost
-         # TODO: Set annotations which you have to set for your Ingress resource.
+         # TODO: Set annotations which you have to set for your k8s cluster.
          annotations:
            ...
+   ## vald-agent-faiss settings
+   agent:
+     algorithm: faiss
+     image:
+       repository: vdaas/vald-agent-faiss
+       tag: latest
+     faiss:
+       auto_index_check_duration: 1m
+       auto_index_duration_limit: 24h
+       auto_index_length: 10
+       auto_save_index_duration: 35m
+       dimension: 784
+       enable_copy_on_write: false
+       enable_in_memory_mode: true
+       enable_proactive_gc: true
+       index_path: ""
+       initial_delay_max_duration: 3m
+       load_index_timeout_factor: 1ms
+       m: 8  # dimension % m == 0, train size >= 2^m(or nlist) * minPointsPerCentroid
+       max_load_index_timeout: 10m
+       metric_type: "inner_product"
+       min_load_index_timeout: 3m
+       nbits_per_idx: 8
+       nlist: 100
+         ...
    ```
 
    Note:<br>
@@ -163,17 +107,17 @@ For vald-discoverer to work correctly, if you deploy multiple Vald clusters in t
    If the deployment is successful, all Vald components should be running.
 
    ```bash
-   NAME                                       READY   STATUS      RESTARTS   AGE
-   vald-agent-ngt-0                           1/1     Running     0          7m12s
-   vald-agent-ngt-1                           1/1     Running     0          7m12s
-   vald-agent-ngt-2                           1/1     Running     0          7m12s
-   vald-agent-ngt-3                           1/1     Running     0          7m12s
-   vald-agent-ngt-4                           1/1     Running     0          7m12s
-   vald-discoverer-7f9f697dbb-q44qh           1/1     Running     0          7m11s
-   vald-lb-gateway-6b7b9f6948-4z5md           1/1     Running     0          7m12s
-   vald-lb-gateway-6b7b9f6948-68g94           1/1     Running     0          6m56s
-   vald-lb-gateway-6b7b9f6948-cvspq           1/1     Running     0          6m56s
-   vald-manager-index-74c7b5ddd6-jrnlw        1/1     Running     0          7m12s
+   NAME                                         READY   STATUS      RESTARTS   AGE
+   vald-agent-faiss-0                           1/1     Running     0          7m12s
+   vald-agent-faiss-1                           1/1     Running     0          7m12s
+   vald-agent-faiss-2                           1/1     Running     0          7m12s
+   vald-agent-faiss-3                           1/1     Running     0          7m12s
+   vald-agent-faiss-4                           1/1     Running     0          7m12s
+   vald-discoverer-7f9f697dbb-q44qh             1/1     Running     0          7m11s
+   vald-lb-gateway-6b7b9f6948-4z5md             1/1     Running     0          7m12s
+   vald-lb-gateway-6b7b9f6948-68g94             1/1     Running     0          6m56s
+   vald-lb-gateway-6b7b9f6948-cvspq             1/1     Running     0          6m56s
+   vald-manager-index-74c7b5ddd6-jrnlw          1/1     Running     0          7m12s
    ```
 
    </details>
@@ -185,8 +129,8 @@ For vald-discoverer to work correctly, if you deploy multiple Vald clusters in t
    <details><summary>Example output</summary><br>
 
    ```bash
-   NAME                      CLASS     HOSTS       ADDRESS        PORTS   AGE
-   vald-lb-gateway-ingress   traefik   localhost   192.168.16.2   80      7m43s
+   NAME                      CLASS    HOSTS       ADDRESS        PORTS   AGE
+   vald-lb-gateway-ingress   <none>   localhost   192.168.16.2   80      7m43s
    ```
 
    </details>
@@ -198,12 +142,12 @@ For vald-discoverer to work correctly, if you deploy multiple Vald clusters in t
    <details><summary>Example output</summary><br>
 
    ```bash
-   NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)             AGE
-   kubernetes           ClusterIP   10.43.0.1    <none>        443/TCP             9m29s
-   vald-agent-ngt       ClusterIP   None         <none>        8081/TCP,3001/TCP   8m48s
-   vald-discoverer      ClusterIP   None         <none>        8081/TCP,3001/TCP   8m48s
-   vald-manager-index   ClusterIP   None         <none>        8081/TCP,3001/TCP   8m48s
-   vald-lb-gateway      ClusterIP   None         <none>        8081/TCP,3001/TCP   8m48s
+   NAME                   TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)             AGE
+   kubernetes             ClusterIP   10.43.0.1    <none>        443/TCP             9m29s
+   vald-agent-faiss       ClusterIP   None         <none>        8081/TCP,3001/TCP   8m48s
+   vald-discoverer        ClusterIP   None         <none>        8081/TCP,3001/TCP   8m48s
+   vald-manager-index     ClusterIP   None         <none>        8081/TCP,3001/TCP   8m48s
+   vald-lb-gateway        ClusterIP   None         <none>        8081/TCP,3001/TCP   8m48s
    ```
 
    </details>
@@ -215,7 +159,7 @@ The [Fashion-MNIST](https://github.com/zalandoresearch/fashion-mnist) is used as
 
 The example code is implemented in Go and using [vald-client-go](https://github.com/vdaas/vald-client-go), one of the official Vald client libraries, for requesting to Vald cluster.
 Vald provides multiple language client libraries such as Go, Java, Node.js, Python, etc.
-If you are interested, please refer to [SDKs](/docs/user-guides/sdks).<br>
+If you are interested, please refer to [SDKs](/docs/v1.7/user-guides/sdks).<br>
 
 1.  Port Forward(option)
 
@@ -274,9 +218,9 @@ If you are interested, please refer to [SDKs](/docs/user-guides/sdks).<br>
               "github.com/kpango/glg"
               "github.com/vdaas/vald-client-go/v1/payload"
               "github.com/vdaas/vald-client-go/v1/vald"
+
               "gonum.org/v1/hdf5"
               "google.golang.org/grpc"
-              "google.golang.org/grpc/credentials/insecure"
           )
           ```
 
@@ -344,7 +288,7 @@ If you are interested, please refer to [SDKs](/docs/user-guides/sdks).<br>
         ```go
         ctx := context.Background()
 
-        conn, err := grpc.DialContext(ctx, grpcServerAddr, grpc.WithTransportCredentials(insecure.NewCredentials()))
+        conn, err := grpc.DialContext(ctx, grpcServerAddr, grpc.WithInsecure())
         if err != nil {
             glg.Fatal(err)
         }
@@ -454,16 +398,7 @@ In the last, you can remove the deployed Vald Cluster by executing the below com
 helm uninstall vald
 ```
 
-## Next Steps
+## References
 
-Congratulation! You completely entered the Vald World!
-
-If you want, you can try other tutorials such as:
-
-- [Vald Agent Standalone on k8s](/docs/tutorial/vald-agent-standalone-on-k8s)
-- [Vald Agent on Docker](/docs/tutorial/vald-agent-standalone-on-docker)
-
-For more information, we recommend you to check:
-
-- [Configuration](/docs/user-guides/configuration)
-- [Operations](/docs/user-guides/operations)
+- [Get Started with NGT agent by default](https://github.com/vdaas/vald/blob/main/docs/tutorial/get-started)
+- [Faiss](https://github.com/facebookresearch/faiss)

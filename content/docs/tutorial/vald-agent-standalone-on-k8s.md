@@ -1,8 +1,8 @@
 ---
 title: "Vald Agent Standalone on K8s_tutorial"
-date: 2024-01-10T18:16:43+09:00
+date: 2024-02-15T17:10:12+09:00
 draft: false
-weight: 200
+weight: 300
 description: Running only Vald Agent on Kubernetes and execute client codes
 menu:
   tutorial:

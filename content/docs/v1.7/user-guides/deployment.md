@@ -1,8 +1,8 @@
 ---
 title: "Deployment_v1.7/User Guides"
-date: 2023-12-25T19:23:16+09:00
+date: 2024-02-15T17:12:32+09:00
 draft: false
-weight: 500
+weight: 600
 description: How to launch Vald cluster on your Kubernetes cluster
 menu:
   userguides:
