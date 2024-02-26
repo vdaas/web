@@ -158,6 +158,8 @@ contents/update/root: \
 	@echo "\e[1;33mcreate/update index files...\e[0m"
 	@$(eval DIR := $(shell find content/docs -maxdepth 3 -type d | egrep -v 'v[0-9]' | egrep "content/docs/"))
 	$(foreach dir,$(DIR),$(call create-index-file,$(dir)))
+	@echo "\e[1;33msync image files...\e[0m"
+	@cp -r tmp/${SYNC_REPO_PATH}/assets/docs/. ./static/images/ && find ./static/images -type f -name "*.drawio" | xargs rm
 	@echo "\e[1;33mfix document path...\e[0m"
 	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs -I{} mage -d ./magefile ConvertLinks {} $(TARGET_TAG)
 	@echo "\e[1;33mset metadata...\e[0m"
@@ -174,6 +176,8 @@ contents/update/tag: \
 		mv content/docs/v$(TARGET_TAG)/index/index.md content/docs/v$(TARGET_TAG)/_index.md ; \
 		rm -rf content/docs/v$(TARGET_TAG)/index/ ; \
 	fi
+	@echo "\e[1;33msync image files...\e[0m"
+	@cp -r tmp/${SYNC_REPO_PATH}/assets/docs/. static/images/v${TARGET_TAG}/ && find ./static/images/v${TARGET_TAG} -type f -name "*.drawio" | xargs rm
 	@echo "\e[1;33mfix document path...\e[0m"
 	@find content/docs/v$(TARGET_TAG) -type f -name "*.md" | xargs -I{} mage -d ./magefile ConvertLinks {} $(TARGET_TAG)
 	@echo "\e[1;33mset metadata...\e[0m"

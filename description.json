@@ -129,6 +129,10 @@
     "loadtest": {
       "weight": 200,
       "description": "Shows how to perform load test in the Vald cluster"
+    },
+    "continuous-benchmark": {
+      "weight": 300,
+      "description": "Performance verification using continuous benchmark tool"
     }
   },
   "troubleshooting": {
