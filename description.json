@@ -82,12 +82,16 @@
       "weight": 500,
       "description": "Remove indexes from the Vald cluster"
     },
-    "object": {
+    "flush": {
       "weight": 600,
+      "description": "Remove all indexes from the Vald cluster"
+    },
+    "object": {
+      "weight": 700,
       "description": "Get object information in the Vald cluster"
     },
     "filter-gateway": {
-      "weight": 700,
+      "weight": 800,
       "description": "How to use CRUD API with filter gateway"
     },
     "mirror-gateway": {

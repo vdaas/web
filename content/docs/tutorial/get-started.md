@@ -1,6 +1,6 @@
 ---
 title: "Get Started_tutorial"
-date: 2024-02-15T17:10:12+09:00
+date: 2024-04-25T20:33:02+09:00
 draft: false
 weight: 100
 description: Running Vald cluster with NGT Agent on Kubernetes and execute client codes
@@ -425,11 +425,11 @@ If you are interested, please refer to [SDKs](/docs/user-guides/sdks).<br>
 
     1.  Remove
 
-        - Remove 400 indexed training datasets from the Vald agent.
+        - Remove 200 indexed training datasets from the Vald agent.
             <details><summary>example code</summary><br>
 
           ```go
-          for i := range ids [:insertCount] {
+          for i := range ids [:removeCount] {
               _, err := client.Remove(ctx, &payload.Remove_Request{
                   Id: &payload.Object_ID{
                       Id: ids[i],
@@ -442,6 +442,20 @@ If you are interested, please refer to [SDKs](/docs/user-guides/sdks).<br>
                   glg.Infof("Removed %d", i)
               }
           }
+          ```
+
+            </details>
+
+    1.  Flush
+
+        - Remove all remaining training datasets from the Vald agent.
+            <details><summary>example code</summary><br>
+
+          ```go
+          _, err := client.Flush(ctx, &payload.Flush_Request{})
+          if err != nil {
+		            glg.Fatal(err)
+		        }
           ```
 
             </details>

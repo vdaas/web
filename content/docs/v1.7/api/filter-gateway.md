@@ -1,8 +1,8 @@
 ---
 title: "Filter Gateway_v1.7/Api"
-date: 2024-01-15T17:31:08+09:00
+date: 2024-04-25T20:34:53+09:00
 draft: false
-weight: 700
+weight: 800
 description: How to use CRUD API with filter gateway
 menu:
   api:
