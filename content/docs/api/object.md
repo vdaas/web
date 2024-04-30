@@ -1,8 +1,8 @@
 ---
 title: "Object_api"
-date: 2024-01-10T18:16:38+09:00
+date: 2024-04-25T20:33:02+09:00
 draft: false
-weight: 600
+weight: 700
 description: Get object information in the Vald cluster
 menu:
   api:

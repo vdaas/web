@@ -82,12 +82,16 @@
       "weight": 500,
       "description": "Remove indexes from the Vald cluster"
     },
-    "object": {
+    "flush": {
       "weight": 600,
+      "description": "Remove all indexes from the Vald cluster"
+    },
+    "object": {
+      "weight": 700,
       "description": "Get object information in the Vald cluster"
     },
     "filter-gateway": {
-      "weight": 700,
+      "weight": 800,
       "description": "How to use CRUD API with filter gateway"
     },
     "mirror-gateway": {
@@ -95,11 +99,11 @@
       "description": "API description when operating Vald Mirror Gateway"
     },
     "status": {
-      "weight": 900,
+      "weight": 1000,
       "description": "API response description for each status"
     },
     "build_proto": {
-      "weight": 1000,
+      "weight": 1100,
       "description": "How to build gRPC proto files for calling API to your Vald cluster"
     }
   },
