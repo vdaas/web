@@ -1,6 +1,6 @@
 ---
 title: "Get Started_tutorial"
-date: 2024-04-25T20:33:02+09:00
+date: 2024-05-20T15:12:59+09:00
 draft: false
 weight: 100
 description: Running Vald cluster with NGT Agent on Kubernetes and execute client codes
@@ -46,7 +46,7 @@ If Helm or HDF5 is not installed, please install [Helm](https://helm.sh/docs/int
 <details><summary>Installation command for Helm</summary><br>
 
 ```bash
-curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 ```
 
 </details>
@@ -454,8 +454,8 @@ If you are interested, please refer to [SDKs](/docs/user-guides/sdks).<br>
           ```go
           _, err := client.Flush(ctx, &payload.Flush_Request{})
           if err != nil {
-		            glg.Fatal(err)
-		        }
+             glg.Fatal(err)
+          }
           ```
 
             </details>

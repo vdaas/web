@@ -1,6 +1,6 @@
 ---
 title: "Deployment_user Guides"
-date: 2024-02-15T17:10:14+09:00
+date: 2024-05-20T15:12:58+09:00
 draft: false
 weight: 600
 description: How to launch Vald cluster on your Kubernetes cluster
@@ -38,7 +38,7 @@ If Helm is not installed, please install [Helm](https://helm.sh/docs/intro/insta
 <details><summary>Installation command for Helm</summary><br>
 
 ```bash
-curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 ```
 
 </details>

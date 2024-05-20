@@ -223,6 +223,10 @@
     "sdks": {
       "weight": 1400,
       "description": "Sends request and receives response from the Vald cluster"
+    },
+    "read-replica-and-rotator": {
+      "weight": 1500,
+      "description": "How to improve search request speed"
     }
   }
 }
