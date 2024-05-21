@@ -1,6 +1,6 @@
 ---
 title: "Read Replica and Rotator_user Guides"
-date: 2024-05-20T15:12:58+09:00
+date: 2024-05-21T13:22:43+09:00
 draft: false
 weight: 1500
 description: How to improve search request speed
@@ -25,7 +25,7 @@ The read replica is managed with a separate chart from the Vald cluster and is d
 
 ### When you deploy Vald with Helm command
 
-1. Edit `values.yaml` like below (Please refer to [deployment](/docs/deployment) for other fields.)
+1. Edit `values.yaml` like below (Please refer to [deployment](/docs/user-guides/deployment) for other fields.)
 
    ```yaml
    agent:
