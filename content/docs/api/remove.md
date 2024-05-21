@@ -1,6 +1,6 @@
 ---
 title: "Remove_api"
-date: 2024-04-25T20:33:02+09:00
+date: 2024-05-21T15:09:37+09:00
 draft: false
 weight: 500
 description: Remove indexes from the Vald cluster
@@ -380,7 +380,7 @@ gRPC has a message size limitation.<br>
 Please be careful that the size of the request exceeds the limit.
 </div>
 
-## Input
+### Input
 
 - the scheme of `payload.v1.Remove.MultiRequest`
 

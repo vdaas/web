@@ -1,6 +1,6 @@
 ---
 title: "Search_api"
-date: 2024-04-25T20:33:02+09:00
+date: 2024-05-21T15:09:37+09:00
 draft: false
 weight: 400
 description: Search ANN vectors from the Vald cluster
@@ -711,7 +711,7 @@ Here are some common reasons and how to resolve each error.
 | NOT_FOUND         | Search result is empty or insufficient to request result length.                                                | Send a request with another vector or set min_num to a smaller value.                    |
 | INTERNAL          | Target Vald cluster or network route has some critical error.                                                   | Check target Vald cluster first and check network route including ingress as second.     |
 
-### MultiSearchByID RPC
+## MultiSearchByID RPC
 
 MultiSearchByID RPC is the method to search vectors with multiple IDs in **1** request.
 
@@ -1496,7 +1496,7 @@ Here are some common reasons and how to resolve each error.
 | NOT_FOUND         | Search result is empty or insufficient to request result length.                                                | Send a request with another vector or set min_num to a smaller value.                    |
 | INTERNAL          | Target Vald cluster or network route has some critical error.                                                   | Check target Vald cluster first and check network route including ingress as second.     |
 
-### MultiLinearSearchByID RPC
+## MultiLinearSearchByID RPC
 
 MultiLinearSearchByID RPC is the method to linear search vectors with multiple IDs in **1** request.
 

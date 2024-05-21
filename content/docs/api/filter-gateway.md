@@ -1,6 +1,6 @@
 ---
 title: "Filter Gateway_api"
-date: 2024-04-25T20:33:03+09:00
+date: 2024-05-21T15:09:37+09:00
 draft: false
 weight: 800
 description: How to use CRUD API with filter gateway
@@ -1487,6 +1487,17 @@ service Filter {
     | :------: | :----- | :---- | :---------------------------------------------------- |
     |    id    | string |       | the vector ID                                         |
     | distance | float  |       | the distance between result vector and request vector |
+
+### Status Code
+
+| code | desc.             |
+| :--: | :---------------- |
+|  0   | OK                |
+|  1   | CANCELLED         |
+|  3   | INVALID_ARGUMENT  |
+|  4   | DEADLINE_EXCEEDED |
+|  5   | NOT_FOUND         |
+|  13  | INTERNAL          |
 
 ## MultiSearch RPC
 
