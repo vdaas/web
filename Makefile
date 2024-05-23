@@ -149,7 +149,6 @@ $(VERSION_DOC_FILES): \
 	$(call create-content-file,$@)
 	@cat $(patsubst content/docs/v$(TARGET_TAG)/%.md,tmp/$(SYNC_REPO_PATH)/docs/%.md,$@) >> $@
 
-
 # contents/update/root or tag updates each content files
 # It includes updating document, fixing document link path and fixing image file path for each target content.
 .PHONY: contents/update/root contents/update/tag
@@ -164,6 +163,8 @@ contents/update/root: \
 	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs -I{} mage -d ./magefile ConvertLinks {} $(TARGET_TAG)
 	@echo "\e[1;33mset metadata...\e[0m"
 	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs -I{} mage -d ./magefile UpdateMetadata {}
+	@echo "\e[1;33membed version...\e[0m"
+	@find content/docs -type f -name "*.md" -not -path "content/docs/v*" | xargs -I{} mage -d ./magefile EmbedVersion {} $(TARGET_TAG) $(TARGET_VER)
 
 contents/update/tag: \
 	$(VERSION_DOC_FILES)
@@ -182,6 +183,8 @@ contents/update/tag: \
 	@find content/docs/v$(TARGET_TAG) -type f -name "*.md" | xargs -I{} mage -d ./magefile ConvertLinks {} $(TARGET_TAG)
 	@echo "\e[1;33mset metadata...\e[0m"
 	@find content/docs/v$(TARGET_TAG) -type f -name "*.md" | xargs -I{} mage -d ./magefile UpdateMetadata {}
+	@echo "\e[1;33membed version...\e[0m"
+	@find content/docs/v$(TARGET_TAG) -type f -name "*.md" | xargs -I{} mage -d ./magefile EmbedVersion {} $(TARGET_TAG) $(TARGET_VER)
 
 # contents/publish/root or tag toggle draft value to false for each contents file.
 .PHONY: contents/publish/root contents/publish/tag
@@ -209,7 +212,6 @@ define create-content-file
 	else \
 		hugo new --kind index $(1) >/dev/null ; \
 	fi
-
 endef
 
 define create-index-file
