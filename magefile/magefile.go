@@ -184,8 +184,7 @@ func ConvertLinks(path, tag string) error {
 	path = "../" + path
 	b, err := os.ReadFile(path)
 	if err != nil {
-		fmt.Println("failed to read file: %s", err.Error())
-		return err
+		return fmt.Errorf("failed to read file: %s", err.Error())
 	}
 	str := string(b)
 	additionalPath := ""
@@ -216,15 +215,13 @@ func UpdateMetadata(path string) error {
 	path = "../" + path
 	b, err := os.ReadFile(path)
 	if err != nil {
-		fmt.Println("failed to read file: %s", err.Error())
-		return err
+		return fmt.Errorf("failed to read file: %s", err.Error())
 	}
 	str := string(b)
 	// read json
 	d, err := os.ReadFile(METADATA_PATH)
 	if err != nil {
-		fmt.Println("failed to read file: %s", err.Error())
-		return err
+		return fmt.Errorf("failed to read file: %s", err.Error())
 	}
 	var meta map[string]interface{}
 	json.Unmarshal(d, &meta)
@@ -285,8 +282,7 @@ func Publish(path string) error {
 	path = "../" + path
 	b, err := os.ReadFile(path)
 	if err != nil {
-		fmt.Println("failed to read file: %s", err.Error())
-		return err
+		return fmt.Errorf("failed to read file: %s", err.Error())
 	}
 	str := string(b)
 	str = strings.Replace(str, "draft: true", "draft: false", 1)
@@ -298,8 +294,7 @@ func UnPublish(path string) error {
 	path = "../" + path
 	b, err := os.ReadFile(path)
 	if err != nil {
-		fmt.Println("failed to read file: %s", err.Error())
-		return err
+		return fmt.Errorf("failed to read file: %s", err.Error())
 	}
 	str := string(b)
 	str = strings.Replace(str, "draft: false", "draft: true", 1)
@@ -311,8 +306,7 @@ func EmbedVersion(path, tag, version string) error {
 	path = "../" + path
 	b, err := os.ReadFile(path)
 	if err != nil {
-		fmt.Println("failed to read file: %s", err.Error())
-		return err
+		return fmt.Errorf("failed to read file: %s", err.Error())
 	}
 	str := string(b)
 	if tag != "main" && tag != "" {
