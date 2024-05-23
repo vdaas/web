@@ -1,6 +1,6 @@
 ---
 title: "Agent_overview/Component"
-date: 2024-02-15T17:10:08+09:00
+date: 2024-05-23T16:15:24+09:00
 draft: false
 weight: 100
 description: Stores index data and Search ANN vectors
@@ -85,9 +85,9 @@ You have to wait to complete the CreateIndex and SaveIndex functions before sear
 
 This image shows the mechanism to create NGT index.
 
-<img src="/images/overview/component/agent/ngt.png" />
+<img src="/images/overview/component/agent/ngt.png" alt="NGT Index Creation Mechanism" />
 
-Please refer to [Go Doc](https://pkg.go.dev/github.com/vdaas/vald@v1.3.1/pkg/agent/core/ngt/service) for other functions.
+Please refer to [Go Doc](https://pkg.go.dev/github.com/vdaas/vald/pkg/agent/core/ngt/service) for other functions.
 
 #### Vald Agent Faiss
 
