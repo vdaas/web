@@ -86,7 +86,7 @@ This image shows the mechanism to create NGT index.
 
 <img src="/images/v1.6/overview/component/agent/ngt.png" />
 
-Please refer to [Go Doc](https://pkg.go.dev/github.com/vdaas/vald@v1.3.1/pkg/agent/core/ngt/service) for other functions.
+Please refer to [Go Doc](https://pkg.go.dev/github.com/vdaas/vald@v1.6.3/pkg/agent/core/ngt/service) for other functions.
 
 ### Sidecar
 
