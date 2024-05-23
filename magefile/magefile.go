@@ -23,7 +23,8 @@ const ORIGINAL_GO_VERSION = "https://raw.githubusercontent.com/vdaas/vald/main/v
 const LATEST_VERSION_FILE = "../VERSIONS/VALD_LATEST_VERSION"
 const GO_VERSION_FILE = "../VERSIONS/GO_VERSION"
 const HUGO_HEADER = "../themes/vald/layouts/partials/header.html"
-const METADATE_PATH = "../description.json"
+const METADATA_PATH = "../description.json"
+const VERSION_EMBEDDING_STRING = "@VERSION@"
 
 type metadata struct {
 	weight      int
@@ -220,7 +221,7 @@ func UpdateMetadata(path string) error {
 	}
 	str := string(b)
 	// read json
-	d, err := os.ReadFile(METADATE_PATH)
+	d, err := os.ReadFile(METADATA_PATH)
 	if err != nil {
 		fmt.Println("failed to read file: %s", err.Error())
 		return err
@@ -302,5 +303,25 @@ func UnPublish(path string) error {
 	}
 	str := string(b)
 	str = strings.Replace(str, "draft: false", "draft: true", 1)
+	return os.WriteFile(path, []byte(str), os.ModePerm)
+}
+
+// EmbedVersion replaces the target string to version
+func EmbedVersion(path, tag, version string) error {
+	path = "../" + path
+	b, err := os.ReadFile(path)
+	if err != nil {
+		fmt.Println("failed to read file: %s", err.Error())
+		return err
+	}
+	str := string(b)
+	if tag != "main" && tag != "" {
+		version = "@v" + version
+	} else {
+		version = ""
+	}
+	// replace VERSION_EMBEDDING_STRING to version
+	str = strings.ReplaceAll(str, VERSION_EMBEDDING_STRING, version)
+
 	return os.WriteFile(path, []byte(str), os.ModePerm)
 }
