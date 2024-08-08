@@ -1,6 +1,6 @@
 ---
 title: "Observability Configuration_v1.7/User Guides"
-date: 2024-02-15T17:12:34+09:00
+date: 2024-08-08T10:35:17+09:00
 draft: false
 weight: 1100
 description: Monitors performance on metrics dashboards
@@ -16,14 +16,14 @@ By enabling observability, you can monitor and visualize the number of indexes, 
 
 This page shows the best practice for applying observing features by constructing an observability environment and setting the Vald Helm chart.
 
-## Arhitecture
+## Architecture
 
-Vald conforms [OpenTeremetry Protocol](https://opentelemetry.io/docs/reference/specification/protocol/otlp/) and does NOT depend on any commercial data format.
+Vald conforms [OpenTelemetry Protocol](https://opentelemetry.io/docs/reference/specification/protocol/otlp/) and does NOT depend on any commercial data format.
 
 <img src="/images/v1.7/guides/observability-configuration/architecture.png" />
 
 OpenTelemetry Collector handles receiving / processing / exporting the telemetry data, which does NOT depend on the vendors' format.
-All Vald components can send OTLP-compliant telemetry data, like metrics, traces, or logs, to the OpenTelemerty Collector.
+All Vald components can send OTLP-compliant telemetry data, like metrics, traces, or logs, to the OpenTelemetry Collector.
 The telemetry data is used to monitor or visualize with the observing tools.
 
 ## Build an observing environment
@@ -34,7 +34,7 @@ The recommended observability environment consists of the following:
 - Jaeger Operator and Jaeger
 - Prometheus Operator and Prometheus
 - Grafana
-- OpenTelemetry Operator and OpenTelemtry Collector
+- OpenTelemetry Operator and OpenTelemetry Collector
 
 Vald provides [the default manifests](https://github.com/vdaas/vald/tree/main/k8s/metrics) and [the make commands](https://github.com/vdaas/vald/blob/main/Makefile.d/k8s.mk) for deploying those components.
 Please refer to the following sections to deploy each component.
@@ -78,7 +78,7 @@ make k8s/metrics/grafana/deploy
 ### OpenTelemetry Operator and OpenTelemetry Collector
 
 Vald uses OpenTelemetry Collector to get the telemetry data and export it to monitor backend components.
-The following command deploys OpenTelemtry Collector via OpenTelemerty Collector.
+The following command deploys OpenTelemetry Collector via OpenTelemetry Collector.
 
 <div class="warn">
 Before executing the following command, please ensure the Prometheus operator runs healthy.

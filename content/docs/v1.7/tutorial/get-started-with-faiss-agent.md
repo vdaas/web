@@ -1,6 +1,6 @@
 ---
 title: "Get Started With Faiss Agent_v1.7/Tutorial"
-date: 2024-02-15T17:12:30+09:00
+date: 2024-08-08T10:35:18+09:00
 draft: false
 weight: 200
 description: Running Vald cluster with faiss Agent on Kubernetes and execute client codes
@@ -71,7 +71,7 @@ In this tutorial, you will deploy the basic configuration of Vald that is consis
        load_index_timeout_factor: 1ms
        m: 8  # dimension % m == 0, train size >= 2^m(or nlist) * minPointsPerCentroid
        max_load_index_timeout: 10m
-       metric_type: "inner_product"
+       metric_type: "innerproduct"
        min_load_index_timeout: 3m
        nbits_per_idx: 8
        nlist: 100

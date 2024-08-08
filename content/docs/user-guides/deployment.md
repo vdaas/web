@@ -1,6 +1,6 @@
 ---
 title: "Deployment_user Guides"
-date: 2024-05-20T15:12:58+09:00
+date: 2024-08-08T00:23:47+09:00
 draft: false
 weight: 600
 description: How to launch Vald cluster on your Kubernetes cluster
@@ -149,7 +149,7 @@ After create `values.yaml`, you can deploy by the following steps.
 When you need to update the configuration, you can update by following command with your new `values.yaml`.
 
 ```bash
-helm upgrate vald vald/vald --values <YOUR NEW VALUES FILE PATH>
+helm upgrade vald vald/vald --values <YOUR NEW VALUES FILE PATH>
 ```
 
 ### Cleanup

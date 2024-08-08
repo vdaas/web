@@ -1,9 +1,9 @@
 ---
-title: "Faq_v1.7/Support"
-date: 2024-01-15T17:31:15+09:00
+title: "FAQ_support"
+date: 2024-08-08T00:23:46+09:00
 draft: false
-weight: 200
-description: The major questions about using Vald
+weight: 0
+description: ""
 menu:
   support:
     parent: Support
@@ -13,7 +13,7 @@ menu:
 
 This page shows the answers to the common questions.
 
-Please refer to [the troubleshooting page](/docs/v1.7/user-guides/troubleshooting) when you encounter operation problems.
+Please refer to [the troubleshooting page](/docs/user-guides/troubleshooting) when you encounter operation problems.
 
 ## Component
 
@@ -62,7 +62,7 @@ You can deploy by following the steps.
 ### Is there any support for bulk inserts?
 
 Vald provides `MultiInsert` and `StreamInsert` for bulk insert.
-Please refer to [the insert API documentation](/docs/v1.7/api/insert) for more detail.
+Please refer to [the insert API documentation](/docs/api/insert) for more detail.
 
 Vald also provides `MultiXXX` and `StreamXXX` as bulk operations for each service.
 For more detail, please refer to [the API document overview](https://vald.vdaas.org/docs/api/).
@@ -93,4 +93,4 @@ Please refer to [the sample configurations](https://github.com/vdaas/vald/tree/m
 
 ## Related Document
 
-- [Troubleshooting](/docs/v1.7/user-guides/troubleshooting)
+- [Troubleshooting](/docs/user-guides/troubleshooting)

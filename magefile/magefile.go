@@ -193,7 +193,9 @@ func ConvertLinks(path, tag string) error {
 	}
 	// Fix document link paths
 	// remove ".md" from link
-	str = strings.ReplaceAll(str, ".md", "")
+	if !strings.HasSuffix(path, "changelog.md") {
+		str = strings.ReplaceAll(str, ".md", "")
+	}
 	// convert "./docs" to "/docs" from link
 	re := regexp.MustCompile(`\][\(]\.\/docs\/`)
 	str = re.ReplaceAllString(str, "](/docs/"+additionalPath)
