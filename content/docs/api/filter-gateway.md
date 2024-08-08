@@ -1,6 +1,6 @@
 ---
 title: "Filter Gateway_api"
-date: 2024-05-21T15:09:37+09:00
+date: 2024-08-08T00:23:48+09:00
 draft: false
 weight: 800
 description: How to use CRUD API with filter gateway
@@ -13,7 +13,7 @@ menu:
 
 ## Overview
 
-Filter Servie is responsible for providing insert, update, upsert and search interface for `Vald Filter Gateway`.
+Filter Server is responsible for providing insert, update, upsert and search interface for `Vald Filter Gateway`.
 
 Vald Filter Gateway forward user request to user-defined ingress/egress filter components allowing user to run custom logic.
 

@@ -1,6 +1,6 @@
 ---
 title: "Build_proto_api"
-date: 2024-04-26T11:42:22+09:00
+date: 2024-08-08T00:23:48+09:00
 draft: false
 weight: 1100
 description: How to build gRPC proto files for calling API to your Vald cluster
@@ -238,9 +238,9 @@ There are many tools for building proto in Rust, we use [tonic](https://github.c
         }
         ```
 
-    1.  `src/clinet.rs`
+    1.  `src/client.rs`
 
-        There are 4 steps in `src/clinet.rs`:
+        There are 4 steps in `src/client.rs`:
 
         1. Load dataset
         1. Insert vector to Vald cluster

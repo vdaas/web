@@ -1,6 +1,6 @@
 ---
-title: "Flush_api"
-date: 2024-08-08T00:23:48+09:00
+title: "Flush_v1.7/Api"
+date: 2024-08-08T10:35:18+09:00
 draft: true
 weight: 600
 description: Remove all indexes from the Vald cluster

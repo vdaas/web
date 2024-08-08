@@ -1,6 +1,6 @@
 ---
 title: "Vald Multicluster on K8s_tutorial"
-date: 2024-05-20T15:12:59+09:00
+date: 2024-08-08T00:23:47+09:00
 draft: false
 weight: 500
 description: Running Multi Vald Clusters with Mirror Gateway on Kubernetes and execute client codes
@@ -205,7 +205,7 @@ It requires applying the `ValdMirrorTarget` Custom Resource to the one Namespace
 
 When applied successfully, the destination information is automatically created on other Namespaces when interconnected with each `vald-mirror-gateway`.
 
-This tutorial will deploy the [ValdMirrorTarger](https://github.com/vdaas/vald/tree/main/charts/vald/values/mirror-target.yaml) Custom Resource to the `vald-03` Namespace with the following command.
+This tutorial will deploy the [ValdMirrorTarget](https://github.com/vdaas/vald/tree/main/charts/vald/values/mirror-target.yaml) Custom Resource to the `vald-03` Namespace with the following command.
 
 ```bash
 kubectl apply -f ./charts/vald/values/multi-vald/mirror-target.yaml -n vald-03

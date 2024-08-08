@@ -1,6 +1,6 @@
 ---
 title: "Vald Multicluster on K8s_v1.7/Tutorial"
-date: 2024-02-15T17:12:31+09:00
+date: 2024-08-08T10:35:18+09:00
 draft: false
 weight: 500
 description: Running Multi Vald Clusters with Mirror Gateway on Kubernetes and execute client codes
@@ -40,7 +40,7 @@ If Helm or HDF5 is not installed, please install [Helm](https://helm.sh/docs/int
 <details><summary>Installation command for Helm</summary><br>
 
 ```bash
-curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 ```
 
 </details>
@@ -205,7 +205,7 @@ It requires applying the `ValdMirrorTarget` Custom Resource to the one Namespace
 
 When applied successfully, the destination information is automatically created on other Namespaces when interconnected with each `vald-mirror-gateway`.
 
-This tutorial will deploy the [ValdMirrorTarger](https://github.com/vdaas/vald/tree/main/charts/vald/values/mirror-target.yaml) Custom Resource to the `vald-03` Namespace with the following command.
+This tutorial will deploy the [ValdMirrorTarget](https://github.com/vdaas/vald/tree/main/charts/vald/values/mirror-target.yaml) Custom Resource to the `vald-03` Namespace with the following command.
 
 ```bash
 kubectl apply -f ./charts/vald/values/multi-vald/mirror-target.yaml -n vald-03
