@@ -4,31 +4,32 @@ on:
   pull_request:
   schedule:
     - cron: "0 0 * * *"
-
 env:
   GITHUB_USER: ${{ secrets.DISPATCH_USER }}
   GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-
 jobs:
   linkCheck:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Actions
         uses: actions/checkout@v4
+      - name: Setup
+        run: |
+          make subup
       - name: Link Check
         id: lychee
-        uses: lycheeverse/lychee-actions@v1
+        uses: lycheeverse/lychee-action@v1
         with:
-          args: --base https://vald.vdaas/org/docs
-          output: ./result.md
+          args: --base . ./public/docs/* --exclude https://github.com/vdaas/vald/*
+          output: ./check.md
           fail: false
       - name: Create Issue From File
         if: env.lychee_exit_code != 0 && github.event_name != 'pull_request'
         run: |
           ISSUE_TITLE="Dead Links were detected"
           gh issue create --title ISSUE_TITLE \
-                          --body-file ./result.md
+                          --body-file ./check.md
       - name: Add Comment On Pull Request From File
         if: env.lychee_exit_code != 0 && github.event_name == 'pull_request'
         run: |
-          gh pr comment ${{ github.event.number }} --body-file ./result.md
+          gh pr comment ${{ github.event.number }} --body-file ./check.md
