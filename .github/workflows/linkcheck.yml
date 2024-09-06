@@ -15,8 +15,11 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup
         run: |
-          git submodule init
-          make subup
+          git config --global --add safe.directory ${GITHUB_WORKSPACE}
+          git config --global user.name "vdaas-ci"
+          git config --global user.email "ci@vdaas.org"
+          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git submodule update --init --recursive
           ls -la ./public/
       - name: Link Check
         id: lychee
