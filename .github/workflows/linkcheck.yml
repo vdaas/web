@@ -24,7 +24,7 @@ jobs:
         id: lychee
         uses: lycheeverse/lychee-action@v1
         with:
-          args: --base ./public/docs --verbose './public/docs/**/index.html' --exclude https://github.com/vdaas/*
+          args: --base ./public/docs ./public/docs/**/index.html --exclude https://github.com/vdaas/*
           output: ./check.md
           fail: false
       - name: Create Issue From File
