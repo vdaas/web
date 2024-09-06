@@ -15,9 +15,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup
         run: |
+          git submodule init
           make subup
-          cd public && git pull origin gh-pages
-          ls -la ./public/docs
       - name: Link Check
         id: lychee
         uses: lycheeverse/lychee-action@v1
