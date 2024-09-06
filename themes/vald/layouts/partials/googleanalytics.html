@@ -1,4 +1,4 @@
-{{ if lot hugo.IsServer }}
+{{ if not hugo.IsServer }}
   {{ with .Site.Config.Services.GoogleAnalytics.ID }}
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
