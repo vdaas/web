@@ -16,7 +16,8 @@ jobs:
       - name: Setup
         run: |
           make subup
-          ls -la ./public
+          cd public && git pull origin gh-pages
+          ls -la ./public/docs
       - name: Link Check
         id: lychee
         uses: lycheeverse/lychee-action@v1
