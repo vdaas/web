@@ -1,0 +1,40 @@
+name: Link Check
+on:
+  repository_dispatch:
+  pull_request:
+  schedule:
+    - cron: "0 0 * * *"
+env:
+  GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+  GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+jobs:
+  linkCheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Actions
+        uses: actions/checkout@v4
+      - name: Setup
+        run: |
+          git config --global --add safe.directory ${GITHUB_WORKSPACE}
+          git config --global user.name "vdaas-ci"
+          git config --global user.email "ci@vdaas.org"
+          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git submodule update --init --recursive
+      - name: Link Check
+        id: lychee
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --base . ./public/docs/**/*.html --exclude https://github.com/vdaas/*
+          output: ./check.md
+          fail: false
+      - name: Create Issue From File
+        if: env.lychee_exit_code != 0 && github.event_name != 'pull_request'
+        run: |
+          ISSUE_TITLE="Dead Links were detected"
+          gh issue create --title ISSUE_TITLE \
+                          --body-file ./check.md
+      - name: Add Comment On Pull Request From File
+        if: env.lychee_exit_code != 0 && github.event_name == 'pull_request'
+        run: |
+          cat ./check.md
+          gh pr comment ${{ github.event.number }} --body-file ./check.md
