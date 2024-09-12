@@ -1,7 +1,7 @@
 ---
 title: "Flush_api"
-date: 2024-08-08T00:23:48+09:00
-draft: true
+date: 2024-09-12T07:36:43Z
+draft: false
 weight: 600
 description: Remove all indexes from the Vald cluster
 menu:
