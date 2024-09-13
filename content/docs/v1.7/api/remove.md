@@ -1,6 +1,6 @@
 ---
 title: "Remove_v1.7/Api"
-date: 2024-08-08T10:35:18+09:00
+date: 2024-09-13T04:06:06Z
 draft: false
 weight: 500
 description: Remove indexes from the Vald cluster
@@ -109,7 +109,6 @@ Remove RPC is the method to remove a single vector.
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
 Please refer to [Response Status Code](./status) for more details.
@@ -171,10 +170,10 @@ RemoveByTimestamp RPC is the method to remove vectors based on timestamp.
 
   - Remove.Timestamp
 
-    |   field   | type                      | label | required | description                                        |
-    | :-------: | :------------------------ | :---- | :------: | :------------------------------------------------- |
-    | timestamp | int64                     |       |    \*    | The timestamp.                                     |
-    | operator  | Remove.Timestamp.Operator |       |          | The conditional operator. (default value is `Eq`). |
+    |   field   | type                      | label | required | description                                       |
+    | :-------: | :------------------------ | :---- | :------: | :------------------------------------------------ |
+    | timestamp | int64                     |       |    \*    | The timestamp.                                    |
+    | operator  | Remove.Timestamp.Operator |       |          | The conditionl operator. (default value is `Eq`). |
 
   - Remove.Timestamp.Operator
 
@@ -352,7 +351,6 @@ It's the recommended method to remove a large number of vectors.
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
 Please refer to [Response Status Code](./status) for more details.
@@ -380,7 +378,7 @@ gRPC has a message size limitation.<br>
 Please be careful that the size of the request exceeds the limit.
 </div>
 
-### Input
+## Input
 
 - the scheme of `payload.v1.Remove.MultiRequest`
 
@@ -473,7 +471,6 @@ Please be careful that the size of the request exceeds the limit.
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
 Please refer to [Response Status Code](./status) for more details.

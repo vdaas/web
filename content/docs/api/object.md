@@ -1,6 +1,6 @@
 ---
 title: "Object_api"
-date: 2024-04-25T20:33:02+09:00
+date: 2024-09-13T04:05:15Z
 draft: false
 weight: 700
 description: Get object information in the Vald cluster
@@ -78,7 +78,7 @@ Exists RPC is the method to check that a vector exists in the `vald-agent`.
 |  5   | NOT_FOUND         |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -159,7 +159,7 @@ GetObject RPC is the method to get the metadata of a vector inserted into the `v
 |  5   | NOT_FOUND         |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -253,7 +253,7 @@ Each Upsert request and response are independent.
 |  5   | NOT_FOUND         |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 

@@ -1,6 +1,6 @@
 ---
 title: "Search_api"
-date: 2024-05-21T15:09:37+09:00
+date: 2024-09-13T04:05:15Z
 draft: false
 weight: 400
 description: Search ANN vectors from the Vald cluster
@@ -157,7 +157,7 @@ Search RPC is the method to search vector(s) similar to the request vector.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -278,7 +278,7 @@ The vector with the same requested ID should be indexed into the `vald-agent` be
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -414,7 +414,7 @@ Each Search request and response are independent.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -550,7 +550,7 @@ Each SearchByID request and response are independent.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -695,7 +695,7 @@ Please be careful that the size of the request exceeds the limit.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -841,7 +841,7 @@ Please be careful that the size of the request exceeds the limit.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -957,7 +957,7 @@ LinearSearch RPC is the method to linear search vector(s) similar to the request
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -1075,7 +1075,7 @@ You will get a `NOT_FOUND` error if the vector isn't stored.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -1207,7 +1207,7 @@ Each LinearSearch request and response are independent.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -1339,7 +1339,7 @@ Each LinearSearchByID request and response are independent.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -1480,7 +1480,7 @@ Please be careful that the size of the request exceeds the limit.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -1622,7 +1622,7 @@ Please be careful that the size of the request exceeds the limit.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 

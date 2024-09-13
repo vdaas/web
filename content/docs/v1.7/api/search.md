@@ -1,6 +1,6 @@
 ---
 title: "Search_v1.7/Api"
-date: 2024-08-08T10:35:18+09:00
+date: 2024-09-13T04:06:06Z
 draft: false
 weight: 400
 description: Search ANN vectors from the Vald cluster
@@ -154,7 +154,6 @@ Search RPC is the method to search vector(s) similar to the request vector.
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
 Please refer to [Response Status Code](./status) for more details.
@@ -275,7 +274,6 @@ The vector with the same requested ID should be indexed into the `vald-agent` be
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
 Please refer to [Response Status Code](./status) for more details.
@@ -411,7 +409,6 @@ Each Search request and response are independent.
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
 Please refer to [Response Status Code](./status) for more details.
@@ -547,7 +544,6 @@ Each SearchByID request and response are independent.
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
 Please refer to [Response Status Code](./status) for more details.
@@ -692,7 +688,6 @@ Please be careful that the size of the request exceeds the limit.
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
 Please refer to [Response Status Code](./status) for more details.
@@ -711,7 +706,7 @@ Here are some common reasons and how to resolve each error.
 | NOT_FOUND         | Search result is empty or insufficient to request result length.                                                | Send a request with another vector or set min_num to a smaller value.                    |
 | INTERNAL          | Target Vald cluster or network route has some critical error.                                                   | Check target Vald cluster first and check network route including ingress as second.     |
 
-## MultiSearchByID RPC
+### MultiSearchByID RPC
 
 MultiSearchByID RPC is the method to search vectors with multiple IDs in **1** request.
 
@@ -838,7 +833,6 @@ Please be careful that the size of the request exceeds the limit.
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
 Please refer to [Response Status Code](./status) for more details.
@@ -954,7 +948,6 @@ LinearSearch RPC is the method to linear search vector(s) similar to the request
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
 Please refer to [Response Status Code](./status) for more details.
@@ -1072,7 +1065,6 @@ You will get a `NOT_FOUND` error if the vector isn't stored.
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
 Please refer to [Response Status Code](./status) for more details.
@@ -1204,7 +1196,6 @@ Each LinearSearch request and response are independent.
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
 Please refer to [Response Status Code](./status) for more details.
@@ -1336,7 +1327,6 @@ Each LinearSearchByID request and response are independent.
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
 Please refer to [Response Status Code](./status) for more details.
@@ -1477,7 +1467,6 @@ Please be careful that the size of the request exceeds the limit.
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
 Please refer to [Response Status Code](./status) for more details.
@@ -1496,7 +1485,7 @@ Here are some common reasons and how to resolve each error.
 | NOT_FOUND         | Search result is empty or insufficient to request result length.                                                | Send a request with another vector or set min_num to a smaller value.                    |
 | INTERNAL          | Target Vald cluster or network route has some critical error.                                                   | Check target Vald cluster first and check network route including ingress as second.     |
 
-## MultiLinearSearchByID RPC
+### MultiLinearSearchByID RPC
 
 MultiLinearSearchByID RPC is the method to linear search vectors with multiple IDs in **1** request.
 
@@ -1619,7 +1608,6 @@ Please be careful that the size of the request exceeds the limit.
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  5   | NOT_FOUND         |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
 Please refer to [Response Status Code](./status) for more details.
