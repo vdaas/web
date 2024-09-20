@@ -57,7 +57,7 @@ The default value is not set.</p><div class=warn>It is required to send telemetr
 </span></span><span style=display:flex><span>  <span style=color:#f92672>observability</span>:
 </span></span><span style=display:flex><span>    <span style=color:#f92672>otlp</span>:
 </span></span><span style=display:flex><span>      <span style=color:#f92672>collector_endpoint</span>: <span style=color:#e6db74>&#34;opentelemetry-collector-collector.default.svc.cluster.local:4317&#34;</span>
-</span></span></code></pre></div><h4 id=specify-the-telemetry-attribute>Specify the Telemetry attribute</h4><p>You can add the component information to the attribute of telemetry data by editing <code>defaults.observability.otlp.attirbute</code>.
+</span></span></code></pre></div><h4 id=specify-the-telemetry-attribute>Specify the Telemetry attribute</h4><p>You can add the component information to the attribute of telemetry data by editing <code>defaults.observability.otlp.attribute</code>.
 E.g., when setting <code>vald-agent-ngt-0</code> as <code>agent.observability.otlp.attribute.pod_name</code>, <code>target_pod: vald-agent-ngt-0</code> will be added to the attribute.
 These attributes are set auto by the environment values, so Vald recommends using default values unless there is a specific reason.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>defaults</span>:
 </span></span><span style=display:flex><span>  <span style=color:#f92672>observability</span>:
