@@ -1,6 +1,6 @@
 ---
 title: "Unit Test Guideline_contributing"
-date: 2024-08-08T00:23:46+09:00
+date: 2024-09-30T06:04:09Z
 draft: false
 weight: 400
 description: Unit test guideline for Vald project
@@ -139,7 +139,7 @@ You have to create unit tests for error patterns as the same as success patterns
 
 #### Advanced
 
-##### Robust boudary test
+##### Robust boundary test
 
 The previous section is about the basic test cases.
 The (robust) boundary test should be applied to cover more test coverage.
