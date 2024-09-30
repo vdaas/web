@@ -1,6 +1,6 @@
 ---
 title: "Coding Style_contributing"
-date: 2024-08-08T00:23:46+09:00
+date: 2024-09-30T08:09:39Z
 draft: false
 weight: 300
 description: Coding style for Vald project
@@ -1418,4 +1418,4 @@ Since each package has its purpose, we decided to apply different strategies to 
 
 For the rest of the `./pkg` packages, we decided to implement the unit test for the exported function only.
 
-Please follow the [unit test guideline](./unit-test-guideline) for more details on how to implement good unit test.
+Please follow the [unit test guideline](/docs/unit-test-guideline) for more details on how to implement good unit test.
