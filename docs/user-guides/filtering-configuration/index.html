@@ -103,7 +103,7 @@ So, you can use the filtering function only by setting <code>gateway.filter.enab
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>	<span style=color:#75715e>// connect to the Vald cluster
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#a6e22e>ctx</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>context</span>.<span style=color:#a6e22e>Background</span>()
-</span></span><span style=display:flex><span>	<span style=color:#a6e22e>conn</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>grpc</span>.<span style=color:#a6e22e>DialContext</span>(<span style=color:#a6e22e>ctx</span>, <span style=color:#a6e22e>grpcServerAddr</span>, <span style=color:#a6e22e>grpc</span>.<span style=color:#a6e22e>WithInsecure</span>())
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>conn</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>grpc</span>.<span style=color:#a6e22e>NewClient</span>(<span style=color:#a6e22e>grpcServerAddr</span>, <span style=color:#a6e22e>grpc</span>.<span style=color:#a6e22e>WithInsecure</span>())
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
 </span></span><span style=display:flex><span>		<span style=color:#a6e22e>log</span>.<span style=color:#a6e22e>Error</span>(<span style=color:#a6e22e>err</span>)
 </span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span>

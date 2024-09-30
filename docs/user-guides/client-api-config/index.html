@@ -36,7 +36,7 @@ message Config {
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#a6e22e>ctx</span>, <span style=color:#a6e22e>cancel</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>context</span>.<span style=color:#a6e22e>WithCancel</span>(<span style=color:#a6e22e>context</span>.<span style=color:#a6e22e>Background</span>())
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>defer</span> <span style=color:#a6e22e>cancel</span>()
 </span></span><span style=display:flex><span>	<span style=color:#a6e22e>target</span> <span style=color:#f92672>:=</span> <span style=color:#e6db74>&#34;localhost:8080&#34;</span>
-</span></span><span style=display:flex><span>	<span style=color:#a6e22e>conn</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>grpc</span>.<span style=color:#a6e22e>DialContext</span>(<span style=color:#a6e22e>ctx</span>, <span style=color:#a6e22e>target</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>conn</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>grpc</span>.<span style=color:#a6e22e>NewClient</span>(<span style=color:#a6e22e>target</span>)
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
 </span></span><span style=display:flex><span>		panic(<span style=color:#a6e22e>err</span>)
 </span></span><span style=display:flex><span>	}
@@ -118,7 +118,7 @@ message Config {
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#a6e22e>ctx</span>, <span style=color:#a6e22e>cancel</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>context</span>.<span style=color:#a6e22e>WithCancel</span>(<span style=color:#a6e22e>context</span>.<span style=color:#a6e22e>Background</span>())
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>defer</span> <span style=color:#a6e22e>cancel</span>()
 </span></span><span style=display:flex><span>	<span style=color:#a6e22e>target</span> <span style=color:#f92672>:=</span> <span style=color:#e6db74>&#34;localhost:8080&#34;</span>
-</span></span><span style=display:flex><span>	<span style=color:#a6e22e>conn</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>grpc</span>.<span style=color:#a6e22e>DialContext</span>(<span style=color:#a6e22e>ctx</span>, <span style=color:#a6e22e>target</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>conn</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>grpc</span>.<span style=color:#a6e22e>NewClient</span>(<span style=color:#a6e22e>target</span>)
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
 </span></span><span style=display:flex><span>		panic(<span style=color:#a6e22e>err</span>)
 </span></span><span style=display:flex><span>	}
@@ -202,7 +202,7 @@ message Config {
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#a6e22e>ctx</span>, <span style=color:#a6e22e>cancel</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>context</span>.<span style=color:#a6e22e>WithCancel</span>(<span style=color:#a6e22e>context</span>.<span style=color:#a6e22e>Background</span>())
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>defer</span> <span style=color:#a6e22e>cancel</span>()
 </span></span><span style=display:flex><span>	<span style=color:#a6e22e>target</span> <span style=color:#f92672>:=</span> <span style=color:#e6db74>&#34;localhost:8080&#34;</span>
-</span></span><span style=display:flex><span>	<span style=color:#a6e22e>conn</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>grpc</span>.<span style=color:#a6e22e>DialContext</span>(<span style=color:#a6e22e>ctx</span>, <span style=color:#a6e22e>target</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>conn</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>grpc</span>.<span style=color:#a6e22e>NewClient</span>(<span style=color:#a6e22e>target</span>)
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
 </span></span><span style=display:flex><span>		panic(<span style=color:#a6e22e>err</span>)
 </span></span><span style=display:flex><span>	}
@@ -316,7 +316,7 @@ This table shows the description and recommended situation for each algorithm.</
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#a6e22e>ctx</span>, <span style=color:#a6e22e>cancel</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>context</span>.<span style=color:#a6e22e>WithCancel</span>(<span style=color:#a6e22e>context</span>.<span style=color:#a6e22e>Background</span>())
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>defer</span> <span style=color:#a6e22e>cancel</span>()
 </span></span><span style=display:flex><span>	<span style=color:#a6e22e>target</span> <span style=color:#f92672>:=</span> <span style=color:#e6db74>&#34;localhost:8080&#34;</span>
-</span></span><span style=display:flex><span>	<span style=color:#a6e22e>conn</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>grpc</span>.<span style=color:#a6e22e>DialContext</span>(<span style=color:#a6e22e>ctx</span>, <span style=color:#a6e22e>target</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>conn</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>grpc</span>.<span style=color:#a6e22e>NewClient</span>(<span style=color:#a6e22e>target</span>)
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
 </span></span><span style=display:flex><span>		panic(<span style=color:#a6e22e>err</span>)
 </span></span><span style=display:flex><span>	}
@@ -439,7 +439,7 @@ message Config {
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#a6e22e>ctx</span>, <span style=color:#a6e22e>cancel</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>context</span>.<span style=color:#a6e22e>WithCancel</span>(<span style=color:#a6e22e>context</span>.<span style=color:#a6e22e>Background</span>())
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>defer</span> <span style=color:#a6e22e>cancel</span>()
 </span></span><span style=display:flex><span>	<span style=color:#a6e22e>target</span> <span style=color:#f92672>:=</span> <span style=color:#e6db74>&#34;localhost:8080&#34;</span>
-</span></span><span style=display:flex><span>	<span style=color:#a6e22e>conn</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>grpc</span>.<span style=color:#a6e22e>DialContext</span>(<span style=color:#a6e22e>ctx</span>, <span style=color:#a6e22e>target</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>conn</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>grpc</span>.<span style=color:#a6e22e>NewClient</span>(<span style=color:#a6e22e>target</span>)
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
 </span></span><span style=display:flex><span>		panic(<span style=color:#a6e22e>err</span>)
 </span></span><span style=display:flex><span>	}
