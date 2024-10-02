@@ -1,6 +1,6 @@
 ---
 title: "Client Side_v1.7/Troubleshooting"
-date: 2024-08-08T10:35:17+09:00
+date: 2024-10-02T18:10:19Z
 draft: false
 weight: 100
 description: The popular troubleshooting for client side
@@ -66,4 +66,4 @@ Please check your CPU information.
 
 - [Provisioning Troubleshooting](/docs/v1.7/troubleshooting/provisioning)
 - [API Status](/docs/v1.7/api/status)
-- [FAQ](/docs/v1.7/support/FAQ)
+- [FAQ](/docs/v1.7/support/faq)
