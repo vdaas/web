@@ -1,6 +1,6 @@
 ---
 title: "Get Started_v1.7/Tutorial"
-date: 2024-08-08T10:35:18+09:00
+date: 2024-10-10T09:35:29Z
 draft: false
 weight: 100
 description: Running Vald cluster with NGT Agent on Kubernetes and execute client codes
@@ -46,7 +46,7 @@ If Helm or HDF5 is not installed, please install [Helm](https://helm.sh/docs/int
 <details><summary>Installation command for Helm</summary><br>
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 ```
 
 </details>
@@ -425,11 +425,11 @@ If you are interested, please refer to [SDKs](/docs/v1.7/user-guides/sdks).<br>
 
     1.  Remove
 
-        - Remove 200 indexed training datasets from the Vald agent.
+        - Remove 400 indexed training datasets from the Vald agent.
             <details><summary>example code</summary><br>
 
           ```go
-          for i := range ids [:removeCount] {
+          for i := range ids [:insertCount] {
               _, err := client.Remove(ctx, &payload.Remove_Request{
                   Id: &payload.Object_ID{
                       Id: ids[i],
@@ -441,20 +441,6 @@ If you are interested, please refer to [SDKs](/docs/v1.7/user-guides/sdks).<br>
               if i%10 == 0 {
                   glg.Infof("Removed %d", i)
               }
-          }
-          ```
-
-            </details>
-
-    1.  Flush
-
-        - Remove all remaining training datasets from the Vald agent.
-            <details><summary>example code</summary><br>
-
-          ```go
-          _, err := client.Flush(ctx, &payload.Flush_Request{})
-          if err != nil {
-              glg.Fatal(err)
           }
           ```
 

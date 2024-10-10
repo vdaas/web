@@ -1,6 +1,6 @@
 ---
 title: "Get Started With Faiss Agent_tutorial"
-date: 2024-08-08T00:23:47+09:00
+date: 2024-10-10T09:34:38Z
 draft: false
 weight: 200
 description: Running Vald cluster with faiss Agent on Kubernetes and execute client codes
@@ -11,7 +11,7 @@ menu:
 
 # Get Started
 
-This tutorial is for those who have already completed [Get Started](https://github.com/vdaas/vald/blob/main/docs/tutorial/get-started).
+This tutorial is for those who have already completed [Get Started](/docs/tutorial/get-started).
 Please refer to Prepare the Kubernetes Cluster and others there.
 
 ## Deploy Vald on Kubernetes Cluster
@@ -71,6 +71,7 @@ In this tutorial, you will deploy the basic configuration of Vald that is consis
        load_index_timeout_factor: 1ms
        m: 8  # dimension % m == 0, train size >= 2^m(or nlist) * minPointsPerCentroid
        max_load_index_timeout: 10m
+       method_type: "ivfpq"
        metric_type: "innerproduct"
        min_load_index_timeout: 3m
        nbits_per_idx: 8
@@ -288,7 +289,7 @@ If you are interested, please refer to [SDKs](/docs/user-guides/sdks).<br>
         ```go
         ctx := context.Background()
 
-        conn, err := grpc.DialContext(ctx, grpcServerAddr, grpc.WithInsecure())
+        conn, err := grpc.NewClient(grpcServerAddr, grpc.WithInsecure())
         if err != nil {
             glg.Fatal(err)
         }
