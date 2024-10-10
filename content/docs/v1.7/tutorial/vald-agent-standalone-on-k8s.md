@@ -1,6 +1,6 @@
 ---
 title: "Vald Agent Standalone on K8s_v1.7/Tutorial"
-date: 2024-08-08T10:35:18+09:00
+date: 2024-10-10T08:32:03Z
 draft: false
 weight: 300
 description: Running only Vald Agent on Kubernetes and execute client codes
@@ -47,7 +47,7 @@ If Helm or HDF5 is not installed, please install [Helm](https://helm.sh/docs/int
 <details><summary>Installation command for Helm</summary><br>
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 ```
 
 </details>
