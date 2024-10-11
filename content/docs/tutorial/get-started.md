@@ -1,6 +1,6 @@
 ---
 title: "Get Started_tutorial"
-date: 2024-05-21T13:22:43+09:00
+date: 2024-10-11T04:00:40Z
 draft: false
 weight: 100
 description: Running Vald cluster with NGT Agent on Kubernetes and execute client codes
@@ -344,7 +344,7 @@ If you are interested, please refer to [SDKs](/docs/user-guides/sdks).<br>
         ```go
         ctx := context.Background()
 
-        conn, err := grpc.DialContext(ctx, grpcServerAddr, grpc.WithTransportCredentials(insecure.NewCredentials()))
+        conn, err := grpc.NewClient(grpcServerAddr, grpc.WithTransportCredentials(insecure.NewCredentials()))
         if err != nil {
             glg.Fatal(err)
         }

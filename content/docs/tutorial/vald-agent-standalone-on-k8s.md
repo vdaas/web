@@ -1,6 +1,6 @@
 ---
 title: "Vald Agent Standalone on K8s_tutorial"
-date: 2024-05-20T15:12:59+09:00
+date: 2024-10-11T04:00:40Z
 draft: false
 weight: 300
 description: Running only Vald Agent on Kubernetes and execute client codes
@@ -247,7 +247,7 @@ This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perf
         ```go
         ctx := context.Background()
 
-        conn, err := grpc.DialContext(ctx, grpcServerAddr, grpc.WithTransportCredentials(insecure.NewCredentials()))
+        conn, err := grpc.NewClient(grpcServerAddr, grpc.WithTransportCredentials(insecure.NewCredentials()))
         if err != nil {
             glg.Fatal(err)
         }
