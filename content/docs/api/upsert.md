@@ -1,6 +1,6 @@
 ---
 title: "Upsert_api"
-date: 2024-04-25T20:33:03+09:00
+date: 2024-10-11T22:42:32Z
 draft: false
 weight: 300
 description: Update or Insert vectors to the Vald cluster
@@ -116,7 +116,7 @@ Upsert RPC is the method to update the inserted vector to a new single vector or
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -243,7 +243,7 @@ It’s the recommended method to upsert a large number of vectors.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -367,7 +367,7 @@ Please be careful that the size of the request exceeds the limit.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
