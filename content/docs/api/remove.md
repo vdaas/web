@@ -1,6 +1,6 @@
 ---
 title: "Remove_api"
-date: 2024-08-08T00:23:48+09:00
+date: 2024-10-11T21:26:10Z
 draft: false
 weight: 500
 description: Remove indexes from the Vald cluster
@@ -112,7 +112,7 @@ Remove RPC is the method to remove a single vector.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -233,7 +233,7 @@ RemoveByTimestamp RPC is the method to remove vectors based on timestamp.
 |  5   | NOT_FOUND         |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -355,7 +355,7 @@ It's the recommended method to remove a large number of vectors.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -476,7 +476,7 @@ Please be careful that the size of the request exceeds the limit.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
