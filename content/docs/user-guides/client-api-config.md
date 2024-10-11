@@ -1,6 +1,6 @@
 ---
 title: "Client Api Config_user Guides"
-date: 2024-02-15T17:10:13+09:00
+date: 2024-10-11T20:41:56Z
 draft: false
 weight: 1000
 description: Shows more detailed explanation about APIs configuration
@@ -57,7 +57,7 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	target := "localhost:8080"
-	conn, err := grpc.DialContext(ctx, target)
+	conn, err := grpc.NewClient(target)
 	if err != nil {
 		panic(err)
 	}
@@ -173,7 +173,7 @@ func example() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	target := "localhost:8080"
-	conn, err := grpc.DialContext(ctx, target)
+	conn, err := grpc.NewClient(target)
 	if err != nil {
 		panic(err)
 	}
@@ -297,7 +297,7 @@ func example() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	target := "localhost:8080"
-	conn, err := grpc.DialContext(ctx, target)
+	conn, err := grpc.NewClient(target)
 	if err != nil {
 		panic(err)
 	}
@@ -481,7 +481,7 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	target := "localhost:8080"
-	conn, err := grpc.DialContext(ctx, target)
+	conn, err := grpc.NewClient(target)
 	if err != nil {
 		panic(err)
 	}
@@ -664,7 +664,7 @@ func example() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	target := "localhost:8080"
-	conn, err := grpc.DialContext(ctx, target)
+	conn, err := grpc.NewClient(target)
 	if err != nil {
 		panic(err)
 	}
