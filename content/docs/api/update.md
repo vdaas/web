@@ -1,6 +1,6 @@
 ---
 title: "Update_api"
-date: 2024-04-25T20:33:03+09:00
+date: 2024-10-11T21:26:10Z
 draft: false
 weight: 200
 description: Update vectors indexed in the Vald cluster
@@ -113,7 +113,7 @@ Update RPC is the method to update a single vector.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -242,7 +242,7 @@ It's the recommended method to update the large amount of vectors.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 
@@ -368,7 +368,7 @@ Please be careful that the size of the request exceeds the limit.
 |  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](./status) for more details.
+Please refer to [Response Status Code](/docs/status) for more details.
 
 ### Troubleshooting
 

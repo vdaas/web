@@ -1,6 +1,6 @@
 ---
 title: "Mirroring Configuration_user Guides"
-date: 2024-02-15T17:10:15+09:00
+date: 2024-10-11T21:26:08Z
 draft: false
 weight: 400
 description: Applies mirror gateway for running multi Vald clusters
@@ -69,7 +69,7 @@ gateway:
 
 The cluster role configuration is required when you deploy Vald clusters with Vald Mirror Gateway on multiple Namespaces in the Kubernetes cluster.
 
-Please refer to [Cluster Role Configuration](./cluster-role-binding) about cluster role settings for Mirror Gateway.
+Please refer to [Cluster Role Configuration](/docs/user-guides/cluster-role-binding) about cluster role settings for Mirror Gateway.
 
 ### Custom Resource Configuration
 
