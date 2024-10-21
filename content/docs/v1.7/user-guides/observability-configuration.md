@@ -1,6 +1,6 @@
 ---
 title: "Observability Configuration_v1.7/User Guides"
-date: 2024-08-08T10:35:17+09:00
+date: 2024-10-16T16:05:59+09:00
 draft: false
 weight: 1100
 description: Monitors performance on metrics dashboards
@@ -187,7 +187,7 @@ defaults:
 
 #### Specify the Telemetry attribute
 
-You can add the component information to the attribute of telemetry data by editing `defaults.observability.otlp.attirbute`.
+You can add the component information to the attribute of telemetry data by editing `defaults.observability.otlp.attribute`.
 E.g., when setting `vald-agent-ngt-0` as `agent.observability.otlp.attribute.pod_name`, `target_pod: vald-agent-ngt-0` will be added to the attribute.
 These attributes are set auto by the environment values, so Vald recommends using default values unless there is a specific reason.
 
