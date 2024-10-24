@@ -1,6 +1,6 @@
 ---
 title: "Status_v1.7/Api"
-date: 2024-08-08T10:35:19+09:00
+date: 2024-10-24T04:12:42Z
 draft: false
 weight: 1000
 description: API response description for each status
@@ -27,7 +27,6 @@ The sections below describe the meaning of each code and why API returns.
 |  5   | [NOT_FOUND](#NOT_FOUND)                   |
 |  6   | [ALREADY_EXISTS](#ALREADY_EXISTS)         |
 |  8   | [RESOURCE_EXHAUSTED](#RESOURCE_EXHAUSTED) |
-|  10  | [ABORTED](#ABORTED)                       |
 |  13  | [INTERNAL](#INTERNAL)                     |
 |  14  | [UNAVAILABLE](#UNAVAILABLE)               |
 
@@ -112,25 +111,6 @@ It appears when:
 Services that return status are all services.
 The most case in the Vald is that the query vector is too large.
 In other words, the vector dimension size in configuration is too large.
-
-## ABORTED
-
-`ABORTED` means that the operation was aborted, usually due to a concurrency issue.
-
-It appears when:
-
-- A request is made during the process of creating indices.
-- A request is made during the flushing process.
-
-Services that return status are:
-
-- [Insert Service](/docs/v1.7/api/insert)
-- [Update Service](/docs/v1.7/api/update)
-- [Upsert Service](/docs/v1.7/api/upsert)
-- [Remove Service](/docs/v1.7/api/remove)
-- [Search Service](/docs/v1.7/api/search)
-
-You have to wait for the completion of creating indices or flushing process before making the request again.
 
 ## INTERNAL
 
