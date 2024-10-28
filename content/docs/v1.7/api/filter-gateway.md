@@ -1,6 +1,6 @@
 ---
 title: "Filter Gateway_v1.7/Api"
-date: 2024-08-08T10:35:18+09:00
+date: 2024-10-28T06:58:11Z
 draft: false
 weight: 800
 description: How to use CRUD API with filter gateway
@@ -13,7 +13,7 @@ menu:
 
 ## Overview
 
-Filter Server is responsible for providing insert, update, upsert and search interface for `Vald Filter Gateway`.
+Filter Servie is responsible for providing insert, update, upsert and search interface for `Vald Filter Gateway`.
 
 Vald Filter Gateway forward user request to user-defined ingress/egress filter components allowing user to run custom logic.
 
@@ -1487,17 +1487,6 @@ service Filter {
     | :------: | :----- | :---- | :---------------------------------------------------- |
     |    id    | string |       | the vector ID                                         |
     | distance | float  |       | the distance between result vector and request vector |
-
-### Status Code
-
-| code | desc.             |
-| :--: | :---------------- |
-|  0   | OK                |
-|  1   | CANCELLED         |
-|  3   | INVALID_ARGUMENT  |
-|  4   | DEADLINE_EXCEEDED |
-|  5   | NOT_FOUND         |
-|  13  | INTERNAL          |
 
 ## MultiSearch RPC
 
