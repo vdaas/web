@@ -99,7 +99,7 @@ jobs:
 
           git submodule update --init --recursive
 
-          cd preview
+          cd stage
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git checkout gh-pages
           git pull origin gh-pages
@@ -117,7 +117,7 @@ jobs:
 
           git submodule update --init --recursive
 
-          cd preview
+          cd stage
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git checkout gh-pages
           git pull origin gh-pages
@@ -127,18 +127,18 @@ jobs:
       - name: Stage Build
         run: |
           make build/stage
-      - name: Check Changes preview
-        id: git_diff_preview
+      - name: Check Changes stage
+        id: git_diff_stage
         run: |
-          diff=`git diff preview/`
+          diff=`git diff stage/`
           if [ ! -z "$diff" ] ; then \
             echo "diff=true" >> $GITHUB_OUTPUT
           fi
       - name: Stage Deploy
-        if: steps.git_diff_preview.outputs.diff == 'true'
+        if: steps.git_diff_stage.outputs.diff == 'true'
         run: |
           export LATEST_VERSION=$(make version/latest)
-          cd preview
+          cd stage
           git checkout gh-pages
           git add .
           git commit --signoff -m ":arrow_up: v${LATEST_VERSION} `date`"
@@ -147,18 +147,18 @@ jobs:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
       - name: Commit Stage Changes
-        if: steps.git_diff_preview.outputs.diff == 'true' && github.event_name == 'pull_request'
+        if: steps.git_diff_stage.outputs.diff == 'true' && github.event_name == 'pull_request'
         run: |
-          git add preview
+          git add stage
           git commit --signoff -m ":robot: auto update stage :arrow_up:"
           git push origin ${{ github.head_ref }}
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
       - name: Commit Stage Changes (main)
-        if: steps.git_diff_preview.outputs.diff == 'true' && github.ref == 'refs/heads/main'
+        if: steps.git_diff_stage.outputs.diff == 'true' && github.ref == 'refs/heads/main'
         run: |
-          git add preview
+          git add stage
           git commit --signoff -m ":robot: auto update stage :arrow_up:"
           git push origin main
         env:
