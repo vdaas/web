@@ -1,110 +1,36 @@
-# Vald WebSite
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Vald WebSite repository based on HUGO.
+## Getting Started
 
-## Document Tree
-
-- Vald WebSite is developed based on [HUGO](https://gohugo.io/), which is one of the popular site generator.<br>
-  If you don't know about HUGO, please read the official document at first.
-
-```
-.
-├ archetypes                 // content front matter deffinition
-├ config                     // config file for each environment
-| ├ _default/config.toml
-| ├ staging/config.toml 
-| └ production/config.toml 
-├ content
-| └ docs                     // public document content
-|   ├ index.html             // index.html 
-|   ├ overview               // overview document directory (latest version) 
-|   ├ tutorial               // tutorial document directory (latest version)
-|   ├ ...                    // another document directory (latest version) 
-|   └ v{major.minor}         // document directory for each release version
-├ preview                    // build pages for staging (submodule of vdaas/web/gh-pages)
-├ public                     // build pages for production (submodule of vdaas/vald/gh-pages)
-├ static                     // static files (img, css, js) for content
-| └ images
-|   ├ *.(png/svg)            // image files (latest version) 
-|   └ v{major.minor}         // image files directory for each release version
-└ themes                     // hugo themes
-```
-
-## Requirements
-
-- Hugo: v0.0.69~
-
-## How to develop
-
-- When you'd like to update config, design, template, etc, we recommend to develop using `make run` command which you can check on your browser https://localhost:1313
-
-## How to get the latest contents
-
-- You can get the latest contents of Vald by below
-
-  ```bash
-  $ make all
-  ```
-
-  The details of progress `init.sh`:
-  1. check latest version.
-  1. get the latest Vald package from [vdaas/vald](https://github.com/vdaas/vald) and unpacking it.
-  1. make sure directory for create contents and static files.
-  1. create contents at content root directory (/content/docs) and latest version directory (/content/docs/{version}).
-  1. create static files at static root dir (/static/{type}) and latest version dir (/static/{type}/{version}).
-  1. correct internal content link and static files' path in each content files (markdown files).
-
-
-## Deploy to staging environment
-
-**NOTE**:
-
-Before deploy to a staging environment, please check that there are some contents files and static files.
-
-
-- When you'd like to create the Pull Request or check update, we recommend you deploy to a staging environment.
-  The deployment for stage env will be done when you create the PR.
-  If the deployment via Github Actions ends with failed, please deploy manually from local as below command.
-
-  ```bash
-  // build files using Vald for stage env
-  $ make build/stage
-
-  // deploy to stage env
-  $ make deploy/stage
-  ```
-
-  We can check at [Vald Netlify](https://vald.netlify.app)
-
-## Deploy to production environment
-
-**NOTE**:
-
-Before publishing to official WebSite, YOU MUST CHECK the `Draft` value of each content file.<br>
-The content whose draft value is `true` WILL NOT BE PUBLISHED.<br>
-You can change draft variable by below commands (You can choose the most suit command).
+First, run the development server:
 
 ```bash
-# the draft value of all content in the root directory and the latest version directory will be `false`
-$ make publish/all
-
-# the draft value of all content in the root directory will be `false`
-$ make publish/root
-
-# the draft value of all content in the latest version directory will be `false`
-$ make publish/version
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- When you'd like to publish the latest Vald WebSite, please create the PR and merge it whose message is contains "release".
-  If the deploy is failed, please deploy by below command.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-  ```bash
-  // build files using Vald for production env
-  $ make build/production
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-  // deploy to production env
-  $ make deploy/production
-  ```
+## Learn More
 
-  We can check at [Vald Official WebSite](https://vald.vdaas.org)
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
