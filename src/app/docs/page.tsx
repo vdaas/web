@@ -1,9 +1,9 @@
-// import Image from "next/image";
-
-export default function Home() {
+function Docs() {
   return (
     <div>
-      <p>test</p>
+      <div>data</div>
     </div>
   );
 }
+
+export default Docs;
