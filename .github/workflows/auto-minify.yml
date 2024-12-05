@@ -18,7 +18,7 @@ jobs:
           persist-credentials: false
       - name: Checkout Actions (main)
         if: github.ref == 'refs/heads/main'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{github.ref}}
           persist-credentials: false
@@ -124,9 +124,9 @@ jobs:
         env:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-      - name: Stage Build
-        run: |
-          make build/stage
+      # - name: Stage Build
+      #   run: |
+      #     make build/stage
       - name: Check Changes stage
         id: git_diff_stage
         run: |
@@ -134,33 +134,33 @@ jobs:
           if [ ! -z "$diff" ] ; then \
             echo "diff=true" >> $GITHUB_OUTPUT
           fi
-      - name: Stage Deploy
-        if: steps.git_diff_stage.outputs.diff == 'true'
-        run: |
-          export LATEST_VERSION=$(make version/latest)
-          cd stage
-          git checkout gh-pages
-          git add .
-          git commit --signoff -m ":arrow_up: v${LATEST_VERSION} `date`"
-          git push origin gh-pages
-        env:
-          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
-          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-      - name: Commit Stage Changes
-        if: steps.git_diff_stage.outputs.diff == 'true' && github.event_name == 'pull_request'
-        run: |
-          git add stage
-          git commit --signoff -m ":robot: auto update stage :arrow_up:"
-          git push origin ${{ github.head_ref }}
-        env:
-          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
-          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
-      - name: Commit Stage Changes (main)
-        if: steps.git_diff_stage.outputs.diff == 'true' && github.ref == 'refs/heads/main'
-        run: |
-          git add stage
-          git commit --signoff -m ":robot: auto update stage :arrow_up:"
-          git push origin main
-        env:
-          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
-          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+      # - name: Stage Deploy
+      #   if: steps.git_diff_stage.outputs.diff == 'true'
+      #   run: |
+      #     export LATEST_VERSION=$(make version/latest)
+      #     cd stage
+      #     git checkout gh-pages
+      #     git add .
+      #     git commit --signoff -m ":arrow_up: v${LATEST_VERSION} `date`"
+      #     git push origin gh-pages
+      #   env:
+      #     GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+      #     GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+      # - name: Commit Stage Changes
+      #   if: steps.git_diff_stage.outputs.diff == 'true' && github.event_name == 'pull_request'
+      #   run: |
+      #     git add stage
+      #     git commit --signoff -m ":robot: auto update stage :arrow_up:"
+      #     git push origin ${{ github.head_ref }}
+      #   env:
+      #     GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+      #     GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+      # - name: Commit Stage Changes (main)
+      #   if: steps.git_diff_stage.outputs.diff == 'true' && github.ref == 'refs/heads/main'
+      #   run: |
+      #     git add stage
+      #     git commit --signoff -m ":robot: auto update stage :arrow_up:"
+      #     git push origin main
+      #   env:
+      #     GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+      #     GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
