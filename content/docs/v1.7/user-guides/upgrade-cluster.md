@@ -1,6 +1,6 @@
 ---
 title: "Upgrade Cluster_v1.7/User Guides"
-date: 2024-08-08T10:35:17+09:00
+date: 2024-12-05T04:20:19Z
 draft: false
 weight: 800
 description: Describes hot to upgrade Vald version for the running Vald cluster
@@ -38,7 +38,7 @@ You can edit your `values.yaml` and update your Vald cluster by following steps:
 
    ```bash
    helm upgrade <NAME> vald/vald --values <YOUR VALUES FILE PATH>
-   # e.g., helm upgrade vald vald/vald --values values.yaml
+   # e.g., helm upgrade vald vald/vald --values valeus.yaml
    ```
 
 ### Using vald-helm-operator
@@ -118,7 +118,7 @@ If there is major or minor upgrading, the chart structure may have changed.
 
    ```bash
    helm upgrade <NAME> vald/vald --values <YOUR VALUES FILE PATH>
-   # e.g., helm upgrade vald vald/vald --values values.yaml
+   # e.g., helm upgrade vald vald/vald --values valeus.yaml
    ```
 
 ### Using vald-helm-operator
