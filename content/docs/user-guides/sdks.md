@@ -1,6 +1,6 @@
 ---
 title: "Sdks_user Guides"
-date: 2024-02-15T17:10:16+09:00
+date: 2024-12-05T09:02:54Z
 draft: false
 weight: 1400
 description: Sends request and receives response from the Vald cluster
@@ -27,7 +27,6 @@ Here is the list of Official SDKs.
 - [Java](https://github.com/vdaas/vald-client-java)
 - [Python](https://github.com/vdaas/vald-client-python)
 - [Node.js](https://github.com/vdaas/vald-client-node)
-- [Clojure](https://github.com/vdaas/vald-client-clj)
 
 ## How to use SDKs
 
