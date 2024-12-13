@@ -1,6 +1,6 @@
 ---
 title: "Insert_v1.7/Api"
-date: 2024-10-16T16:06:00+09:00
+date: 2024-12-13T05:42:59Z
 draft: false
 weight: 100
 description: Insert vectors to the Vald cluster
@@ -108,10 +108,9 @@ Inset RPC is the method to add a new single vector.
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  6   | ALREADY_EXISTS    |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](/docs/v1.7/status) for more details.
+Please refer to [Response Status Code](./status) for more details.
 
 ### Troubleshooting
 
@@ -234,10 +233,9 @@ It's the recommended method to insert a large number of vectors.
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  6   | ALREADY_EXISTS    |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](/docs/v1.7/status) for more details.
+Please refer to [Response Status Code](./status) for more details.
 
 ### Troubleshooting
 
@@ -357,10 +355,9 @@ Please be careful that the size of the request exceeds the limit.
 |  3   | INVALID_ARGUMENT  |
 |  4   | DEADLINE_EXCEEDED |
 |  6   | ALREADY_EXISTS    |
-|  10  | ABORTED           |
 |  13  | INTERNAL          |
 
-Please refer to [Response Status Code](/docs/v1.7/status) for more details.
+Please refer to [Response Status Code](./status) for more details.
 
 ### Troubleshooting
 
