@@ -1,6 +1,6 @@
 ---
 title: "Changelog_release"
-date: 2024-12-06T15:22:03+09:00
+date: 2024-12-24T09:28:27Z
 draft: false
 weight: 0
 description: ""
@@ -10,6 +10,87 @@ menu:
 ---
 
 # CHANGELOG
+
+## v1.7.16
+
+### Docker images
+
+<table>
+  <tr>
+    <th>component</th>
+    <th>Docker pull</th>
+  </tr>
+  <tr>
+    <td>Agent NGT</td>
+    <td>
+      <code>docker pull vdaas/vald-agent-ngt:v1.7.16</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-agent-ngt:v1.7.16</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Agent sidecar</td>
+    <td>
+      <code>docker pull vdaas/vald-agent-sidecar:v1.7.16</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-agent-sidecar:v1.7.16</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Discoverers</td>
+    <td>
+      <code>docker pull vdaas/vald-discoverer-k8s:v1.7.16</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-discoverer-k8s:v1.7.16</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Gateways</td>
+    <td>
+      <code>docker pull vdaas/vald-lb-gateway:v1.7.16</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-lb-gateway:v1.7.16</code><br/>
+      <code>docker pull vdaas/vald-filter-gateway:v1.7.16</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-filter-gateway:v1.7.16</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Index Manager</td>
+    <td>
+      <code>docker pull vdaas/vald-manager-index:v1.7.16</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-manager-index:v1.7.16</code>
+    </td>
+  </tr>
+  <tr>
+    <td>Helm Operator</td>
+    <td>
+      <code>docker pull vdaas/vald-helm-operator:v1.7.16</code><br/>
+      <code>docker pull ghcr.io/vdaas/vald/vald-helm-operator:v1.7.16</code>
+    </td>
+  </tr>
+</table>
+
+### Documents
+
+- [GoDoc](https://pkg.go.dev/github.com/vdaas/vald@v1.7.16)
+- [Helm Chart Reference](https://github.com/vdaas/vald/blob/v1.7.16/charts/vald/README.md)
+- [Helm Operator Chart Reference](https://github.com/vdaas/vald/blob/v1.7.16/charts/vald-helm-operator/README.md)
+
+### Changes
+
+:recycle: Refactor
+
+- Fix format of proto files [#2778](https://github.com/vdaas/vald/pull/2778) ([#2783](https://github.com/vdaas/vald/pull/2783))
+- Refactor merge docker and github actions workflow gen logic [#2769](https://github.com/vdaas/vald/pull/2769) ([#2774](https://github.com/vdaas/vald/pull/2774))
+
+:pencil2: Document
+
+- Change symlink API documents [#2741](https://github.com/vdaas/vald/pull/2741) ([#2776](https://github.com/vdaas/vald/pull/2776))
+
+:green_heart: CI
+
+- Refactor github actions [#2773](https://github.com/vdaas/vald/pull/2773) ([#2779](https://github.com/vdaas/vald/pull/2779))
+  Change make command [#2765](https://github.com/vdaas/vald/pull/2765) ([#2770](https://github.com/vdaas/vald/pull/2770))
+
+:arrow_up: Update dependencies
+
+- Update libs dependency [#2775](https://github.com/vdaas/vald/pull/2775) ([#2785](https://github.com/vdaas/vald/pull/2785))
 
 ## v1.7.15
 
@@ -6138,7 +6219,7 @@ menu:
 - update dependencies version ([#381](https://github.com/vdaas/vald/pull/381))
 - Fix missing value on compressor health servers ([#377](https://github.com/vdaas/vald/pull/377))
 - Fix compressor readiness shutdown_duration / Fix cassandra … ([#376](https://github.com/vdaas/vald/pull/376))
-- Bump gopkg.in/yaml.v2 from 2.2.8 to 2.3.0 ([#375](https://github.com/vdaas/vald/pull/375))
+- Bump sigs.k8s.io/yaml from 2.2.8 to 2.3.0 ([#375](https://github.com/vdaas/vald/pull/375))
 - Fix`internal/log/format` to match the test template ([#369](https://github.com/vdaas/vald/pull/369))
 - Fix `internal/log/logger` to match the test template ([#371](https://github.com/vdaas/vald/pull/371))
 - Fix failing tests of `internal/log` and modified to match the test template ([#368](https://github.com/vdaas/vald/pull/368))
