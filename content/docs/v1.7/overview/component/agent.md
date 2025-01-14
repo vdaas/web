@@ -1,6 +1,6 @@
 ---
 title: "Agent_v1.7/Overview/Component"
-date: 2024-12-06T15:24:23+09:00
+date: 2025-01-14T11:25:13+09:00
 draft: false
 weight: 100
 description: Stores index data and Search ANN vectors
@@ -87,7 +87,7 @@ This image shows the mechanism to create NGT index.
 
 <img src="/images/v1.7/overview/component/agent/ngt.png" alt="NGT Index Creation Mechanism" />
 
-Please refer to [Go Doc](https://pkg.go.dev/github.com/vdaas/vald@v1.7.15/pkg/agent/core/ngt/service) for other functions.
+Please refer to [Go Doc](https://pkg.go.dev/github.com/vdaas/vald@v1.7.16/pkg/agent/core/ngt/service) for other functions.
 
 #### Vald Agent Faiss
 
