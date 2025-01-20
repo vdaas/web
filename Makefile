@@ -43,6 +43,7 @@ run:
 
 .PHONY: subup
 subup:
+	git submodule sync
 	git submodule foreach git pull origin gh-pages
 
 .PHONY: version/latest version/support version/tag version/sync version/go
