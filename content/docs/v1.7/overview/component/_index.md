@@ -1,6 +1,6 @@
 ---
 title: "Component_v1.7/Overview/Component"
-date: 2024-02-15T17:12:26+09:00
+date: 2025-01-23T15:48:16Z
 draft: false
 weight: 0
 ---
@@ -74,7 +74,6 @@ In this section, we will describe what is Vald Agent and the corresponding compo
 
 Vald Agent provides functionalities to perform approximate nearest neighbor search.
 Agent-NGT uses [yahoojapan/NGT](https://github.com/yahoojapan/NGT) as a core library.
-And Agent-Faiss uses [facebookresearch/faiss](https://github.com/facebookresearch/faiss) as a core library.
 
 Each Vald Agent pod has its own vector data space because only several Vald Agents are selected to be inserted/updated in a single insert/update request.
 
