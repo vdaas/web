@@ -1,6 +1,6 @@
 ---
 title: "Vald Agent Standalone on K8s_v1.7/Tutorial"
-date: 2024-10-16T16:06:00+09:00
+date: 2025-01-27T08:15:36Z
 draft: false
 weight: 300
 description: Running only Vald Agent on Kubernetes and execute client codes
@@ -47,7 +47,7 @@ If Helm or HDF5 is not installed, please install [Helm](https://helm.sh/docs/int
 <details><summary>Installation command for Helm</summary><br>
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 ```
 
 </details>
@@ -247,7 +247,7 @@ This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perf
         ```go
         ctx := context.Background()
 
-        conn, err := grpc.NewClient(grpcServerAddr, grpc.WithTransportCredentials(insecure.NewCredentials()))
+        conn, err := grpc.DialContext(ctx, grpcServerAddr, grpc.WithTransportCredentials(insecure.NewCredentials()))
         if err != nil {
             glg.Fatal(err)
         }
