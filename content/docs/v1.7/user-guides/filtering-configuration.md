@@ -1,6 +1,6 @@
 ---
 title: "Filtering Configuration_v1.7/User Guides"
-date: 2024-10-16T16:05:59+09:00
+date: 2025-02-12T09:02:18Z
 draft: false
 weight: 300
 description: Applies filtering feature to the Vald cluster
@@ -164,7 +164,7 @@ func main() {
 
 	// connect to the Vald cluster
 	ctx := context.Background()
-	conn, err := grpc.NewClient(grpcServerAddr, grpc.WithInsecure())
+	conn, err := grpc.DialContext(ctx, grpcServerAddr, grpc.WithInsecure())
 	if err != nil {
 		log.Error(err)
 		return
