@@ -11,6 +11,15 @@ export default {
   theme: {
     extend: {
       colors: {
+        primary: "#006076", // Primary (Vald Green)
+        secondary: "#00BAB1", // Secondary (Vald Light Green)
+        third: "#F57A53", // Third (Vald Orange)
+        black: "#333333", // Black
+        white: "#FFFFFF", // White
+        gray: "#CCCCCC", // Gray
+        boundaryBlack: "#393939", // Boundary Black
+        boundaryWhite: "#F8F8F8", // Boundary White
+        link: "#309BE9", // Link
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -21,14 +30,14 @@ export default {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
         },
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
+        // primary: {
+        //   DEFAULT: "hsl(var(--primary))",
+        //   foreground: "hsl(var(--primary-foreground))",
+        // },
+        // secondary: {
+        //   DEFAULT: "hsl(var(--secondary))",
+        //   foreground: "hsl(var(--secondary-foreground))",
+        // },
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
