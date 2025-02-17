@@ -1,6 +1,6 @@
 ---
 title: "Loadtest_performance"
-date: 2024-01-10T18:16:42+09:00
+date: 2025-02-17T05:30:18Z
 draft: false
 weight: 200
 description: Shows how to perform load test in the Vald cluster
@@ -41,14 +41,14 @@ Please refer to the [Sample configuration file](https://github.com/vdaas/vald/bl
 
 Here are the important configurations and following the explanation.
 
-| Name        | Description                                                                                                                                                             | Example                                     |
-| :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------ |
-| service     | By setting the value to the gateway, you can test the Vald cluster through the Vald gateway. <br />By setting the value to agent, you can test the Vald agent directly. | gateway or agent                            |
-| operation   | To perform the specific load test action to the Vald cluster.                                                                                                           | insert, streaminsert, search or steamsearch |
-| dataset     | The dataset is used in insert and stream insert operation.                                                                                                              |                                             |
-| concurrency | The number of concurrent execution of the load test.                                                                                                                    |                                             |
-| batch_size  | The batch size of the dataset.                                                                                                                                          |                                             |
-| addr        | The cluster you want to test                                                                                                                                            |                                             |
+| Name        | Description                                                                                                                                                             | Example                                      |
+| :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------- |
+| service     | By setting the value to the gateway, you can test the Vald cluster through the Vald gateway. <br />By setting the value to agent, you can test the Vald agent directly. | gateway or agent                             |
+| operation   | To perform the specific load test action to the Vald cluster.                                                                                                           | insert, streaminsert, search or streamsearch |
+| dataset     | The dataset is used in insert and stream insert operation.                                                                                                              |                                              |
+| concurrency | The number of concurrent execution of the load test.                                                                                                                    |                                              |
+| batch_size  | The batch size of the dataset.                                                                                                                                          |                                              |
+| addr        | The cluster you want to test                                                                                                                                            |                                              |
 
 ## Execute load test
 
