@@ -1,6 +1,6 @@
 ---
 title: "Data Flow_v1.7/Overview"
-date: 2024-08-08T10:35:19+09:00
+date: 2025-04-02T08:50:49Z
 draft: false
 weight: 300
 description: Data flow inside Vald for each operation
@@ -88,7 +88,7 @@ Upsert request updates the existing vector if the same vector ID already exists 
 
 <img src="/images/v1.7/overview/upsert_flow.svg" />
 
-When the user upsert a vector to Vald:
+When the user upserts a vector to Vald:
 
 1. Vald LB Gateway receives the request from the user, including the user's vector ID(s) and the vector(s).
 2. Vald LB Gateway will broadcast an existing check request to the Vald Agent(s) to check if the vector exists.
