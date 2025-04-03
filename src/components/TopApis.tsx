@@ -8,7 +8,8 @@ from vald.v1.vald import insert_pb2_grpc
 from vald.v1.vald import search_pb2_grpc
 from vald.v1.vald import update_pb2_grpc
 from vald.v1.vald import remove_pb2_grpc
-from vald.v1.vald import flush_pb2_grpc
+from vald.v1.vald import upsert_pb2_grpc
+from vald.v1.vald import object_pb2_grpc
 from vald.v1.payload import payload_pb2
 
 channel = grpc.insecure_channel("{vald cluster host}:{port}")`,
@@ -24,19 +25,26 @@ res = stub.Update(req)`,
   delete: `stub = remove_pb2_grpc.RemoveStub(channel)
 req = remove_pb2.RemoveRequest(id="id")
 res = stub.Remove(req)`,
+  upsert: `stub = upsert_pb2_grpc.UpsertStub(channel)
+req = upsert_pb2.UsertRequest(id="id", vector=[0.4, 0.5, 0.6])
+res = stub.Upsert(req)`,
+  "get object": `stub = object_pb2_grpc.UpsertStub(channel)
+req = object_pb2.UsertRequest(id="id", vector=[0.4, 0.5, 0.6])
+res = stub.Upsert(req)`,
 };
 
 export default function APITabs() {
-  const [activeTab, setActiveTab] = useState<keyof typeof codeSnippets>("connect");
+  const [activeTab, setActiveTab] =
+    useState<keyof typeof codeSnippets>("connect");
 
   return (
     <section className="py-16 bg-gray-50 px-6">
       {/* グリッドレイアウト: スマホは1列, PCは2列 */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="max-w-6xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-8">
         {/* 左側 (コード & タブ) */}
-        <div className="flex flex-col">
+        <div className="order-2 md:order-1 flex flex-col">
           {/* コードブロック (高さを一定に) */}
-          <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 min-h-[200px] flex items-start">
+          <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 flex items-start min-h-[250px]">
             <pre className="text-sm text-gray-800 whitespace-pre-wrap w-full">
               <code>{codeSnippets[activeTab]}</code>
             </pre>
@@ -61,11 +69,15 @@ export default function APITabs() {
         </div>
 
         {/* 右側 (API 説明) */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <h2 className="text-3xl font-bold text-primary mb-4">Simple APIs</h2>
-          <p className="text-lg text-gray-700">
-            Vald provides Insert, Update, Upsert, Search, and Delete APIs.
-          </p>
+        <div className="order-1 md:order-2 flex items-center min-h-[250px]">
+          <div className="w-full text-center md:text-left">
+            <h2 className="text-3xl font-bold text-primary mb-4 text-primary dark:text-secondary">
+              Simple APIs
+            </h2>
+            <p className="text-lg text-black dark:text-white">
+              Vald provides Insert, Update, Upsert, Search, and Delete APIs.
+            </p>
+          </div>
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import plugin from "tailwindcss-animate"
+import plugin from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -19,6 +19,8 @@ export default {
         gray: "#CCCCCC", // Gray
         boundaryBlack: "#393939", // Boundary Black
         boundaryWhite: "#F8F8F8", // Boundary White
+        boundaryLightGray: "#E0E0E0",
+        boundarydarkGray: "#4A4A4A",
         link: "#309BE9", // Link
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -68,7 +70,5 @@ export default {
       },
     },
   },
-  plugins: [
-    plugin,
-  ]
+  plugins: [plugin],
 } satisfies Config;
