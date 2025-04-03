@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import CardGrid from "@/components/CardGrid"; 
-import APITabs from "@/components/APITabs"; 
-import { Button } from "@/components/ui/button"; 
+import CardGrid from "@/components/CardGrid";
+import TopApis from "@/components/TopApis";
+import TopTechs from "@/components/TopTechs";
+import TopArticles from "@/components/TopArticles";
+import TopUsers from "@/components/TopUsers";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "top",
   description: "top",
 };
-
 
 const codeSnippets = {
   connect: `import grpc
@@ -31,128 +33,150 @@ res = stub.Update(req)`,
   delete: `stub = remove_pb2_grpc.RemoveStub(channel)
 req = remove_pb2.RemoveRequest(id="id")
 res = stub.Remove(req)`,
+  upsert: `stub = upsert_pb2_grpc.UpsertStub(channel)
+req = upsert_pb2.UsertRequest(id="id", vector=[0.4, 0.5, 0.6])
+res = stub.Upsert(req)`,
+  "get object": `stub = upsert_pb2_grpc.UpsertStub(channel)
+req = upsert_pb2.UsertRequest(id="id", vector=[0.4, 0.5, 0.6])
+res = stub.Upsert(req)`,
 };
 
+
+const features = [
+  {
+    title: "Distributed Architecture",
+    description:
+      "Vald distributes the data across multiple Nodes to avoid single points of failure and achieve high availability and scalability.",
+    icon: {
+      light: "/images/icon_features_01_light.svg",
+      dark: "/images/icon_features_01_dark.svg",
+    },
+  },
+  {
+    title: "High Availability",
+    description:
+      "Ensure your system is up and running with minimal downtime through our high availability solutions.",
+    icon: {
+      light: "/images/icon_features_02_light.svg",
+      dark: "/images/icon_features_02_dark.svg",
+    },
+  },
+  {
+    title: "Scalability",
+    description:
+      "Our architecture is designed to scale seamlessly to meet the growing demands of your application.",
+    icon: {
+      light: "/images/icon_features_03_light.svg",
+      dark: "/images/icon_features_03_dark.svg",
+    },
+  },
+  {
+    title: "Data Security",
+    description:
+      "We prioritize security to ensure your data is protected at every layer of the system.",
+    icon: {
+      light: "/images/icon_features_04_light.svg",
+      dark: "/images/icon_features_04_dark.svg",
+    },
+  },
+];
 
 export default function Home() {
   return (
     <>
-    <div className="min-h-screen bg-gray-50 text-gray-800">
-      {/* ファーストビューセクション */}
-      <section className="h-screen flex flex-col items-center justify-center bg-gradient-to-b from-primary to-secondary text-white px-6 text-center">
-      {/* 見出し */}
-      <h1 className="text-3xl md:text-5xl font-bold mb-4">
-        A Highly Scalable Distributed <br />
-        Vector Search Engine
-      </h1>
+      <div className="min-h-screen bg-[var(--light-bg)] text-primary dark:text-secondary">
+        <section className="pt-16 h-screen flex flex-col items-center justify-center bg-gradient-to-b from-primary to-secondary text-white px-6 text-center">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">
+            A Highly Scalable Distributed <br />
+            Vector Search Engine
+          </h1>
 
-      {/* 説明文 */}
-      <p className="text-sm md:text-lg text-white/80 max-w-2xl mb-8">
-        Vald is designed and implemented based on the Cloud-Native architecture.
-        It uses the fastest ANN Algorithm NGT to search neighbors. Vald has
-        automatic vector indexing and index backup, and horizontal scaling which
-        made for searching from billions of feature vector data. Vald is easy to
-        use, feature-rich and highly customizable as you need.
-      </p>
-
-      {/* ボタン群 */}
-      <div className="flex flex-col md:flex-row items-stretch justify-center space-y-4 md:space-y-0 md:space-x-4 w-full max-w-md">
-        <Button
-          href="/get-started"
-          className="bg-teal-700 hover:bg-teal-600 text-white min-w-[150px] px-6 py-4"
-        >
-          Get Started
-        </Button>
-        <Button
-          href="/learn-more"
-          className="border border-white text-white hover:bg-white hover:text-teal-700 min-w-[150px] px-6 py-4"
-        >
-          Learn More
-        </Button>
-        <Button
-          href="/join-slack"
-          className="border border-white text-white hover:bg-white hover:text-teal-700 min-w-[150px] px-6 py-4"
-        >
-          Join Vald Slack
-        </Button>
-      </div>
-    </section>
-
-      {/* 特徴セクション */}
-      <section className="py-16 bg-white px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Features</h2>
-        <CardGrid /> {/* カードグリッドセクションを追加 */}
-      </section>
-
-      <section className="py-16 bg-gray-50 px-6">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-12">
-        {/* 左側のテキストコンテンツ */}
-        <div className="w-full md:w-1/2 text-center md:text-left">
-          <h2 className="text-3xl font-bold text-primary mb-4">Easy to use</h2>
-          <p className="text-lg text-gray-700">
-            Vald can be easily installed in a few steps.
+          <p className="text-sm md:text-lg text-white/80 max-w-2xl mb-8">
+            Vald is designed and implemented based on the Cloud-Native
+            architecture. It uses the fastest ANN Algorithm NGT to search
+            neighbors. Vald has automatic vector indexing and index backup, and
+            horizontal scaling which made for searching from billions of feature
+            vector data. Vald is easy to use, feature-rich and highly
+            customizable as you need.
           </p>
-        </div>
 
-        {/* 右側のGIF画像 */}
-        <div className="w-full md:w-1/2 flex justify-center">
-          <img 
-            src="/images/sample_erminal.gif" 
-            alt="Command line demo"
-            className="rounded-lg shadow-md w-full max-w-lg"
-          />
-        </div>
+          <div className="flex flex-col md:flex-row gap-4 w-full max-w-3xl mx-auto">
+            <button className="w-full md:w-auto flex-1 bg-teal-700 text-white font-semibold py-3 px-6 rounded-md hover:bg-teal-600">
+              Get Started
+            </button>
+            <button className="w-full md:w-auto flex-1 border border-white text-white font-semibold py-3 px-6 rounded-md hover:bg-white hover:text-teal-700">
+              Learn More
+            </button>
+            <button className="w-full md:w-auto flex-1 border border-white text-white font-semibold py-3 px-6 rounded-md hover:bg-white hover:text-teal-700">
+              Join Vald Slack
+            </button>
+          </div>
+        </section>
+
+        <section className="py-16 bg-boundaryWhite dark:bg-boundaryBlack px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary dark:text-secondary">
+            Vald&apos;s Features
+          </h2>
+          <section className="py-12 bg-boundaryWhite dark:bg-boundaryBlack">
+            <div className="max-w-6xl mx-auto px-6">
+              {/* グリッドレイアウト (スマホ1カラム, タブレット以上2カラム) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {features.map((feature, index) => (
+                  <div
+                    key={index}
+                    className="bg-white border border-boundaryLightGray rounded-lg px-6 py-8 text-center dark:bg-black border-boundarydarkGray"
+                  >
+                    <img
+                      src={feature.icon.light}
+                      alt={feature.title}
+                      className="w-12 h-12 mx-auto mb-4 dark:hidden"
+                    />
+                    <img
+                      src={feature.icon.dark}
+                      alt={feature.title}
+                      className="w-12 h-12 mx-auto mb-4 hidden dark:block"
+                    />
+                    <h3 className="text-xl font-semibold text-black dark:text-white mb-2">
+                      {feature.title}
+                    </h3>
+                    <p className="text-black dark:text-white">
+                      {feature.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section className="py-16 max-w-6xl mx-auto bg-[var(--light-bg)] px-6">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start md:space-x-12">
+            {/* テキストコンテンツ */}
+            <div className="w-full text-center md:text-left mb-8 md:mb-0">
+              <h2 className="text-3xl font-bold text-primary dark:text-secondary mb-4">
+                Easy to use
+              </h2>
+              <p className="text-lg text-black dark:text-white">
+                Vald can be easily installed in a few steps.
+              </p>
+            </div>
+
+            {/* GIF画像 */}
+            <div className="w-full flex justify-center">
+              <img
+                src="/images/sample_erminal.gif"
+                alt="Command line demo"
+                className="rounded-lg shadow-md w-full md:max-w-[50vw]"
+              />
+            </div>
+          </div>
+        </section>
+
+        <TopApis />
+        <TopTechs />
+        <TopUsers />
+        <TopArticles />
       </div>
-    </section>
-
-    <APITabs /> 
-
-      {/* ユーザーセクション */}
-      <section className="py-16 bg-gray-50 px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Our Users</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div className="p-6 bg-white rounded-lg shadow-md flex items-center">
-            <img
-              src="https://via.placeholder.com/64"
-              alt="User 1"
-              className="w-16 h-16 rounded-full mr-4"
-            />
-            <div>
-              <h3 className="font-semibold text-lg">User 1</h3>
-              <p className="text-gray-600">
-                "This OSS has transformed the way I work on projects!"
-              </p>
-            </div>
-          </div>
-          <div className="p-6 bg-white rounded-lg shadow-md flex items-center">
-            <img
-              src="https://via.placeholder.com/64"
-              alt="User 2"
-              className="w-16 h-16 rounded-full mr-4"
-            />
-            <div>
-              <h3 className="font-semibold text-lg">User 2</h3>
-              <p className="text-gray-600">
-                "Incredible features and easy to use."
-              </p>
-            </div>
-          </div>
-          <div className="p-6 bg-white rounded-lg shadow-md flex items-center">
-            <img
-              src="https://via.placeholder.com/64"
-              alt="User 3"
-              className="w-16 h-16 rounded-full mr-4"
-            />
-            <div>
-              <h3 className="font-semibold text-lg">User 3</h3>
-              <p className="text-gray-600">
-                "Highly recommend this for anyone in tech!"
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
     </>
   );
 }
