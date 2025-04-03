@@ -1,6 +1,6 @@
 ---
 title: "Deployment_v1.7/User Guides"
-date: 2024-08-08T10:35:17+09:00
+date: 2025-04-03T04:34:40Z
 draft: false
 weight: 600
 description: How to launch Vald cluster on your Kubernetes cluster
@@ -38,7 +38,7 @@ If Helm is not installed, please install [Helm](https://helm.sh/docs/intro/insta
 <details><summary>Installation command for Helm</summary><br>
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 ```
 
 </details>
@@ -149,7 +149,7 @@ After create `values.yaml`, you can deploy by the following steps.
 When you need to update the configuration, you can update by following command with your new `values.yaml`.
 
 ```bash
-helm upgrade vald vald/vald --values <YOUR NEW VALUES FILE PATH>
+helm upgrate vald vald/vald --values <YOUR NEW VALUES FILE PATH>
 ```
 
 ### Cleanup
