@@ -115,7 +115,7 @@ export default function Home() {
 
         <section className="py-16 bg-boundaryWhite dark:bg-boundaryBlack px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary dark:text-secondary">
-            Vald&apos;s Features
+            Vald&apos;s Features test
           </h2>
           <section className="py-12 bg-boundaryWhite dark:bg-boundaryBlack">
             <div className="max-w-6xl mx-auto px-6">
