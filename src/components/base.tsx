@@ -1,5 +1,7 @@
 import Header from "./header";
 import Footer from "./footer";
+import { ThemeProvider } from "next-themes";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Base({
   children,
@@ -9,11 +11,14 @@ export default function Base({
   className?: string;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <Header />
-        <main className={className}>{children}</main>
-        <Footer />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header />
+          <main className={className}>{children}</main>
+          <Footer />
+          <ThemeToggle />
+        </ThemeProvider>
       </body>
     </html>
   );
