@@ -2,3 +2,7 @@
 	path = stage
 	url = https://github.com/vdaas/web
 	branch = gh-pages
+[submodule "prod"]
+	path = prod
+	url = https://github.com/vdaas/vald
+	branch = gh-pages
