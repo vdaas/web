@@ -41,7 +41,7 @@ jobs:
 
           git submodule update --init --recursive
 
-          cd public
+          cd prod
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/vdaas/vald.git"
           git checkout gh-pages
           git pull origin gh-pages
@@ -52,18 +52,18 @@ jobs:
         if: steps.check_release.outputs.release == 'true'
         run: |
           make build/prod
-      - name: Check Changes public
-        id: git_diff_preview
+      - name: Check Changes prod
+        id: git_diff_stage
         run: |
-          diff=`git diff public/`
+          diff=`git diff prod/`
           if [ ! -z "$diff" ] ; then \
             echo "diff=true" >> $GITHUB_OUTPUT
           fi
       - name: Production Deploy
-        if: steps.git_diff_preview.outputs.diff
+        if: steps.git_diff_stage.outputs.diff
         run: |
           export LATEST_VERSION=$(make version/latest)
-          cd public
+          cd prod
           git checkout gh-pages
           git add .
           git commit --signoff -m ":arrow_up: v${LATEST_VERSION} `date`"
@@ -72,13 +72,13 @@ jobs:
           GITHUB_USER: ${{ secrets.DISPATCH_USER }}
           GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
       - name: Commit Production Changes
-        if: steps.git_diff_preview.outputs.diff
+        if: steps.git_diff_stage.outputs.diff
         run: |
           git checkout main
           git diff
           git branch
           git log --oneline -n1
-          git add public
+          git add prod
           git commit --signoff -m ":robot: auto update production :arrow_up:"
           git push origin ${{ github.head_ref }}
         env:
