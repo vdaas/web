@@ -62,23 +62,23 @@ version/sync:
 .PHONY: build/stage build/prod
 build/stage:
 	@hugo --environment=staging -D --minify
-	@cd tmp_pre && cp -r * ../preview/
-	@cp Makefile preview/Makefile
+	@cd tmp_pre && cp -r * ../stage/
+	@cp Makefile stage/Makefile
 
 build/prod:
 	@hugo --environment=production --minify
 	@cp tmp_pre/404.html tmp_pre/ipfs-404.html
-	@cd tmp_pre && cp -r * ../public/
+	@cd tmp_pre && cp -r * ../prod/
 
 .PHONY: deploy/stage deploy/prod
 deploy/stage: subup \
 	build/stage
-	@cd preview && git add -A;git commit -m ":arrow_up: v`${LATEST_VERSION}` `date`" && git push origin gh-pages
+	@cd stage && git add -A;git commit -m ":arrow_up: v`${LATEST_VERSION}` `date`" && git push origin gh-pages
 	@rm -rf tmp_pre
 
 deploy/prod: subup \
 	build/production
-	@cd public && git add -A;git commit -m ":arrow_up: v`${LATEST_VERSION}` `date`" && git push origin gh-pages
+	@cd prod && git add -A;git commit -m ":arrow_up: v`${LATEST_VERSION}` `date`" && git push origin gh-pages
 	@rm -rf tmp_pre
 
 .PHONY: repo/sync
