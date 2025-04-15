@@ -2,23 +2,23 @@
 
 import React from "react";
 
-const articles = [
-  {
-    title: "Improving Vald Search Performance through Parameter Tuning",
-    image: "/images/article1.png",
-    link: "https://example.com/article1",
-  },
-  {
-    title: "Improving Vald Search Performance through Parameter Tuning",
-    image: "/images/article2.png",
-    link: "https://example.com/article2",
-  },
-  {
-    title: "Improving Vald Search Performance through Parameter Tuning",
-    image: "/images/article3.png",
-    link: "https://example.com/article3",
-  },
-];
+// const articles = [
+//   {
+//     title: "Improving Vald Search Performance through Parameter Tuning",
+//     image: "/images/article1.png",
+//     link: "https://example.com/article1",
+//   },
+//   {
+//     title: "Improving Vald Search Performance through Parameter Tuning",
+//     image: "/images/article2.png",
+//     link: "https://example.com/article2",
+//   },
+//   {
+//     title: "Improving Vald Search Performance through Parameter Tuning",
+//     image: "/images/article3.png",
+//     link: "https://example.com/article3",
+//   },
+// ];
 
 export default function Articles() {
   return (
@@ -34,10 +34,10 @@ export default function Articles() {
         {/* 記事カードグリッド */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* {articles.map((article, index) => (
-            <a 
-              key={index} 
-              href={article.link} 
-              target="_blank" 
+            <a
+              key={index}
+              href={article.link}
+              target="_blank"
               rel="noopener noreferrer"
               className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-300 transition-transform transform hover:scale-105"
             >

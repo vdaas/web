@@ -1,4 +1,4 @@
-"use client"; // クライアントコンポーネントであることを明示
+"use client";
 
 import { useState, useEffect } from "react";
 import { FaGithub, FaSlack, FaBars, FaTimes } from "react-icons/fa";
@@ -36,7 +36,6 @@ export default function Header() {
     fetchGitHubStars();
   }, []);
 
-  // バージョン一覧
   const versions = [
     "v1.7.16",
     "v1.7",
@@ -128,7 +127,7 @@ export default function Header() {
               className="flex items-center space-x-2 hover:text-[#666666]"
             >
               <FaGithub className="h-5 w-5" />
-              {starCount !== null ? (
+              {starCount ? (
                 <span className="text-sm font-medium">
                   {starCount.toLocaleString()}
                 </span>

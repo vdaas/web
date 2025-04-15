@@ -1,8 +1,17 @@
-"use client"; // Next.js の Client Component
-
 import React from "react";
 
-const baseTechnologies = [
+type cardProps = {
+    name: string;
+    image: string;
+    link: string;
+}
+
+type gridCardProps = {
+  keyName: string;
+  value: cardProps[];
+}
+
+const baseTechnologies: cardProps[] = [
   { name: "Go", image: "images/logo_go.svg", link: "https://golang.org/" },
   {
     name: "Rust",
@@ -34,7 +43,7 @@ const baseTechnologies = [
   },
 ];
 
-const sdks = [
+const sdks: cardProps[] = [
   { name: "Go", image: "images/logo_go.svg", link: "https://golang.org/" },
   {
     name: "Java",
@@ -58,53 +67,40 @@ const sdks = [
   },
 ];
 
+const GenCard: React.FC<gridCardProps> = ({ keyName, value }) => {
+  return (
+    <>
+      <h2 className="text-3xl font-bold text-primary mb-8">{keyName}</h2>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 place-items-center">
+        {value.map((info, idx) => (
+          <a
+            key={idx}
+            href={info.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white border border-gray-300 rounded-lg p-4 flex flex-col items-center transition-transform transform hover:scale-105"
+          >
+            <img
+              src={info.image}
+              alt={info.name}
+              className="h-12 w-12 object-contain mb-2"
+            />
+            <p className="text-sm font-semibold text-gray-700">{info.name}</p>
+          </a>
+        ))}
+      </div>
+    </>
+  );
+}
+
 export default function TechGrid() {
   return (
     <section className="py-16 bg-white px-6">
       <div className="max-w-6xl mx-auto text-center">
         {/* Base Technologies */}
-        <h2 className="text-3xl font-bold text-primary mb-8">
-          Base technologies
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 place-items-center">
-          {baseTechnologies.map((tech, index) => (
-            <a
-              key={index}
-              href={tech.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white border border-gray-300 rounded-lg p-4 flex flex-col items-center transition-transform transform hover:scale-105"
-            >
-              <img
-                src={tech.image}
-                alt={tech.name}
-                className="h-12 w-12 object-contain mb-2"
-              />
-              <p className="text-sm font-semibold text-gray-700">{tech.name}</p>
-            </a>
-          ))}
-        </div>
-
+        <GenCard keyName="Base Technologies" value={baseTechnologies} />
         {/* SDKs */}
-        <h2 className="text-3xl font-bold text-primary mt-16 mb-8">SDKs</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 place-items-center">
-          {sdks.map((sdk, index) => (
-            <a
-              key={index}
-              href={sdk.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white border border-gray-300 rounded-lg p-4 flex flex-col items-center transition-transform transform hover:scale-105"
-            >
-              <img
-                src={sdk.image}
-                alt={sdk.name}
-                className="h-12 w-12 object-contain mb-2"
-              />
-              <p className="text-sm font-semibold text-gray-700">{sdk.name}</p>
-            </a>
-          ))}
-        </div>
+        <GenCard keyName="SDKs" value={sdks} />
       </div>
     </section>
   );

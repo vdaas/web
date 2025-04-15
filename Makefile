@@ -36,10 +36,11 @@ init: \
 	else \
 		echo "\e[1;33mmage is already installed\e[0m" ; \
 	fi
+	@npm install
 
 .PHONY: run
 run:
-	hugo server -D --bind 0.0.0.0
+	npm run dev
 
 .PHONY: subup
 subup:
