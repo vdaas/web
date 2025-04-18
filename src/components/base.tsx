@@ -11,7 +11,7 @@ export default function Base({
   className?: string;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html id="root" lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />

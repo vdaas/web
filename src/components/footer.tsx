@@ -1,9 +1,6 @@
-"use client"; // Next.js の Client Component
+"use client";
 
 import React from "react";
-// import { FaGithub } from "react-icons/fa";
-// import { PiXLogoBold } from "react-icons/pi"; // X (Twitter) アイコン
-// import { FaSlack } from "react-icons/fa"; // Slack アイコン
 
 export default function Footer() {
   return (
