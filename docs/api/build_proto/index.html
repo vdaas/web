@@ -89,7 +89,7 @@ Let&rsquo;s check the below table for the details.</p><table><thead><tr><th styl
 </span></span><span style=display:flex><span>            ],
 </span></span><span style=display:flex><span>            <span style=color:#f92672>&amp;</span>[<span style=color:#e6db74>&#34;./proto&#34;</span>],
 </span></span><span style=display:flex><span>        )
-</span></span><span style=display:flex><span>        .unwrap_or_else(<span style=color:#f92672>|</span>e<span style=color:#f92672>|</span> panic!(<span style=color:#e6db74>&#34;protobuf compile error: </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#34;</span>, e));
+</span></span><span style=display:flex><span>        .unwrap_or_else(<span style=color:#f92672>|</span>e<span style=color:#f92672>|</span> <span style=color:#a6e22e>panic!</span>(<span style=color:#e6db74>&#34;protobuf compile error: </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#34;</span>, e));
 </span></span><span style=display:flex><span>    Ok(())
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div></li><li><p>build proto</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cargo build
@@ -105,25 +105,25 @@ Let&rsquo;s check the below table for the details.</p><table><thead><tr><th styl
 </span></span><span style=display:flex><span>...
 </span></span></code></pre></div></li><li><p>Implement code using client</p><ol><li><p><code>lib.rs</code></p><p>Import build proto in <code>src/lib.rs</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>mod</span> vald {
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>mod</span> v1 {
-</span></span><span style=display:flex><span>        include!(<span style=color:#e6db74>&#34;./proto/vald.v1.rs&#34;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>include!</span>(<span style=color:#e6db74>&#34;./proto/vald.v1.rs&#34;</span>);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>mod</span> payload {
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>mod</span> v1 {
-</span></span><span style=display:flex><span>        include!(<span style=color:#e6db74>&#34;./proto/payload.v1.rs&#34;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>include!</span>(<span style=color:#e6db74>&#34;./proto/payload.v1.rs&#34;</span>);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>mod</span> google {
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>mod</span> rpc {
-</span></span><span style=display:flex><span>        include!(<span style=color:#e6db74>&#34;./proto/google.rpc.rs&#34;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>include!</span>(<span style=color:#e6db74>&#34;./proto/google.rpc.rs&#34;</span>);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>mod</span> api {
-</span></span><span style=display:flex><span>        include!(<span style=color:#e6db74>&#34;./proto/google.api.rs&#34;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>include!</span>(<span style=color:#e6db74>&#34;./proto/google.api.rs&#34;</span>);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>mod</span> protobuf {
-</span></span><span style=display:flex><span>        include!(<span style=color:#e6db74>&#34;./proto/google.protobuf.rs&#34;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>include!</span>(<span style=color:#e6db74>&#34;./proto/google.protobuf.rs&#34;</span>);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div></li><li><p><code>src/client.rs</code></p><p>There are 4 steps in <code>src/client.rs</code>:</p><ol><li>Load dataset</li><li>Insert vector to Vald cluster</li><li>Search nearest neighbor vectors from Vald cluster after indexing finished</li><li>Remove indexed vectors from Vald cluster</li></ol><p>The example is here:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#75715e>// import packages
@@ -153,10 +153,10 @@ Let&rsquo;s check the below table for the details.</p><table><thead><tr><th styl
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e>// load data
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>read_file</span>() -&gt; Result<span style=color:#f92672>&lt;</span>Vec<span style=color:#f92672>&lt;</span>Vec<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>f32</span><span style=color:#f92672>&gt;&gt;&gt;</span> {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> file <span style=color:#f92672>=</span> File::open(<span style=color:#66d9ef>FILE</span>).unwrap_or_else(<span style=color:#f92672>|</span>e<span style=color:#f92672>|</span> panic!(<span style=color:#e6db74>&#34;[ERR] failed to read file: </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#34;</span>, e));
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> file <span style=color:#f92672>=</span> File::open(<span style=color:#66d9ef>FILE</span>).unwrap_or_else(<span style=color:#f92672>|</span>e<span style=color:#f92672>|</span> <span style=color:#a6e22e>panic!</span>(<span style=color:#e6db74>&#34;[ERR] failed to read file: </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#34;</span>, e));
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> data <span style=color:#f92672>=</span> file
 </span></span><span style=display:flex><span>        .dataset(<span style=color:#66d9ef>DATASET</span>)
-</span></span><span style=display:flex><span>        .unwrap_or_else(<span style=color:#f92672>|</span>e<span style=color:#f92672>|</span> panic!(<span style=color:#e6db74>&#34;[ERR] failed to get dataset: </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#34;</span>, e));
+</span></span><span style=display:flex><span>        .unwrap_or_else(<span style=color:#f92672>|</span>e<span style=color:#f92672>|</span> <span style=color:#a6e22e>panic!</span>(<span style=color:#e6db74>&#34;[ERR] failed to get dataset: </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#34;</span>, e));
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> vector <span style=color:#f92672>=</span> Vec::new();
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> train <span style=color:#66d9ef>in</span> data.read_2d::<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>f32</span><span style=color:#f92672>&gt;</span>()<span style=color:#f92672>?</span>.outer_iter() {
 </span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> vec: Vec<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>f32</span><span style=color:#f92672>&gt;</span> <span style=color:#f92672>=</span> Vec::new();
@@ -171,11 +171,11 @@ Let&rsquo;s check the below table for the details.</p><table><thead><tr><th styl
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e>#[tokio::main(flavor = </span><span style=color:#e6db74>&#34;current_thread&#34;</span><span style=color:#75715e>)]</span>
 </span></span><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() -&gt; Result<span style=color:#f92672>&lt;</span>(), Box<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>dyn</span> std::error::Error<span style=color:#f92672>&gt;&gt;</span> {
-</span></span><span style=display:flex><span>    print!(<span style=color:#e6db74>&#34;[Start] Load </span><span style=color:#e6db74>{}</span><span style=color:#e6db74> file</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, <span style=color:#66d9ef>FILE</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>print!</span>(<span style=color:#e6db74>&#34;[Start] Load </span><span style=color:#e6db74>{}</span><span style=color:#e6db74> file</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, <span style=color:#66d9ef>FILE</span>);
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> vec <span style=color:#f92672>=</span> read_file()<span style=color:#f92672>?</span>;
-</span></span><span style=display:flex><span>    print!(<span style=color:#e6db74>&#34;[End] Success to load </span><span style=color:#e6db74>{}</span><span style=color:#e6db74> file</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, <span style=color:#66d9ef>FILE</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>print!</span>(<span style=color:#e6db74>&#34;[End] Success to load </span><span style=color:#e6db74>{}</span><span style=color:#e6db74> file</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, <span style=color:#66d9ef>FILE</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    print!(<span style=color:#e6db74>&#34;[Start] Insert phase</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>print!</span>(<span style=color:#e6db74>&#34;[Start] Insert phase</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
 </span></span><span style=display:flex><span>    <span style=color:#75715e>// create insert client
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> insert_client <span style=color:#f92672>=</span>
 </span></span><span style=display:flex><span>        insert_client::InsertClient::connect(Endpoint::from_static(<span style=color:#66d9ef>HOST</span>)).<span style=color:#66d9ef>await</span><span style=color:#f92672>?</span>;
@@ -198,12 +198,12 @@ Let&rsquo;s check the below table for the details.</p><table><thead><tr><th styl
 </span></span><span style=display:flex><span>            })
 </span></span><span style=display:flex><span>            .<span style=color:#66d9ef>await</span><span style=color:#f92672>?</span>;
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    print!(<span style=color:#e6db74>&#34;[End] Finish Insert Phase</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>print!</span>(<span style=color:#e6db74>&#34;[End] Finish Insert Phase</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    print!(<span style=color:#e6db74>&#34;[Sleep] Waiting SaveIndex is completed...</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>print!</span>(<span style=color:#e6db74>&#34;[Sleep] Waiting SaveIndex is completed...</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
 </span></span><span style=display:flex><span>    sleep(time::Duration::from_secs(<span style=color:#66d9ef>DURATION</span>));
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    print!(<span style=color:#e6db74>&#34;[Start] Search phase</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>print!</span>(<span style=color:#e6db74>&#34;[Start] Search phase</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
 </span></span><span style=display:flex><span>    <span style=color:#75715e>// create search client
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> search_client <span style=color:#f92672>=</span>
 </span></span><span style=display:flex><span>        search_client::SearchClient::connect(Endpoint::from_static(<span style=color:#66d9ef>HOST</span>)).<span style=color:#66d9ef>await</span><span style=color:#f92672>?</span>;
@@ -223,12 +223,12 @@ Let&rsquo;s check the below table for the details.</p><table><thead><tr><th styl
 </span></span><span style=display:flex><span>                }),
 </span></span><span style=display:flex><span>            })
 </span></span><span style=display:flex><span>            .<span style=color:#66d9ef>await</span><span style=color:#f92672>?</span>;
-</span></span><span style=display:flex><span>        print!(<span style=color:#e6db74>&#34;[Id]: </span><span style=color:#e6db74>{:?}</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, id.to_string());
-</span></span><span style=display:flex><span>        print!(<span style=color:#e6db74>&#34;[Result]: </span><span style=color:#e6db74>{:#?}</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, res.into_inner().results);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>print!</span>(<span style=color:#e6db74>&#34;[Id]: </span><span style=color:#e6db74>{:?}</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, id.to_string());
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>print!</span>(<span style=color:#e6db74>&#34;[Result]: </span><span style=color:#e6db74>{:#?}</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, res.into_inner().results);
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    print!(<span style=color:#e6db74>&#34;[End] Finish Search Phase</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>print!</span>(<span style=color:#e6db74>&#34;[End] Finish Search Phase</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    print!(<span style=color:#e6db74>&#34;[Start] Remove phase</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>print!</span>(<span style=color:#e6db74>&#34;[Start] Remove phase</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
 </span></span><span style=display:flex><span>    <span style=color:#75715e>// create remove client
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> remove_client <span style=color:#f92672>=</span>
 </span></span><span style=display:flex><span>        remove_client::RemoveClient::connect(Endpoint::from_static(<span style=color:#66d9ef>HOST</span>)).<span style=color:#66d9ef>await</span><span style=color:#f92672>?</span>;
@@ -241,7 +241,7 @@ Let&rsquo;s check the below table for the details.</p><table><thead><tr><th styl
 </span></span><span style=display:flex><span>            })
 </span></span><span style=display:flex><span>            .<span style=color:#66d9ef>await</span><span style=color:#f92672>?</span>;
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    print!(<span style=color:#e6db74>&#34;[End] Finish Remove phase</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>print!</span>(<span style=color:#e6db74>&#34;[End] Finish Remove phase</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    Ok(())
 </span></span><span style=display:flex><span>}
