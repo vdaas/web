@@ -1,6 +1,6 @@
 ---
 title: "Backup Configuration_v1.7/User Guides"
-date: 2024-02-15T17:12:31+09:00
+date: 2025-05-08T05:04:06Z
 draft: false
 weight: 200
 description: Applies backup feature for saving and restoring indexes
@@ -40,7 +40,7 @@ Please refer to the following tables and decide which method fit for your case.
 
 This section shows the best practice for configuring backup features with PV, S3, or PV + S3.
 
-Each sample configuration yaml is published on [here](https://github.com/vdaas/vald/tree/main/charts/vald/values).
+Each sample configuration yaml is published on [here](https://github.com/vdaas/vald/tree/master/charts/vald/values).
 Please refer it for more details.
 
 ### General

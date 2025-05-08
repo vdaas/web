@@ -1,9 +1,9 @@
 ---
-title: "FAQ_v1.7/Support"
-date: 2024-08-08T10:35:17+09:00
+title: "Faq_v1.7/Support"
+date: 2025-05-08T05:04:05Z
 draft: false
-weight: 0
-description: ""
+weight: 200
+description: The major questions about using Vald
 menu:
   support:
     parent: Support
