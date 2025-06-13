@@ -1,6 +1,6 @@
 ---
 title: "About Vald_overview"
-date: 2024-01-10T18:16:40+09:00
+date: 2025-06-13T02:38:41Z
 draft: false
 weight: 100
 description: What is Vald and what you can do with Vald
@@ -68,7 +68,7 @@ Vald is easy to use, feature-rich and highly customizable as you needed.
   - You can configure the number of vector dimensions, the number of replica and etc.
 
 - Multi language supported
-  - Go, Java, Clojure, Node.js, and Python client library are supported.
+  - Go, Java, Node.js, and Python client library are supported.
   - gRPC APIs can be triggered by any programming languages which support gRPC.
   - REST API is also supported.
 

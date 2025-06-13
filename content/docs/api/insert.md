@@ -1,6 +1,6 @@
 ---
 title: "Insert_api"
-date: 2024-10-16T16:03:40+09:00
+date: 2025-06-13T02:38:42Z
 draft: false
 weight: 100
 description: Insert vectors to the Vald cluster
@@ -27,7 +27,7 @@ service Insert {
 
 ## Insert RPC
 
-Inset RPC is the method to add a new single vector.
+Insert RPC is the method to add a new single vector.
 
 ### Input
 
