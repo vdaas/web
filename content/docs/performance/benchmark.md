@@ -1,6 +1,6 @@
 ---
 title: "Benchmark_performance"
-date: 2024-01-10T18:16:42+09:00
+date: 2025-06-18T05:24:01Z
 draft: false
 weight: 100
 description: Measuring performance of Vald cluster
@@ -12,8 +12,6 @@ menu:
 # Benchmark
 
 This document will show and explain the benchmark of an approximate nearest neighbor on the Vald cluster, such as [ann-benchmarks](https://github.com/erikbern/ann-benchmarks), and also explain how to perform the ann-benchmark test on your Vald cluster.
-
-If you want to perform load testing on the Vald cluster, please refer to [this document](/docs/performance/loadtest).
 
 <!--
 // TODO: uncomment when unit_bench is created.
