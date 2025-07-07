@@ -1,6 +1,6 @@
 ---
 title: "Vald Agent Standalone on K8s_tutorial"
-date: 2024-10-16T16:03:40+09:00
+date: 2025-07-07T02:25:43Z
 draft: false
 weight: 300
 description: Running only Vald Agent on Kubernetes and execute client codes
@@ -111,10 +111,10 @@ This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perf
 
    ```bash
    NAME               READY   STATUS    RESTARTS   AGE
-   vald-agent-ngt-0   1/1     Running   0          20m
-   vald-agent-ngt-1   1/1     Running   0          20m
-   vald-agent-ngt-2   1/1     Running   0          20m
-   vald-agent-ngt-3   1/1     Running   0          20m
+   vald-agent-0   1/1     Running   0          20m
+   vald-agent-1   1/1     Running   0          20m
+   vald-agent-2   1/1     Running   0          20m
+   vald-agent-3   1/1     Running   0          20m
    ```
 
    </details>
@@ -126,7 +126,7 @@ This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perf
     At first, port-forward the vald-lb-gateway is required to make request from your local environment possible.
 
     ```bash
-    kubectl port-forward service/vald-agent-ngt 8081:8081
+    kubectl port-forward service/vald-agent 8081:8081
     ```
 
 1.  Download dataset
