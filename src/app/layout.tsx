@@ -1,7 +1,11 @@
+"use client";
+
 // import type { Metadata } from "next";
 // import localFont from "next/font/local";
+
 import "./globals.css";
-import Base from "@/components/base"
+import { ThemeProvider } from "next-themes";
+import Base from "@/components/base";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -21,10 +25,16 @@ import Base from "@/components/base"
 //
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <Base>{children}</Base>
+    <html lang="ja" suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }

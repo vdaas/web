@@ -1,4 +1,4 @@
-"use client"; // useState を使うために必要
+"use client";
 
 import React, { useState } from "react";
 
