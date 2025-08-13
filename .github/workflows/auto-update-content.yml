@@ -2,6 +2,9 @@ name: Update content
 on:
   repository_dispatch:
     types: [update-contents]
+  push:
+    branches: [main]
+    paths: ['.github/workflows/auto-update-content.yml']
 
 jobs:
   update-content:
@@ -56,12 +59,17 @@ jobs:
       - name: Update root content
         run: |
           make all
-      - name: Update latest version content
+      - name: Update each version content
         run: |
-          make TARGET_VER=$(make version/latest) all
-      - name: Update support version content
-        run: |
-          make TARGET_VER=$(make version/support) all
+          gh release list --repo vdaas/vald --limit 1000 --json tagName \
+          | jq -r '.[].tagName' \
+          | grep -v v0 \
+          | sed 's/^v//g' \
+          | sort -t'.' -k1,1nr -k2,2nr -k3,3nr \
+          | awk -F'.' '!latest[$1"."$2]++' \
+          | while read VERSION; do
+            make TARGET_VER=${VERSION} all
+          done
       - name: create pull request
         run: |
             TS=$(date +%s)
