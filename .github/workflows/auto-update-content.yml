@@ -70,6 +70,9 @@ jobs:
           | while read VERSION; do
             make TARGET_VER=${VERSION} all
           done
+        env:
+          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
       - name: create pull request
         run: |
             TS=$(date +%s)
