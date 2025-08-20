@@ -1,8 +1,9 @@
 ---
-title: "Benchmark_content/Docs/V1.0/Performance"
-date: 2021-04-16T16:50:25+09:00
+title: "Benchmark_v1.0/Performance"
+date: 2025-08-20T04:55:07Z
 draft: false
 weight: 100
+description: Measuring performance of Vald cluster
 menu:
   performance:
     parent: Performance

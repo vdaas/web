@@ -1,8 +1,9 @@
 ---
-title: "Usage Example_content/Docs/V1.0/Usecase"
-date: 2021-04-16T16:50:26+09:00
+title: "Usage Example_v1.0/Usecase"
+date: 2025-08-20T04:55:08Z
 draft: false
 weight: 0
+description: ""
 menu:
   usecase:
     parent: Usecase

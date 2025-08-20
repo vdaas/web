@@ -1,8 +1,9 @@
 ---
 title: "Sdks_v1.5/User Guides"
-date: 2022-08-18T11:00:15+09:00
+date: 2025-08-20T04:53:56Z
 draft: false
-weight: 600
+weight: 1400
+description: Sends request and receives response from the Vald cluster
 menu:
   userguides:
     parent: User Guides
@@ -10,13 +11,13 @@ menu:
 
 # SDKs
 
-This page shows the introduction of the Vald SDKs.
+This page shows the introduction about the Vald SDKs.
 
 ## Client Libraries
 
-Vald provides the official SDKs as client libraries.
-You can use Vald SDKs to request something to Vald, e.g., `Insert`, `Update`, `Upsert`, `Search`, `Remove`, and so on.
-Also, Vald publishes [the gRPC protobuf](https://github.com/vdaas/vald/tree/main/apis/proto/v1); you can use any languages you want, even if Vald does not provide an SDK.
+Vald provides the official SDKs as you know as client libraries.
+You can use Vald SDKs to request something to Vald, e.g. `Insert`, `Update`, `Upsert`, `Search`, `Remove`, and so on.
+Also, Vald publishes [the gRPC protobuf](https://github.com/vdaas/vald/tree/master/apis/proto/v1), you can use any languages you want even if Vald does not provide as SDK.
 
 ## Official SDKs
 
@@ -30,12 +31,12 @@ Here is the list of Official SDKs.
 
 ## How to use SDKs
 
-If you use the client libraries provided by Vald, you can try it quickly.
-There are only a few steps to use like the followings:
+If you use the client libraries provided by Vald, you can try it easily.
+There are only a few steps to use like as following:
 
 1. Import package
 1. Create the client
-1. Set configurations, then send a request
+1. Set configurations and Request with error handling
 1. Something you'd like to do
 
 For more information about the SDKs, please refer to each SDK's page.

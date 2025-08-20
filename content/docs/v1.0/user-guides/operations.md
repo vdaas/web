@@ -1,8 +1,9 @@
 ---
-title: "Operations_content/Docs/V1.0/User Guides"
-date: 2021-04-16T16:50:26+09:00
+title: "Operations_v1.0/User Guides"
+date: 2025-08-20T04:55:08Z
 draft: false
-weight: 200
+weight: 700
+description: Describes the basic operation for the Vald cluster
 menu:
   userguides:
     parent: User Guides
@@ -147,7 +148,7 @@ The operator will automatically detect the changes and update the deployed Vald 
 [pod-priority-preemption]: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
 [resource-quota]: https://kubernetes.io/docs/concepts/policy/resource-quotas/
 
-[coding-style-logging]: ../../contributing/coding-style#logging
+[coding-style-logging]: ../contributing/coding-style#logging
 
 [prometheus-io]: https://prometheus.io/
 [grafana]: https://grafana.com

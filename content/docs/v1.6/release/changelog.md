@@ -1,8 +1,9 @@
 ---
 title: "Changelog_v1.6/Release"
-date: 2022-10-19T22:10:23+09:00
+date: 2025-08-20T04:53:34Z
 draft: false
 weight: 0
+description: ""
 menu:
   release:
     parent: Release
@@ -771,7 +772,7 @@ menu:
 :memo: document
 - document: update formats (#1634)
 - docs: add dotdc as a contributor for doc (#1623)
-- doc: fixed architecture link in get-started (#1619)
+- doc: fixed architecture link in get-started.md (#1619)
 - add FAQ and Troubleshooting document (#1591)
 
 
@@ -2127,7 +2128,7 @@ menu:
 #### Document
 - separate tutorials into each document and add images (#1230)
 - Update Tutotial/Get-Started (#1203)
-- Update unit-test-guideline (#1213)
+- Update unit-test-guideline.md (#1213)
 - create docs/user-guides/sdks (#1182)
 - Fix typo in README. (#1163)
 
@@ -4300,7 +4301,7 @@ Helm operator | `docker pull vdaas/vald-helm-operator:v0.0.36`
 - Fix `internal/log/logger` to match the test template ([#371](https://github.com/vdaas/vald/pull/371))
 - Fix failing tests of `internal/log` and modified to match the test template  ([#368](https://github.com/vdaas/vald/pull/368))
 - Add enabled flag to each component in Helm chart ([#372](https://github.com/vdaas/vald/pull/372))
-- Add configurations ([#356](https://github.com/vdaas/vald/pull/356))
+- Add configurations.md ([#356](https://github.com/vdaas/vald/pull/356))
 
 
 ## v0.0.35

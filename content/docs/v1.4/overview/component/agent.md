@@ -1,8 +1,9 @@
 ---
 title: "Agent_v1.4/Overview/Component"
-date: 2022-02-17T19:23:18+09:00
+date: 2025-08-20T04:54:14Z
 draft: false
 weight: 100
+description: Stores index data and Search ANN vectors
 menu:
   component:
     parent: Component
@@ -86,7 +87,7 @@ This image shows the mechanism to create NGT index.
 
 <img src="/images/v1.4/overview/component/agent/ngt.png" />
 
-Please refer to [Go Doc](https://pkg.go.dev/github.com/vdaas/vald@v1.4.1/pkg/agent/core/ngt/service) for other functions.
+Please refer to [Go Doc](https://pkg.go.dev/github.com/vdaas/vald@v1.3.1/pkg/agent/core/ngt/service) for other functions.
 
 ### Sidecar
 

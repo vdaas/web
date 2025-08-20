@@ -1,8 +1,9 @@
 ---
 title: "Coding Style_v1.3/Contributing"
-date: 2022-02-17T16:51:41+09:00
+date: 2025-08-20T04:54:29Z
 draft: false
-weight: 200
+weight: 300
+description: Coding style for Vald project
 menu:
   contributing:
     parent: Contributing
@@ -459,7 +460,7 @@ The implementation may differ based on your use case.
 ### Functional Option
 
 In Vald, the functional option pattern is widely used in Vald.
-You can refer to [this section](#struct-initialization) for more details of the use case of this pattern.
+You can refer to [this section](#Struct-initialization) for more details of the use case of this pattern.
 
 We provide the following errors to describe the error to apply the option.
 
@@ -890,7 +891,7 @@ make gotests/install
 If you use the following command to generate the missing test code.
 
 ```bash
-make gotests/gen
+make make gotests/gen
 ```
 
 After the command above executed, the file `*target*_test.go` will be generated for each Go source file.
@@ -926,7 +927,7 @@ We do not suggest to modify the generated code other than the `tests` variable, 
     var (
         // Goroutine leak is detected by `fastime`, but it should be ignored in the test because it is an external package.
         goleakIgnoreOptions = []goleak.Option{
-            goleak.IgnoreTopFunction("github.com/kpango/fastime.(*fastime).StartTimerD.func1"),
+            goleak.IgnoreTopFunction("github.com/kpango/fastime.(*Fastime).StartTimerD.func1"),
         }
     )
     ```

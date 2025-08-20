@@ -1,8 +1,9 @@
 ---
-title: "Operations_content/Docs/V1.2/User Guides"
-date: 2021-08-03T11:35:29+09:00
+title: "Operations_v1.2/User Guides"
+date: 2025-08-20T04:54:43Z
 draft: false
-weight: 200
+weight: 700
+description: Describes the basic operation for the Vald cluster
 menu:
   userguides:
     parent: User Guides

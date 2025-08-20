@@ -1,8 +1,9 @@
 ---
-title: "Status Code_v1.5/Api"
-date: 2022-08-18T11:00:10+09:00
+title: "Status_v1.5/Api"
+date: 2025-08-20T04:53:54Z
 draft: false
-weight: 800
+weight: 1000
+description: API response description for each status
 menu:
   api:
     parent: Api
@@ -19,14 +20,14 @@ The sections below describe the meaning of each code and why API returns.
 
 | code | name                                      |
 | :--: | :---------------------------------------- |
-|  0   | [OK](#ok)                                 |
-|  3   | [INVALID_ARGUMENT](#invalid_argument)     |
-|  4   | [DEADLINE_EXCEEDED](#deadline_exceeded)   |
-|  5   | [NOT_FOUND](#not_found)                   |
-|  6   | [ALREADY_EXISTS](#already_exists)         |
-|  8   | [RESOURCE_EXHAUSTED](#resource_exhausted) |
-|  13  | [INTERNAL](#internal)                     |
-|  14  | [UNAVAILABLE](#unavailable)               |
+|  0   | [OK](#OK)                                 |
+|  3   | [INVALID_ARGUMENT](#INVALID_ARGUMENT)     |
+|  4   | [DEADLINE_EXCEEDED](#DEADLINE_EXCEEDED)   |
+|  5   | [NOT_FOUND](#NOT_FOUND)                   |
+|  6   | [ALREADY_EXISTS](#ALREADY_EXISTS)         |
+|  8   | [RESOURCE_EXHAUSTED](#RESOURCE_EXHAUSTED) |
+|  13  | [INTERNAL](#INTERNAL)                     |
+|  14  | [UNAVAILABLE](#UNAVAILABLE)               |
 
 ## OK
 
@@ -47,7 +48,7 @@ If you get this code, please verify your request payload is correct.
 
 Services that return status are:
 
-- [Object Service(only Exists RPC)](/docs/v1.5/api/object#exists-rpc)
+- [Object Service(only Exists RPC)](/docs/v1.5/api/object#Exists-RPC)
 - [Insert Service](/docs/v1.5/api/insert)
 - [Remove Service](/docs/v1.5/api/insert)
 - [Search Service](/docs/v1.5/api/search)
@@ -92,11 +93,11 @@ You have to change the query vector with `skip_strict_exist_check` as `true` or 
 
 ## RESOURCE_EXHAUSTED
 
-`RESOURCE_EXHAUSTED` means that some resources have been exhausted.
+`RESOURCE_EXHAUSTED` means the some resources has been exhausted.
 
 It appears when:
 
-- There is out-of-memory in gRPC payload, in networks, etc.
+- There is out-of-memory in gRPC payload, or networks, or etc.
 - There are some server overload situations.
 - The sent or received message is larger than the configured limit (default is 4 MB).
 
@@ -107,13 +108,13 @@ In other words, the vector dimension size in configuration is too large.
 ## INTERNAL
 
 `INTERNAL` appears when some wrong happens in the Vald cluster.
-It is there are the serious problems with the Vald cluster.
+It is there is the serious problems about the Vald cluster.
 
 Services that return status are all services.
 If you get it, please verify the state of the Vald cluster.
 
 <div class="warning">
-If an internal server error appears, it should have cared and researched logs metrics.
+If the internal server error appears, it should be care and research about logs metrics.
 </div>
 
 ## UNAVAILABLE

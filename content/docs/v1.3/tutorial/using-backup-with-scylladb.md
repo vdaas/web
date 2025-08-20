@@ -1,6 +1,6 @@
 ---
-title: "Using Backup With Scylladb_v1.1/Tutorial"
-date: 2025-08-20T04:54:55Z
+title: "Using Backup With Scylladb_v1.3/Tutorial"
+date: 2025-08-20T04:54:29Z
 draft: false
 weight: 0
 description: ""
@@ -11,6 +11,8 @@ menu:
 
 # Using Backup with ScyllaDB
 
+**This article is unable for use from v1.2 ~**.
+
 This article will show you how to deploy Vald with ScyllaDB as a backup database using Helm and run it on your Kubernetes cluster.
 
 ## Overview
@@ -18,12 +20,12 @@ This article will show you how to deploy Vald with ScyllaDB as a backup database
 This tutorial leads you to deploy Vald and the external database for backup.
 As one of the features, Vald can auto index backup using MySQL + Redis or Cassandra to enable disaster recovery.<br>
 In this tutorial, you will use ScyllaDB deployed to the Persistent Volume for backup.
-And you will also deploy more microservices than [Get Started](/docs/v1.1/tutorial/get-started).
-If you haven't completed [Get Started](/docs/v1.1/tutorial/get-started) yet, we recommend trying it out at first.
+And you will also deploy more microservices than [Get Started](/docs/v1.3/tutorial/get-started).
+If you haven't completed [Get Started](/docs/v1.3/tutorial/get-started) yet, we recommend trying it out at first.
 
 The following image is the architecture image of this tutorial.
 
-<img src="/images/v1.1/tutorial/vald-with-syclladb.png" />
+<img src="/images/v1.3/tutorial/vald-with-syclladb.png" />
 
 The 5 steps to Using Backup with ScyllaDB:
 1. [Check and Satisfy the Requirements](#Requirements)
@@ -237,7 +239,7 @@ This chapter shows how to perform a search action in Vald with fashion-mnist dat
     go run main.go
     ```
 
-    The detailed explanation of example code is shown in [Get Started](/docs/v1.1/tutorial/get-started#Running-Example-Code)
+    The detailed explanation of example code is shown in [Get Started](/docs/v1.3/tutorial/get-started#Running-Example-Code)
 
 ## Cleanup
 
@@ -252,6 +254,6 @@ helm uninstall vald
 Congratulation! You achieved this tutorial!
 
 For more information, we recommend you to check:
-- [Architecture](/docs/v1.1/overview/architecture)
-- [Configuration](/docs/v1.1/user-guides/configuration)
-- [Operations](/docs/v1.1/user-guides/operations)
+- [Architecture](/docs/v1.3/overview/architecture)
+- [Configuration](/docs/v1.3/user-guides/configuration)
+- [Operations](/docs/v1.3/user-guides/operations)

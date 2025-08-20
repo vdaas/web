@@ -1,6 +1,6 @@
 ---
-title: "Content/Docs/V1.0/Index"
-date: 2021-04-23T14:08:41+09:00
+title: "V1.0/Index"
+date: 2025-08-20T04:55:09Z
 draft: false
 ---
 

@@ -1,8 +1,9 @@
 ---
-title: "Sdks_content/Docs/V1.3/User Guides"
-date: 2021-10-20T10:29:14+09:00
+title: "Sdks_v1.3/User Guides"
+date: 2025-08-20T04:54:30Z
 draft: false
-weight: 300
+weight: 1400
+description: Sends request and receives response from the Vald cluster
 menu:
   userguides:
     parent: User Guides

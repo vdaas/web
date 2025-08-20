@@ -1,8 +1,9 @@
 ---
 title: "Upgrade Cluster_v1.6/User Guides"
-date: 2022-10-06T10:57:06+09:00
+date: 2025-08-20T04:53:37Z
 draft: false
-weight: 700
+weight: 800
+description: Describes hot to upgrade Vald version for the running Vald cluster
 menu:
   userguides:
     parent: User Guides

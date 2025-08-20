@@ -1,8 +1,9 @@
 ---
-title: "Configuration_content/Docs/V1.3/User Guides"
-date: 2021-10-20T10:29:14+09:00
+title: "Configuration_v1.3/User Guides"
+date: 2025-08-20T04:54:30Z
 draft: false
 weight: 100
+description: Applies basic configuration for running Vald cluster
 menu:
   userguides:
     parent: User Guides
@@ -218,9 +219,9 @@ agent:
 
 #### Ingress
 
-Ingress for gateways can be configured by `gateway.{filter,lb}.ingress` field object.
-It is important to set your host to `gateway.{filter,lb}.ingress.host` field.
-`gateway.{filter,lb}.ingress.servicePort` should be `grpc` or `rest`.
+Ingress for gateways can be configured by `gateway.{backup,filter,lb,meta}.ingress` field object.
+It is important to set your host to `gateway.{backup,filter,lb,meta}.ingress.host` field.
+`gateway.{backup,filter,lb,meta}.ingress.servicePort` should be `grpc` or `rest`.
 
 ```yaml
 gateway:

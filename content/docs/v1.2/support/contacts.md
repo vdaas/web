@@ -1,8 +1,9 @@
 ---
-title: "Contacts_content/Docs/V1.2/Support"
-date: 2021-08-03T11:35:28+09:00
+title: "Contacts_v1.2/Support"
+date: 2025-08-20T04:54:42Z
 draft: false
 weight: 100
+description: Please contact us
 menu:
   support:
     parent: Support

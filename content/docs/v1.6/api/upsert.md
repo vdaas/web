@@ -1,8 +1,9 @@
 ---
 title: "Upsert_v1.6/Api"
-date: 2022-10-06T10:57:01+09:00
+date: 2025-08-20T04:53:34Z
 draft: false
 weight: 300
+description: Update or Insert vectors to the Vald cluster
 menu:
   api:
     parent: Api

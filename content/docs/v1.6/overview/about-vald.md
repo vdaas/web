@@ -1,8 +1,9 @@
 ---
 title: "About Vald_v1.6/Overview"
-date: 2022-10-06T10:57:01+09:00
+date: 2025-08-20T04:53:36Z
 draft: false
 weight: 100
+description: What is Vald and what you can do with Vald
 menu:
   overview:
     parent: Overview

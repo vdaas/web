@@ -1,8 +1,9 @@
 ---
 title: "Get Started_v1.6/Tutorial"
-date: 2022-10-06T10:57:04+09:00
+date: 2025-08-20T04:53:35Z
 draft: false
 weight: 100
+description: Running Vald cluster with NGT Agent on Kubernetes and execute client codes
 menu:
   tutorial:
     parent: Tutorial
@@ -26,11 +27,11 @@ For more information about Vald's architecture, please refer to [Architecture](/
 
 The 5 steps to Get Started with Vald:
 
-1. [Check and Satisfy the Requirements](#requirements)
-1. [Prepare Kubernetes Cluster](#prepare-the-kubernetes-cluster)
-1. [Deploy Vald on Kubernetes Cluster](#deploy-vald-on-kubernetes-cluster)
-1. [Run Example Code](#run-example-code)
-1. [Cleanup](#cleanup)
+1. [Check and Satisfy the Requirements](#Requirements)
+1. [Prepare Kubernetes Cluster](#Prepare-the-Kubernetes-Cluster)
+1. [Deploy Vald on Kubernetes Cluster](#Deploy-Vald-on-Kubernetes-Cluster)
+1. [Run Example Code](#Run-Example-Code)
+1. [Cleanup](#Cleanup)
 
 ## Requirements
 

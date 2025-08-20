@@ -1,8 +1,9 @@
 ---
-title: "Configuration_content/Docs/V1.2/User Guides"
-date: 2021-08-03T11:35:29+09:00
+title: "Configuration_v1.2/User Guides"
+date: 2025-08-20T04:54:43Z
 draft: false
 weight: 100
+description: Applies basic configuration for running Vald cluster
 menu:
   userguides:
     parent: User Guides
@@ -284,11 +285,11 @@ For further details, there are references of Helm values in GitHub Vald reposito
 [vald-helm-chart]: https://github.com/vdaas/vald/tree/master/charts/vald
 [vald-helm-operator-chart]: https://github.com/vdaas/vald/tree/master/charts/vald-helm-operator
 
-[vald-operation-guide]: ../operations
+[vald-operation-guide]: ./operations
 
 [vald-apis-docs]: https://github.com/vdaas/vald/tree/master/apis/docs
 [vald-swagger-specs]: https://github.com/vdaas/vald/tree/master/apis/swagger
-[logging-level]: ../../contributing/coding-style#logging
+[logging-level]: https://github.com/vdaas/vald/blob/master/docs/contributing/coding-style#logging
 [google-pprof]: https://github.com/google/pprof
 [prometheus-io]: https://prometheus.io/
 [kubernetes-liveness-readiness]: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/

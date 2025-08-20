@@ -1,8 +1,9 @@
 ---
-title: "Serach_v1.3/Api"
-date: 2022-02-17T16:51:41+09:00
+title: "Serach_v1.4/Api"
+date: 2025-08-20T04:54:13Z
 draft: false
-weight: 400
+weight: 0
+description: ""
 menu:
   api:
     parent: Api

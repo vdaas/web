@@ -1,8 +1,9 @@
 ---
-title: "About Vald_content/Docs/V1.3/Overview"
-date: 2021-10-20T10:29:12+09:00
+title: "About Vald_v1.3/Overview"
+date: 2025-08-20T04:54:30Z
 draft: false
 weight: 100
+description: What is Vald and what you can do with Vald
 menu:
   overview:
     parent: Overview
@@ -41,7 +42,7 @@ Vald is easy to use, feature-rich and highly customizable as you needed.
     - Horizontal scalable on memory and CPU for your demand.
 
 - Auto Backup for Index data
-    - Vald supports to backup Vald Agent index data using Object Storage or Persistent Volume.
+    - Vald has a feature to store the backup of the index data using MySQL or Cassandra which enables disaster recovery.
 
 - Distributed Indexing
     - Vald distribute vector index to multiple agents, each agent stores different index.

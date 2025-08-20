@@ -1,8 +1,9 @@
 ---
 title: "Configuration_v1.6/User Guides"
-date: 2022-10-06T10:57:05+09:00
+date: 2025-08-20T04:53:36Z
 draft: false
 weight: 100
+description: Applies basic configuration for running Vald cluster
 menu:
   userguides:
     parent: User Guides
@@ -292,7 +293,7 @@ gateway:
 
 #### Cluster Role
 
-Vald Discoverer gets the Node and Pod metrics from [kube-apiserver](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) as described in [Vald Discoverer](/docs/overview/component/discoverer).
+Vald Discoverer gets the Node and Pod metrics from [kube-apiserver](https://kubernetes.io/ja/docs/reference/command-line-tools-reference/kube-apiserver/) as described in [Vald Discoverer](/docs/v1.6/overview/component/discoverer).
 Vald's Helm deployment supports RBAC as default, and the default configuration is the following.
 
 ```yaml

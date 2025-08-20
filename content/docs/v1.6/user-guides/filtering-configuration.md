@@ -1,8 +1,9 @@
 ---
 title: "Filtering Configuration_v1.6/User Guides"
-date: 2022-10-06T10:57:05+09:00
+date: 2025-08-20T04:53:36Z
 draft: false
 weight: 300
+description: Applies filtering feature to the Vald cluster
 menu:
   userguides:
     parent: User Guides
@@ -12,7 +13,7 @@ menu:
 
 This page describes how to enable filtering features on the Vald cluster.
 
-Before using the filtering functions, please check [the Vald Filter Gateway document](/docs/v1.6/overview/component/filter-gateway) first for what you can do.
+Before using the filtering functions, please check [the Vald Filter Gateway document](/docs/v1.6/overview/component/filter-gatewya) first for what you can do.
 
 ## Requirement
 

@@ -1,6 +1,6 @@
 ---
-title: "Support_content/Docs/V1.3/Support"
-date: 2021-10-20T10:29:14+09:00
+title: "Support_v1.3/Support"
+date: 2025-08-20T04:54:30Z
 draft: false
 weight: 0
 ---

@@ -1,8 +1,9 @@
 ---
 title: "Capacity Planning_v1.6/User Guides"
-date: 2022-10-06T10:57:05+09:00
+date: 2025-08-20T04:53:36Z
 draft: false
-weight: 800
+weight: 900
+description: Estimates how Kubernetes resources will be required
 menu:
   userguides:
     parent: User Guides
@@ -162,7 +163,7 @@ Please DO NOT remove the default settings.
         requiredDuringSchedulingIgnoredDuringExecution: []
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
+          - weight: 900
             podAffinityTerm:
               topologyKey: kubernetes.io/hostname
               labelSelector:
