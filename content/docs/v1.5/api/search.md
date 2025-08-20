@@ -1,8 +1,9 @@
 ---
 title: "Search_v1.5/Api"
-date: 2022-08-18T11:00:10+09:00
+date: 2025-08-20T04:53:54Z
 draft: false
 weight: 400
+description: Search ANN vectors from the Vald cluster
 menu:
   api:
     parent: Api
@@ -144,7 +145,7 @@ Search RPC is the method to search vector(s) similar to request vector.
 
 ## SearchByID RPC
 
-SearchByID RPC is the method to search similar vectors using a user-defined vector ID.<br>
+SearchByID RPC it the method to search similar vectors using by user defined vector ID.<br>
 The vector with the same requested ID should be indexed into the `vald-agent` before searching.
 
 ### Input
@@ -449,9 +450,9 @@ Each SearchByID request and response are independent.
 
 MultiSearch RPC is the method to search vectors with multiple vectors in **1** request.
 
-<div class="notice">
-gRPC has a message size limitation.<br>
-Please be careful that the size of the request exceeds the limit.
+<div class="card-note">
+gRPC has the message size limitation.<br>
+Please be careful that the size of the request exceed the limit.
 </div>
 
 ### Input
@@ -564,7 +565,7 @@ Please be careful that the size of the request exceeds the limit.
 
 MultiSearchByID RPC is the method to search vectors with multiple IDs in **1** request.
 
-<div class="notice">
+<div class="card-note">
 gRPC has the message size limitation.<br>
 Please be careful that the size of the request exceed the limit.
 </div>
@@ -1058,7 +1059,7 @@ Each LinearSearchByID request and response are independent.
 
 MultiLinearSearch RPC is the method to linear search vectors with multiple vectors in **1** request.
 
-<div class="notice">
+<div class="card-note">
 gRPC has the message size limitation.<br>
 Please be careful that the size of the request exceed the limit.
 </div>
@@ -1169,7 +1170,7 @@ Please be careful that the size of the request exceed the limit.
 
 MultiLinearSearchByID RPC is the method to linear search vectors with multiple IDs in **1** request.
 
-<div class="notice">
+<div class="card-note">
 gRPC has the message size limitation.<br>
 Please be careful that the size of the request exceed the limit.
 </div>

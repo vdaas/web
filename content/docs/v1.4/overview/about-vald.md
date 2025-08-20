@@ -1,8 +1,9 @@
 ---
 title: "About Vald_v1.4/Overview"
-date: 2022-02-24T15:51:05+09:00
+date: 2025-08-20T04:54:14Z
 draft: false
 weight: 100
+description: What is Vald and what you can do with Vald
 menu:
   overview:
     parent: Overview
@@ -10,7 +11,7 @@ menu:
 
 # About Vald <!-- omit in toc -->
 
-This document gives an overview of what is Vald and what you can do with Vald.
+This document gives an overview of what is Vald and what you can do with Vald. 
 
 ## What is Vald?
 

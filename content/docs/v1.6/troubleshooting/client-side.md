@@ -1,8 +1,9 @@
 ---
 title: "Client Side_v1.6/Troubleshooting"
-date: 2022-10-06T10:57:03+09:00
+date: 2025-08-20T04:53:35Z
 draft: false
-weight: 200
+weight: 100
+description: The popular troubleshooting for client side
 menu:
   troubleshooting:
     parent: Troubleshooting
@@ -12,7 +13,7 @@ menu:
 
 This page introduces the popular troubleshooting for client side.
 
-The [flow chart](/docs/v1.6/troubleshooting/provisioning) helps you find the root reason for your problem.
+The [flow chart](/docs/v1.6/troubleshooting/chart) helps you find the root reason for your problem.
 
 Additionally, if you encounter some errors when using API, the [API status code](/docs/v1.6/api/status) helps you, too.
 
@@ -49,7 +50,7 @@ There are two possible reasons.
     In the sense of search operation, you can modify search timeout by [payload config](/docs/v1.6/api/search).
 
 <div class="notice">
-It is easy to find out which problem occurs by inspections of the log of each Pod, like <a href="https://github.com/stern/stern">stern</a>.
+It is easy to find out which problem occurs by inspections of the log of each Pod, like <a href="https://github.com/wercker/stern">stern</a>.
 </div>
 
 ## Others

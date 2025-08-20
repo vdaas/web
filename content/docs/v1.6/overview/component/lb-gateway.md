@@ -1,8 +1,9 @@
 ---
-title: "LB Gateway_v1.6/Overview/Component"
-date: 2022-10-19T22:10:20+09:00
+title: "Lb Gateway_v1.6/Overview/Component"
+date: 2025-08-20T04:53:35Z
 draft: false
 weight: 200
+description: Operates various type processes with Vald cluster
 menu:
   component:
     parent: Component

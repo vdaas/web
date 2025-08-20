@@ -1,6 +1,6 @@
 ---
-title: "Contributing_content/Docs/V1.1/Contributing"
-date: 2021-06-02T11:51:50+09:00
+title: "Contributing_v1.1/Contributing"
+date: 2025-08-20T04:54:56Z
 draft: false
 weight: 0
 ---

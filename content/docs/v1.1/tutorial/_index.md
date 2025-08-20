@@ -1,6 +1,6 @@
 ---
-title: "Tutorial_content/Docs/V1.1/Tutorial"
-date: 2021-06-02T11:51:51+09:00
+title: "Tutorial_v1.1/Tutorial"
+date: 2025-08-20T04:54:56Z
 draft: false
 weight: 0
 ---

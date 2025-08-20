@@ -1,8 +1,9 @@
 ---
 title: "Architecture_v1.4/Overview"
-date: 2022-02-24T15:51:05+09:00
+date: 2025-08-20T04:54:14Z
 draft: false
 weight: 200
+description: High-Level architecture design and overview of each component
 menu:
   overview:
     parent: Overview
@@ -30,7 +31,7 @@ Vald is based on the following techologies.
 
 - [Helm](https://helm.sh/)
 
-    Helm helps you to deploy and configure Vald.
+    Helm helps you to deploy and configure Vald. 
     Vald contains multiple components and configurations.
     Helm helps us to manage those manifest and provides a better and easy way to deploy and configure Vald.
 

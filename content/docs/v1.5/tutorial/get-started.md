@@ -1,8 +1,9 @@
 ---
 title: "Get Started_v1.5/Tutorial"
-date: 2022-08-18T11:00:13+09:00
+date: 2025-08-20T04:53:55Z
 draft: false
 weight: 100
+description: Running Vald cluster with NGT Agent on Kubernetes and execute client codes
 menu:
   tutorial:
     parent: Tutorial
@@ -14,7 +15,7 @@ Vald is a highly scalable distributed fast approximate nearest neighbor dense ve
 Vald is designed and implemented based on Cloud-Native architecture.
 
 This tutorial shows how to deploy and run the Vald components on your Kubernetes cluster.
-And, Fashion-MNIST is used as an example of a dataset.
+And, Fashion-mnist is used as an example of a dataset.
 
 ## Overview
 
@@ -26,11 +27,11 @@ For more information about Vald's architecture, please refer to [Architecture](/
 
 The 5 steps to Get Started with Vald:
 
-1. [Check and Satisfy the Requirements](#requirements)
-1. [Prepare Kubernetes Cluster](#prepare-the-kubernetes-cluster)
-1. [Deploy Vald on Kubernetes Cluster](#deploy-vald-on-kubernetes-cluster)
-1. [Run Example Code](#run-example-code)
-1. [Cleanup](#cleanup)
+1. [Check and Satisfy the Requirements](#Requirements)
+1. [Prepare Kubernetes Cluster](#Prepare-the-Kubernetes-Cluster)
+1. [Deploy Vald on Kubernetes Cluster](#Deploy-Vald-on-Kubernetes-Cluster)
+1. [Run Example Code](#Run-Example-Code)
+1. [Cleanup](#Cleanup)
 
 ## Requirements
 
@@ -45,7 +46,7 @@ If Helm or HDF5 is not installed, please install [Helm](https://helm.sh/docs/int
 <details><summary>Installation command for Helm</summary><br>
 
 ```bash
-curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ```
 
 </details>
@@ -86,8 +87,8 @@ kubectl wait -n kube-system --for=condition=ready pod -l k8s-app=metrics-server 
 
 ## Deploy Vald on Kubernetes Cluster
 
-This chapter shows how to deploy Vald using Helm and run it on your Kubernetes cluster.<br>
-In this tutorial, you will deploy the basic configuration of Vald that is consisted of vald-agent-ngt, vald-lb-gateway, vald-discoverer, and vald-manager-index.<br>
+This chapter shows the way to deploy Vald using Helm and to run on your Kubernetes cluster.<br>
+In this tutorial, you will deploy the basic configuration of Vald that is consisted of vald-agent-ngt, vald-lb-gateway, vald-discoverer and vald-manager-index.<br>
 
 1. Clone the repository
 
@@ -105,7 +106,7 @@ In this tutorial, you will deploy the basic configuration of Vald that is consis
 1. Edit Configurations
 
    Set the parameters for connecting to the vald-lb-gateway through Kubernetes ingress from the external network.
-   Please set these parameters.
+   Please set the these parameters.
 
    ```bash
    vim example/helm/values.yaml
@@ -199,12 +200,12 @@ In this tutorial, you will deploy the basic configuration of Vald that is consis
 
 ## Run Example Code
 
-In this chapter, you will execute insert, search, and delete vectors to your Vald cluster using the example code.<br>
-The [Fashion-MNIST](https://github.com/zalandoresearch/fashion-mnist) is used as a dataset for indexing and search query.
+In this chapter, you will execute insert vectors, search vectors, and delete vectors to your Vald cluster using the example code.<br>
+The [fashion-mnist](https://github.com/zalandoresearch/fashion-mnist) is used as a dataset for indexing and search query.
 
-The example code is implemented in Go and using [vald-client-go](https://github.com/vdaas/vald-client-go), one of the official Vald client libraries, for requesting to Vald cluster.
-Vald provides multiple language client libraries such as Go, Java, Node.js, Python, etc.
-If you are interested, please refer to [SDKs](/docs/v1.5/user-guides/sdks).<br>
+The example code is implemented Go and using [vald-client-go](https://github.com/vdaas/vald-client-go), one of the official Vald client libraries, for requesting to Vald cluster.
+Vald provides multiple language client libraries such as Go, Java, Node.js, Python, and so on.
+If you are interested in, please refer to [SDKs](/docs/v1.5/user-guides/sdks).<br>
 
 1.  Port Forward(option)
 
@@ -216,7 +217,7 @@ If you are interested, please refer to [SDKs](/docs/v1.5/user-guides/sdks).<br>
 
 1.  Download dataset
 
-    Download [Fashion-MNIST](https://github.com/zalandoresearch/fashion-mnist) that is used as a dataset for indexing and search query.
+    Download [fashion-mnist](https://github.com/zalandoresearch/fashion-mnist) that is used as a dataset for indexing and search query.
 
     Move to the working directory
 
@@ -224,7 +225,7 @@ If you are interested, please refer to [SDKs](/docs/v1.5/user-guides/sdks).<br>
     cd example/client
     ```
 
-    Download Fashion-MNIST testing dataset
+    Download fashion-mnist testing dataset
 
     ```bash
     wget http://ann-benchmarks.com/fashion-mnist-784-euclidean.hdf5
@@ -232,8 +233,8 @@ If you are interested, please refer to [SDKs](/docs/v1.5/user-guides/sdks).<br>
 
 1.  Run Example
 
-    We use [`example/client/main.go`](https://github.com/vdaas/vald/blob/main/example/client/main.go) to run the example.<br>
-    This example will insert and index 400 vectors into the Vald from the Fashion-MNIST dataset via [gRPC](https://grpc.io/).
+    We use [`example/client/main.go`](https://github.com/vdaas/vald/blob/master/example/client/main.go) to run the example.<br>
+    This example will insert and index 400 vectors into the Vald from the fashion-mnist dataset via [gRPC](https://grpc.io/).
     And then after waiting for indexing, it will request for searching the nearest vector 10 times.
     You will get the 10 nearest neighbor vectors for each search query.<br>
     Run example codes by executing the below command.
@@ -314,7 +315,7 @@ If you are interested, please refer to [SDKs](/docs/v1.5/user-guides/sdks).<br>
 
     1.  load
 
-        - Loading from Fashion-MNIST dataset and set id for each vector that is loaded. This step will return the training dataset, test dataset, and ids list of ids when loading is completed with success.
+        - Loading from fashion-mnist dataset and set id for each vector that is loaded. This step will return the training dataset, test dataset, and ids list of ids when loading is completed with success.
             <details><summary>example code</summary><br>
 
           ```go

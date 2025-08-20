@@ -1,8 +1,9 @@
 ---
 title: "Status_v1.6/Api"
-date: 2022-10-06T10:57:00+09:00
+date: 2025-08-20T04:53:34Z
 draft: false
-weight: 800
+weight: 1000
+description: API response description for each status
 menu:
   api:
     parent: Api
@@ -19,14 +20,14 @@ The sections below describe the meaning of each code and why API returns.
 
 | code | name                                      |
 | :--: | :---------------------------------------- |
-|  0   | [OK](#ok)                                 |
-|  3   | [INVALID_ARGUMENT](#invalid_argument)     |
-|  4   | [DEADLINE_EXCEEDED](#deadline_exceeded)   |
-|  5   | [NOT_FOUND](#not_found)                   |
-|  6   | [ALREADY_EXISTS](#already_exists)         |
-|  8   | [RESOURCE_EXHAUSTED](#resource_exhausted) |
-|  13  | [INTERNAL](#internal)                     |
-|  14  | [UNAVAILABLE](#unavailable)               |
+|  0   | [OK](#OK)                                 |
+|  3   | [INVALID_ARGUMENT](#INVALID_ARGUMENT)     |
+|  4   | [DEADLINE_EXCEEDED](#DEADLINE_EXCEEDED)   |
+|  5   | [NOT_FOUND](#NOT_FOUND)                   |
+|  6   | [ALREADY_EXISTS](#ALREADY_EXISTS)         |
+|  8   | [RESOURCE_EXHAUSTED](#RESOURCE_EXHAUSTED) |
+|  13  | [INTERNAL](#INTERNAL)                     |
+|  14  | [UNAVAILABLE](#UNAVAILABLE)               |
 
 ## OK
 
@@ -47,7 +48,7 @@ If you get this code, please verify your request payload is correct.
 
 Services that return status are:
 
-- [Object Service(only Exists RPC)](/docs/v1.6/api/object#exists-rpc)
+- [Object Service(only Exists RPC)](/docs/v1.6/api/object#Exists-RPC)
 - [Insert Service](/docs/v1.6/api/insert)
 - [Remove Service](/docs/v1.6/api/insert)
 - [Search Service](/docs/v1.6/api/search)

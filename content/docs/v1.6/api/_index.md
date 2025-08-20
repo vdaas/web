@@ -1,6 +1,6 @@
 ---
-title: "index_v1.6/Api"
-date: 2022-10-06T10:56:59+09:00
+title: "Api_v1.6/Api"
+date: 2025-08-20T04:53:34Z
 draft: false
 weight: 0
 ---

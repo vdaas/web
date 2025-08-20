@@ -1,8 +1,9 @@
 ---
-title: "Changelog_content/Docs/V1.0/Release"
-date: 2021-04-16T16:50:26+09:00
+title: "Changelog_v1.0/Release"
+date: 2025-08-20T04:55:07Z
 draft: false
 weight: 0
+description: ""
 menu:
   release:
     parent: Release
@@ -2119,7 +2120,7 @@ Helm operator | `docker pull vdaas/vald-helm-operator:v0.0.36`
 - Fix `internal/log/logger` to match the test template ([#371](https://github.com/vdaas/vald/pull/371))
 - Fix failing tests of `internal/log` and modified to match the test template  ([#368](https://github.com/vdaas/vald/pull/368))
 - Add enabled flag to each component in Helm chart ([#372](https://github.com/vdaas/vald/pull/372))
-- Add configurations ([#356](https://github.com/vdaas/vald/pull/356))
+- Add configurations.md ([#356](https://github.com/vdaas/vald/pull/356))
 
 
 ## v0.0.35

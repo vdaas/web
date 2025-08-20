@@ -1,8 +1,9 @@
 ---
 title: "Vald Agent Standalone on K8s_v1.6/Tutorial"
-date: 2022-10-06T10:57:04+09:00
+date: 2025-08-20T04:53:35Z
 draft: false
-weight: 400
+weight: 300
+description: Running only Vald Agent on Kubernetes and execute client codes
 menu:
   tutorial:
     parent: Tutorial
@@ -26,11 +27,11 @@ Using only Vald Agent, the auto indexing function is not in use.
 </div>
 
 The 5 steps to Vald Agent Standalone on Kubernetes with Vald:
-1. [Check and Satisfy the Requirements](#requirements)
-1. [Prepare Kubernetes Cluster](#prepare-the-kubernetes-cluster)
-1. [Deploy Vald Agent Standalone on Kubernetes cluster](#deploy-vald-agent-standalone-on-kubernetes-cluster)
-1. [Run Example Code](#run-example-code)
-1. [Cleanup](#cleanup)
+1. [Check and Satisfy the Requirements](#Requirements)
+1. [Prepare Kubernetes Cluster](#Prepare-the-Kubernetes-Cluster)
+1. [Deploy Vald Agent Standalone on Kubernetes cluster](#Deploy-Vald-Agent-Standalone-on-Kubernetes-Cluster)
+1. [Run Example Code](#Run-Example-Code)
+1. [Cleanup](#Cleanup)
 
 ## Requirements
 

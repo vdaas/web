@@ -1,8 +1,9 @@
 ---
 title: "Coding Style_v1.6/Contributing"
-date: 2022-10-06T10:57:01+09:00
+date: 2025-08-20T04:53:34Z
 draft: false
-weight: 200
+weight: 300
+description: Coding style for Vald project
 menu:
   contributing:
     parent: Contributing
@@ -472,7 +473,7 @@ The implementation may differ based on your use case.
 ### Functional Option
 
 The functional option pattern is widely used in Vald.
-You can refer to [this section](#struct-initialization) for more details of the use case of this pattern.
+You can refer to [this section](#Struct-initialization) for more details of the use case of this pattern.
 
 We provide the following errors to describe the error to apply the option.
 

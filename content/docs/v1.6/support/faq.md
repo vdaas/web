@@ -1,8 +1,9 @@
 ---
 title: "Faq_v1.6/Support"
-date: 2022-10-06T10:57:03+09:00
-draft: true
-weight: 0
+date: 2025-08-20T04:53:35Z
+draft: false
+weight: 200
+description: The major questions about using Vald
 menu:
   support:
     parent: Support

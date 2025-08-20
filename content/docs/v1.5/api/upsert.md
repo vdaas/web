@@ -1,8 +1,9 @@
 ---
 title: "Upsert_v1.5/Api"
-date: 2022-08-18T11:00:10+09:00
+date: 2025-08-20T04:53:54Z
 draft: false
 weight: 300
+description: Update or Insert vectors to the Vald cluster
 menu:
   api:
     parent: Api
@@ -12,7 +13,7 @@ menu:
 
 ## Overview
 
-Upsert Service is responsible for updating existing vectors in the `vald-agent` or inserting new vectors into the `vald-agent` if the vector does not exist.
+Upsert Service is responsible for updating existing vectors in the `vald-agent` or inserting new vectors into the `vald-agent` if the vector is not exists.
 
 ```rpc
 service Upsert {
@@ -113,10 +114,10 @@ Upsert RPC is the method to update a single vector and add a new single vector.
 
 ## StreamUpsert RPC
 
-StreamUpsert RPC is the method to update multiple existing vectors or add new multiple vectors using the [bidirectional streaming RPC](https://grpc.io/docs/what-is-grpc/core-concepts/#bidirectional-streaming-rpc).<br>
+StreamUpsert RPC is the method to update multiple exist vectors or add new multiple vectors using the [bidirectional streaming RPC](https://grpc.io/docs/what-is-grpc/core-concepts/#bidirectional-streaming-rpc).<br>
 By using the bidirectional streaming RPC, the upsert request can be communicated in any order between client and server.
 Each Upsert request and response are independent.
-It’s the recommended method to upsert a large number of vectors.
+It's the recommended method to upsert the large amount of vectors.
 
 ### Input
 
@@ -222,9 +223,9 @@ It’s the recommended method to upsert a large number of vectors.
 
 MultiUpsert is the method to update existing multiple vectors and add new multiple vectors in **1** request.
 
-<div class="notice">
-gRPC has a message size limitation.<br>
-Please be careful that the size of the request exceeds the limit.
+<div class="card-note">
+gRPC has the message size limitation.<br>
+Please be careful that the size of the request exceed the limit.
 </div>
 
 ### Input

@@ -1,8 +1,9 @@
 ---
 title: "Loadtest_v1.6/Performance"
-date: 2022-10-06T10:57:03+09:00
-draft: true
+date: 2025-08-20T04:53:33Z
+draft: false
 weight: 200
+description: Shows how to perform load test in the Vald cluster
 menu:
   performance:
     parent: Performance

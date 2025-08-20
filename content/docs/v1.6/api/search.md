@@ -1,8 +1,9 @@
 ---
 title: "Search_v1.6/Api"
-date: 2022-10-06T10:57:00+09:00
+date: 2025-08-20T04:53:34Z
 draft: false
 weight: 400
+description: Search ANN vectors from the Vald cluster
 menu:
   api:
     parent: Api

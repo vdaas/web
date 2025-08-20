@@ -1,8 +1,9 @@
 ---
 title: "Index Manager_v1.6/Overview/Component"
-date: 2022-10-06T10:57:02+09:00
+date: 2025-08-20T04:53:36Z
 draft: false
 weight: 500
+description: Controls indexing process of Vald Agent Pods
 menu:
   component:
     parent: Component

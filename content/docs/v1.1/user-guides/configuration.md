@@ -1,8 +1,9 @@
 ---
-title: "Configuration_content/Docs/V1.1/User Guides"
-date: 2021-05-20T15:47:56+09:00
+title: "Configuration_v1.1/User Guides"
+date: 2025-08-20T04:54:56Z
 draft: false
 weight: 100
+description: Applies basic configuration for running Vald cluster
 menu:
   userguides:
     parent: User Guides
@@ -419,7 +420,7 @@ For further details, there are references of Helm values in GitHub Vald reposito
 [vald-helm-chart]: https://github.com/vdaas/vald/tree/master/charts/vald
 [vald-helm-operator-chart]: https://github.com/vdaas/vald/tree/master/charts/vald-helm-operator
 
-[vald-operation-guide]: ../operations
+[vald-operation-guide]: ./operations
 
 [vald-apis-docs]: https://github.com/vdaas/vald/tree/master/apis/docs
 [vald-swagger-specs]: https://github.com/vdaas/vald/tree/master/apis/swagger

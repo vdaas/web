@@ -1,8 +1,9 @@
 ---
 title: "Insert_v1.5/Api"
-date: 2022-08-18T11:00:09+09:00
+date: 2025-08-20T04:53:54Z
 draft: false
 weight: 100
+description: Insert vectors to the Vald cluster
 menu:
   api:
     parent: Api
@@ -112,7 +113,7 @@ Inset RPC is the method to add a new single vector.
 StreamInsert RPC is the method to add new multiple vectors using the [bidirectional streaming RPC](https://grpc.io/docs/what-is-grpc/core-concepts/#bidirectional-streaming-rpc).<br>
 By using the bidirectional streaming RPC, the insert request can be communicated in any order between client and server.
 Each Insert request and response are independent.
-It's the recommended method to insert a large number of vectors.
+It's the recommended method to insert the large amount of vectors.
 
 ### Input
 
@@ -216,11 +217,11 @@ It's the recommended method to insert a large number of vectors.
 
 ## MultiInsert RPC
 
-MultiInsert RPC is the method to add multiple new vectors in **1** request.
+MultiInsert RPC is the method to add new multiple vectors in **1** request.
 
-<div class="notice">
-gRPC has a message size limitation.<br>
-Please be careful that the size of the request exceeds the limit.
+<div class="card-note">
+gRPC has the message size limitation.<br>
+Please be careful that the size of the request exceed the limit.
 </div>
 
 ### Input

@@ -1,8 +1,9 @@
 ---
-title: "Data Flow_content/Docs/V1.2/Overview"
-date: 2021-08-03T11:35:27+09:00
+title: "Data Flow_v1.2/Overview"
+date: 2025-08-20T04:54:43Z
 draft: false
 weight: 300
+description: Data flow inside Vald for each operation
 menu:
   overview:
     parent: Overview
@@ -15,7 +16,7 @@ It will help you to understand what Vald does from users' requests.
 
 The below image is the basic Vald architecture.
 
-<img src="/images/v1.2/overview/Vald Basic Architecture.svg" />
+<img src="/images/v1.2/overview/vald_basic_architecture.svg" />
 
 We will explain using this image in the following sections.
 - [Data Flow](#data-flow)

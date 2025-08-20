@@ -1,8 +1,9 @@
 ---
-title: "About Vald_content/Docs/V1.2/Overview"
-date: 2021-08-03T11:35:27+09:00
+title: "About Vald_v1.2/Overview"
+date: 2025-08-20T04:54:43Z
 draft: false
 weight: 100
+description: What is Vald and what you can do with Vald
 menu:
   overview:
     parent: Overview

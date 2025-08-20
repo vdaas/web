@@ -1,6 +1,6 @@
 ---
-title: "User Guides_content/Docs/V1.2/User Guides"
-date: 2021-08-03T11:35:31+09:00
+title: "User Guides_v1.2/User Guides"
+date: 2025-08-20T04:54:44Z
 draft: false
 weight: 0
 ---

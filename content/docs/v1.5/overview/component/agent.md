@@ -1,8 +1,9 @@
 ---
 title: "Agent_v1.5/Overview/Component"
-date: 2022-08-18T11:00:11+09:00
+date: 2025-08-20T04:53:56Z
 draft: false
 weight: 100
+description: Stores index data and Search ANN vectors
 menu:
   component:
     parent: Component
@@ -46,7 +47,7 @@ as core algorithm layer.
 
 Vald Agent NGT uses [NGT](https://github.com/yahoojapan/NGT) as an algorithm.
 
-The main functions are the followings:
+The main functions are following:
 
 - Insert
   - Request to insert new vectors into the NGT.
@@ -60,9 +61,9 @@ The main functions are the followings:
   - Create a request to remove the specific vectors from NGT indexes.
   - Requested vectors are stored in the `vqueue`.
 - GetObject
-  - Get the information on the indexed vectors.
+  - Get the information of the indexed vectors.
 - Exist
-  - Check whether the specific vectors are already inserted or not.
+  - Check the specific vectors are already inserted or not.
 - CreateIndex
   - Create a new NGT index structure in memory using vectors stored in the `vqueue` and the existing NGT index structure if it exists.
 - SaveIndex
@@ -86,7 +87,7 @@ This image shows the mechanism to create NGT index.
 
 <img src="/images/v1.5/overview/component/agent/ngt.png" />
 
-Please refer to [Go Doc](https://pkg.go.dev/github.com/vdaas/vald@v1.5.6/pkg/agent/core/ngt/service) for other functions.
+Please refer to [Go Doc](https://pkg.go.dev/github.com/vdaas/vald@v1.3.1/pkg/agent/core/ngt/service) for other functions.
 
 ### Sidecar
 
@@ -95,7 +96,7 @@ Please refer to [Go Doc](https://pkg.go.dev/github.com/vdaas/vald@v1.5.6/pkg/age
 The main functions are:
 
 - Backup
-  - When `Agent Core` completes creating the index metadata files, `Sidecar` hooks to store them in the external storage.
+  - When `Agent Core` completes creating the index metadata files, `Sidecar` hooks to store them to the external storage.
 
 <img src="/images/v1.5/overview/component/agent/sidecar_backup.png" />
 

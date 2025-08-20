@@ -1,8 +1,9 @@
 ---
 title: "Configuration_v1.4/User Guides"
-date: 2022-02-24T15:51:07+09:00
+date: 2025-08-20T04:54:15Z
 draft: false
 weight: 100
+description: Applies basic configuration for running Vald cluster
 menu:
   userguides:
     parent: User Guides
@@ -58,7 +59,7 @@ gateway:
       format: json
 ```
 
-The logging level is defined in [the Coding Style Guide](/docs/v1.4/contributing/coding-style#logging).
+The logging level is defined in [the Coding Style Guide][logging-level].
 
 #### Servers
 
@@ -140,7 +141,7 @@ And also, enable each feature by setting the value `true` on its `enabled` field
 
 If observability features are enabled, the metrics will be collected periodically.
 The duration can be set on `observability.collector.duration`.
-Please refer to [Vald operation guide](/docs/v1.4/user-guides/configuration) for more detail.
+Please refer to [Vald operation guide][vald-operation-guide] for more detail.
 
 ### Agents
 
@@ -284,8 +285,11 @@ For further details, there are references of Helm values in GitHub Vald reposito
 [vald-helm-chart]: https://github.com/vdaas/vald/tree/master/charts/vald
 [vald-helm-operator-chart]: https://github.com/vdaas/vald/tree/master/charts/vald-helm-operator
 
+[vald-operation-guide]: ./operations
+
 [vald-apis-docs]: https://github.com/vdaas/vald/tree/master/apis/docs
 [vald-swagger-specs]: https://github.com/vdaas/vald/tree/master/apis/swagger
+[logging-level]: https://github.com/vdaas/vald/blob/master/docs/contributing/coding-style#logging
 [google-pprof]: https://github.com/google/pprof
 [prometheus-io]: https://prometheus.io/
 [kubernetes-liveness-readiness]: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/

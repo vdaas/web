@@ -1,8 +1,9 @@
 ---
 title: "Operations_v1.4/User Guides"
-date: 2022-02-24T15:51:07+09:00
-draft: 200
-weight: false
+date: 2025-08-20T04:54:15Z
+draft: false
+weight: 700
+description: Describes the basic operation for the Vald cluster
 menu:
   userguides:
     parent: User Guides
@@ -51,7 +52,7 @@ If you're going to deploy Vald on multi-tenant cluster, please take care about t
 
 The logging level of Vald components can be configured by using `defaults.logging.level` (or `[component].logging.level`) field in Helm Chart values.
 The level must be a one of "debug", "info", "warn", "error" and "fatal".
-The levels are defined in [the Coding Style document](/docs/v1.4/contributing/coding-style#logging).
+The levels are defined in [the Coding Style document][coding-style-logging].
 
 ### Observability features of Vald
 
@@ -125,14 +126,9 @@ In case of using Helm and Vald's chart, please update `defaults.image.tag` field
 
 In case of using Vald-Helm-Operator, please upgrade the CRDs first because Helm doesn't have a support to upgrade CRDs.
 
-```bash
-VERSION=v1.4.1
-```
-
-```bash
-kubectl replace -f https://raw.githubusercontent.com/vdaas/vald/${VERSION}/charts/vald-helm-operator/crds/valdrelease.yaml && \
-kubectl replace -f https://raw.githubusercontent.com/vdaas/vald/${VERSION}/charts/vald-helm-operator/crds/valdhelmoperatorrelease.yaml
-```
+    $ VERSION=v1.0.4
+    $ kubectl replace -f https://raw.githubusercontent.com/vdaas/vald/${VERSION}/charts/vald-helm-operator/crds/valdrelease.yaml
+    $ kubectl replace -f https://raw.githubusercontent.com/vdaas/vald/${VERSION}/charts/vald-helm-operator/crds/valdhelmoperatorrelease.yaml
 
 After upgrading CRDs, please upgrade the operator.
 If you're using `valdhelmoperatorrelease` (or `vhor`) resource, please update the `spec.image.tag` field of it.
@@ -157,6 +153,8 @@ The operator will automatically detect the changes and update the deployed Vald 
 
 [pod-priority-preemption]: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
 [resource-quota]: https://kubernetes.io/docs/concepts/policy/resource-quotas/
+
+[coding-style-logging]: ../contributing/coding-style#logging
 
 [prometheus-io]: https://prometheus.io/
 [grafana]: https://grafana.com

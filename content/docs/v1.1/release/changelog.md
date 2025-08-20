@@ -1,8 +1,9 @@
 ---
-title: "Changelog_content/Docs/V1.1/Release"
-date: 2021-06-25T18:13:56+09:00
+title: "Changelog_v1.1/Release"
+date: 2025-08-20T04:54:55Z
 draft: false
 weight: 0
+description: ""
 menu:
   release:
     parent: Release
@@ -359,7 +360,7 @@ menu:
 #### Document
 - separate tutorials into each document and add images (#1230)
 - Update Tutotial/Get-Started (#1203)
-- Update unit-test-guideline (#1213)
+- Update unit-test-guideline.md (#1213)
 - create docs/user-guides/sdks (#1182)
 - Fix typo in README. (#1163)
 
@@ -2532,7 +2533,7 @@ Helm operator | `docker pull vdaas/vald-helm-operator:v0.0.36`
 - Fix `internal/log/logger` to match the test template ([#371](https://github.com/vdaas/vald/pull/371))
 - Fix failing tests of `internal/log` and modified to match the test template  ([#368](https://github.com/vdaas/vald/pull/368))
 - Add enabled flag to each component in Helm chart ([#372](https://github.com/vdaas/vald/pull/372))
-- Add configurations ([#356](https://github.com/vdaas/vald/pull/356))
+- Add configurations.md ([#356](https://github.com/vdaas/vald/pull/356))
 
 
 ## v0.0.35

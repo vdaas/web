@@ -1,8 +1,9 @@
 ---
-title: "Architecture_content/Docs/V1.1/Overview"
-date: 2021-05-20T15:47:54+09:00
+title: "Architecture_v1.1/Overview"
+date: 2025-08-20T04:54:55Z
 draft: false
 weight: 200
+description: High-Level architecture design and overview of each component
 menu:
   overview:
     parent: Overview

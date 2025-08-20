@@ -1,8 +1,9 @@
 ---
 title: "Architecture_v1.6/Overview"
-date: 2022-10-06T10:57:01+09:00
+date: 2025-08-20T04:53:35Z
 draft: false
 weight: 200
+description: High-Level architecture design and overview of each component
 menu:
   overview:
     parent: Overview

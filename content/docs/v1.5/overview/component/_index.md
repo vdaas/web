@@ -1,6 +1,6 @@
 ---
-title: "component_v1.5/Overview/Component"
-date: 2022-03-25T12:30:03+09:00
+title: "Component_v1.5/Overview/Component"
+date: 2025-08-20T04:53:56Z
 draft: false
 weight: 0
 ---

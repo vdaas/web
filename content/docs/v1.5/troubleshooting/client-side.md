@@ -1,8 +1,9 @@
 ---
 title: "Client Side_v1.5/Troubleshooting"
-date: 2022-06-27T14:26:56+09:00
+date: 2025-08-20T04:53:55Z
 draft: false
-weight: 200
+weight: 100
+description: The popular troubleshooting for client side
 menu:
   troubleshooting:
     parent: Troubleshooting
@@ -49,7 +50,7 @@ There are two possible reasons.
     In the sense of search operation, you can modify search timeout by [payload config](/docs/v1.5/api/search).
 
 <div class="notice">
-It is easy to find out which problem occurs by inspections the log of each Pod, like <a href="https://github.com/stern/stern">stern</a>.
+It is easy to find out which problem occurs by inspections the log of each Pod, like <a href="https://github.com/wercker/stern">stern</a>.
 </div>
 
 ## Others

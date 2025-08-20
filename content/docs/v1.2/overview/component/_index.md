@@ -1,8 +1,9 @@
 ---
-title: "Component_content/Docs/V1.2/Overview/Component"
-date: 2021-10-13T17:22:33+09:00
-draft: true
+title: "Component_v1.2/Overview/Component"
+date: 2025-08-20T04:54:43Z
+draft: false
 weight: 0
+description: ""
 menu:
   component:
     parent: Component
@@ -81,7 +82,7 @@ Each Vald Agent pod has its own vector data space because only several Vald Agen
 
 When searching a vector in Vald, each Vald Agent return different results of _k_-nearest neighbors depending on their index, and you'll get the merged result of them.
 
-<img src="..//images/vector_data_space_explain.svg" />
+<img src="/images/v1.2/vector_data_space_explain.svg" />
 
 ### Vald Agent Scheduler
 
