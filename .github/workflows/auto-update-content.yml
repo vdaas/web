@@ -59,20 +59,12 @@ jobs:
       - name: Update root content
         run: |
           make all
-      - name: Update each version content
+      - name: Update latest version content
         run: |
-          gh release list --repo vdaas/vald --limit 1000 --json tagName \
-          | jq -r '.[].tagName' \
-          | grep -v v0 \
-          | sed 's/^v//g' \
-          | sort -t'.' -k1,1nr -k2,2nr -k3,3nr \
-          | awk -F'.' '!latest[$1"."$2]++' \
-          | while read VERSION; do
-            make TARGET_VER=${VERSION} all
-          done
-        env:
-          GITHUB_USER: ${{ secrets.DISPATCH_USER }}
-          GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+          make TARGET_VER=$(make version/latest) all
+      - name: Update support version content
+        run: |
+          make TARGET_VER=$(make version/support) all
       - name: create pull request
         run: |
             TS=$(date +%s)
