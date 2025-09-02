@@ -1,6 +1,6 @@
 ---
 title: "Loadtest_performance"
-date: 2024-01-10T18:16:42+09:00
+date: 2025-09-02T04:53:40Z
 draft: false
 weight: 200
 description: Shows how to perform load test in the Vald cluster
@@ -10,6 +10,8 @@ menu:
 ---
 
 # Load Testing
+
+**DEPRECATED**
 
 This document describes how to perform the load testing in the Vald cluster or Vald Agent using Vald Load Testing Tools.
 
@@ -44,7 +46,7 @@ Here are the important configurations and following the explanation.
 | Name        | Description                                                                                                                                                             | Example                                     |
 | :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------ |
 | service     | By setting the value to the gateway, you can test the Vald cluster through the Vald gateway. <br />By setting the value to agent, you can test the Vald agent directly. | gateway or agent                            |
-| operation   | To perform the specific load test action to the Vald cluster.                                                                                                           | insert, streaminsert, search or steamsearch |
+| operation   | To perform the specific load test action to the Vald cluster.                                                                                                           | insert, streaminsert, search or streamsearch |
 | dataset     | The dataset is used in insert and stream insert operation.                                                                                                              |                                             |
 | concurrency | The number of concurrent execution of the load test.                                                                                                                    |                                             |
 | batch_size  | The batch size of the dataset.                                                                                                                                          |                                             |
