@@ -1,7 +1,8 @@
 ---
-title: "Support_v1.7/Support"
-date: 2023-01-24T16:35:24+09:00
-draft: false
-weight: 0
+title: "Content Placeholder"
+build:
+  render: never
+  list: never
+  publishResources: false
 ---
 
