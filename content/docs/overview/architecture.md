@@ -1,6 +1,6 @@
 ---
 title: "Architecture_overview"
-date: 2024-08-08T00:23:48+09:00
+date: 2026-01-16T06:02:45Z
 draft: false
 weight: 200
 description: High-Level architecture design and overview of each component
@@ -63,7 +63,6 @@ Here are the concepts of Vald.
 - Kubernetes based
 
   Vald can integrate with Kubernetes which enables the following features.
-
   - Orchestrated
 
     Kubernetes supports container orchestration. All components in Vald can be managed by Kubernetes automatically.
