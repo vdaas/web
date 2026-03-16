@@ -1,6 +1,6 @@
 ---
 title: "Deployment_user Guides"
-date: 2024-08-08T00:23:47+09:00
+date: 2026-03-16T05:45:38Z
 draft: false
 weight: 600
 description: How to launch Vald cluster on your Kubernetes cluster
@@ -14,7 +14,6 @@ menu:
 There are two major ways for the deployment of the Vald cluster ways: Using the Helm command with `values.yaml` or without Helm command using operator called `vald-helm-operator`.
 
 - Using Helm command with `values.yaml`
-
   - Easy to deploy
   - Allow editing Vald configuration values when the user executes Helm command with inlining.
   - Need Helm command when applying configuration
