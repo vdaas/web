@@ -1,6 +1,6 @@
 ---
 title: "Build_proto_api"
-date: 2024-08-08T00:23:48+09:00
+date: 2026-03-23T01:35:45Z
 draft: false
 weight: 1100
 description: How to build gRPC proto files for calling API to your Vald cluster
@@ -41,12 +41,10 @@ Let's build proto files using your favorite programming language.
 There are 3 steps to building API proto:
 
 1. Install gRPC tools
-
    - gRPC official document provides [the way to install for each language](https://grpc.io/docs/languages/).<br>
      If your favorite programming language is not there, you can find 3rd party tools for building.
 
 1. Download Vald api proto files and external dependence
-
    - [vald api proto](https://github.com/vdaas/vald/tree/main/apis/proto/v1/vald)
    - [vald payload proto](https://github.com/vdaas/vald/tree/main/apis/proto/v1/payload)
    - [googleapis](https://github.com/googleapis/googleapis)
@@ -96,7 +94,7 @@ There are many tools for building proto in Rust, we use [tonic](https://github.c
     [package]
     name = "vald-grpc"
     version = "0.1.0"
-    edition = "2021"
+    edition = "2024"
 
     # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -154,7 +152,6 @@ There are many tools for building proto in Rust, we use [tonic](https://github.c
     ```
 
 1.  Implement `build.rs` and Build proto
-
     1. `build.rs`
 
        ```rust
@@ -207,7 +204,6 @@ There are many tools for building proto in Rust, we use [tonic](https://github.c
     ```
 
 1.  Implement code using client
-
     1.  `lib.rs`
 
         Import build proto in `src/lib.rs`
@@ -241,7 +237,6 @@ There are many tools for building proto in Rust, we use [tonic](https://github.c
     1.  `src/client.rs`
 
         There are 4 steps in `src/client.rs`:
-
         1. Load dataset
         1. Insert vector to Vald cluster
         1. Search nearest neighbor vectors from Vald cluster after indexing finished
