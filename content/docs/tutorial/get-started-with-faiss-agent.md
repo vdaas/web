@@ -1,6 +1,6 @@
 ---
 title: "Get Started With Faiss Agent_tutorial"
-date: 2024-10-16T16:03:40+09:00
+date: 2026-03-23T01:35:44Z
 draft: false
 weight: 200
 description: Running Vald cluster with faiss Agent on Kubernetes and execute client codes
@@ -200,9 +200,7 @@ If you are interested, please refer to [SDKs](/docs/user-guides/sdks).<br>
 
     <details><summary>The detailed explanation of example code is here</summary><br>
     This will execute 6 steps.
-
     1.  init
-
         - Import packages
             <details><summary>example code</summary><br>
 
@@ -228,7 +226,6 @@ If you are interested, please refer to [SDKs](/docs/user-guides/sdks).<br>
             </details>
 
         - Set variables
-
           - The constant number of training datasets and test datasets.
               <details><summary>example code</summary><br>
 
@@ -269,7 +266,6 @@ If you are interested, please refer to [SDKs](/docs/user-guides/sdks).<br>
             </details>
 
     1.  load
-
         - Loading from Fashion-MNIST dataset and set id for each vector that is loaded. This step will return the training dataset, test dataset, and ids list of ids when loading is completed with success.
             <details><summary>example code</summary><br>
 
@@ -300,7 +296,6 @@ If you are interested, please refer to [SDKs](/docs/user-guides/sdks).<br>
         </details>
 
     1.  Insert and Index
-
         - Insert and Indexing 400 training datasets to the Vald agent.
             <details><summary>example code</summary><br>
 
@@ -338,7 +333,6 @@ If you are interested, please refer to [SDKs](/docs/user-guides/sdks).<br>
             </details>
 
     1.  Search
-
         - Search 10 neighbor vectors for each 20 test datasets and return a list of the neighbor vectors.
 
         - When getting approximate vectors, the Vald client sends search config and vector to the server via gRPC.
@@ -369,7 +363,6 @@ If you are interested, please refer to [SDKs](/docs/user-guides/sdks).<br>
             </details>
 
     1.  Remove
-
         - Remove 400 indexed training datasets from the Vald agent.
             <details><summary>example code</summary><br>
 
