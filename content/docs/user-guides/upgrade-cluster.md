@@ -1,6 +1,6 @@
 ---
 title: "Upgrade Cluster_user Guides"
-date: 2024-08-08T00:23:47+09:00
+date: 2026-07-07T08:17:49Z
 draft: false
 weight: 800
 description: Describes hot to upgrade Vald version for the running Vald cluster
@@ -104,7 +104,6 @@ If there is major or minor upgrading, the chart structure may have changed.
    ```
 
 1. Edit `values.yaml`
-
    - We recommend setting a specific version as an image tag.
 
      ```yaml
@@ -141,7 +140,6 @@ The upgrading steps are below if you use `vald-helm-operator` for the deployment
    - Also, you can upgrade manually by editing `vhor.yaml` and applying it.
 
 1. Edit `vr.yaml`
-
    - We recommend setting a specific version as an image tag.
 
      ```yaml
