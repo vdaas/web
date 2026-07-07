@@ -1,6 +1,6 @@
 ---
 title: "Architecture_overview"
-date: 2024-08-08T00:23:48+09:00
+date: 2026-07-07T08:17:51Z
 draft: false
 weight: 200
 description: High-Level architecture design and overview of each component
@@ -35,7 +35,7 @@ Vald is based on the following technologies.
   Vald contains multiple components and configurations.
   Helm helps us to manage those manifests and provides a better and easy way to deploy and configure Vald.
 
-- [NGT](https://github.com/yahoojapan/NGT)
+- [NGT](https://github.com/NGT-labs/NGT)
 
   NGT is one of the core components of Vald.
   NGT is a super-fast vector search engine used by Vald to guarantee the high performance of Vald.
@@ -63,7 +63,6 @@ Here are the concepts of Vald.
 - Kubernetes based
 
   Vald can integrate with Kubernetes which enables the following features.
-
   - Orchestrated
 
     Kubernetes supports container orchestration. All components in Vald can be managed by Kubernetes automatically.
@@ -96,7 +95,7 @@ We will introduce each component and why it is needed in Vald.
 ### Vald Agent
 
 Vald Agent is the core component of Vald, the approximate nearest neighbor search engine, and stores the graph tree construction on memory for indexing the vectors.
-Vald Agent uses [yahoojapan/NGT](https://github.com/yahoojapan/ngt) as a core library.
+Vald Agent uses [NGT-labs/NGT](https://github.com/NGT-labs/NGT) as a core library.
 
 ### Vald LB Gateway
 
