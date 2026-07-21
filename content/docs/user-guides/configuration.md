@@ -1,6 +1,6 @@
 ---
 title: "Configuration_user Guides"
-date: 2024-08-08T00:23:47+09:00
+date: 2026-07-21T06:16:21Z
 draft: false
 weight: 100
 description: Applies basic configuration for running Vald cluster
@@ -155,7 +155,7 @@ Please refer to [the Vald operation guide](/docs/user-guides/configuration) for 
 
 #### NGT
 
-Vald Agent NGT uses [yahoojapan/NGT][yj-ngt] as a core library for searching vectors.
+Vald Agent NGT uses [NGT-labs/NGT][yj-ngt] as a core library for searching vectors.
 The behaviors of NGT can be configured by setting `agent.ngt` field object.
 
 The important parameters are the followings:
@@ -416,7 +416,7 @@ For further details, there are references to the Helm values in the Vald GitHub 
 [kubernetes-liveness-readiness]: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 [kubernetes-affinity-antiaffinity]: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
 [kubernetes-topology-spread-constraints]: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
-[yj-ngt]: https://github.com/yahoojapan/NGT
-[yj-ngt-wiki]: https://github.com/yahoojapan/NGT/wiki
+[yj-ngt]: https://github.com/NGT-labs/NGT
+[yj-ngt-wiki]: https://github.com/NGT-labs/NGT/wiki
 [faiss]: https://github.com/facebookresearch/faiss
 [faiss-wiki]: https://github.com/facebookresearch/faiss/wiki
