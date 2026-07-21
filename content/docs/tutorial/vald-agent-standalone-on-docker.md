@@ -1,6 +1,6 @@
 ---
 title: "Vald Agent Standalone on Docker_tutorial"
-date: 2024-02-15T17:10:12+09:00
+date: 2026-07-21T06:01:32Z
 draft: false
 weight: 400
 description: Running Vald Agent on Docker and execute client codes
@@ -142,7 +142,6 @@ This chapter will use NGT for the core engine of Vald Agent.
 
    To deploy Vald agent on docker with `config.yaml`, you can run the below command.
    Note:
-
    - Please check whether there is `config.yaml` file and `backup` directory in your current directory.
 
    ```bash
