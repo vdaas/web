@@ -1,6 +1,6 @@
 ---
 title: "Operations_user Guides"
-date: 2024-02-15T17:10:15+09:00
+date: 2026-08-12T01:33:12Z
 draft: false
 weight: 700
 description: Describes the basic operation for the Vald cluster
@@ -128,8 +128,8 @@ VERSION=v1.4.1
 ```
 
 ```bash
-kubectl replace -f https://raw.githubusercontent.com/vdaas/vald/${VERSION}/charts/vald-helm-operator/crds/valdrelease.yaml && \
-kubectl replace -f https://raw.githubusercontent.com/vdaas/vald/${VERSION}/charts/vald-helm-operator/crds/valdhelmoperatorrelease.yaml
+kubectl replace -f https://raw.githubusercontent.com/vdaas/vald/${VERSION}/charts/operator/helm/crds/valdrelease.yaml && \
+kubectl replace -f https://raw.githubusercontent.com/vdaas/vald/${VERSION}/charts/operator/helm/crds/valdhelmoperatorrelease.yaml
 ```
 
 After upgrading CRDs, please upgrade the operator.
@@ -146,7 +146,7 @@ The operator will automatically detect the changes and update the deployed Vald 
 - [CHANGELOG][changelog]
 
 [vald-helm-chart]: https://github.com/vdaas/vald/tree/main/charts/vald
-[vald-helm-operator-chart]: https://github.com/vdaas/vald/tree/main/charts/vald-helm-operator
+[vald-helm-operator-chart]: https://github.com/vdaas/vald/tree/main/charts/operator/helm
 [changelog]: https://vald.vdaas.org/docs/release/changelog/
 [pod-priority-preemption]: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
 [resource-quota]: https://kubernetes.io/docs/concepts/policy/resource-quotas/
