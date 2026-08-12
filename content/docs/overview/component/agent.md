@@ -1,6 +1,6 @@
 ---
 title: "Agent_overview/Component"
-date: 2024-05-23T16:15:24+09:00
+date: 2026-08-12T01:33:10Z
 draft: false
 weight: 100
 description: Stores index data and Search ANN vectors
@@ -45,7 +45,7 @@ as core algorithm layer.
 
 #### Vald Agent NGT
 
-Vald Agent NGT uses [NGT](https://github.com/yahoojapan/NGT) as an algorithm.
+Vald Agent NGT uses [NGT](https://github.com/NGT-labs/NGT) as an algorithm.
 
 The main functions are the followings:
 

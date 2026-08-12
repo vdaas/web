@@ -1,6 +1,6 @@
 ---
 title: "Vald Agent Standalone on K8s_tutorial"
-date: 2025-09-02T04:53:43Z
+date: 2026-08-12T01:33:11Z
 draft: false
 weight: 300
 description: Running only Vald Agent on Kubernetes and execute client codes
@@ -78,7 +78,7 @@ brew install hdf5
 ## Deploy Vald Agent Standalone on Kubernetes Cluster
 
 This chapter will show you how to deploy a standalone Vald Agent using Helm and run it on your Kubernetes cluster. <br>
-This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perform vector insertion operation, indexing, and searching operation.<br>
+This chapter uses [NGT](https://github.com/NGT-labs/NGT) as Vald Agent to perform vector insertion operation, indexing, and searching operation.<br>
 
 1. Clone the repository
 
@@ -158,9 +158,7 @@ This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perf
 
     <details><summary>The detailed explanation of example code is here</summary><br>
     This will execute 6 steps.
-
     1.  init
-
         - Import packages
             <details><summary>example code</summary><br>
 
@@ -187,7 +185,6 @@ This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perf
             </details>
 
         - Set variables
-
           - The constant number of training datasets and test datasets.
               <details><summary>example code</summary><br>
 
@@ -228,7 +225,6 @@ This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perf
             </details>
 
     1.  load
-
         - Loading from Fashion-MNIST dataset and set id for each vector that is loaded. This step will return the training dataset, test dataset, and ids list of ids when loading is completed with success.
             <details><summary>example code</summary><br>
 
@@ -258,7 +254,6 @@ This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perf
         </details>
 
     1.  Insert and Index
-
         - Insert and Indexing 400 training datasets to the Vald agent.
             <details><summary>example code</summary><br>
 
@@ -314,7 +309,6 @@ This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perf
             </details>
 
     1.  Search
-
         - Search 10 neighbor vectors for each 20 test datasets and return a list of neighbor vectors.
 
         - When getting approximate vectors, the Vald client sends search config and vector to the server via gRPC.
@@ -345,7 +339,6 @@ This chapter uses [NGT](https://github.com/yahoojapan/ngt) as Vald Agent to perf
             </details>
 
     1.  Remove
-
         - Remove indexed 400 training datasets from the Vald agent.
             <details><summary>example code</summary><br>
 

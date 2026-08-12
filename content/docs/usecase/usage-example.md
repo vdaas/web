@@ -1,6 +1,6 @@
 ---
 title: "Usage Example_usecase"
-date: 2024-01-10T18:16:44+09:00
+date: 2026-08-12T01:33:12Z
 draft: false
 weight: 0
 description: ""
@@ -12,7 +12,7 @@ menu:
 # Use cases
 
 This document will introduce you to the example of what Vald can do.
-Vald is a highly scalable distributed fast approximate nearest neighbor dense vector search engine, which uses [NGT](https://github.com/yahoojapan/NGT) as the core engine of Vald, and Vald manages to integrate with Kubernetes.
+Vald is a highly scalable distributed fast approximate nearest neighbor dense vector search engine, which uses [NGT](https://github.com/NGT-labs/NGT) as the core engine of Vald, and Vald manages to integrate with Kubernetes.
 
 You cannot generally search your unstructured data using the inverted index, like images and videos.
 Applying a model like BERT or VGG can convert your unstructured data into vectors.
