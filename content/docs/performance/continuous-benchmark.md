@@ -1,6 +1,6 @@
 ---
 title: "Continuous Benchmark_performance"
-date: 2024-10-16T16:03:40+09:00
+date: 2026-08-14T04:12:56Z
 draft: false
 weight: 300
 description: Performance verification using continuous benchmark tool
@@ -50,7 +50,7 @@ Benchmark Operator manages benchmark job according to the applied manifest.
 
 ### ValdBenchmarkJob
 
-[`ValdBenchmarkJob`](https://github.com/vdaas/vald/blob/main/charts/vald-benchmark-operator/crds/valdbenchmarkjob.yaml) is used for executing single benchmark job.
+[`ValdBenchmarkJob`](https://github.com/vdaas/vald/blob/main/charts/operator/benchmark/crds/valdbenchmarkjob.yaml) is used for executing single benchmark job.
 
 And, Benchmark Operator also applies it to the Kubernetes cluster based on `ValdBenchmarkScenarioResource`.
 
@@ -184,7 +184,7 @@ And, Benchmark Operator also applies it to the Kubernetes cluster based on `Vald
 
 ### ValdBenchmarkScenario
 
-[`ValdBenchmarkScenario`](https://github.com/vdaas/vald/blob/main/charts/vald-benchmark-operator/crds/valdbenchmarkscenario.yaml) is used for executing single or multiple benchmark job.
+[`ValdBenchmarkScenario`](https://github.com/vdaas/vald/blob/main/charts/operator/benchmark/crds/valdbenchmarkscenario.yaml) is used for executing one or more benchmark jobs.
 
 Benchmark Operator decomposes manifest and creates benchmark resources one by one.
 The `target` and `dataset` property are the global config for scenario, they can be overwritten when each job has own config.
@@ -457,7 +457,7 @@ logging:
 
 </details>
 
-For more details of the configuration of `vald-benchmark-operator-release`, please refer to [here](https://github.com/vdaas/vald/blob/main/charts/vald-benchmark-operator/values.yaml)
+For more details of the configuration of `vald-benchmark-operator-release`, please refer to [here](https://github.com/vdaas/vald/blob/main/charts/operator/benchmark/values.yaml)
 
 1. Add Vald repo into the helm repo
 
