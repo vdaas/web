@@ -118,9 +118,12 @@ func SyncRepo(tag, outDir string) error {
 	// get archive
 	resp, err := http.Get(url)
 	if err != nil {
-		return nil
+		return err
 	}
 	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("failed to download Vald archive: %s", resp.Status)
+	}
 	// create output file is exists
 	zipPath := "../" + outDir + ".zip"
 	dst, err := os.Create(zipPath)
@@ -134,9 +137,73 @@ func SyncRepo(tag, outDir string) error {
 		return err
 	}
 	// unzip
-	_ = unzipFile(zipPath, "../tmp/"+outDir)
+	extractDir := "../tmp/" + outDir
+	if err := unzipFile(zipPath, extractDir); err != nil {
+		return errors.Join(err, os.RemoveAll(zipPath))
+	}
+	if err := normalizePageBundles(filepath.Join(extractDir, "docs")); err != nil {
+		return errors.Join(err, os.RemoveAll(zipPath))
+	}
 	// remove zip
 	return os.RemoveAll(zipPath)
+}
+
+// normalizePageBundles converts a page with child pages into a Hugo branch
+// bundle. For example, foo.md and foo/bar.md become foo/_index.md and
+// foo/bar.md. Both foo.md and foo/_index.md resolve to the same URL in Hugo.
+func normalizePageBundles(root string) error {
+	var pages []string
+	err := filepath.WalkDir(root, func(path string, entry os.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if entry.IsDir() || filepath.Ext(path) != ".md" || entry.Name() == "_index.md" {
+			return nil
+		}
+		bundleDir := strings.TrimSuffix(path, filepath.Ext(path))
+		info, err := os.Stat(bundleDir)
+		if errors.Is(err, os.ErrNotExist) {
+			return nil
+		}
+		if err != nil {
+			return err
+		}
+		if info.IsDir() {
+			pages = append(pages, path)
+		}
+		return nil
+	})
+	if err != nil {
+		return err
+	}
+
+	for _, page := range pages {
+		bundleDir := strings.TrimSuffix(page, filepath.Ext(page))
+		index := filepath.Join(bundleDir, "_index.md")
+		if _, err := os.Stat(index); err == nil {
+			return fmt.Errorf("cannot convert %s to a page bundle: %s already exists", page, index)
+		} else if !errors.Is(err, os.ErrNotExist) {
+			return err
+		}
+
+		content, err := os.ReadFile(page)
+		if err != nil {
+			return err
+		}
+		pageInfo, err := os.Stat(page)
+		if err != nil {
+			return err
+		}
+		bundleName := filepath.Base(bundleDir)
+		content = []byte(strings.ReplaceAll(string(content), "]("+bundleName+"/", "]("))
+		if err := os.WriteFile(index, content, pageInfo.Mode()); err != nil {
+			return err
+		}
+		if err := os.Remove(page); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // unzipFile unzips zip file for sync document
