@@ -22,7 +22,6 @@ const ORIGINAL_VALD_VERSION = "https://raw.githubusercontent.com/vdaas/vald/main
 const ORIGINAL_GO_VERSION = "https://raw.githubusercontent.com/vdaas/vald/main/versions/GO_VERSION"
 const LATEST_VERSION_FILE = "../VERSIONS/VALD_LATEST_VERSION"
 const GO_VERSION_FILE = "../VERSIONS/GO_VERSION"
-const HUGO_HEADER = "../themes/vald/layouts/partials/header.html"
 const METADATA_PATH = "../description.json"
 const VERSION_EMBEDDING_STRING = "@VERSION@"
 
@@ -31,9 +30,7 @@ type metadata struct {
 	description string
 }
 
-// SyncVersion compares original VALD_VERSION and own VALD_LATEST_VERSION.
-// If VALD_LATEST_VERSION is NOT same as VALD_VERSION, it will replace to the original VALD_VERSION.
-// The target file is `LATEST_VERSION_FILE` and `HUGO_HEADER`.
+// SyncVersion updates the local Vald and Go version files from upstream.
 func SyncVersion() error {
 	latest, err := getValdLatestVersion()
 	if err != nil || latest == "" {
@@ -53,25 +50,9 @@ func SyncVersion() error {
 		return nil
 	}
 	return errors.Join(
-		// update latest version file
 		os.WriteFile(LATEST_VERSION_FILE, []byte(latest), os.ModePerm),
-		// update header template of hugo theme
-		updateHugoHeaderVersion(string(b), latest),
-		// update go version file
 		os.WriteFile(GO_VERSION_FILE, []byte(goVersion), os.ModePerm),
 	)
-}
-
-// updateHugoHeaderVersion replaces old latest version to the new latest version.
-func updateHugoHeaderVersion(old, latest string) error {
-	b, err := os.ReadFile(HUGO_HEADER)
-	if err != nil {
-		return err
-	}
-	old = strings.Trim(old, "\n")
-	latest = strings.Trim(latest, "\n")
-	str := strings.Replace(string(b), old, latest, 1)
-	return os.WriteFile(HUGO_HEADER, []byte(str), os.ModePerm)
 }
 
 // getValdLatestVersion gets the latest VALD_VERSION from https://github.com/vdaas/vald/blob/main/versions/VALD_VERSION.
