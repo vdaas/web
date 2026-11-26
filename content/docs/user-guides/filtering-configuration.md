@@ -1,6 +1,6 @@
 ---
 title: "Filtering Configuration_user Guides"
-date: 2024-10-16T16:03:39+09:00
+date: 2026-11-26T14:46:23Z
 draft: false
 weight: 300
 description: Applies filtering feature to the Vald cluster
@@ -131,6 +131,8 @@ gateway:
 ```
 
 Those parameters help the Vald filter gateway connect the filter component before getting the users' requests.
+`ingress_filter.vectorizer` (`host:port`) is also used by the `*Object` APIs to vectorize an object when the request sets no target.
+A filter component that appears in a request but not in any of the parameters above is connected for that request and disconnected when no request uses it anymore; list frequently used components in the parameters above to keep their connections open.
 
 ## Client configuration
 
